@@ -6,45 +6,66 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const eventsFilePath = path.join(__dirname, '..', 'data', 'events.json');
 
-// Safe file reader helper
+// Safe file reader helper with validation
 async function readEventsFile() {
   try {
     const rawData = await fs.readFile(eventsFilePath, 'utf-8');
-    return JSON.parse(rawData);
+    const parsed = JSON.parse(rawData);
+    if (!Array.isArray(parsed)) {
+      throw new Error('Events data must be an array');
+    }
+    return parsed;
   } catch (error) {
-    console.error('Error reading events.json:', error.message);
+    console.error('[Event Controller] Error reading events.json:', error.message);
     throw new Error('Unable to read events data');
   }
 }
 
 // GET /api/events
+// Supports query params: category, featured, search
 export async function getAllEvents(req, res) {
   try {
     const events = await readEventsFile();
-    const { category, featured } = req.query;
+    const { category, featured, search } = req.query;
 
     let filteredEvents = events;
 
-    if (category && category !== 'All') {
+    // Category filter
+    if (category && category.trim() !== '' && category.toLowerCase() !== 'all') {
       filteredEvents = filteredEvents.filter(
-        (e) => e.category.toLowerCase() === category.toLowerCase()
+        (e) => (e.category || '').toLowerCase() === category.trim().toLowerCase()
       );
     }
 
-    if (featured === 'true') {
-      filteredEvents = filteredEvents.filter((e) => e.isFeatured === true);
+    // Featured filter
+    if (featured !== undefined) {
+      const isFeat = featured === 'true' || featured === '1';
+      filteredEvents = filteredEvents.filter((e) => Boolean(e.isFeatured || e.featured) === isFeat);
+    }
+
+    // Search query filter (preparation for Phase 4)
+    if (search && search.trim() !== '') {
+      const query = search.trim().toLowerCase();
+      filteredEvents = filteredEvents.filter((e) =>
+        (e.title || '').toLowerCase().includes(query) ||
+        (e.venue || '').toLowerCase().includes(query) ||
+        (e.tagline || '').toLowerCase().includes(query) ||
+        (e.description || '').toLowerCase().includes(query)
+      );
     }
 
     res.status(200).json({
       success: true,
       count: filteredEvents.length,
-      data: filteredEvents
+      data: filteredEvents,
+      timestamp: new Date().toISOString()
     });
   } catch (error) {
     res.status(500).json({
       success: false,
       message: 'Failed to retrieve events',
-      error: error.message
+      error: error.message,
+      timestamp: new Date().toISOString()
     });
   }
 }
@@ -59,20 +80,22 @@ export async function getEventById(req, res) {
     if (!event) {
       return res.status(404).json({
         success: false,
-        message: `Event with id '${id}' not found`
+        message: `Event with id '${id}' not found`,
+        timestamp: new Date().toISOString()
       });
     }
 
     res.status(200).json({
       success: true,
-      data: event
+      data: event,
+      timestamp: new Date().toISOString()
     });
   } catch (error) {
     res.status(500).json({
       success: false,
       message: 'Failed to retrieve event details',
-      error: error.message
+      error: error.message,
+      timestamp: new Date().toISOString()
     });
   }
 }
-

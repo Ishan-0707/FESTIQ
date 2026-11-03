@@ -1,18 +1,27 @@
 import React from 'react';
-import { Sparkles, Compass, Flame, Users, Trophy } from 'lucide-react';
+import { Sparkles, Compass, Flame } from 'lucide-react';
+import Button from './ui/Button';
 import './Hero.css';
 
 export default function Hero({ onExploreClick }) {
+  const handleScrollToFeatured = (e) => {
+    e.preventDefault();
+    const el = document.getElementById('featured');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="home" className="hero-section">
       {/* Background Ambient Glows */}
-      <div className="hero-glow hero-glow-purple"></div>
-      <div className="hero-glow hero-glow-cyan"></div>
+      <div className="hero-glow hero-glow-purple" aria-hidden="true"></div>
+      <div className="hero-glow hero-glow-cyan" aria-hidden="true"></div>
 
       <div className="container hero-container">
         {/* Category Pill Tag */}
         <div className="hero-badge">
-          <Sparkles size={15} className="hero-badge-icon" />
+          <Sparkles size={14} className="hero-badge-icon" />
           <span>University Campus Event Platform</span>
         </div>
 
@@ -30,20 +39,31 @@ export default function Hero({ onExploreClick }) {
           and creative workshops. Stay connected with everything happening across campus.
         </p>
 
-        {/* CTA Actions */}
+        {/* CTA Actions using Button System */}
         <div className="hero-actions">
-          <button className="btn btn-primary" onClick={onExploreClick}>
-            <Compass size={18} />
-            <span>Explore Events</span>
-          </button>
-          <a href="#featured" className="btn btn-secondary">
-            <Flame size={18} />
-            <span>View Featured</span>
-          </a>
+          <Button
+            variant="primary"
+            size="lg"
+            icon={<Compass size={18} />}
+            iconPosition="left"
+            onClick={onExploreClick}
+          >
+            Explore Events
+          </Button>
+
+          <Button
+            variant="secondary"
+            size="lg"
+            icon={<Flame size={18} />}
+            iconPosition="left"
+            onClick={handleScrollToFeatured}
+          >
+            View Featured
+          </Button>
         </div>
 
-        {/* Platform Stat Strip */}
-        <div className="hero-stats">
+        {/* Platform Metrics Bar */}
+        <div className="hero-stats" role="region" aria-label="Platform Statistics">
           <div className="stat-card">
             <div className="stat-number text-gradient">6+</div>
             <div className="stat-label">Active Categories</div>
@@ -65,4 +85,3 @@ export default function Hero({ onExploreClick }) {
     </section>
   );
 }
-

@@ -4,6 +4,8 @@ import Hero from './components/Hero';
 import FeaturedEvents from './components/FeaturedEvents';
 import CategoryPreview from './components/CategoryPreview';
 import Footer from './components/Footer';
+import Button from './components/ui/Button';
+import Badge from './components/ui/Badge';
 import { checkBackendHealth, fetchEvents } from './services/api';
 
 export default function App() {
@@ -92,12 +94,14 @@ export default function App() {
       {/* Footer */}
       <Footer />
 
-      {/* Phase 1 Quick Preview Modal for Selected Event */}
+      {/* Quick Preview Modal for Selected Event */}
       {selectedEvent && (
         <div className="event-modal-backdrop" onClick={() => setSelectedEvent(null)}>
           <div className="event-modal-card" onClick={(e) => e.stopPropagation()}>
             <div className="event-modal-header">
-              <span className="badge badge-technical">{selectedEvent.category}</span>
+              <Badge variant={selectedEvent.category} size="md">
+                {selectedEvent.category}
+              </Badge>
               <button 
                 className="event-modal-close" 
                 onClick={() => setSelectedEvent(null)}
@@ -112,24 +116,26 @@ export default function App() {
               <div><strong>Date:</strong> {selectedEvent.date}</div>
               <div><strong>Time:</strong> {selectedEvent.time}</div>
               <div><strong>Venue:</strong> {selectedEvent.venue}</div>
-              <div><strong>Entry Fee:</strong> {selectedEvent.entryFee}</div>
+              <div><strong>Entry Fee:</strong> {selectedEvent.entryFee || 'Free'}</div>
             </div>
             <div className="event-modal-actions">
-              <button 
-                className="btn btn-primary"
+              <Button
+                variant="primary"
+                size="md"
                 onClick={() => {
                   alert(`Registration for "${selectedEvent.title}" will be fully enabled in Phase 6!`);
                   setSelectedEvent(null);
                 }}
               >
                 Register For Event
-              </button>
-              <button 
-                className="btn btn-secondary" 
+              </Button>
+              <Button
+                variant="secondary"
+                size="md"
                 onClick={() => setSelectedEvent(null)}
               >
                 Close
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -140,26 +146,27 @@ export default function App() {
         .event-modal-backdrop {
           position: fixed;
           inset: 0;
-          background: rgba(0, 0, 0, 0.75);
-          backdrop-filter: blur(6px);
+          background: rgba(0, 0, 0, 0.78);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
           display: flex;
           align-items: center;
           justify-content: center;
-          z-index: 1000;
+          z-index: 2000;
           padding: 20px;
         }
         .event-modal-card {
-          background: var(--bg-surface);
+          background: var(--bg-card);
           border: 1px solid var(--border-hover);
           border-radius: var(--radius-lg);
-          padding: 32px;
-          max-width: 560px;
+          padding: 28px;
+          max-width: 540px;
           width: 100%;
           box-shadow: var(--shadow-glow);
-          animation: modalFadeIn 0.25s ease;
+          animation: modalFadeIn 0.22s ease;
         }
         @keyframes modalFadeIn {
-          from { opacity: 0; transform: scale(0.95); }
+          from { opacity: 0; transform: scale(0.96); }
           to { opacity: 1; transform: scale(1); }
         }
         .event-modal-header {
@@ -173,32 +180,35 @@ export default function App() {
           font-size: 1.25rem;
           padding: 4px 8px;
           border-radius: var(--radius-sm);
+          cursor: pointer;
+          transition: all 0.15s ease;
         }
         .event-modal-close:hover {
           color: var(--text-primary);
-          background: var(--bg-surface-elevated);
+          background: var(--bg-card-hover);
         }
         .event-modal-title {
           font-family: var(--font-heading);
-          font-size: 1.5rem;
-          margin-bottom: 12px;
+          font-size: 1.35rem;
+          margin-bottom: 10px;
           line-height: 1.3;
         }
         .event-modal-desc {
-          font-size: 0.95rem;
+          font-size: 0.92rem;
           color: var(--text-secondary);
           line-height: 1.6;
           margin-bottom: 20px;
         }
         .event-modal-meta {
           background: var(--bg-primary);
+          border: 1px solid var(--border-subtle);
           border-radius: var(--radius-md);
           padding: 16px;
           margin-bottom: 24px;
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 10px;
-          font-size: 0.88rem;
+          font-size: 0.85rem;
           color: var(--text-secondary);
         }
         .event-modal-meta strong {
@@ -209,8 +219,18 @@ export default function App() {
           gap: 12px;
           justify-content: flex-end;
         }
+        @media (max-width: 480px) {
+          .event-modal-meta {
+            grid-template-columns: 1fr;
+          }
+          .event-modal-actions {
+            flex-direction: column;
+          }
+          .event-modal-actions .festiq-btn {
+            width: 100%;
+          }
+        }
       `}</style>
     </div>
   );
 }
-

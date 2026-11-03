@@ -1,68 +1,73 @@
+/* ============================================================
+   FESTIQ Footer Styles — Design System Refinement
+   ============================================================ */
+
 .footer-wrapper {
-  background-color: #070911;
+  background-color: #060912;
   border-top: 1px solid var(--border-subtle);
   padding: 64px 0 28px;
   position: relative;
+  width: 100%;
 }
 
 .footer-container {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: var(--space-2xl, 48px);
 }
 
 .footer-top {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1.5fr;
-  gap: 40px;
+  grid-template-columns: 2fr 1.1fr 1.2fr 1.4fr;
+  gap: var(--space-xl, 36px);
 }
 
 .footer-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: var(--space-sm, 10px);
+  margin-bottom: var(--space-sm, 10px);
 }
 
 .footer-tagline {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--accent-cyan);
-  margin-bottom: 12px;
+  margin-bottom: var(--space-sm, 10px);
 }
 
 .footer-description {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--text-secondary);
   line-height: 1.6;
-  margin-bottom: 20px;
-  max-width: 380px;
+  margin-bottom: var(--space-md, 18px);
+  max-width: 360px;
 }
 
 .footer-tech-stack {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: var(--space-xs, 6px);
 }
 
 .tech-badge {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  background: var(--bg-surface);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  padding: 3px 10px;
+  padding: 3px 9px;
   border-radius: var(--radius-full);
 }
 
 .footer-heading {
   font-family: var(--font-heading);
-  font-size: 1rem;
+  font-size: 0.98rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 18px;
+  margin-bottom: var(--space-md, 16px);
 }
 
 .footer-list {
@@ -73,7 +78,7 @@
 }
 
 .footer-list a {
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   color: var(--text-secondary);
   transition: color var(--transition-fast);
 }
@@ -83,10 +88,10 @@
 }
 
 .academic-meta {
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   color: var(--text-secondary);
   line-height: 1.6;
-  margin-bottom: 16px;
+  margin-bottom: var(--space-md, 16px);
 }
 
 .academic-meta strong {
@@ -104,28 +109,28 @@
 }
 
 .status-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background-color: var(--accent-emerald);
   box-shadow: 0 0 8px var(--accent-emerald);
 }
 
 .status-text {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 600;
   color: var(--accent-emerald);
 }
 
-/* Bottom Bar */
+/* Bottom Copyright Bar */
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding-top: 24px;
+  padding-top: var(--space-md, 20px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: var(--space-md, 16px);
 }
 
 .copyright-text {
@@ -138,19 +143,24 @@
   color: var(--text-secondary);
 }
 
+/* Responsive Media Queries */
 @media (max-width: 960px) {
   .footer-top {
     grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg, 24px);
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 580px) {
+  .footer-wrapper {
+    padding: 48px 0 24px;
+  }
   .footer-top {
     grid-template-columns: 1fr;
+    gap: var(--space-xl, 28px);
   }
   .footer-bottom {
     flex-direction: column;
     text-align: center;
   }
 }
-

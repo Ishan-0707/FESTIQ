@@ -1,39 +1,50 @@
+/* ============================================================
+   FESTIQ Category Preview Styles — Design System Refinement
+   ============================================================ */
+
 .categories-section {
-  padding: 60px 0 80px;
-  background: var(--bg-surface);
+  padding: var(--section-padding, 72px 0);
+  background: var(--bg-secondary);
   border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
+  width: 100%;
 }
 
 .categories-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: var(--space-lg, 20px);
 }
 
 .category-card {
-  background: var(--bg-primary);
+  background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 22px;
+  padding: var(--space-lg, 20px);
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: var(--space-md, 16px);
   cursor: pointer;
   transition: all var(--transition-normal);
   position: relative;
+  outline: none;
 }
 
 .category-card:hover {
-  background: var(--bg-surface-elevated);
+  background: var(--bg-card-hover);
   transform: translateY(-3px);
   border-color: var(--border-hover);
   box-shadow: var(--shadow-sm);
 }
 
+.category-card:focus-visible {
+  outline: 2px solid var(--accent-purple);
+  outline-offset: 2px;
+}
+
 .cat-icon-wrapper {
-  width: 48px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
@@ -43,55 +54,56 @@
 }
 
 .category-card:hover .cat-icon-wrapper {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
-/* Category Specific Theming */
+/* Category Color Theming */
 .cat-tech .cat-icon-wrapper {
-  background: rgba(139, 92, 246, 0.15);
-  color: #A78BFA;
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  background: rgba(139, 92, 246, 0.16);
+  color: #C4B5FD;
+  border: 1px solid rgba(139, 92, 246, 0.35);
 }
 
 .cat-cultural .cat-icon-wrapper {
-  background: rgba(236, 72, 153, 0.15);
+  background: rgba(236, 72, 153, 0.16);
   color: #F472B6;
-  border: 1px solid rgba(236, 72, 153, 0.3);
+  border: 1px solid rgba(236, 72, 153, 0.35);
 }
 
 .cat-gaming .cat-icon-wrapper {
-  background: rgba(6, 182, 212, 0.15);
-  color: #22D3EE;
-  border: 1px solid rgba(6, 182, 212, 0.3);
+  background: rgba(6, 182, 212, 0.16);
+  color: #67E8F9;
+  border: 1px solid rgba(6, 182, 212, 0.35);
 }
 
 .cat-workshops .cat-icon-wrapper {
-  background: rgba(245, 158, 11, 0.15);
-  color: #FBBF24;
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  background: rgba(245, 158, 11, 0.16);
+  color: #FCD34D;
+  border: 1px solid rgba(245, 158, 11, 0.35);
 }
 
 .cat-management .cat-icon-wrapper {
-  background: rgba(16, 185, 129, 0.15);
-  color: #34D399;
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: rgba(16, 185, 129, 0.16);
+  color: #6EE7B7;
+  border: 1px solid rgba(16, 185, 129, 0.35);
 }
 
 .cat-sports .cat-icon-wrapper {
-  background: rgba(59, 130, 246, 0.15);
-  color: #60A5FA;
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: rgba(59, 130, 246, 0.16);
+  color: #93C5FD;
+  border: 1px solid rgba(59, 130, 246, 0.35);
 }
 
 .cat-content {
   flex-grow: 1;
+  min-width: 0;
 }
 
 .cat-header-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: var(--space-sm, 8px);
   margin-bottom: 4px;
 }
 
@@ -100,26 +112,35 @@
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .cat-count {
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--accent-cyan);
-  background: rgba(6, 182, 212, 0.1);
+  background: rgba(6, 182, 212, 0.12);
+  border: 1px solid rgba(6, 182, 212, 0.25);
   padding: 2px 8px;
   border-radius: var(--radius-full);
+  flex-shrink: 0;
 }
 
 .cat-desc {
   font-size: 0.82rem;
   color: var(--text-secondary);
-  line-height: 1.4;
+  line-height: 1.45;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .cat-arrow {
   color: var(--text-muted);
   transition: transform var(--transition-fast), color var(--transition-fast);
+  flex-shrink: 0;
 }
 
 .category-card:hover .cat-arrow {
@@ -127,6 +148,7 @@
   transform: translateX(4px);
 }
 
+/* Responsive Breakpoints */
 @media (max-width: 992px) {
   .categories-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -138,4 +160,3 @@
     grid-template-columns: 1fr;
   }
 }
-

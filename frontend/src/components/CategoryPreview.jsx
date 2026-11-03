@@ -75,9 +75,18 @@ export default function CategoryPreview({ onSelectCategory }) {
                 key={cat.id}
                 className={`category-card ${cat.colorClass}`}
                 onClick={() => onSelectCategory && onSelectCategory(cat.id)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    if (onSelectCategory) onSelectCategory(cat.id);
+                  }
+                }}
+                aria-label={`Filter events by ${cat.title}`}
               >
                 <div className="cat-icon-wrapper">
-                  <Icon size={24} />
+                  <Icon size={22} />
                 </div>
                 <div className="cat-content">
                   <div className="cat-header-row">
@@ -86,7 +95,7 @@ export default function CategoryPreview({ onSelectCategory }) {
                   </div>
                   <p className="cat-desc">{cat.desc}</p>
                 </div>
-                <div className="cat-arrow">
+                <div className="cat-arrow" aria-hidden="true">
                   <ChevronRight size={18} />
                 </div>
               </div>
@@ -97,4 +106,3 @@ export default function CategoryPreview({ onSelectCategory }) {
     </section>
   );
 }
-

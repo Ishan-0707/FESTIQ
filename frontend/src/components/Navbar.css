@@ -1,12 +1,23 @@
+/* ============================================================
+   FESTIQ Navbar Styles — Design System Refinement
+   ============================================================ */
+
 .navbar-wrapper {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background: rgba(10, 13, 24, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  z-index: 1000;
+  background: var(--bg-glass, rgba(10, 13, 24, 0.85));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-subtle);
   transition: all var(--transition-normal);
+  width: 100%;
+}
+
+.navbar-wrapper.scrolled {
+  background: rgba(10, 13, 24, 0.95);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
 }
 
 .navbar-container {
@@ -20,19 +31,26 @@
 .navbar-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-sm, 8px);
   text-decoration: none;
+  cursor: pointer;
 }
 
 .brand-icon-box {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-md);
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md, 12px);
   background: var(--accent-gradient);
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.navbar-brand:hover .brand-icon-box {
+  transform: scale(1.05);
 }
 
 .brand-sparkle {
@@ -55,7 +73,7 @@
 
 .brand-tagline {
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent-cyan);
@@ -65,12 +83,12 @@
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: var(--space-xl, 32px);
 }
 
 .nav-link {
   font-size: 0.92rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-secondary);
   transition: color var(--transition-fast);
   position: relative;
@@ -102,49 +120,66 @@
 .mobile-toggle {
   display: none;
   color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
   padding: 8px;
   border-radius: var(--radius-sm);
-  transition: background var(--transition-fast);
+  cursor: pointer;
+  transition: all var(--transition-fast);
 }
 
 .mobile-toggle:hover {
-  background: var(--bg-surface-elevated);
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
 }
 
 /* Mobile Drawer */
 .mobile-drawer {
   display: none;
-  background: var(--bg-surface);
+  background: var(--bg-secondary);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 0 20px;
   max-height: 0;
   overflow: hidden;
-  transition: max-height var(--transition-normal);
+  opacity: 0;
+  transition: max-height var(--transition-normal), opacity var(--transition-normal);
 }
 
 .mobile-drawer.open {
-  max-height: 320px;
-  padding-bottom: 24px;
+  max-height: 360px;
+  opacity: 1;
+}
+
+.mobile-drawer-inner {
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
 }
 
 .mobile-drawer-links {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding-top: 16px;
+  gap: var(--space-sm);
 }
 
 .mobile-nav-link {
   font-size: 1rem;
   font-weight: 600;
   color: var(--text-secondary);
-  padding: 6px 0;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .mobile-nav-link:hover {
-  color: var(--text-primary);
+  color: var(--accent-cyan);
 }
 
+.mobile-drawer-action {
+  margin-top: var(--space-xs);
+}
+
+/* Responsive Media Queries */
 @media (max-width: 860px) {
   .navbar-links,
   .navbar-action {
@@ -161,4 +196,3 @@
     display: block;
   }
 }
-
