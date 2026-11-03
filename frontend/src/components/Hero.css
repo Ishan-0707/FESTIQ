@@ -13,6 +13,13 @@
   pointer-events: none;
   opacity: 0.35;
   z-index: 0;
+  max-width: 100vw;
+}
+
+@media (max-width: 768px) {
+  .hero-glow {
+    display: none;
+  }
 }
 
 .hero-glow-purple {
@@ -38,6 +45,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  max-width: 100%;
 }
 
 .hero-badge {
@@ -65,8 +74,10 @@
   line-height: 1.15;
   letter-spacing: -0.03em;
   max-width: 860px;
+  width: 100%;
   margin-bottom: 16px;
   color: var(--text-primary);
+  overflow-wrap: break-word;
 }
 
 .hero-tagline {
@@ -138,25 +149,51 @@
 
 @media (max-width: 860px) {
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 2.35rem;
   }
   .hero-stats {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 580px) {
+  .hero-section {
+    padding: 50px 0 40px;
+  }
   .hero-title {
-    font-size: 2rem;
+    font-size: 1.65rem;
+    line-height: 1.25;
   }
   .hero-tagline {
-    font-size: 1rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+  .hero-description {
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+    width: 100%;
   }
   .hero-actions {
     flex-direction: column;
     width: 100%;
+    gap: 12px;
+    margin-bottom: 40px;
   }
   .hero-actions .btn {
     width: 100%;
   }
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .stat-card {
+    padding: 14px 10px;
+  }
+  .stat-number {
+    font-size: 1.45rem;
+  }
+  .stat-label {
+    font-size: 0.68rem;
+  }
 }
+

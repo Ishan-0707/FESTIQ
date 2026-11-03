@@ -140,3 +140,4 @@ export default function FeaturedEvents({ events, loading, error, onRetry, onEven
     </section>
   );
 }
+

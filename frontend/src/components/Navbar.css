@@ -148,14 +148,17 @@
 @media (max-width: 860px) {
   .navbar-links,
   .navbar-action {
-    display: none;
+    display: none !important;
   }
 
   .mobile-toggle {
-    display: block;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
   }
 
   .mobile-drawer {
     display: block;
   }
 }
+

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, Heart, Code2, Globe, Github } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import './Footer.css';
 
 export default function Footer() {
@@ -81,3 +81,4 @@ export default function Footer() {
     </footer>
   );
 }
+

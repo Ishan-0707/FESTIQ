@@ -7,3 +7,4 @@ router.get('/', getAllEvents);
 router.get('/:id', getEventById);
 
 export default router;
+

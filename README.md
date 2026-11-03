@@ -120,3 +120,4 @@ This project satisfies all requirements specified by the university examiner:
 3. ES6+ JavaScript client and server logic.
 4. Dynamic data fetching and client-server decoupling.
 5. Robust input validation and persistent storage.
+
