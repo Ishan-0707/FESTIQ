@@ -1,0 +1,183 @@
+/* ============================================================
+   FESTIQ UI Component — Reusable Button System (Dual-Theme)
+   ============================================================ */
+
+.festiq-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm, 8px);
+  font-family: var(--font-body, inherit);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: var(--radius-md, 12px);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-normal, 0.25s ease);
+  user-select: none;
+  position: relative;
+  outline: none;
+}
+
+.festiq-btn:focus-visible {
+  outline: 2px solid var(--border-focus, #D28B63);
+  outline-offset: 2px;
+}
+
+.festiq-btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Sizing Scale */
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm, 8px);
+}
+
+.btn-md {
+  padding: 12px 22px;
+  font-size: 0.95rem;
+  border-radius: var(--radius-md, 12px);
+}
+
+.btn-lg {
+  padding: 14px 28px;
+  font-size: 1.05rem;
+  border-radius: var(--radius-md, 12px);
+}
+
+/* Variant: Primary */
+.btn-primary {
+  background: var(--accent-gradient);
+  color: #0A1517;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(210, 139, 99, 0.28);
+  border: 1px solid rgba(210, 139, 99, 0.4);
+}
+
+[data-theme="light"] .btn-primary {
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(65, 105, 200, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--accent-gradient-hover);
+  box-shadow: 0 6px 20px rgba(210, 139, 99, 0.42);
+  transform: translateY(-2px);
+}
+
+[data-theme="light"] .btn-primary:hover:not(:disabled) {
+  box-shadow: 0 6px 20px rgba(65, 105, 200, 0.4);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px rgba(210, 139, 99, 0.3);
+}
+
+/* Variant: Secondary */
+.btn-secondary {
+  background: var(--card-bg);
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Variant: Outline */
+.btn-outline {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--accent-primary);
+}
+
+.btn-outline:hover:not(:disabled) {
+  background: rgba(210, 139, 99, 0.12);
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+[data-theme="light"] .btn-outline:hover:not(:disabled) {
+  background: rgba(65, 105, 200, 0.12);
+  border-color: var(--accent-primary);
+}
+
+.btn-outline:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Variant: Ghost */
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border-color: transparent;
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background: var(--sidebar-hover);
+  color: var(--text-primary);
+}
+
+/* Disabled State */
+.festiq-btn:disabled,
+.btn-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Loading State */
+.btn-loading {
+  cursor: wait;
+}
+
+.btn-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+  margin-right: 2px;
+}
+
+/* Icon Alignment */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.btn-icon.left {
+  margin-right: 2px;
+}
+
+.btn-icon.right {
+  margin-left: 2px;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .festiq-btn {
+    transition: none !important;
+    transform: none !important;
+  }
+}

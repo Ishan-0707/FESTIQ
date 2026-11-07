@@ -1,0 +1,20 @@
+{
+  "name": "festiq-backend",
+  "version": "1.0.0",
+  "description": "FESTIQ Event Discovery and Management Platform - Express Backend",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch-path=server.js --watch-path=controllers --watch-path=routes --watch-path=middleware --watch-path=utils --watch-path=services server.js",
+    "promote:manager": "node scripts/provision-manager.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.3",
+    "pdfkit": "^0.20.2"
+  }
+}

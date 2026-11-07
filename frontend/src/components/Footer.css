@@ -1,0 +1,188 @@
+/* ============================================================
+   FESTIQ Footer Styles — Design System Refinement
+   ============================================================ */
+
+.footer-wrapper {
+  background-color: var(--bg-deep);
+  border-top: 1px solid var(--border-subtle);
+  padding: 64px 0 28px;
+  position: relative;
+  width: 100%;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl, 48px);
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1.1fr 1.2fr 1.4fr;
+  gap: var(--space-xl, 36px);
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm, 10px);
+  margin-bottom: var(--space-sm, 10px);
+}
+
+.footer-tagline {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-sage);
+  margin-bottom: var(--space-sm, 10px);
+}
+
+[data-theme="light"] .footer-tagline {
+  color: var(--accent-primary);
+}
+
+.footer-description {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-md, 18px);
+  max-width: 360px;
+}
+
+.footer-tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs, 6px);
+}
+
+.tech-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+}
+
+.footer-heading {
+  font-family: var(--font-heading);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md, 16px);
+}
+
+.footer-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-list a {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.footer-list a:hover {
+  color: var(--accent-sage);
+}
+
+[data-theme="light"] .footer-list a:hover {
+  color: var(--accent-primary);
+}
+
+.academic-meta {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-md, 16px);
+}
+
+.academic-meta strong {
+  color: var(--text-primary);
+}
+
+.system-status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(134, 185, 154, 0.12);
+  border: 1px solid var(--border-subtle);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+}
+
+[data-theme="light"] .system-status-indicator {
+  background: rgba(53, 107, 150, 0.12);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--accent-sage);
+  box-shadow: 0 0 8px var(--accent-sage);
+}
+
+[data-theme="light"] .status-dot {
+  background-color: var(--accent-primary);
+  box-shadow: 0 0 8px var(--accent-primary);
+}
+
+.status-text {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--accent-sage);
+}
+
+[data-theme="light"] .status-text {
+  color: var(--accent-primary);
+}
+
+/* Bottom Copyright Bar */
+.footer-bottom {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: var(--space-md, 20px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md, 16px);
+}
+
+.copyright-text {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.footer-credits {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+/* Responsive Media Queries */
+@media (max-width: 960px) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg, 24px);
+  }
+}
+
+@media (max-width: 580px) {
+  .footer-wrapper {
+    padding: 48px 0 24px;
+  }
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl, 28px);
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}

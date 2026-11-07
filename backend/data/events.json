@@ -1,0 +1,2731 @@
+[
+  {
+    "id": "fest-001",
+    "title": "HackNova 2026: 36-Hour National Hackathon",
+    "category": "Technical",
+    "tagline": "Build the autonomous future with AI & Cloud",
+    "description": "A premier 36-hour national hackathon bringing together over 500 student developers to build disruptive AI, cloud, and web3 prototypes. Participants collaborate in teams to solve industry-sponsored problem statements under senior engineering mentorship.",
+    "fullDescription": "HackNova 2026 is our premier 36-hour hackathon bringing together students to solve real-world problems. Participants will have 24/7 access to high-performance compute clusters, specialized IoT hardware kits, and continuous mentorship from senior engineers at leading tech firms. Tracks include Autonomous Agents, Generative Media, Decentralized Systems, and HealthTech.",
+    "date": "2026-11-20",
+    "time": "09:00 AM - 09:00 PM",
+    "venue": "Campus Main Auditorium & Innovation Hub",
+    "organizer": "Department of Computer Science & ACM Student Chapter",
+    "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "Free",
+    "prizePool": "₹50,000",
+    "prizeAmount": 50000,
+    "capacity": 250,
+    "registeredCount": 184,
+    "featured": true,
+    "isFeatured": true,
+    "status": "Open",
+    "createdAt": "2026-10-15T08:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "Tech Coordination Desk (Demo Lead)",
+    "managerPhone": "+91 00000 00001",
+    "feeAmount": 0,
+    "feeType": "per_person",
+    "registrationType": "free",
+    "isPaid": false,
+    "registrationFee": "Free",
+    "pdfDetails": {
+      "detailedDescription": "HackNova 2026 is our premier 36-hour continuous software engineering hackathon designed to test algorithmic innovation, rapid prototype development, and technical resilience.\nParticipants will form multidisciplinary teams to tackle challenges in autonomous AI agents, distributed systems, generative media, and campus sustainability.\nTeams have 24/7 access to high-performance GPU compute clusters and specialized hardware debugging benches provided by the school of computing.\nMentors from leading tech firms and open-source foundations will conduct continuous technical reviews and architecture consultations throughout the event.\nDeliverables include a functional source repository, live demo deployment, and a 5-minute technical defense before the industry evaluation panel.\nPrerequisites include basic proficiency in modern programming languages, version control with Git, and fundamental knowledge of APIs or web architectures.",
+      "schedule": [
+        {
+          "time": "08:30 AM",
+          "activity": "Registration Desk & Hardware Check-in"
+        },
+        {
+          "time": "09:00 AM",
+          "activity": "Opening Ceremony & Track Problem Statements Release"
+        },
+        {
+          "time": "10:00 AM",
+          "activity": "Hackathon Hacking Phase Commences"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Lunch & Peer Networking Break"
+        },
+        {
+          "time": "04:30 PM",
+          "activity": "Mentorship Review Round 1 (Architecture & Feasibility)"
+        },
+        {
+          "time": "08:30 PM",
+          "activity": "Dinner & Midnight Code Sprint"
+        },
+        {
+          "time": "08:00 AM (Day 2)",
+          "activity": "Mentorship Review Round 2 (Integration & UX)"
+        },
+        {
+          "time": "06:00 PM (Day 2)",
+          "activity": "Code Freeze & Repository Submission"
+        },
+        {
+          "time": "07:00 PM (Day 2)",
+          "activity": "Top 10 Finalist Demonstrations & Award Ceremony"
+        }
+      ],
+      "rules": [
+        "Teams must consist of 2 to 4 members. Inter-college and inter-disciplinary teams are permitted.",
+        "All application code, assets, and design schemas must be created strictly during the hackathon timeline.",
+        "Third-party libraries, open-source frameworks, and public APIs are permitted provided they are disclosed in the README.",
+        "Pre-built closed proprietary software or prior commercial codebases are strictly prohibited and will result in disqualification.",
+        "Git commit history must clearly demonstrate incremental progress made during the designated hackathon hours.",
+        "Plagiarism or unauthorized copying of competing team intellectual property will lead to immediate expulsion.",
+        "Jury decisions on technical merit, innovation, and implementation rigor are final and binding."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "Free",
+        "feeType": "per_person",
+        "deadline": "2026-11-18 11:59 PM",
+        "capacity": 250,
+        "eligibility": "Bona fide undergraduate and postgraduate engineering and computing students.",
+        "paymentInstructions": "Free event admission. Confirmed digital pass issued upon online registration verification.",
+        "cancellationPolicy": "Cancellations accepted up to 24 hours prior to commencement via the student dashboard."
+      },
+      "organizerContact": {
+        "name": "Tech Coordination Desk (Demo Lead)",
+        "department": "Department of Computer Science & ACM Student Chapter",
+        "email": "hacknova@festiq.campus.edu",
+        "phone": "+91 00000 00001",
+        "support": "Contact the tech desk for power strip requests, monitor allocation, and network credentials."
+      },
+      "participantInstructions": [
+        "Bring your college identity card and FESTIQ digital registration pass (printed or on mobile).",
+        "Bring your own laptops, extension cords, chargers, and any target development hardware.",
+        "High-speed campus Ethernet and Wi-Fi access will be provisioned at the check-in desk.",
+        "Sleeping lounges, continuous refreshments, and first-aid medical support are available on-site."
+      ]
+    },
+    "prizePoolType": "fixed",
+    "prizeAllocationPct": 75,
+    "sponsorship": "Industry problem statement sponsors & ACM Student Chapter",
+    "provisionalFee": false
+  },
+  {
+    "id": "fest-002",
+    "title": "Rhythm & Echoes: Annual Cultural Gala",
+    "category": "Cultural",
+    "tagline": "A starry evening of music, theater, and fusion dance",
+    "description": "The annual flagship cultural gala featuring an electrifying evening of competitive choreography, fusion musical performances, street theater, and headline concerts under the campus amphitheatre greens.",
+    "fullDescription": "Rhythm & Echoes brings the campus alive with vibrant performing arts. Experience competitive choreography, street plays (Nukkad Natak), classical fusion performances, and an electrifying live concert under the open sky. Food trucks and art installations line the campus amphitheatre greens.",
+    "date": "2026-11-25",
+    "time": "05:30 PM - 11:00 PM",
+    "venue": "Open Air Amphitheatre, Campus Greens",
+    "organizer": "University Cultural Affairs Board",
+    "image": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "Free",
+    "prizePool": "₹35,000",
+    "prizeAmount": 35000,
+    "capacity": 1200,
+    "registeredCount": 890,
+    "featured": true,
+    "isFeatured": true,
+    "status": "Open",
+    "createdAt": "2026-10-16T08:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "Cultural Affairs Desk (Demo Lead)",
+    "managerPhone": "+91 00000 00002",
+    "feeAmount": 0,
+    "feeType": "per_person",
+    "registrationType": "free",
+    "isPaid": false,
+    "registrationFee": "Free",
+    "pdfDetails": {
+      "detailedDescription": "Rhythm & Echoes is the premier performing arts celebration of the academic year, spotlighting student artistic talent and theatrical expression.\nThe gala features competitive stage routines, western choreography showdowns, folk fusion ensembles, and evocative street theater (Nukkad Natak).\nParticipants perform on a professionally engineered concert stage equipped with concert-grade line-array acoustics and intelligent lighting.\nThe festival fosters cross-cultural artistic exchange, offering student artists a high-visibility platform before esteemed arts faculty and celebrity jurors.\nAudience engagement, choreography synchronization, artistic originality, and thematic coherence serve as primary judging pillars.\nPrerequisites include prior stage performance rehearsal and technical coordination with the sound engineering crew during soundchecks.",
+      "schedule": [
+        {
+          "time": "04:30 PM",
+          "activity": "Artist Green Room Check-in & Audio-Visual Soundcheck"
+        },
+        {
+          "time": "05:30 PM",
+          "activity": "Inaugural Lamp Lighting & Classical Invocation"
+        },
+        {
+          "time": "06:00 PM",
+          "activity": "Competitive Choreography & Dance Showdowns"
+        },
+        {
+          "time": "08:00 PM",
+          "activity": "Theatrical Street Play (Nukkad Natak) Finals"
+        },
+        {
+          "time": "09:15 PM",
+          "activity": "Inter-College Fusion Band Showcase"
+        },
+        {
+          "time": "10:30 PM",
+          "activity": "Jury Citation, Awards Presentation & Closing Gala"
+        }
+      ],
+      "rules": [
+        "All performing participants must be registered college students with valid student identification cards.",
+        "Performances must adhere strictly to the allotted time limits: Dance (6-8 mins), Drama (10-12 mins), Music (10 mins).",
+        "Backing tracks and audio media must be submitted to the sound booth at least 1 hour before stage reporting.",
+        "Use of flammable materials, pyrotechnics, glass, or hazardous stage props is strictly prohibited.",
+        "Vulgarity, derogatory language, or disrespect towards any community will lead to immediate disqualification.",
+        "Stage setup and teardown must be completed within 2 minutes of performance announcement.",
+        "The judging panel comprises accredited performing arts professionals; their scoring is definitive."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "Free",
+        "feeType": "per_person",
+        "deadline": "2026-11-23 11:59 PM",
+        "capacity": 1200,
+        "eligibility": "Open to all university students and affiliated college cultural societies.",
+        "paymentInstructions": "Free event admission. Confirmed digital pass issued upon online registration verification.",
+        "cancellationPolicy": "Passes may be released through the student dashboard to accommodate waitlisted students."
+      },
+      "organizerContact": {
+        "name": "Cultural Affairs Desk (Demo Lead)",
+        "department": "University Cultural Affairs Board",
+        "email": "culture@festiq.campus.edu",
+        "phone": "+91 00000 00002",
+        "support": "Contact for green room allocations, acoustic specifications, and stage prop drop-off."
+      },
+      "participantInstructions": [
+        "Report to the backstage registration desk 60 minutes prior to your scheduled event block.",
+        "Ensure backing tracks are provided on a USB drive in high-bitrate MP3 or WAV format.",
+        "Performers are responsible for their own costumes, makeup, and personal props.",
+        "Respect green room cleanliness and follow backstage stage manager cues diligently."
+      ]
+    },
+    "prizePoolType": "fixed",
+    "prizeAllocationPct": 75,
+    "sponsorship": "University Cultural Affairs Board Institutional Grant",
+    "provisionalFee": false
+  },
+  {
+    "id": "fest-003",
+    "title": "Valorant & BGMI Campus Showdown",
+    "category": "Gaming",
+    "tagline": "Compete on LAN for the university e-sports trophy",
+    "description": "An elite campus e-sports showdown featuring tactical 5v5 shooter brackets in Valorant and high-intensity mobile battle royale lobbies in BGMI, casted live with professional tournament production.",
+    "fullDescription": "The ultimate gaming tournament on campus! Featuring 5v5 tactical shooter brackets for Valorant on dedicated low-ping LAN rigs, alongside mobile battle royale BGMI custom room lobbies. Matches will be casted live on campus mega-screens with professional shoutcasters and gaming peripherals as prizes.",
+    "date": "2026-11-28",
+    "time": "10:00 AM - 07:00 PM",
+    "venue": "Indoor Sports Complex & E-Sports Arena",
+    "organizer": "FESTIQ Gaming Guild & Esports Society",
+    "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "₹100 per team",
+    "prizePool": "₹4,800",
+    "prizeAmount": 4800,
+    "capacity": 64,
+    "registeredCount": 52,
+    "featured": true,
+    "isFeatured": true,
+    "status": "Open",
+    "createdAt": "2026-10-18T08:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "Gaming Committee (Demo Lead)",
+    "managerPhone": "+91 00000 00003",
+    "feeAmount": 100,
+    "feeType": "per_team",
+    "registrationType": "paid",
+    "isPaid": true,
+    "registrationFee": "₹100 per team",
+    "pdfDetails": {
+      "detailedDescription": "The Valorant & BGMI Campus Showdown gathers the top collegiate e-sports squads for an intensive LAN tournament across tactical FPS and mobile battle royale.\nSquads will compete in high-performance LAN conditions with low-latency gigabit infrastructure and anti-cheat tournament monitors.\nMatches will be streamed live across campus multimedia displays with dedicated shoutcasting, tactical replay analysis, and spectator lobbies.\nThe tournament tests strategic communication, mechanical aim, map control, economy management, and clutch composure under pressure.\nThe competition features a double-elimination knockout format for Valorant and multi-round point accumulation tables for BGMI.\nPrerequisites include possessing active in-game accounts in good standing and registered team rosters.",
+      "schedule": [
+        {
+          "time": "09:15 AM",
+          "activity": "Player Check-in & LAN Tournament Rig Calibration"
+        },
+        {
+          "time": "10:00 AM",
+          "activity": "Valorant Quarterfinals & BGMI Lobby 1 Match"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Lunch & Server Maintenance Break"
+        },
+        {
+          "time": "02:00 PM",
+          "activity": "Valorant Semifinals & BGMI Lobby 2 Match"
+        },
+        {
+          "time": "04:30 PM",
+          "activity": "BGMI Grand Final Rounds (Erangel & Miramar)"
+        },
+        {
+          "time": "05:30 PM",
+          "activity": "Valorant Grand Finals (Best of 3 Championship Match)"
+        },
+        {
+          "time": "06:45 PM",
+          "activity": "Trophy Presentation & MVP Accolades Ceremony"
+        }
+      ],
+      "rules": [
+        "Valorant teams must have 5 starting players. BGMI teams must have 4 squad players.",
+        "All players must use official tournament client builds; third-party injection tools or macros are strictly prohibited.",
+        "Hardware inspections will be conducted prior to each bracket match; personal peripherals are subject to referee approval.",
+        "Unsportsmanlike conduct, toxicity, tactical pauses abuse, or intentional game throwing will result in forfeiture.",
+        "Match disconnects will trigger a tournament pause; referee discretion governs round replays.",
+        "Teams must report to their assigned gaming pods within 10 minutes of match call.",
+        "Official match results are certified by the head e-sports tournament referee."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "₹100 per team",
+        "feeType": "per_team",
+        "deadline": "2026-11-26 11:59 PM",
+        "capacity": 64,
+        "eligibility": "Enrolled students across colleges. Complete team roster required during registration.",
+        "paymentInstructions": "₹100 per team registration fee payable online through FESTIQ payment portal or offline desk verification.",
+        "cancellationPolicy": "Refunds permitted up to 48 hours before tournament bracket draw."
+      },
+      "organizerContact": {
+        "name": "Gaming Committee (Demo Lead)",
+        "department": "FESTIQ Gaming Guild & Esports Society",
+        "email": "esports@festiq.campus.edu",
+        "phone": "+91 00000 00003",
+        "support": "Contact for peripheral compatibility queries, monitor refresh rates, and server lobby credentials."
+      },
+      "participantInstructions": [
+        "Players may bring their own keyboards, mice, mousepads, and 3.5mm headsets (subject to referee check).",
+        "Mobile BGMI participants must compete using mobile handsets; tablets and emulators are strictly prohibited.",
+        "Ensure your Riot Games and BGMI tournament credentials are functional before reporting.",
+        "Maintain respect towards match officials, shoutcasters, and opposing squad members."
+      ]
+    },
+    "prizePoolType": "dynamic",
+    "prizeAllocationPct": 75,
+    "provisionalFee": false
+  },
+  {
+    "id": "fest-004",
+    "title": "Autonomous Drone & Robotics Bootcamp",
+    "category": "Workshops",
+    "tagline": "Hands-on flight control, computer vision, and ROS2",
+    "description": "A comprehensive engineering masterclass teaching drone aerodynamics, flight controller firmware calibration, optical flow vision stabilization, and autonomous waypoint navigation using ROS2.",
+    "fullDescription": "Led by researchers and drone engineers, this intensive workshop covers quadcopter flight physics, PID controller tuning, optical flow sensor integration, and obstacle avoidance algorithms in Robot Operating System 2 (ROS2). Hardware kits provided for team sessions during the event.",
+    "date": "2026-12-02",
+    "time": "09:30 AM - 04:30 PM",
+    "venue": "Robotics & Automation Laboratory, Block C",
+    "organizer": "Robotics Research Society",
+    "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "Free",
+    "prizePool": "Hardware Kit & Certificate",
+    "prizeAmount": 0,
+    "capacity": 80,
+    "registeredCount": 73,
+    "featured": false,
+    "isFeatured": false,
+    "status": "Closing Soon",
+    "createdAt": "2026-10-20T08:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "Robotics Workshop Desk (Demo Lead)",
+    "managerPhone": "+91 00000 00004",
+    "feeAmount": 0,
+    "feeType": "per_person",
+    "registrationType": "free",
+    "isPaid": false,
+    "registrationFee": "Free",
+    "pdfDetails": {
+      "detailedDescription": "The Autonomous Drone & Robotics Bootcamp is a rigorous, practical masterclass bridging embedded systems, flight dynamics, and robotic vision.\nParticipants work in small engineering groups with modular quadcopter test kits, brushless ESC motors, and inertial measurement units (IMUs).\nThe curriculum spans airframe assembly, PID control tuning, telemetry transmission, and autonomous waypoint guidance using OpenCV and ROS2.\nFaculty researchers and drone industry specialists guide students from initial motor spinning safety tests to indoor obstacle bypass demonstrations.\nAttendees will master both hardware soldering/wiring protocols and software flight-stack configuration using open-source flight software.\nPrerequisites include basic C++ or Python programming knowledge and an interest in robotics and mechatronics.",
+      "schedule": [
+        {
+          "time": "09:00 AM",
+          "activity": "Hardware Kit Distribution & Lab Safety Induction"
+        },
+        {
+          "time": "09:30 AM",
+          "activity": "Module 1: Quadcopter Dynamics & Brushless Motor Telemetry"
+        },
+        {
+          "time": "11:15 AM",
+          "activity": "Module 2: Flight Controller Assembly & Soldering Safety"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Lunch Break & Robotics Lab Tour"
+        },
+        {
+          "time": "02:00 PM",
+          "activity": "Module 3: PID Tuning & Radio Transmitter Configuration"
+        },
+        {
+          "time": "03:15 PM",
+          "activity": "Module 4: Autonomous Waypoint Navigation & ROS2 Basics"
+        },
+        {
+          "time": "04:15 PM",
+          "activity": "Indoor Flight Arena Demonstrations & Certification"
+        }
+      ],
+      "rules": [
+        "Laboratory safety goggles and enclosed footwear are mandatory inside the robotics testing area.",
+        "Quadcopter propellers must remain detached until authorized by a lab flight controller referee.",
+        "All drone flight tests must take place strictly inside the netted safety flight arena.",
+        "Components and telemetry equipment are property of the university lab and must be returned intact.",
+        "Participants must follow the instruction sequences provided by faculty supervisors.",
+        "Reckless handling of LiPo batteries or high-RPM motors will lead to immediate laboratory suspension.",
+        "Active participation throughout both hardware and software modules is required for certificate issuance."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "Free",
+        "feeType": "per_person",
+        "deadline": "2026-11-30 11:59 PM",
+        "capacity": 80,
+        "eligibility": "Enrolled students in Engineering, Computer Science, and Physical Sciences.",
+        "paymentInstructions": "Free event admission. Confirmed digital pass issued upon online registration verification.",
+        "cancellationPolicy": "Please notify 48 hours in advance to reallocate limited laboratory workbench spots."
+      },
+      "organizerContact": {
+        "name": "Robotics Lab Coordinator",
+        "department": "Robotics Research Society",
+        "email": "robotics@festiq.campus.edu",
+        "phone": "+91 00000 00004",
+        "support": "Contact for workbench allocations, pre-installed software images, and accessibility."
+      },
+      "participantInstructions": [
+        "Bring a laptop with minimum 8GB RAM, 20GB free storage, and USB-A port (or adapter).",
+        "Pre-install Ubuntu 22.04 LTS (native or VMware/VirtualBox) with ROS2 Humble recommended.",
+        "Adhere strictly to lab safety protocols and wear non-conductive footwear.",
+        "Lab breadboards, multi-meters, and soldering equipment will be furnished at each station."
+      ]
+    },
+    "prizePoolType": "fixed",
+    "prizeAllocationPct": 75,
+    "provisionalFee": false
+  },
+  {
+    "id": "fest-005",
+    "title": "Apex Venture: Campus Startup Pitch Fest",
+    "category": "Management",
+    "tagline": "Pitch your venture to angel investors and seed VCs",
+    "description": "The flagship entrepreneurship showcase where student innovators pitch functional MVPs and commercial business models to angel investors, venture capitalists, and industry leaders.",
+    "fullDescription": "Apex Venture provides aspiring founders with a platform to pitch their scalable business models directly to venture capitalists, angel syndicates, and university incubator directors. Categories span B2B SaaS, ClimateTech, EdTech, and D2C brands. Includes feedback workshops and seed grant disbursements.",
+    "date": "2026-12-06",
+    "time": "11:00 AM - 05:00 PM",
+    "venue": "Management Convention Center, Hall B",
+    "organizer": "E-Cell & Technology Business Incubator",
+    "image": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "Free",
+    "prizePool": "₹1,00,000 Seed Grant",
+    "prizeAmount": 100000,
+    "capacity": 150,
+    "registeredCount": 94,
+    "featured": false,
+    "isFeatured": false,
+    "status": "Open",
+    "createdAt": "2026-10-22T08:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "E-Cell Venture Desk (Demo Lead)",
+    "managerPhone": "+91 00000 00005",
+    "feeAmount": 0,
+    "feeType": "per_person",
+    "registrationType": "free",
+    "isPaid": false,
+    "registrationFee": "Free",
+    "pdfDetails": {
+      "detailedDescription": "Apex Venture is the premier student entrepreneurship and venture capital pitch competition on campus.\nFounding teams pitch functional minimum viable products (MVPs), defensible market strategies, and financial projections before real angel investors.\nThe competition evaluates market problem validation, technical defensibility, customer acquisition models, unit economics, and founder execution.\nSelected ventures receive feedback from managing directors of venture capital funds and university technology business incubator heads.\nFinalists gain fast-track access to incubation infrastructure, cloud credits, legal incorporation guidance, and seed grant discussions.\nPrerequisites include having an original startup concept with a working prototype, customer traction evidence, or a validated business plan.",
+      "schedule": [
+        {
+          "time": "10:30 AM",
+          "activity": "Founder Check-in & Pitch Deck Presentation Upload"
+        },
+        {
+          "time": "11:00 AM",
+          "activity": "Keynote Address: Scaling DeepTech from Campus to Market"
+        },
+        {
+          "time": "11:45 AM",
+          "activity": "Pitch Session 1: B2B SaaS & Enterprise Tech"
+        },
+        {
+          "time": "01:15 PM",
+          "activity": "Investor Networking Luncheon"
+        },
+        {
+          "time": "02:15 PM",
+          "activity": "Pitch Session 2: Consumer, HealthTech & Sustainability"
+        },
+        {
+          "time": "04:00 PM",
+          "activity": "Closed-Door Jury Deliberations"
+        },
+        {
+          "time": "04:45 PM",
+          "activity": "Venture Awards, Incubation Letters & Conclusion"
+        }
+      ],
+      "rules": [
+        "Founding teams must consist of 1 to 5 members with at least one currently enrolled student.",
+        "Pitch presentations must adhere to a strict 6-minute pitch followed by 4 minutes of investor Q&A.",
+        "Pitch decks must be submitted in PDF or PowerPoint format 24 hours prior to the event.",
+        "All business models, software prototypes, or hardware products must be original intellectual property.",
+        "Financial projections and user metrics presented must be grounded in verified verifiable data.",
+        "Professional business or business-casual attire is expected for all pitching founders.",
+        "Investor jury decisions regarding grants, awards, and incubation recommendations are definitive."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "Free",
+        "feeType": "per_person",
+        "deadline": "2026-12-03 11:59 PM",
+        "capacity": 150,
+        "eligibility": "Student founders and early-stage campus venture teams across all disciplines.",
+        "paymentInstructions": "Free event admission. Confirmed digital pass issued upon online registration verification.",
+        "cancellationPolicy": "Notify the committee at least 48 hours prior if unable to pitch."
+      },
+      "organizerContact": {
+        "name": "Incubation Manager",
+        "department": "E-Cell & Technology Business Incubator",
+        "email": "ecell@festiq.campus.edu",
+        "phone": "+91 00000 00005",
+        "support": "Contact for presentation technical requirements, clicker remotes, and investor meetings."
+      },
+      "participantInstructions": [
+        "Carry your pitch presentation deck on a USB drive as well as cloud-synced backup.",
+        "Bring working hardware prototypes or live software demonstrations if applicable.",
+        "Prepare one-page executive summaries for distribution to the investor evaluation jury.",
+        "Arrive 30 minutes prior to the founder briefing for microphone and projection testing."
+      ]
+    },
+    "prizePoolType": "fixed",
+    "prizeAllocationPct": 75,
+    "sponsorship": "E-Cell & Technology Business Incubator (TBI) Seed Fund",
+    "provisionalFee": false
+  },
+  {
+    "id": "fest-006",
+    "title": "Inter-Collegiate Futsal Derby",
+    "category": "Sports",
+    "tagline": "High-octane 5-a-side football under the floodlights",
+    "description": "An adrenaline-fueled inter-collegiate 5-a-side futsal tournament played under international floodlights on the central turf complex, featuring 16 top university squads in knockout contention.",
+    "fullDescription": "A fast-paced 5v5 futsal tournament held under floodlit astro-turf courts. Featuring group qualifiers leading into quarter, semi, and grand finals with licensed match officials. Teams will compete for championship trophies, medals, golden boot awards, and cash prizes.",
+    "date": "2026-12-10",
+    "time": "04:00 PM - 09:30 PM",
+    "venue": "University Floodlit Turf Complex",
+    "organizer": "Department of Physical Education",
+    "image": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "₹200 per team",
+    "prizePool": "₹2,400",
+    "prizeAmount": 2400,
+    "capacity": 16,
+    "registeredCount": 14,
+    "featured": false,
+    "isFeatured": false,
+    "status": "Open",
+    "createdAt": "2026-10-25T08:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "Campus Sports Council (Demo Lead)",
+    "managerPhone": "+91 00000 00006",
+    "feeAmount": 200,
+    "feeType": "per_team",
+    "registrationType": "paid",
+    "isPaid": true,
+    "registrationFee": "₹200 per team",
+    "pdfDetails": {
+      "detailedDescription": "The Inter-Collegiate Futsal Derby is a premier 5-a-side football championship featuring high-paced technical play and tactical precision.\nSixteen selected university squads battle across group and knockout rounds on the campus floodlit artificial turf arena.\nMatches are officiated by accredited state football referees following international FIFA futsal guidelines with rolling substitutions.\nThe tournament demands exceptional ball control, quick tactical transitions, sharp finishing, and collective team stamina.\nSpectators experience stadium-style commentary, electronic scoreboards, and energetic campus derby rivalries.\nPrerequisites include registered team rosters of certified college athletes possessing matching team kits and shin guards.",
+      "schedule": [
+        {
+          "time": "03:15 PM",
+          "activity": "Team Captains Briefing & Kit Inspection"
+        },
+        {
+          "time": "04:00 PM",
+          "activity": "Round of 16 Knockout Fixtures"
+        },
+        {
+          "time": "06:15 PM",
+          "activity": "Quarterfinal Showdowns"
+        },
+        {
+          "time": "07:30 PM",
+          "activity": "Semifinal Clashes"
+        },
+        {
+          "time": "08:30 PM",
+          "activity": "Third-Place Playoff"
+        },
+        {
+          "time": "09:00 PM",
+          "activity": "Championship Grand Final Match"
+        },
+        {
+          "time": "09:45 PM",
+          "activity": "Golden Boot, Best Goalkeeper & Trophy Presentation"
+        }
+      ],
+      "rules": [
+        "Teams comprise 5 on-field players (including 1 goalkeeper) and up to 3 rolling substitutes.",
+        "Matches consist of two 15-minute halves with a 3-minute half-time interval.",
+        "Standard futsal rules apply: no sliding tackles from behind, 4-second restart rule, and accumulated team fouls.",
+        "Players must wear protective shin guards and non-marking turf football shoes; metal studs are strictly prohibited.",
+        "Yellow and red card disciplinary policies will be strictly enforced by the match referee.",
+        "In the event of a tie in knockout rounds, matches proceed directly to a 3-kick penalty shootout.",
+        "The match referee's decision on on-field fouls and scoring is absolute and unquestionable."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "₹200 per team",
+        "feeType": "per_team",
+        "deadline": "2026-12-07 11:59 PM",
+        "capacity": 16,
+        "eligibility": "Collegiate teams with verified university enrollment and athletic physical fitness.",
+        "paymentInstructions": "₹200 per team registration fee payable online through FESTIQ payment portal or offline desk verification.",
+        "cancellationPolicy": "Cancellations accepted up to 72 hours prior to bracket fixture release."
+      },
+      "organizerContact": {
+        "name": "Director of Physical Education",
+        "department": "Department of Physical Education",
+        "email": "sports@festiq.campus.edu",
+        "phone": "+91 00000 00006",
+        "support": "Contact for locker room access, first aid and hydration stations, and official jersey approvals."
+      },
+      "participantInstructions": [
+        "All team members must present their university ID cards at the reporting desk for roster verification.",
+        "Teams must bring home and away matching kits with clearly visible jersey numbers.",
+        "A certified medical team and physiotherapist will be stationed pitch-side for injuries.",
+        "Warm-up areas are available behind the south goalposts 30 minutes prior to scheduled kickoff."
+      ]
+    },
+    "prizePoolType": "dynamic",
+    "prizeAllocationPct": 75,
+    "provisionalFee": false
+  },
+  {
+    "id": "fest-007",
+    "title": "CodeSprint 2026: Algorithmic Programming Battle",
+    "category": "Technical",
+    "tagline": "Speed, dynamic programming, and algorithmic prowess",
+    "description": "CodeSprint 2026: Algorithmic Programming Battle is an official FESTIQ campus technical competition hosted at Central Computing Center, Lab 3 & 4. Participants engage in competitive technical challenges, skill demonstrations, and expert-reviewed rounds designed to recognize top collegiate excellence.",
+    "fullDescription": "Test your algorithmic problem-solving under strict time constraints. Competitors tackle 6 progressive problems covering dynamic programming, graph theory, combinatorics, and tree structures. Live leaderboard rankings updated in real-time.",
+    "date": "2026-12-04",
+    "time": "02:00 PM - 06:00 PM",
+    "venue": "Central Computing Center, Lab 3 & 4",
+    "organizer": "Competitive Coding Club & CSI Student Chapter",
+    "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "₹150 per participant",
+    "prizePool": "₹13,500",
+    "prizeAmount": 13500,
+    "capacity": 120,
+    "registeredCount": 88,
+    "featured": false,
+    "isFeatured": false,
+    "status": "Open",
+    "createdAt": "2026-10-26T08:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "Competitive Coding Club (Demo Lead)",
+    "managerPhone": "+91 00000 00007",
+    "feeAmount": 150,
+    "feeType": "per_person",
+    "registrationType": "paid",
+    "isPaid": true,
+    "registrationFee": "₹150 per participant",
+    "pdfDetails": {
+      "detailedDescription": "CodeSprint 2026: Algorithmic Programming Battle is our premier campus technical event bringing together aspiring students across university departments.\nThe competition provides an accredited collegiate platform for participants to showcase technical expertise, creative ingenuity, and collaborative problem-solving.\nUnder the evaluation of faculty jurors and domain specialists, participants navigate carefully structured competitive rounds and practical challenges.\nAttendees will test their applied abilities, benchmark their performance against peer institutions, and gain valuable industry-aligned feedback.\nKey activities include structured qualification rounds, live competitive sessions, and formal evaluation defenses before the judging panel.\nPrerequisites include Basic knowledge of algorithms, programming fundamentals, and system design.",
+      "schedule": [
+        {
+          "time": "09:00 AM",
+          "activity": "Reporting Desk & Participant Verification"
+        },
+        {
+          "time": "09:45 AM",
+          "activity": "Inaugural Briefing & Track Orientation"
+        },
+        {
+          "time": "10:30 AM",
+          "activity": "Round 1 / Primary Competition Session"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Mid-Day Lunch & Networking Break"
+        },
+        {
+          "time": "02:00 PM",
+          "activity": "Round 2 / Final Competitive Showcase"
+        },
+        {
+          "time": "04:30 PM",
+          "activity": "Jury Evaluation & Score Deliberation"
+        },
+        {
+          "time": "05:30 PM",
+          "activity": "Awards Ceremony & Official Conclusion"
+        }
+      ],
+      "rules": [
+        "Participants must present a valid university student identity card at the reporting desk.",
+        "Individual and team participation must conform strictly to published track requirements.",
+        "All source code and technical submissions must be original work created during the competition.",
+        "Plagiarism or unauthorized copying of third-party intellectual property results in disqualification.",
+        "Use of permitted developer tools, IDEs, and standard libraries must be documented in submission files.",
+        "Submissions must be finalized before the announced deadline; late entries will not be evaluated.",
+        "The technical jury decisions on implementation rigor, efficiency, and originality are final."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "₹150 per participant",
+        "feeType": "per_person",
+        "deadline": "To be announced",
+        "capacity": 120,
+        "eligibility": "Open to all university students with verified academic enrollment.",
+        "paymentInstructions": "₹150 per participant registration fee payable online through FESTIQ payment portal or offline desk verification.",
+        "cancellationPolicy": "Registrations can be cancelled up to 24 hours prior to the event via the student dashboard."
+      },
+      "organizerContact": {
+        "name": "Competitive Coding Club (Demo Lead)",
+        "department": "Competitive Coding Club & CSI Student Chapter",
+        "email": "events@festiq.campus.edu",
+        "phone": "+91 00000 00007",
+        "support": "Contact the organizing committee for venue accessibility assistance and schedule inquiries."
+      },
+      "participantInstructions": [
+        "Laptop with charger and required development environments installed",
+        "University identity card and FESTIQ digital pass",
+        "Notebook and writing utensils",
+        "Ensure you arrive at least 30 minutes before the scheduled reporting time.",
+        "Certificates of merit and participation will be issued digitally following verified attendance."
+      ]
+    },
+    "prizePoolType": "dynamic",
+    "prizeAllocationPct": 75,
+    "provisionalFee": true
+  },
+  {
+    "id": "fest-008",
+    "title": "AI Frontier: Vision & Generative AI Challenge",
+    "category": "Technical",
+    "tagline": "Architect next-generation multi-modal LLM applications",
+    "description": "AI Frontier: Vision & Generative AI Challenge is an official FESTIQ campus technical competition hosted at AI Innovation Center, Tech Block 2. Participants engage in competitive technical challenges, skill demonstrations, and expert-reviewed rounds designed to recognize top collegiate excellence.",
+    "fullDescription": "A cutting-edge competition challenging students to build useful AI systems leveraging transformer models, diffusion pipelines, and computer vision architectures. Teams get access to cloud GPU credits and industry dataset benchmarks.",
+    "date": "2026-12-12",
+    "time": "10:00 AM - 06:00 PM",
+    "venue": "AI Innovation Center, Tech Block 2",
+    "organizer": "School of Computer Engineering AI Research Group",
+    "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "₹200 per participant",
+    "prizePool": "₹15,000",
+    "prizeAmount": 15000,
+    "capacity": 100,
+    "registeredCount": 78,
+    "featured": false,
+    "isFeatured": false,
+    "status": "Open",
+    "createdAt": "2026-10-28T08:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "AI & Data Lab Desk (Demo Lead)",
+    "managerPhone": "+91 00000 00008",
+    "feeAmount": 200,
+    "feeType": "per_person",
+    "registrationType": "paid",
+    "isPaid": true,
+    "registrationFee": "₹200 per participant",
+    "pdfDetails": {
+      "detailedDescription": "AI Frontier: Vision & Generative AI Challenge is our premier campus technical event bringing together aspiring students across university departments.\nThe competition provides an accredited collegiate platform for participants to showcase technical expertise, creative ingenuity, and collaborative problem-solving.\nUnder the evaluation of faculty jurors and domain specialists, participants navigate carefully structured competitive rounds and practical challenges.\nAttendees will test their applied abilities, benchmark their performance against peer institutions, and gain valuable industry-aligned feedback.\nKey activities include structured qualification rounds, live competitive sessions, and formal evaluation defenses before the judging panel.\nPrerequisites include Basic knowledge of algorithms, programming fundamentals, and system design.",
+      "schedule": [
+        {
+          "time": "09:00 AM",
+          "activity": "Reporting Desk & Participant Verification"
+        },
+        {
+          "time": "09:45 AM",
+          "activity": "Inaugural Briefing & Track Orientation"
+        },
+        {
+          "time": "10:30 AM",
+          "activity": "Round 1 / Primary Competition Session"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Mid-Day Lunch & Networking Break"
+        },
+        {
+          "time": "02:00 PM",
+          "activity": "Round 2 / Final Competitive Showcase"
+        },
+        {
+          "time": "04:30 PM",
+          "activity": "Jury Evaluation & Score Deliberation"
+        },
+        {
+          "time": "05:30 PM",
+          "activity": "Awards Ceremony & Official Conclusion"
+        }
+      ],
+      "rules": [
+        "Participants must present a valid university student identity card at the reporting desk.",
+        "Individual and team participation must conform strictly to published track requirements.",
+        "All source code and technical submissions must be original work created during the competition.",
+        "Plagiarism or unauthorized copying of third-party intellectual property results in disqualification.",
+        "Use of permitted developer tools, IDEs, and standard libraries must be documented in submission files.",
+        "Submissions must be finalized before the announced deadline; late entries will not be evaluated.",
+        "The technical jury decisions on implementation rigor, efficiency, and originality are final."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "₹200 per participant",
+        "feeType": "per_person",
+        "deadline": "To be announced",
+        "capacity": 100,
+        "eligibility": "Open to all university students with verified academic enrollment.",
+        "paymentInstructions": "₹200 per participant registration fee payable online through FESTIQ payment portal or offline desk verification.",
+        "cancellationPolicy": "Registrations can be cancelled up to 24 hours prior to the event via the student dashboard."
+      },
+      "organizerContact": {
+        "name": "AI & Data Lab Desk (Demo Lead)",
+        "department": "School of Computer Engineering AI Research Group",
+        "email": "events@festiq.campus.edu",
+        "phone": "+91 00000 00008",
+        "support": "Contact the organizing committee for venue accessibility assistance and schedule inquiries."
+      },
+      "participantInstructions": [
+        "Laptop with charger and required development environments installed",
+        "University identity card and FESTIQ digital pass",
+        "Notebook and writing utensils",
+        "Ensure you arrive at least 30 minutes before the scheduled reporting time.",
+        "Certificates of merit and participation will be issued digitally following verified attendance."
+      ]
+    },
+    "prizePoolType": "dynamic",
+    "prizeAllocationPct": 75,
+    "provisionalFee": true
+  },
+  {
+    "id": "fest-009",
+    "title": "CyberShield 2026: Collegiate Capture The Flag",
+    "category": "Technical",
+    "tagline": "Defend networks, reverse engineer binaries, and crack crypto",
+    "description": "CyberShield 2026: Collegiate Capture The Flag is an official FESTIQ campus technical competition hosted at Information Security Lab, Engineering Block 1. Participants engage in competitive technical challenges, skill demonstrations, and expert-reviewed rounds designed to recognize top collegiate excellence.",
+    "fullDescription": "CyberShield CTF features jeopardy-style security challenges across Web Exploitation, Reverse Engineering, Cryptography, Forensics, and Binary Exploitation. Teams work in isolated sandbox networks to find hidden flags and secure points.",
+    "date": "2026-12-18",
+    "time": "10:00 AM - 06:00 PM",
+    "venue": "Information Security Lab, Engineering Block 1",
+    "organizer": "Cyber Defense Guild & Information Assurance Society",
+    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "₹150 per participant",
+    "prizePool": "₹9,000",
+    "prizeAmount": 9000,
+    "capacity": 80,
+    "registeredCount": 61,
+    "featured": false,
+    "isFeatured": false,
+    "status": "Open",
+    "createdAt": "2026-10-29T08:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "Cyber Security Wing (Demo Lead)",
+    "managerPhone": "+91 00000 00009",
+    "feeAmount": 150,
+    "feeType": "per_person",
+    "registrationType": "paid",
+    "isPaid": true,
+    "registrationFee": "₹150 per participant",
+    "pdfDetails": {
+      "detailedDescription": "CyberShield 2026: Collegiate Capture The Flag is our premier campus technical event bringing together aspiring students across university departments.\nThe competition provides an accredited collegiate platform for participants to showcase technical expertise, creative ingenuity, and collaborative problem-solving.\nUnder the evaluation of faculty jurors and domain specialists, participants navigate carefully structured competitive rounds and practical challenges.\nAttendees will test their applied abilities, benchmark their performance against peer institutions, and gain valuable industry-aligned feedback.\nKey activities include structured qualification rounds, live competitive sessions, and formal evaluation defenses before the judging panel.\nPrerequisites include Basic knowledge of algorithms, programming fundamentals, and system design.",
+      "schedule": [
+        {
+          "time": "09:00 AM",
+          "activity": "Reporting Desk & Participant Verification"
+        },
+        {
+          "time": "09:45 AM",
+          "activity": "Inaugural Briefing & Track Orientation"
+        },
+        {
+          "time": "10:30 AM",
+          "activity": "Round 1 / Primary Competition Session"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Mid-Day Lunch & Networking Break"
+        },
+        {
+          "time": "02:00 PM",
+          "activity": "Round 2 / Final Competitive Showcase"
+        },
+        {
+          "time": "04:30 PM",
+          "activity": "Jury Evaluation & Score Deliberation"
+        },
+        {
+          "time": "05:30 PM",
+          "activity": "Awards Ceremony & Official Conclusion"
+        }
+      ],
+      "rules": [
+        "Participants must present a valid university student identity card at the reporting desk.",
+        "Individual and team participation must conform strictly to published track requirements.",
+        "All source code and technical submissions must be original work created during the competition.",
+        "Plagiarism or unauthorized copying of third-party intellectual property results in disqualification.",
+        "Use of permitted developer tools, IDEs, and standard libraries must be documented in submission files.",
+        "Submissions must be finalized before the announced deadline; late entries will not be evaluated.",
+        "The technical jury decisions on implementation rigor, efficiency, and originality are final."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "₹150 per participant",
+        "feeType": "per_person",
+        "deadline": "To be announced",
+        "capacity": 80,
+        "eligibility": "Open to all university students with verified academic enrollment.",
+        "paymentInstructions": "₹150 per participant registration fee payable online through FESTIQ payment portal or offline desk verification.",
+        "cancellationPolicy": "Registrations can be cancelled up to 24 hours prior to the event via the student dashboard."
+      },
+      "organizerContact": {
+        "name": "Cyber Security Wing (Demo Lead)",
+        "department": "Cyber Defense Guild & Information Assurance Society",
+        "email": "events@festiq.campus.edu",
+        "phone": "+91 00000 00009",
+        "support": "Contact the organizing committee for venue accessibility assistance and schedule inquiries."
+      },
+      "participantInstructions": [
+        "Laptop with charger and required development environments installed",
+        "University identity card and FESTIQ digital pass",
+        "Notebook and writing utensils",
+        "Ensure you arrive at least 30 minutes before the scheduled reporting time.",
+        "Certificates of merit and participation will be issued digitally following verified attendance."
+      ]
+    },
+    "prizePoolType": "dynamic",
+    "prizeAllocationPct": 75,
+    "provisionalFee": true
+  },
+  {
+    "id": "fest-010",
+    "title": "Sanskriti: Classical Dance & Folk Heritage Night",
+    "category": "Cultural",
+    "tagline": "Celebrating diverse regional traditions and classical Indian arts",
+    "description": "Sanskriti: Classical Dance & Folk Heritage Night is an official FESTIQ campus cultural competition hosted at Main University Auditorium, Campus 6. Participants engage in competitive cultural challenges, skill demonstrations, and expert-reviewed rounds designed to recognize top collegiate excellence.",
+    "fullDescription": "Sanskriti is dedicated to celebrating the rich classical and traditional arts of India. Students and university troupes perform solo classical pieces and group folk dances in an auditorium equipped with studio acoustics and stage lighting.",
+    "date": "2026-12-05",
+    "time": "06:00 PM - 09:30 PM",
+    "venue": "Main University Auditorium, Campus 6",
+    "organizer": "Society for Promotion of Indian Classical Music & Culture",
+    "image": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "Free",
+    "prizePool": "Trophies & Citations",
+    "prizeAmount": 0,
+    "capacity": 800,
+    "registeredCount": 640,
+    "featured": false,
+    "isFeatured": false,
+    "status": "Open",
+    "createdAt": "2026-10-30T08:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "Classical Arts Circle (Demo Lead)",
+    "managerPhone": "+91 00000 00010",
+    "feeAmount": 0,
+    "feeType": "per_person",
+    "registrationType": "free",
+    "isPaid": false,
+    "registrationFee": "Free",
+    "pdfDetails": {
+      "detailedDescription": "Sanskriti: Classical Dance & Folk Heritage Night is our premier campus cultural event bringing together aspiring students across university departments.\nThe competition provides an accredited collegiate platform for participants to showcase technical expertise, creative ingenuity, and collaborative problem-solving.\nUnder the evaluation of faculty jurors and domain specialists, participants navigate carefully structured competitive rounds and practical challenges.\nAttendees will test their applied abilities, benchmark their performance against peer institutions, and gain valuable industry-aligned feedback.\nKey activities include structured qualification rounds, live competitive sessions, and formal evaluation defenses before the judging panel.\nPrerequisites include Rehearsed performance routine and coordinated audio-visual backing assets.",
+      "schedule": [
+        {
+          "time": "09:00 AM",
+          "activity": "Reporting Desk & Participant Verification"
+        },
+        {
+          "time": "09:45 AM",
+          "activity": "Inaugural Briefing & Track Orientation"
+        },
+        {
+          "time": "10:30 AM",
+          "activity": "Round 1 / Primary Competition Session"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Mid-Day Lunch & Networking Break"
+        },
+        {
+          "time": "02:00 PM",
+          "activity": "Round 2 / Final Competitive Showcase"
+        },
+        {
+          "time": "04:30 PM",
+          "activity": "Jury Evaluation & Score Deliberation"
+        },
+        {
+          "time": "05:30 PM",
+          "activity": "Awards Ceremony & Official Conclusion"
+        }
+      ],
+      "rules": [
+        "Participants must be enrolled college students with verified identity credentials.",
+        "Performances must adhere strictly to the allotted time boundaries announced for the stage.",
+        "Audio tracks and multimedia cues must be submitted to the technical booth before rehearsals.",
+        "Flammable liquids, hazardous props, and offensive themes are strictly forbidden.",
+        "Backstage etiquette and stage manager directions must be observed diligently.",
+        "Unsportsmanlike conduct towards fellow performers or jurors leads to disqualification.",
+        "The evaluation jury comprises accredited performing artists; their scores are definitive."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "Free",
+        "feeType": "per_person",
+        "deadline": "To be announced",
+        "capacity": 800,
+        "eligibility": "Open to all university students with verified academic enrollment.",
+        "paymentInstructions": "Free event admission. Confirmed digital pass issued upon online registration verification.",
+        "cancellationPolicy": "Registrations can be cancelled up to 24 hours prior to the event via the student dashboard."
+      },
+      "organizerContact": {
+        "name": "Classical Arts Circle (Demo Lead)",
+        "department": "Society for Promotion of Indian Classical Music & Culture",
+        "email": "events@festiq.campus.edu",
+        "phone": "+91 00000 00010",
+        "support": "Contact the organizing committee for venue accessibility assistance and schedule inquiries."
+      },
+      "participantInstructions": [
+        "Costumes, makeup, and personal performance props",
+        "Backup audio track on USB flash drive (MP3/WAV)",
+        "University identity card and FESTIQ registration pass",
+        "Ensure you arrive at least 30 minutes before the scheduled reporting time.",
+        "Certificates of merit and participation will be issued digitally following verified attendance."
+      ]
+    },
+    "prizePoolType": "fixed",
+    "prizeAllocationPct": 75,
+    "provisionalFee": false
+  },
+  {
+    "id": "fest-011",
+    "title": "Thunderstruck: Inter-College Battle of the Bands",
+    "category": "Cultural",
+    "tagline": "Riffs, drums, and original alternative rock compositions",
+    "description": "Thunderstruck: Inter-College Battle of the Bands is an official FESTIQ campus cultural competition hosted at Open Air Amphitheatre, Campus Greens. Participants engage in competitive cultural challenges, skill demonstrations, and expert-reviewed rounds designed to recognize top collegiate excellence.",
+    "fullDescription": "Thunderstruck features top college musical bands battling through 20-minute live sets. Complete backline with dual Marshall stacks, full drum kits, and dedicated stage monitors provided. Judged by touring indie music artists.",
+    "date": "2026-12-14",
+    "time": "05:00 PM - 10:30 PM",
+    "venue": "Open Air Amphitheatre, Campus Greens",
+    "organizer": "University Music Society",
+    "image": "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "Free",
+    "prizePool": "Rolling Band Trophy & Studio Hours",
+    "prizeAmount": 0,
+    "capacity": 1000,
+    "registeredCount": 720,
+    "featured": false,
+    "isFeatured": false,
+    "status": "Open",
+    "createdAt": "2026-10-31T08:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "Music Society Desk (Demo Lead)",
+    "managerPhone": "+91 00000 00011",
+    "feeAmount": 0,
+    "feeType": "per_person",
+    "registrationType": "free",
+    "isPaid": false,
+    "registrationFee": "Free",
+    "pdfDetails": {
+      "detailedDescription": "Thunderstruck: Inter-College Battle of the Bands is our premier campus cultural event bringing together aspiring students across university departments.\nThe competition provides an accredited collegiate platform for participants to showcase technical expertise, creative ingenuity, and collaborative problem-solving.\nUnder the evaluation of faculty jurors and domain specialists, participants navigate carefully structured competitive rounds and practical challenges.\nAttendees will test their applied abilities, benchmark their performance against peer institutions, and gain valuable industry-aligned feedback.\nKey activities include structured qualification rounds, live competitive sessions, and formal evaluation defenses before the judging panel.\nPrerequisites include Rehearsed performance routine and coordinated audio-visual backing assets.",
+      "schedule": [
+        {
+          "time": "09:00 AM",
+          "activity": "Reporting Desk & Participant Verification"
+        },
+        {
+          "time": "09:45 AM",
+          "activity": "Inaugural Briefing & Track Orientation"
+        },
+        {
+          "time": "10:30 AM",
+          "activity": "Round 1 / Primary Competition Session"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Mid-Day Lunch & Networking Break"
+        },
+        {
+          "time": "02:00 PM",
+          "activity": "Round 2 / Final Competitive Showcase"
+        },
+        {
+          "time": "04:30 PM",
+          "activity": "Jury Evaluation & Score Deliberation"
+        },
+        {
+          "time": "05:30 PM",
+          "activity": "Awards Ceremony & Official Conclusion"
+        }
+      ],
+      "rules": [
+        "Participants must be enrolled college students with verified identity credentials.",
+        "Performances must adhere strictly to the allotted time boundaries announced for the stage.",
+        "Audio tracks and multimedia cues must be submitted to the technical booth before rehearsals.",
+        "Flammable liquids, hazardous props, and offensive themes are strictly forbidden.",
+        "Backstage etiquette and stage manager directions must be observed diligently.",
+        "Unsportsmanlike conduct towards fellow performers or jurors leads to disqualification.",
+        "The evaluation jury comprises accredited performing artists; their scores are definitive."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "Free",
+        "feeType": "per_person",
+        "deadline": "To be announced",
+        "capacity": 1000,
+        "eligibility": "Open to all university students with verified academic enrollment.",
+        "paymentInstructions": "Free event admission. Confirmed digital pass issued upon online registration verification.",
+        "cancellationPolicy": "Registrations can be cancelled up to 24 hours prior to the event via the student dashboard."
+      },
+      "organizerContact": {
+        "name": "Music Society Desk (Demo Lead)",
+        "department": "University Music Society",
+        "email": "events@festiq.campus.edu",
+        "phone": "+91 00000 00011",
+        "support": "Contact the organizing committee for venue accessibility assistance and schedule inquiries."
+      },
+      "participantInstructions": [
+        "Costumes, makeup, and personal performance props",
+        "Backup audio track on USB flash drive (MP3/WAV)",
+        "University identity card and FESTIQ registration pass",
+        "Ensure you arrive at least 30 minutes before the scheduled reporting time.",
+        "Certificates of merit and participation will be issued digitally following verified attendance."
+      ]
+    },
+    "prizePoolType": "fixed",
+    "prizeAllocationPct": 75,
+    "provisionalFee": true
+  },
+  {
+    "id": "fest-012",
+    "title": "Canvas & Chronicle: Fine Arts & Digital Design Expo",
+    "category": "Cultural",
+    "tagline": "Live oil painting, digital concept art, and sculpture gallery",
+    "description": "Canvas & Chronicle: Fine Arts & Digital Design Expo is an official FESTIQ campus cultural competition hosted at Architecture & Design Exhibition Gallery. Participants engage in competitive cultural challenges, skill demonstrations, and expert-reviewed rounds designed to recognize top collegiate excellence.",
+    "fullDescription": "Canvas & Chronicle invites student artists to exhibit paintings, digital matte designs, 3D clay sculptures, and interactive multimedia installations. Includes a 3-hour live thematic speed painting competition on easel canvases.",
+    "date": "2026-12-20",
+    "time": "10:00 AM - 05:00 PM",
+    "venue": "Architecture & Design Exhibition Gallery",
+    "organizer": "Fine Arts Guild & Design Collective",
+    "image": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "₹100 per participant",
+    "prizePool": "₹15,000",
+    "prizeAmount": 15000,
+    "capacity": 200,
+    "registeredCount": 142,
+    "featured": false,
+    "isFeatured": false,
+    "status": "Open",
+    "createdAt": "2026-11-01T08:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "Fine Arts Society (Demo Lead)",
+    "managerPhone": "+91 00000 00012",
+    "feeAmount": 100,
+    "feeType": "per_person",
+    "registrationType": "paid",
+    "isPaid": true,
+    "registrationFee": "₹100 per participant",
+    "pdfDetails": {
+      "detailedDescription": "Canvas & Chronicle: Fine Arts & Digital Design Expo is our premier campus cultural event bringing together aspiring students across university departments.\nThe competition provides an accredited collegiate platform for participants to showcase technical expertise, creative ingenuity, and collaborative problem-solving.\nUnder the evaluation of faculty jurors and domain specialists, participants navigate carefully structured competitive rounds and practical challenges.\nAttendees will test their applied abilities, benchmark their performance against peer institutions, and gain valuable industry-aligned feedback.\nKey activities include structured qualification rounds, live competitive sessions, and formal evaluation defenses before the judging panel.\nPrerequisites include Rehearsed performance routine and coordinated audio-visual backing assets.",
+      "schedule": [
+        {
+          "time": "09:00 AM",
+          "activity": "Reporting Desk & Participant Verification"
+        },
+        {
+          "time": "09:45 AM",
+          "activity": "Inaugural Briefing & Track Orientation"
+        },
+        {
+          "time": "10:30 AM",
+          "activity": "Round 1 / Primary Competition Session"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Mid-Day Lunch & Networking Break"
+        },
+        {
+          "time": "02:00 PM",
+          "activity": "Round 2 / Final Competitive Showcase"
+        },
+        {
+          "time": "04:30 PM",
+          "activity": "Jury Evaluation & Score Deliberation"
+        },
+        {
+          "time": "05:30 PM",
+          "activity": "Awards Ceremony & Official Conclusion"
+        }
+      ],
+      "rules": [
+        "Participants must be enrolled college students with verified identity credentials.",
+        "Performances must adhere strictly to the allotted time boundaries announced for the stage.",
+        "Audio tracks and multimedia cues must be submitted to the technical booth before rehearsals.",
+        "Flammable liquids, hazardous props, and offensive themes are strictly forbidden.",
+        "Backstage etiquette and stage manager directions must be observed diligently.",
+        "Unsportsmanlike conduct towards fellow performers or jurors leads to disqualification.",
+        "The evaluation jury comprises accredited performing artists; their scores are definitive."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "₹100 per participant",
+        "feeType": "per_person",
+        "deadline": "To be announced",
+        "capacity": 200,
+        "eligibility": "Open to all university students with verified academic enrollment.",
+        "paymentInstructions": "₹100 per participant registration fee payable online through FESTIQ payment portal or offline desk verification.",
+        "cancellationPolicy": "Registrations can be cancelled up to 24 hours prior to the event via the student dashboard."
+      },
+      "organizerContact": {
+        "name": "Fine Arts Society (Demo Lead)",
+        "department": "Fine Arts Guild & Design Collective",
+        "email": "events@festiq.campus.edu",
+        "phone": "+91 00000 00012",
+        "support": "Contact the organizing committee for venue accessibility assistance and schedule inquiries."
+      },
+      "participantInstructions": [
+        "Costumes, makeup, and personal performance props",
+        "Backup audio track on USB flash drive (MP3/WAV)",
+        "University identity card and FESTIQ registration pass",
+        "Ensure you arrive at least 30 minutes before the scheduled reporting time.",
+        "Certificates of merit and participation will be issued digitally following verified attendance."
+      ]
+    },
+    "prizePoolType": "dynamic",
+    "prizeAllocationPct": 75,
+    "provisionalFee": true
+  },
+  {
+    "id": "fest-013",
+    "title": "Apex Arena: National Collegiate Esports Trophy",
+    "category": "Gaming",
+    "tagline": "Multi-title esports competition with stadium live-casting",
+    "description": "Apex Arena: National Collegiate Esports Trophy is an official FESTIQ campus gaming competition hosted at Campus Mega Stadium Auditorium. Participants engage in competitive gaming challenges, skill demonstrations, and expert-reviewed rounds designed to recognize top collegiate excellence.",
+    "fullDescription": "Apex Arena brings together the finest collegiate esports players across Eastern India. Featuring intense group stages and grand finals played on 240Hz esports displays with noise-canceling headsets. Real-time statistical overlays and caster analysis.",
+    "date": "2026-12-08",
+    "time": "10:00 AM - 08:00 PM",
+    "venue": "Campus Mega Stadium Auditorium",
+    "organizer": "FESTIQ Gaming Guild & Collegiate Esports Council",
+    "image": "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "₹200 per team",
+    "prizePool": "₹19,200",
+    "prizeAmount": 19200,
+    "capacity": 128,
+    "registeredCount": 110,
+    "featured": false,
+    "isFeatured": false,
+    "status": "Open",
+    "createdAt": "2026-11-01T10:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "E-Sports Operations (Demo Lead)",
+    "managerPhone": "+91 00000 00013",
+    "feeAmount": 200,
+    "feeType": "per_team",
+    "registrationType": "paid",
+    "isPaid": true,
+    "registrationFee": "₹200 per team",
+    "pdfDetails": {
+      "detailedDescription": "Apex Arena: National Collegiate Esports Trophy is our premier campus gaming event bringing together aspiring students across university departments.\nThe competition provides an accredited collegiate platform for participants to showcase technical expertise, creative ingenuity, and collaborative problem-solving.\nUnder the evaluation of faculty jurors and domain specialists, participants navigate carefully structured competitive rounds and practical challenges.\nAttendees will test their applied abilities, benchmark their performance against peer institutions, and gain valuable industry-aligned feedback.\nKey activities include structured qualification rounds, live competitive sessions, and formal evaluation defenses before the judging panel.\nPrerequisites include Active gaming client account in good standing and basic tournament bracket familiarity.",
+      "schedule": [
+        {
+          "time": "09:00 AM",
+          "activity": "Reporting Desk & Participant Verification"
+        },
+        {
+          "time": "09:45 AM",
+          "activity": "Inaugural Briefing & Track Orientation"
+        },
+        {
+          "time": "10:30 AM",
+          "activity": "Round 1 / Primary Competition Session"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Mid-Day Lunch & Networking Break"
+        },
+        {
+          "time": "02:00 PM",
+          "activity": "Round 2 / Final Competitive Showcase"
+        },
+        {
+          "time": "04:30 PM",
+          "activity": "Jury Evaluation & Score Deliberation"
+        },
+        {
+          "time": "05:30 PM",
+          "activity": "Awards Ceremony & Official Conclusion"
+        }
+      ],
+      "rules": [
+        "Players must compete using official tournament servers and referee-approved clients.",
+        "Third-party scripts, cheats, wall-hacks, aim-assists, or macros result in immediate permanent bans.",
+        "Personal peripherals are subject to referee inspection prior to match commencement.",
+        "Match disconnect policies follow standard tournament regulations as enforced by the referee.",
+        "Toxic communication in in-game chat or physical gestures leads to disciplinary forfeit.",
+        "Teams must report to their assigned stations within 10 minutes of match call.",
+        "The head tournament referee maintains final decision authority on all match disputes."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "₹200 per team",
+        "feeType": "per_team",
+        "deadline": "To be announced",
+        "capacity": 128,
+        "eligibility": "Open to all university students with verified academic enrollment.",
+        "paymentInstructions": "₹200 per team registration fee payable online through FESTIQ payment portal or offline desk verification.",
+        "cancellationPolicy": "Registrations can be cancelled up to 24 hours prior to the event via the student dashboard."
+      },
+      "organizerContact": {
+        "name": "E-Sports Operations (Demo Lead)",
+        "department": "FESTIQ Gaming Guild & Collegiate Esports Council",
+        "email": "events@festiq.campus.edu",
+        "phone": "+91 00000 00013",
+        "support": "Contact the organizing committee for venue accessibility assistance and schedule inquiries."
+      },
+      "participantInstructions": [
+        "Personal gaming peripherals (mouse, keyboard, headset) if allowed by track",
+        "Valid in-game tournament account login credentials",
+        "University student ID and FESTIQ digital ticket pass",
+        "Ensure you arrive at least 30 minutes before the scheduled reporting time.",
+        "Certificates of merit and participation will be issued digitally following verified attendance."
+      ]
+    },
+    "prizePoolType": "dynamic",
+    "prizeAllocationPct": 75,
+    "provisionalFee": true
+  },
+  {
+    "id": "fest-014",
+    "title": "Spike Rush: Campus Valorant Premier Cup",
+    "category": "Gaming",
+    "tagline": "5v5 tactical shooter showdown on local gigabit servers",
+    "description": "Spike Rush: Campus Valorant Premier Cup is an official FESTIQ campus gaming competition hosted at Esports Arena, Block 3. Participants engage in competitive gaming challenges, skill demonstrations, and expert-reviewed rounds designed to recognize top collegiate excellence.",
+    "fullDescription": "Step onto the server in Spike Rush, a high-stakes 5v5 Valorant tournament. Played strictly on university LAN with tournament-grade mechanical keyboards and mice. Teams draft maps through a live ban-pick system with match vods provided.",
+    "date": "2026-12-16",
+    "time": "11:00 AM - 07:00 PM",
+    "venue": "Esports Arena, Block 3",
+    "organizer": "FESTIQ Gaming Guild",
+    "image": "https://images.unsplash.com/photo-1542751110-97427bbecf20?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1542751110-97427bbecf20?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "₹250 per team",
+    "prizePool": "₹6,000",
+    "prizeAmount": 6000,
+    "capacity": 32,
+    "registeredCount": 28,
+    "featured": false,
+    "isFeatured": false,
+    "status": "Open",
+    "createdAt": "2026-11-02T08:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "FPS Tournament Desk (Demo Lead)",
+    "managerPhone": "+91 00000 00014",
+    "feeAmount": 250,
+    "feeType": "per_team",
+    "registrationType": "paid",
+    "isPaid": true,
+    "registrationFee": "₹250 per team",
+    "pdfDetails": {
+      "detailedDescription": "Spike Rush: Campus Valorant Premier Cup is our premier campus gaming event bringing together aspiring students across university departments.\nThe competition provides an accredited collegiate platform for participants to showcase technical expertise, creative ingenuity, and collaborative problem-solving.\nUnder the evaluation of faculty jurors and domain specialists, participants navigate carefully structured competitive rounds and practical challenges.\nAttendees will test their applied abilities, benchmark their performance against peer institutions, and gain valuable industry-aligned feedback.\nKey activities include structured qualification rounds, live competitive sessions, and formal evaluation defenses before the judging panel.\nPrerequisites include Active gaming client account in good standing and basic tournament bracket familiarity.",
+      "schedule": [
+        {
+          "time": "09:00 AM",
+          "activity": "Reporting Desk & Participant Verification"
+        },
+        {
+          "time": "09:45 AM",
+          "activity": "Inaugural Briefing & Track Orientation"
+        },
+        {
+          "time": "10:30 AM",
+          "activity": "Round 1 / Primary Competition Session"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Mid-Day Lunch & Networking Break"
+        },
+        {
+          "time": "02:00 PM",
+          "activity": "Round 2 / Final Competitive Showcase"
+        },
+        {
+          "time": "04:30 PM",
+          "activity": "Jury Evaluation & Score Deliberation"
+        },
+        {
+          "time": "05:30 PM",
+          "activity": "Awards Ceremony & Official Conclusion"
+        }
+      ],
+      "rules": [
+        "Players must compete using official tournament servers and referee-approved clients.",
+        "Third-party scripts, cheats, wall-hacks, aim-assists, or macros result in immediate permanent bans.",
+        "Personal peripherals are subject to referee inspection prior to match commencement.",
+        "Match disconnect policies follow standard tournament regulations as enforced by the referee.",
+        "Toxic communication in in-game chat or physical gestures leads to disciplinary forfeit.",
+        "Teams must report to their assigned stations within 10 minutes of match call.",
+        "The head tournament referee maintains final decision authority on all match disputes."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "₹250 per team",
+        "feeType": "per_team",
+        "deadline": "To be announced",
+        "capacity": 32,
+        "eligibility": "Open to all university students with verified academic enrollment.",
+        "paymentInstructions": "₹250 per team registration fee payable online through FESTIQ payment portal or offline desk verification.",
+        "cancellationPolicy": "Registrations can be cancelled up to 24 hours prior to the event via the student dashboard."
+      },
+      "organizerContact": {
+        "name": "FPS Tournament Desk (Demo Lead)",
+        "department": "FESTIQ Gaming Guild",
+        "email": "events@festiq.campus.edu",
+        "phone": "+91 00000 00014",
+        "support": "Contact the organizing committee for venue accessibility assistance and schedule inquiries."
+      },
+      "participantInstructions": [
+        "Personal gaming peripherals (mouse, keyboard, headset) if allowed by track",
+        "Valid in-game tournament account login credentials",
+        "University student ID and FESTIQ digital ticket pass",
+        "Ensure you arrive at least 30 minutes before the scheduled reporting time.",
+        "Certificates of merit and participation will be issued digitally following verified attendance."
+      ]
+    },
+    "prizePoolType": "dynamic",
+    "prizeAllocationPct": 75,
+    "provisionalFee": true
+  },
+  {
+    "id": "fest-015",
+    "title": "EA Sports FC 2026: Virtual Kickoff Invitational",
+    "category": "Gaming",
+    "tagline": "Console 1v1 virtual football tournament on PlayStation 5",
+    "description": "EA Sports FC 2026: Virtual Kickoff Invitational is an official FESTIQ campus gaming competition hosted at Student Activity Center Lounge. Participants engage in competitive gaming challenges, skill demonstrations, and expert-reviewed rounds designed to recognize top collegiate excellence.",
+    "fullDescription": "Experience the drama of competitive virtual football. 64 registered contenders face off in 1v1 single-elimination fixtures played on PlayStation 5 setups connected to 4K gaming monitors. Includes official UEFA tournament rules and extra time shootouts.",
+    "date": "2026-12-22",
+    "time": "01:00 PM - 07:00 PM",
+    "venue": "Student Activity Center Lounge",
+    "organizer": "Console Gaming Society",
+    "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "₹100 per participant",
+    "prizePool": "₹4,800",
+    "prizeAmount": 4800,
+    "capacity": 64,
+    "registeredCount": 60,
+    "featured": false,
+    "isFeatured": false,
+    "status": "Closing Soon",
+    "createdAt": "2026-11-02T10:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "Sports Sim League (Demo Lead)",
+    "managerPhone": "+91 00000 00015",
+    "feeAmount": 100,
+    "feeType": "per_person",
+    "registrationType": "paid",
+    "isPaid": true,
+    "registrationFee": "₹100 per participant",
+    "pdfDetails": {
+      "detailedDescription": "EA Sports FC 2026: Virtual Kickoff Invitational is our premier campus gaming event bringing together aspiring students across university departments.\nThe competition provides an accredited collegiate platform for participants to showcase technical expertise, creative ingenuity, and collaborative problem-solving.\nUnder the evaluation of faculty jurors and domain specialists, participants navigate carefully structured competitive rounds and practical challenges.\nAttendees will test their applied abilities, benchmark their performance against peer institutions, and gain valuable industry-aligned feedback.\nKey activities include structured qualification rounds, live competitive sessions, and formal evaluation defenses before the judging panel.\nPrerequisites include Active gaming client account in good standing and basic tournament bracket familiarity.",
+      "schedule": [
+        {
+          "time": "09:00 AM",
+          "activity": "Reporting Desk & Participant Verification"
+        },
+        {
+          "time": "09:45 AM",
+          "activity": "Inaugural Briefing & Track Orientation"
+        },
+        {
+          "time": "10:30 AM",
+          "activity": "Round 1 / Primary Competition Session"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Mid-Day Lunch & Networking Break"
+        },
+        {
+          "time": "02:00 PM",
+          "activity": "Round 2 / Final Competitive Showcase"
+        },
+        {
+          "time": "04:30 PM",
+          "activity": "Jury Evaluation & Score Deliberation"
+        },
+        {
+          "time": "05:30 PM",
+          "activity": "Awards Ceremony & Official Conclusion"
+        }
+      ],
+      "rules": [
+        "Players must compete using official tournament servers and referee-approved clients.",
+        "Third-party scripts, cheats, wall-hacks, aim-assists, or macros result in immediate permanent bans.",
+        "Personal peripherals are subject to referee inspection prior to match commencement.",
+        "Match disconnect policies follow standard tournament regulations as enforced by the referee.",
+        "Toxic communication in in-game chat or physical gestures leads to disciplinary forfeit.",
+        "Teams must report to their assigned stations within 10 minutes of match call.",
+        "The head tournament referee maintains final decision authority on all match disputes."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "₹100 per participant",
+        "feeType": "per_person",
+        "deadline": "To be announced",
+        "capacity": 64,
+        "eligibility": "Open to all university students with verified academic enrollment.",
+        "paymentInstructions": "₹100 per participant registration fee payable online through FESTIQ payment portal or offline desk verification.",
+        "cancellationPolicy": "Registrations can be cancelled up to 24 hours prior to the event via the student dashboard."
+      },
+      "organizerContact": {
+        "name": "Sports Sim League (Demo Lead)",
+        "department": "Console Gaming Society",
+        "email": "events@festiq.campus.edu",
+        "phone": "+91 00000 00015",
+        "support": "Contact the organizing committee for venue accessibility assistance and schedule inquiries."
+      },
+      "participantInstructions": [
+        "Personal gaming peripherals (mouse, keyboard, headset) if allowed by track",
+        "Valid in-game tournament account login credentials",
+        "University student ID and FESTIQ digital ticket pass",
+        "Ensure you arrive at least 30 minutes before the scheduled reporting time.",
+        "Certificates of merit and participation will be issued digitally following verified attendance."
+      ]
+    },
+    "prizePoolType": "dynamic",
+    "prizeAllocationPct": 75,
+    "provisionalFee": true
+  },
+  {
+    "id": "fest-016",
+    "title": "RoboCraft: Embedded Systems & ROS2 Masterclass",
+    "category": "Workshops",
+    "tagline": "Program microcontrollers, LiDAR sensors, and robotic arms",
+    "description": "RoboCraft: Embedded Systems & ROS2 Masterclass is an official FESTIQ campus workshops competition hosted at Mechatronics Development Lab, Block E. Participants engage in competitive workshops challenges, skill demonstrations, and expert-reviewed rounds designed to recognize top collegiate excellence.",
+    "fullDescription": "Get your hands dirty with real robotics hardware. In this guided workshop, participants interface microcontrollers with digital actuators, read 360-degree LiDAR point clouds, and control robotic arm end-effectors via custom Python ROS2 nodes.",
+    "date": "2026-12-07",
+    "time": "09:30 AM - 04:30 PM",
+    "venue": "Mechatronics Development Lab, Block E",
+    "organizer": "Department of Electronics & Robotics Club",
+    "image": "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "₹250 per participant",
+    "prizePool": "STM32 Lab Hardware Kit & Certificate",
+    "prizeAmount": 0,
+    "capacity": 60,
+    "registeredCount": 54,
+    "featured": false,
+    "isFeatured": false,
+    "status": "Open",
+    "createdAt": "2026-11-02T12:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "IoT & Systems Lab (Demo Lead)",
+    "managerPhone": "+91 00000 00016",
+    "feeAmount": 250,
+    "feeType": "per_person",
+    "registrationType": "paid",
+    "isPaid": true,
+    "registrationFee": "₹250 per participant",
+    "pdfDetails": {
+      "detailedDescription": "RoboCraft: Embedded Systems & ROS2 Masterclass is our premier campus workshops event bringing together aspiring students across university departments.\nThe competition provides an accredited collegiate platform for participants to showcase technical expertise, creative ingenuity, and collaborative problem-solving.\nUnder the evaluation of faculty jurors and domain specialists, participants navigate carefully structured competitive rounds and practical challenges.\nAttendees will test their applied abilities, benchmark their performance against peer institutions, and gain valuable industry-aligned feedback.\nKey activities include structured qualification rounds, live competitive sessions, and formal evaluation defenses before the judging panel.\nPrerequisites include Foundational curiosity in the subject domain and willingness to engage in hands-on labs.",
+      "schedule": [
+        {
+          "time": "09:00 AM",
+          "activity": "Reporting Desk & Participant Verification"
+        },
+        {
+          "time": "09:45 AM",
+          "activity": "Inaugural Briefing & Track Orientation"
+        },
+        {
+          "time": "10:30 AM",
+          "activity": "Round 1 / Primary Competition Session"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Mid-Day Lunch & Networking Break"
+        },
+        {
+          "time": "02:00 PM",
+          "activity": "Round 2 / Final Competitive Showcase"
+        },
+        {
+          "time": "04:30 PM",
+          "activity": "Jury Evaluation & Score Deliberation"
+        },
+        {
+          "time": "05:30 PM",
+          "activity": "Awards Ceremony & Official Conclusion"
+        }
+      ],
+      "rules": [
+        "Participants must attend all scheduled instructional modules to qualify for course certification.",
+        "Laboratory hardware and shared computing resources must be handled with utmost care.",
+        "Safety instructions provided by the lab instructor must be adhered to at all times.",
+        "Redistribution or commercial use of proprietary workshop courseware is prohibited.",
+        "Questions and discussions are encouraged during designated Q&A and lab mentoring blocks.",
+        "Disruptive classroom behavior will lead to removal from the workshop session.",
+        "Certificates of completion are issued only upon verification of completed lab exercises."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "₹250 per participant",
+        "feeType": "per_person",
+        "deadline": "To be announced",
+        "capacity": 60,
+        "eligibility": "Open to all university students with verified academic enrollment.",
+        "paymentInstructions": "₹250 per participant materials & lab components fee payable online via the FESTIQ portal.",
+        "cancellationPolicy": "Registrations can be cancelled up to 24 hours prior to the event via the student dashboard."
+      },
+      "organizerContact": {
+        "name": "IoT & Systems Lab (Demo Lead)",
+        "department": "Department of Electronics & Robotics Club",
+        "email": "events@festiq.campus.edu",
+        "phone": "+91 00000 00016",
+        "support": "Contact the organizing committee for venue accessibility assistance and schedule inquiries."
+      },
+      "participantInstructions": [
+        "Laptop with administrator privileges for software installations",
+        "Power adapter and notebook for system architecture notes",
+        "University ID card and workshop confirmation pass",
+        "Ensure you arrive at least 30 minutes before the scheduled reporting time.",
+        "Certificates of merit and participation will be issued digitally following verified attendance."
+      ]
+    },
+    "prizePoolType": "materials_fee",
+    "prizeAllocationPct": 75,
+    "isMaterialsFee": true,
+    "materialsFee": 250,
+    "provisionalFee": true
+  },
+  {
+    "id": "fest-017",
+    "title": "Full-Stack Velocity: Modern Next.js & Cloud Systems",
+    "category": "Workshops",
+    "tagline": "Server components, serverless APIs, and edge deployment",
+    "description": "Full-Stack Velocity: Modern Next.js & Cloud Systems is an official FESTIQ campus workshops competition hosted at Software Engineering Lab 2, Campus 15. Participants engage in competitive workshops challenges, skill demonstrations, and expert-reviewed rounds designed to recognize top collegiate excellence.",
+    "fullDescription": "Learn modern production web engineering patterns from industry staff engineers. Build a real-time collaborative application featuring React Server Components, optimistic UI mutations, PostgreSQL database indexing, and edge deployments on modern cloud infrastructure.",
+    "date": "2026-12-15",
+    "time": "10:00 AM - 05:00 PM",
+    "venue": "Software Engineering Lab 2, Campus 15",
+    "organizer": "Google Developer Student Club (GDSC)",
+    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "Free",
+    "prizePool": "Google Cloud Credits & Certificate",
+    "prizeAmount": 0,
+    "capacity": 90,
+    "registeredCount": 82,
+    "featured": false,
+    "isFeatured": false,
+    "status": "Open",
+    "createdAt": "2026-11-02T14:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "Web Dev Mentorship (Demo Lead)",
+    "managerPhone": "+91 00000 00017",
+    "feeAmount": 0,
+    "feeType": "per_person",
+    "registrationType": "free",
+    "isPaid": false,
+    "registrationFee": "Free",
+    "pdfDetails": {
+      "detailedDescription": "Full-Stack Velocity: Modern Next.js & Cloud Systems is our premier campus workshops event bringing together aspiring students across university departments.\nThe competition provides an accredited collegiate platform for participants to showcase technical expertise, creative ingenuity, and collaborative problem-solving.\nUnder the evaluation of faculty jurors and domain specialists, participants navigate carefully structured competitive rounds and practical challenges.\nAttendees will test their applied abilities, benchmark their performance against peer institutions, and gain valuable industry-aligned feedback.\nKey activities include structured qualification rounds, live competitive sessions, and formal evaluation defenses before the judging panel.\nPrerequisites include Foundational curiosity in the subject domain and willingness to engage in hands-on labs.",
+      "schedule": [
+        {
+          "time": "09:00 AM",
+          "activity": "Reporting Desk & Participant Verification"
+        },
+        {
+          "time": "09:45 AM",
+          "activity": "Inaugural Briefing & Track Orientation"
+        },
+        {
+          "time": "10:30 AM",
+          "activity": "Round 1 / Primary Competition Session"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Mid-Day Lunch & Networking Break"
+        },
+        {
+          "time": "02:00 PM",
+          "activity": "Round 2 / Final Competitive Showcase"
+        },
+        {
+          "time": "04:30 PM",
+          "activity": "Jury Evaluation & Score Deliberation"
+        },
+        {
+          "time": "05:30 PM",
+          "activity": "Awards Ceremony & Official Conclusion"
+        }
+      ],
+      "rules": [
+        "Participants must attend all scheduled instructional modules to qualify for course certification.",
+        "Laboratory hardware and shared computing resources must be handled with utmost care.",
+        "Safety instructions provided by the lab instructor must be adhered to at all times.",
+        "Redistribution or commercial use of proprietary workshop courseware is prohibited.",
+        "Questions and discussions are encouraged during designated Q&A and lab mentoring blocks.",
+        "Disruptive classroom behavior will lead to removal from the workshop session.",
+        "Certificates of completion are issued only upon verification of completed lab exercises."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "Free",
+        "feeType": "per_person",
+        "deadline": "To be announced",
+        "capacity": 90,
+        "eligibility": "Open to all university students with verified academic enrollment.",
+        "paymentInstructions": "Free event admission. Confirmed digital pass issued upon online registration verification.",
+        "cancellationPolicy": "Registrations can be cancelled up to 24 hours prior to the event via the student dashboard."
+      },
+      "organizerContact": {
+        "name": "Web Dev Mentorship (Demo Lead)",
+        "department": "Google Developer Student Club (GDSC)",
+        "email": "events@festiq.campus.edu",
+        "phone": "+91 00000 00017",
+        "support": "Contact the organizing committee for venue accessibility assistance and schedule inquiries."
+      },
+      "participantInstructions": [
+        "Laptop with administrator privileges for software installations",
+        "Power adapter and notebook for system architecture notes",
+        "University ID card and workshop confirmation pass",
+        "Ensure you arrive at least 30 minutes before the scheduled reporting time.",
+        "Certificates of merit and participation will be issued digitally following verified attendance."
+      ]
+    },
+    "prizePoolType": "fixed",
+    "prizeAllocationPct": 75,
+    "provisionalFee": false
+  },
+  {
+    "id": "fest-018",
+    "title": "Defensive Shield: Network Security & Ethical Hacking",
+    "category": "Workshops",
+    "tagline": "Hands-on penetration testing, packet analysis, and hardening",
+    "description": "Defensive Shield: Network Security & Ethical Hacking is an official FESTIQ campus workshops competition hosted at Cyber Defense Lab, Block 7. Participants engage in competitive workshops challenges, skill demonstrations, and expert-reviewed rounds designed to recognize top collegiate excellence.",
+    "fullDescription": "A comprehensive practical masterclass in cybersecurity defense. Students learn how attackers scout attack surfaces, analyze intercepted network packets, exploit authentication bypasses, and construct robust defense mechanisms including firewalls and secure session tokens.",
+    "date": "2026-12-21",
+    "time": "09:30 AM - 04:30 PM",
+    "venue": "Cyber Defense Lab, Block 7",
+    "organizer": "Information Assurance & Cyber Forensics Club",
+    "image": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "Free",
+    "prizePool": "Certification Voucher & Pass",
+    "prizeAmount": 0,
+    "capacity": 75,
+    "registeredCount": 68,
+    "featured": false,
+    "isFeatured": false,
+    "status": "Open",
+    "createdAt": "2026-11-02T16:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "Network Defense Wing (Demo Lead)",
+    "managerPhone": "+91 00000 00018",
+    "feeAmount": 0,
+    "feeType": "per_person",
+    "registrationType": "free",
+    "isPaid": false,
+    "registrationFee": "Free",
+    "pdfDetails": {
+      "detailedDescription": "Defensive Shield: Network Security & Ethical Hacking is our premier campus workshops event bringing together aspiring students across university departments.\nThe competition provides an accredited collegiate platform for participants to showcase technical expertise, creative ingenuity, and collaborative problem-solving.\nUnder the evaluation of faculty jurors and domain specialists, participants navigate carefully structured competitive rounds and practical challenges.\nAttendees will test their applied abilities, benchmark their performance against peer institutions, and gain valuable industry-aligned feedback.\nKey activities include structured qualification rounds, live competitive sessions, and formal evaluation defenses before the judging panel.\nPrerequisites include Foundational curiosity in the subject domain and willingness to engage in hands-on labs.",
+      "schedule": [
+        {
+          "time": "09:00 AM",
+          "activity": "Reporting Desk & Participant Verification"
+        },
+        {
+          "time": "09:45 AM",
+          "activity": "Inaugural Briefing & Track Orientation"
+        },
+        {
+          "time": "10:30 AM",
+          "activity": "Round 1 / Primary Competition Session"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Mid-Day Lunch & Networking Break"
+        },
+        {
+          "time": "02:00 PM",
+          "activity": "Round 2 / Final Competitive Showcase"
+        },
+        {
+          "time": "04:30 PM",
+          "activity": "Jury Evaluation & Score Deliberation"
+        },
+        {
+          "time": "05:30 PM",
+          "activity": "Awards Ceremony & Official Conclusion"
+        }
+      ],
+      "rules": [
+        "Participants must attend all scheduled instructional modules to qualify for course certification.",
+        "Laboratory hardware and shared computing resources must be handled with utmost care.",
+        "Safety instructions provided by the lab instructor must be adhered to at all times.",
+        "Redistribution or commercial use of proprietary workshop courseware is prohibited.",
+        "Questions and discussions are encouraged during designated Q&A and lab mentoring blocks.",
+        "Disruptive classroom behavior will lead to removal from the workshop session.",
+        "Certificates of completion are issued only upon verification of completed lab exercises."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "Free",
+        "feeType": "per_person",
+        "deadline": "To be announced",
+        "capacity": 75,
+        "eligibility": "Open to all university students with verified academic enrollment.",
+        "paymentInstructions": "Free event admission. Confirmed digital pass issued upon online registration verification.",
+        "cancellationPolicy": "Registrations can be cancelled up to 24 hours prior to the event via the student dashboard."
+      },
+      "organizerContact": {
+        "name": "Network Defense Wing (Demo Lead)",
+        "department": "Information Assurance & Cyber Forensics Club",
+        "email": "events@festiq.campus.edu",
+        "phone": "+91 00000 00018",
+        "support": "Contact the organizing committee for venue accessibility assistance and schedule inquiries."
+      },
+      "participantInstructions": [
+        "Laptop with administrator privileges for software installations",
+        "Power adapter and notebook for system architecture notes",
+        "University ID card and workshop confirmation pass",
+        "Ensure you arrive at least 30 minutes before the scheduled reporting time.",
+        "Certificates of merit and participation will be issued digitally following verified attendance."
+      ]
+    },
+    "prizePoolType": "fixed",
+    "prizeAllocationPct": 75,
+    "provisionalFee": false
+  },
+  {
+    "id": "fest-019",
+    "title": "Pragati 2026: National Leadership & Management Conclave",
+    "category": "Management",
+    "tagline": "Keynotes, panel discussions, and future of business strategy",
+    "description": "Pragati 2026: National Leadership & Management Conclave is an official FESTIQ campus management competition hosted at Campus Convention Center, Auditorium 1. Participants engage in competitive management challenges, skill demonstrations, and expert-reviewed rounds designed to recognize top collegiate excellence.",
+    "fullDescription": "Pragati 2026 brings together renowned industry executives, consulting partners, and visionary startup leaders. Sessions feature dynamic panel discussions on technological disruption, enterprise risk management, product strategies, and networking lunch sessions with corporate recruiters.",
+    "date": "2026-12-09",
+    "time": "09:00 AM - 05:30 PM",
+    "venue": "Campus Convention Center, Auditorium 1",
+    "organizer": "School of Management & University Placement Cell",
+    "image": "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "₹100 per participant",
+    "prizePool": "₹30,000 Case Fellowship",
+    "prizeAmount": 30000,
+    "capacity": 400,
+    "registeredCount": 310,
+    "featured": true,
+    "isFeatured": true,
+    "status": "Open",
+    "createdAt": "2026-11-03T08:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "Leadership Summit Desk (Demo Lead)",
+    "managerPhone": "+91 00000 00019",
+    "feeAmount": 100,
+    "feeType": "per_person",
+    "registrationType": "paid",
+    "isPaid": true,
+    "registrationFee": "₹100 per participant",
+    "pdfDetails": {
+      "detailedDescription": "Pragati 2026: National Leadership & Management Conclave is our premier campus management event bringing together aspiring students across university departments.\nThe competition provides an accredited collegiate platform for participants to showcase technical expertise, creative ingenuity, and collaborative problem-solving.\nUnder the evaluation of faculty jurors and domain specialists, participants navigate carefully structured competitive rounds and practical challenges.\nAttendees will test their applied abilities, benchmark their performance against peer institutions, and gain valuable industry-aligned feedback.\nKey activities include structured qualification rounds, live competitive sessions, and formal evaluation defenses before the judging panel.\nPrerequisites include Familiarity with business case analysis, market sizing, and presentation structuring.",
+      "schedule": [
+        {
+          "time": "09:00 AM",
+          "activity": "Reporting Desk & Participant Verification"
+        },
+        {
+          "time": "09:45 AM",
+          "activity": "Inaugural Briefing & Track Orientation"
+        },
+        {
+          "time": "10:30 AM",
+          "activity": "Round 1 / Primary Competition Session"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Mid-Day Lunch & Networking Break"
+        },
+        {
+          "time": "02:00 PM",
+          "activity": "Round 2 / Final Competitive Showcase"
+        },
+        {
+          "time": "04:30 PM",
+          "activity": "Jury Evaluation & Score Deliberation"
+        },
+        {
+          "time": "05:30 PM",
+          "activity": "Awards Ceremony & Official Conclusion"
+        }
+      ],
+      "rules": [
+        "Case analysis and business model recommendations must represent original student work.",
+        "Presentations must comply with allotted time boundaries (typically 7 min pitch + 3 min Q&A).",
+        "All data sources, financial assumptions, and citations must be disclosed in slide notes.",
+        "Deliverables must be uploaded in PDF or slide deck format before the submission cutoff.",
+        "Professional business attire is required for all formal presentation rounds.",
+        "Plagiarism or undisclosed external professional advisory results in immediate disqualification.",
+        "Jury decisions on business viability, analytical rigor, and communication are final."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "₹100 per participant",
+        "feeType": "per_person",
+        "deadline": "To be announced",
+        "capacity": 400,
+        "eligibility": "Open to all university students with verified academic enrollment.",
+        "paymentInstructions": "₹100 per participant registration fee payable online through FESTIQ payment portal or offline desk verification.",
+        "cancellationPolicy": "Registrations can be cancelled up to 24 hours prior to the event via the student dashboard."
+      },
+      "organizerContact": {
+        "name": "Leadership Summit Desk (Demo Lead)",
+        "department": "School of Management & University Placement Cell",
+        "email": "events@festiq.campus.edu",
+        "phone": "+91 00000 00019",
+        "support": "Contact the organizing committee for venue accessibility assistance and schedule inquiries."
+      },
+      "participantInstructions": [
+        "Laptop with presentation software and presentation clicker",
+        "Formal business attire",
+        "University student identity card and FESTIQ pass",
+        "Ensure you arrive at least 30 minutes before the scheduled reporting time.",
+        "Certificates of merit and participation will be issued digitally following verified attendance."
+      ]
+    },
+    "prizePoolType": "dynamic",
+    "prizeAllocationPct": 75,
+    "provisionalFee": true
+  },
+  {
+    "id": "fest-020",
+    "title": "BrandCraft: Marketing Simulation & Ad Strategy Challenge",
+    "category": "Management",
+    "tagline": "Real-time brand positioning, crisis PR, and product commercials",
+    "description": "BrandCraft: Marketing Simulation & Ad Strategy Challenge is an official FESTIQ campus management competition hosted at Executive Development Hall, Management Block. Participants engage in competitive management challenges, skill demonstrations, and expert-reviewed rounds designed to recognize top collegiate excellence.",
+    "fullDescription": "Put your brand instincts to the test in BrandCraft. Teams receive a live product briefing, design a market penetration roadmap, calculate unit customer acquisition economics, and film a creative video commercial. The final round simulates a breaking corporate PR crisis.",
+    "date": "2026-12-17",
+    "time": "10:30 AM - 05:00 PM",
+    "venue": "Executive Development Hall, Management Block",
+    "organizer": "Marketing & Creative Communications Forum",
+    "image": "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "₹150 per participant",
+    "prizePool": "₹9,000",
+    "prizeAmount": 9000,
+    "capacity": 80,
+    "registeredCount": 65,
+    "featured": false,
+    "isFeatured": false,
+    "status": "Open",
+    "createdAt": "2026-11-03T10:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "Marketing Forum Desk (Demo Lead)",
+    "managerPhone": "+91 00000 00020",
+    "feeAmount": 150,
+    "feeType": "per_person",
+    "registrationType": "paid",
+    "isPaid": true,
+    "registrationFee": "₹150 per participant",
+    "pdfDetails": {
+      "detailedDescription": "BrandCraft: Marketing Simulation & Ad Strategy Challenge is our premier campus management event bringing together aspiring students across university departments.\nThe competition provides an accredited collegiate platform for participants to showcase technical expertise, creative ingenuity, and collaborative problem-solving.\nUnder the evaluation of faculty jurors and domain specialists, participants navigate carefully structured competitive rounds and practical challenges.\nAttendees will test their applied abilities, benchmark their performance against peer institutions, and gain valuable industry-aligned feedback.\nKey activities include structured qualification rounds, live competitive sessions, and formal evaluation defenses before the judging panel.\nPrerequisites include Familiarity with business case analysis, market sizing, and presentation structuring.",
+      "schedule": [
+        {
+          "time": "09:00 AM",
+          "activity": "Reporting Desk & Participant Verification"
+        },
+        {
+          "time": "09:45 AM",
+          "activity": "Inaugural Briefing & Track Orientation"
+        },
+        {
+          "time": "10:30 AM",
+          "activity": "Round 1 / Primary Competition Session"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Mid-Day Lunch & Networking Break"
+        },
+        {
+          "time": "02:00 PM",
+          "activity": "Round 2 / Final Competitive Showcase"
+        },
+        {
+          "time": "04:30 PM",
+          "activity": "Jury Evaluation & Score Deliberation"
+        },
+        {
+          "time": "05:30 PM",
+          "activity": "Awards Ceremony & Official Conclusion"
+        }
+      ],
+      "rules": [
+        "Case analysis and business model recommendations must represent original student work.",
+        "Presentations must comply with allotted time boundaries (typically 7 min pitch + 3 min Q&A).",
+        "All data sources, financial assumptions, and citations must be disclosed in slide notes.",
+        "Deliverables must be uploaded in PDF or slide deck format before the submission cutoff.",
+        "Professional business attire is required for all formal presentation rounds.",
+        "Plagiarism or undisclosed external professional advisory results in immediate disqualification.",
+        "Jury decisions on business viability, analytical rigor, and communication are final."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "₹150 per participant",
+        "feeType": "per_person",
+        "deadline": "To be announced",
+        "capacity": 80,
+        "eligibility": "Open to all university students with verified academic enrollment.",
+        "paymentInstructions": "₹150 per participant registration fee payable online through FESTIQ payment portal or offline desk verification.",
+        "cancellationPolicy": "Registrations can be cancelled up to 24 hours prior to the event via the student dashboard."
+      },
+      "organizerContact": {
+        "name": "Marketing Forum Desk (Demo Lead)",
+        "department": "Marketing & Creative Communications Forum",
+        "email": "events@festiq.campus.edu",
+        "phone": "+91 00000 00020",
+        "support": "Contact the organizing committee for venue accessibility assistance and schedule inquiries."
+      },
+      "participantInstructions": [
+        "Laptop with presentation software and presentation clicker",
+        "Formal business attire",
+        "University student identity card and FESTIQ pass",
+        "Ensure you arrive at least 30 minutes before the scheduled reporting time.",
+        "Certificates of merit and participation will be issued digitally following verified attendance."
+      ]
+    },
+    "prizePoolType": "dynamic",
+    "prizeAllocationPct": 75,
+    "provisionalFee": true
+  },
+  {
+    "id": "fest-021",
+    "title": "Consulting Quest: Global Business Case Solving Challenge",
+    "category": "Management",
+    "tagline": "Deconstruct complex corporate problems with McKinsey frameworks",
+    "description": "Consulting Quest: Global Business Case Solving Challenge is an official FESTIQ campus management competition hosted at Boardroom Suites, Innovation Tower. Participants engage in competitive management challenges, skill demonstrations, and expert-reviewed rounds designed to recognize top collegiate excellence.",
+    "fullDescription": "A premier case competition modeling real-world management consulting engagements. Teams receive a comprehensive 20-page business dossier, conduct financial sensitivity modeling, structure recommendations with MECE frameworks, and deliver 10-minute board presentations.",
+    "date": "2026-12-23",
+    "time": "09:30 AM - 04:30 PM",
+    "venue": "Boardroom Suites, Innovation Tower",
+    "organizer": "University Consulting & Finance Club",
+    "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "₹200 per participant",
+    "prizePool": "₹9,000",
+    "prizeAmount": 9000,
+    "capacity": 60,
+    "registeredCount": 49,
+    "featured": false,
+    "isFeatured": false,
+    "status": "Open",
+    "createdAt": "2026-11-03T12:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "Consulting Club Desk (Demo Lead)",
+    "managerPhone": "+91 00000 00021",
+    "feeAmount": 200,
+    "feeType": "per_person",
+    "registrationType": "paid",
+    "isPaid": true,
+    "registrationFee": "₹200 per participant",
+    "pdfDetails": {
+      "detailedDescription": "Consulting Quest: Global Business Case Solving Challenge is our premier campus management event bringing together aspiring students across university departments.\nThe competition provides an accredited collegiate platform for participants to showcase technical expertise, creative ingenuity, and collaborative problem-solving.\nUnder the evaluation of faculty jurors and domain specialists, participants navigate carefully structured competitive rounds and practical challenges.\nAttendees will test their applied abilities, benchmark their performance against peer institutions, and gain valuable industry-aligned feedback.\nKey activities include structured qualification rounds, live competitive sessions, and formal evaluation defenses before the judging panel.\nPrerequisites include Familiarity with business case analysis, market sizing, and presentation structuring.",
+      "schedule": [
+        {
+          "time": "09:00 AM",
+          "activity": "Reporting Desk & Participant Verification"
+        },
+        {
+          "time": "09:45 AM",
+          "activity": "Inaugural Briefing & Track Orientation"
+        },
+        {
+          "time": "10:30 AM",
+          "activity": "Round 1 / Primary Competition Session"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Mid-Day Lunch & Networking Break"
+        },
+        {
+          "time": "02:00 PM",
+          "activity": "Round 2 / Final Competitive Showcase"
+        },
+        {
+          "time": "04:30 PM",
+          "activity": "Jury Evaluation & Score Deliberation"
+        },
+        {
+          "time": "05:30 PM",
+          "activity": "Awards Ceremony & Official Conclusion"
+        }
+      ],
+      "rules": [
+        "Case analysis and business model recommendations must represent original student work.",
+        "Presentations must comply with allotted time boundaries (typically 7 min pitch + 3 min Q&A).",
+        "All data sources, financial assumptions, and citations must be disclosed in slide notes.",
+        "Deliverables must be uploaded in PDF or slide deck format before the submission cutoff.",
+        "Professional business attire is required for all formal presentation rounds.",
+        "Plagiarism or undisclosed external professional advisory results in immediate disqualification.",
+        "Jury decisions on business viability, analytical rigor, and communication are final."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "₹200 per participant",
+        "feeType": "per_person",
+        "deadline": "To be announced",
+        "capacity": 60,
+        "eligibility": "Open to all university students with verified academic enrollment.",
+        "paymentInstructions": "₹200 per participant registration fee payable online through FESTIQ payment portal or offline desk verification.",
+        "cancellationPolicy": "Registrations can be cancelled up to 24 hours prior to the event via the student dashboard."
+      },
+      "organizerContact": {
+        "name": "Consulting Club Desk (Demo Lead)",
+        "department": "University Consulting & Finance Club",
+        "email": "events@festiq.campus.edu",
+        "phone": "+91 00000 00021",
+        "support": "Contact the organizing committee for venue accessibility assistance and schedule inquiries."
+      },
+      "participantInstructions": [
+        "Laptop with presentation software and presentation clicker",
+        "Formal business attire",
+        "University student identity card and FESTIQ pass",
+        "Ensure you arrive at least 30 minutes before the scheduled reporting time.",
+        "Certificates of merit and participation will be issued digitally following verified attendance."
+      ]
+    },
+    "prizePoolType": "dynamic",
+    "prizeAllocationPct": 75,
+    "provisionalFee": true
+  },
+  {
+    "id": "fest-022",
+    "title": "Hoop Fest: Inter-School 3v3 Basketball Tournament",
+    "category": "Sports",
+    "tagline": "Half-court intensity, buzzer beaters, and dynamic team play",
+    "description": "Hoop Fest: Inter-School 3v3 Basketball Tournament is an official FESTIQ campus sports competition hosted at Outdoor Basketball Complex, Sports Village. Participants engage in competitive sports challenges, skill demonstrations, and expert-reviewed rounds designed to recognize top collegiate excellence.",
+    "fullDescription": "Experience the adrenaline of 3v3 half-court basketball under official FIBA regulations. Teams compete in high-octane 10-minute games where shot clocks and defensive intensity determine the victor. All matches refereed by state basketball federation officials.",
+    "date": "2026-12-11",
+    "time": "03:00 PM - 08:30 PM",
+    "venue": "Outdoor Basketball Complex, Sports Village",
+    "organizer": "University Basketball Association",
+    "image": "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "₹250 per team",
+    "prizePool": "₹6,000",
+    "prizeAmount": 6000,
+    "capacity": 32,
+    "registeredCount": 26,
+    "featured": false,
+    "isFeatured": false,
+    "status": "Open",
+    "createdAt": "2026-11-03T14:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "Hoop Fest Committee (Demo Lead)",
+    "managerPhone": "+91 00000 00022",
+    "feeAmount": 250,
+    "feeType": "per_team",
+    "registrationType": "paid",
+    "isPaid": true,
+    "registrationFee": "₹250 per team",
+    "pdfDetails": {
+      "detailedDescription": "Hoop Fest: Inter-School 3v3 Basketball Tournament is our premier campus sports event bringing together aspiring students across university departments.\nThe competition provides an accredited collegiate platform for participants to showcase technical expertise, creative ingenuity, and collaborative problem-solving.\nUnder the evaluation of faculty jurors and domain specialists, participants navigate carefully structured competitive rounds and practical challenges.\nAttendees will test their applied abilities, benchmark their performance against peer institutions, and gain valuable industry-aligned feedback.\nKey activities include structured qualification rounds, live competitive sessions, and formal evaluation defenses before the judging panel.\nPrerequisites include Physical fitness, athletic preparedness, and verified medical clearance to compete.",
+      "schedule": [
+        {
+          "time": "09:00 AM",
+          "activity": "Reporting Desk & Participant Verification"
+        },
+        {
+          "time": "09:45 AM",
+          "activity": "Inaugural Briefing & Track Orientation"
+        },
+        {
+          "time": "10:30 AM",
+          "activity": "Round 1 / Primary Competition Session"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Mid-Day Lunch & Networking Break"
+        },
+        {
+          "time": "02:00 PM",
+          "activity": "Round 2 / Final Competitive Showcase"
+        },
+        {
+          "time": "04:30 PM",
+          "activity": "Jury Evaluation & Score Deliberation"
+        },
+        {
+          "time": "05:30 PM",
+          "activity": "Awards Ceremony & Official Conclusion"
+        }
+      ],
+      "rules": [
+        "All players must be bona fide enrolled university students on the verified team roster.",
+        "Standard sport federation regulations govern all match play and referee decisions.",
+        "Appropriate athletic sportswear, protective gear, and sports footwear are mandatory.",
+        "Unsportsmanlike conduct, aggressive dissent, or physical violence will cause team expulsion.",
+        "Teams failing to report within 15 minutes of scheduled fixture time forfeit the match.",
+        "Rolling substitutions and timeouts must follow official tournament referee instructions.",
+        "The match referee and tournament director decisions on scoring and fouls are definitive."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "₹250 per team",
+        "feeType": "per_team",
+        "deadline": "To be announced",
+        "capacity": 32,
+        "eligibility": "Open to all university students with verified academic enrollment.",
+        "paymentInstructions": "₹250 per team registration fee payable online through FESTIQ payment portal or offline desk verification.",
+        "cancellationPolicy": "Registrations can be cancelled up to 24 hours prior to the event via the student dashboard."
+      },
+      "organizerContact": {
+        "name": "Hoop Fest Committee (Demo Lead)",
+        "department": "University Basketball Association",
+        "email": "events@festiq.campus.edu",
+        "phone": "+91 00000 00022",
+        "support": "Contact the organizing committee for venue accessibility assistance and schedule inquiries."
+      },
+      "participantInstructions": [
+        "Matching team athletic kit / jersey with visible numbers",
+        "Protective gear (shin guards, wristbands, racquets as required)",
+        "University student ID and medical clearance slip",
+        "Ensure you arrive at least 30 minutes before the scheduled reporting time.",
+        "Certificates of merit and participation will be issued digitally following verified attendance."
+      ]
+    },
+    "prizePoolType": "dynamic",
+    "prizeAllocationPct": 75,
+    "provisionalFee": true
+  },
+  {
+    "id": "fest-023",
+    "title": "Shuttle Surge: University Badminton Open Cup",
+    "category": "Sports",
+    "tagline": "Smashing rallies across Men's, Women's, and Mixed Doubles",
+    "description": "Shuttle Surge: University Badminton Open Cup is an official FESTIQ campus sports competition hosted at Indoor Badminton Stadium, Campus 13. Participants engage in competitive sports challenges, skill demonstrations, and expert-reviewed rounds designed to recognize top collegiate excellence.",
+    "fullDescription": "Shuttle Surge brings competitive collegiate badminton to the university's indoor sports arena. Contenders play best-of-three 21-point matches across Men's Singles, Women's Singles, and Mixed Doubles. Medals, custom trophies, and cash prizes for all podium finishers.",
+    "date": "2026-12-19",
+    "time": "09:00 AM - 06:00 PM",
+    "venue": "Indoor Badminton Stadium, Campus 13",
+    "organizer": "Department of Physical Education & Badminton Club",
+    "image": "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "₹150 per participant",
+    "prizePool": "₹7,200",
+    "prizeAmount": 7200,
+    "capacity": 64,
+    "registeredCount": 56,
+    "featured": false,
+    "isFeatured": false,
+    "status": "Open",
+    "createdAt": "2026-11-03T16:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "Racquet Club Desk (Demo Lead)",
+    "managerPhone": "+91 00000 00023",
+    "feeAmount": 150,
+    "feeType": "per_person",
+    "registrationType": "paid",
+    "isPaid": true,
+    "registrationFee": "₹150 per participant",
+    "pdfDetails": {
+      "detailedDescription": "Shuttle Surge: University Badminton Open Cup is our premier campus sports event bringing together aspiring students across university departments.\nThe competition provides an accredited collegiate platform for participants to showcase technical expertise, creative ingenuity, and collaborative problem-solving.\nUnder the evaluation of faculty jurors and domain specialists, participants navigate carefully structured competitive rounds and practical challenges.\nAttendees will test their applied abilities, benchmark their performance against peer institutions, and gain valuable industry-aligned feedback.\nKey activities include structured qualification rounds, live competitive sessions, and formal evaluation defenses before the judging panel.\nPrerequisites include Physical fitness, athletic preparedness, and verified medical clearance to compete.",
+      "schedule": [
+        {
+          "time": "09:00 AM",
+          "activity": "Reporting Desk & Participant Verification"
+        },
+        {
+          "time": "09:45 AM",
+          "activity": "Inaugural Briefing & Track Orientation"
+        },
+        {
+          "time": "10:30 AM",
+          "activity": "Round 1 / Primary Competition Session"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Mid-Day Lunch & Networking Break"
+        },
+        {
+          "time": "02:00 PM",
+          "activity": "Round 2 / Final Competitive Showcase"
+        },
+        {
+          "time": "04:30 PM",
+          "activity": "Jury Evaluation & Score Deliberation"
+        },
+        {
+          "time": "05:30 PM",
+          "activity": "Awards Ceremony & Official Conclusion"
+        }
+      ],
+      "rules": [
+        "All players must be bona fide enrolled university students on the verified team roster.",
+        "Standard sport federation regulations govern all match play and referee decisions.",
+        "Appropriate athletic sportswear, protective gear, and sports footwear are mandatory.",
+        "Unsportsmanlike conduct, aggressive dissent, or physical violence will cause team expulsion.",
+        "Teams failing to report within 15 minutes of scheduled fixture time forfeit the match.",
+        "Rolling substitutions and timeouts must follow official tournament referee instructions.",
+        "The match referee and tournament director decisions on scoring and fouls are definitive."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "₹150 per participant",
+        "feeType": "per_person",
+        "deadline": "To be announced",
+        "capacity": 64,
+        "eligibility": "Open to all university students with verified academic enrollment.",
+        "paymentInstructions": "₹150 per participant registration fee payable online through FESTIQ payment portal or offline desk verification.",
+        "cancellationPolicy": "Registrations can be cancelled up to 24 hours prior to the event via the student dashboard."
+      },
+      "organizerContact": {
+        "name": "Racquet Club Desk (Demo Lead)",
+        "department": "Department of Physical Education & Badminton Club",
+        "email": "events@festiq.campus.edu",
+        "phone": "+91 00000 00023",
+        "support": "Contact the organizing committee for venue accessibility assistance and schedule inquiries."
+      },
+      "participantInstructions": [
+        "Matching team athletic kit / jersey with visible numbers",
+        "Protective gear (shin guards, wristbands, racquets as required)",
+        "University student ID and medical clearance slip",
+        "Ensure you arrive at least 30 minutes before the scheduled reporting time.",
+        "Certificates of merit and participation will be issued digitally following verified attendance."
+      ]
+    },
+    "prizePoolType": "dynamic",
+    "prizeAllocationPct": 75,
+    "provisionalFee": true
+  },
+  {
+    "id": "fest-024",
+    "title": "Campus T20 Smash: Inter-Department Cricket Premier Trophy",
+    "category": "Sports",
+    "tagline": "Big boundaries, yorkers, and electric cricket rivalries",
+    "description": "Campus T20 Smash: Inter-Department Cricket Premier Trophy is an official FESTIQ campus sports competition hosted at Central University Cricket Stadium. Participants engage in competitive sports challenges, skill demonstrations, and expert-reviewed rounds designed to recognize top collegiate excellence.",
+    "fullDescription": "The crown jewel of campus sports! 12 school and department cricket squads contest the prestigious Campus T20 Smash on the lush central university cricket ground. White ball, colored clothing, third umpire DRS reviews, and professional commentary.",
+    "date": "2026-12-27",
+    "time": "08:30 AM - 06:00 PM",
+    "venue": "Central University Cricket Stadium",
+    "organizer": "University Cricket Board & Sports Committee",
+    "image": "https://images.unsplash.com/photo-1531415074868-036b107e775a?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1531415074868-036b107e775a?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "₹500 per team",
+    "prizePool": "₹9,000",
+    "prizeAmount": 9000,
+    "capacity": 24,
+    "registeredCount": 20,
+    "featured": false,
+    "isFeatured": false,
+    "status": "Open",
+    "createdAt": "2026-11-03T18:00:00.000Z",
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "managerName": "Cricket Operations Desk (Demo Lead)",
+    "managerPhone": "+91 00000 00024",
+    "feeAmount": 500,
+    "feeType": "per_team",
+    "registrationType": "paid",
+    "isPaid": true,
+    "registrationFee": "₹500 per team",
+    "pdfDetails": {
+      "detailedDescription": "Campus T20 Smash: Inter-Department Cricket Premier Trophy is our premier campus sports event bringing together aspiring students across university departments.\nThe competition provides an accredited collegiate platform for participants to showcase technical expertise, creative ingenuity, and collaborative problem-solving.\nUnder the evaluation of faculty jurors and domain specialists, participants navigate carefully structured competitive rounds and practical challenges.\nAttendees will test their applied abilities, benchmark their performance against peer institutions, and gain valuable industry-aligned feedback.\nKey activities include structured qualification rounds, live competitive sessions, and formal evaluation defenses before the judging panel.\nPrerequisites include Physical fitness, athletic preparedness, and verified medical clearance to compete.",
+      "schedule": [
+        {
+          "time": "09:00 AM",
+          "activity": "Reporting Desk & Participant Verification"
+        },
+        {
+          "time": "09:45 AM",
+          "activity": "Inaugural Briefing & Track Orientation"
+        },
+        {
+          "time": "10:30 AM",
+          "activity": "Round 1 / Primary Competition Session"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Mid-Day Lunch & Networking Break"
+        },
+        {
+          "time": "02:00 PM",
+          "activity": "Round 2 / Final Competitive Showcase"
+        },
+        {
+          "time": "04:30 PM",
+          "activity": "Jury Evaluation & Score Deliberation"
+        },
+        {
+          "time": "05:30 PM",
+          "activity": "Awards Ceremony & Official Conclusion"
+        }
+      ],
+      "rules": [
+        "All players must be bona fide enrolled university students on the verified team roster.",
+        "Standard sport federation regulations govern all match play and referee decisions.",
+        "Appropriate athletic sportswear, protective gear, and sports footwear are mandatory.",
+        "Unsportsmanlike conduct, aggressive dissent, or physical violence will cause team expulsion.",
+        "Teams failing to report within 15 minutes of scheduled fixture time forfeit the match.",
+        "Rolling substitutions and timeouts must follow official tournament referee instructions.",
+        "The match referee and tournament director decisions on scoring and fouls are definitive."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "₹500 per team",
+        "feeType": "per_team",
+        "deadline": "To be announced",
+        "capacity": 24,
+        "eligibility": "Open to all university students with verified academic enrollment.",
+        "paymentInstructions": "₹500 per team registration fee payable online through FESTIQ payment portal or offline desk verification.",
+        "cancellationPolicy": "Registrations can be cancelled up to 24 hours prior to the event via the student dashboard."
+      },
+      "organizerContact": {
+        "name": "Cricket Operations Desk (Demo Lead)",
+        "department": "University Cricket Board & Sports Committee",
+        "email": "events@festiq.campus.edu",
+        "phone": "+91 00000 00024",
+        "support": "Contact the organizing committee for venue accessibility assistance and schedule inquiries."
+      },
+      "participantInstructions": [
+        "Matching team athletic kit / jersey with visible numbers",
+        "Protective gear (shin guards, wristbands, racquets as required)",
+        "University student ID and medical clearance slip",
+        "Ensure you arrive at least 30 minutes before the scheduled reporting time.",
+        "Certificates of merit and participation will be issued digitally following verified attendance."
+      ]
+    },
+    "prizePoolType": "dynamic",
+    "prizeAllocationPct": 75,
+    "provisionalFee": true
+  },
+  {
+    "id": "fest-025",
+    "proposalId": "PROP-2026-285E28",
+    "title": "DefendTheNet 2026: Campus CTF Challenge",
+    "category": "Technical",
+    "tagline": "24-hour red team vs blue team ethical hacking scrimmage",
+    "description": "DefendTheNet 2026: Campus CTF Challenge is an official FESTIQ campus technical competition hosted at Campus 15 Central High Performance Lab. Participants engage in competitive technical challenges, skill demonstrations, and expert-reviewed rounds designed to recognize top collegiate excellence.",
+    "fullDescription": "Comprehensive hands-on CTF competition featuring Jeopardy and Attack-Defense categories. Industry standard challenges hosted on isolated university cloud instances.",
+    "date": "2026-11-28",
+    "time": "09:00 AM - 09:00 AM (24 Hours)",
+    "venue": "Campus 15 Central High Performance Lab",
+    "organizer": "KIIT Cyber Security Club",
+    "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
+    "entryFee": "₹100 per participant",
+    "prizePool": "₹11,200",
+    "prizeAmount": 11200,
+    "capacity": 150,
+    "registeredCount": 0,
+    "featured": false,
+    "isFeatured": false,
+    "status": "Open",
+    "managerName": "Devika Ray",
+    "managerPhone": "9876543210",
+    "createdAt": "2026-11-04T00:33:52.497Z",
+    "updatedAt": "2026-11-04T00:33:52.497Z",
+    "feeAmount": 100,
+    "feeType": "per_person",
+    "registrationType": "paid",
+    "isPaid": true,
+    "registrationFee": "₹100 per participant",
+    "pdfDetails": {
+      "detailedDescription": "DefendTheNet 2026: Campus CTF Challenge is our premier campus technical event bringing together aspiring students across university departments.\nThe competition provides an accredited collegiate platform for participants to showcase technical expertise, creative ingenuity, and collaborative problem-solving.\nUnder the evaluation of faculty jurors and domain specialists, participants navigate carefully structured competitive rounds and practical challenges.\nAttendees will test their applied abilities, benchmark their performance against peer institutions, and gain valuable industry-aligned feedback.\nKey activities include structured qualification rounds, live competitive sessions, and formal evaluation defenses before the judging panel.\nPrerequisites include Basic knowledge of algorithms, programming fundamentals, and system design.",
+      "schedule": [
+        {
+          "time": "09:00 AM",
+          "activity": "Reporting Desk & Participant Verification"
+        },
+        {
+          "time": "09:45 AM",
+          "activity": "Inaugural Briefing & Track Orientation"
+        },
+        {
+          "time": "10:30 AM",
+          "activity": "Round 1 / Primary Competition Session"
+        },
+        {
+          "time": "01:00 PM",
+          "activity": "Mid-Day Lunch & Networking Break"
+        },
+        {
+          "time": "02:00 PM",
+          "activity": "Round 2 / Final Competitive Showcase"
+        },
+        {
+          "time": "04:30 PM",
+          "activity": "Jury Evaluation & Score Deliberation"
+        },
+        {
+          "time": "05:30 PM",
+          "activity": "Awards Ceremony & Official Conclusion"
+        }
+      ],
+      "rules": [
+        "Participants must present a valid university student identity card at the reporting desk.",
+        "Individual and team participation must conform strictly to published track requirements.",
+        "All source code and technical submissions must be original work created during the competition.",
+        "Plagiarism or unauthorized copying of third-party intellectual property results in disqualification.",
+        "Use of permitted developer tools, IDEs, and standard libraries must be documented in submission files.",
+        "Submissions must be finalized before the announced deadline; late entries will not be evaluated.",
+        "The technical jury decisions on implementation rigor, efficiency, and originality are final."
+      ],
+      "prizeDistribution": {
+        "first": "To be announced",
+        "second": "To be announced",
+        "third": "To be announced"
+      },
+      "winners": {
+        "first": "To be announced after the event",
+        "second": "To be announced after the event",
+        "third": "To be announced after the event"
+      },
+      "registrationInfo": {
+        "fee": "₹100 per participant",
+        "feeType": "per_person",
+        "deadline": "To be announced",
+        "capacity": 150,
+        "eligibility": "Open to all university students with verified academic enrollment.",
+        "paymentInstructions": "₹100 per participant registration fee payable online through FESTIQ payment portal or offline desk verification.",
+        "cancellationPolicy": "Registrations can be cancelled up to 24 hours prior to the event via the student dashboard."
+      },
+      "organizerContact": {
+        "name": "Devika Ray",
+        "department": "KIIT Cyber Security Club",
+        "email": "events@festiq.campus.edu",
+        "phone": "9876543210",
+        "support": "Contact the organizing committee for venue accessibility assistance and schedule inquiries."
+      },
+      "participantInstructions": [
+        "Laptop with charger and required development environments installed",
+        "University identity card and FESTIQ digital pass",
+        "Notebook and writing utensils",
+        "Ensure you arrive at least 30 minutes before the scheduled reporting time.",
+        "Certificates of merit and participation will be issued digitally following verified attendance."
+      ]
+    },
+    "prizePoolType": "dynamic",
+    "prizeAllocationPct": 75,
+    "provisionalFee": true
+  }
+]

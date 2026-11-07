@@ -1,0 +1,69 @@
+# ==============================================================================
+# FESTIQ — Git Exclusion Rules (.gitignore)
+# ==============================================================================
+
+# Dependencies
+node_modules/
+**/node_modules/
+.pnp
+.pnp.js
+
+# Build Outputs & Bundles
+dist/
+dist-ssr/
+build/
+*.tsbuildinfo
+
+# Local Scratch Directory & Test Profiles (Contains browser automation profiles & test scripts)
+scratch/
+scratch/**
+
+# Environment Variables & Secret Files
+.env
+.env.*
+!.env.example
+*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime, Caches & Temporary Files
+.cache/
+.temp/
+.tmp/
+*.tmp
+*.tmp.*
+backend/data/pdf-cache/
+backend/data/pdf-cache/**
+backend/data/backups/
+backend/data/backups/**
+backend/data/rateLimits.json
+backend/data/processedWebhooks.json
+*.pdf
+
+# Screenshots & Visual Test Captures
+screenshot*.png
+*.png.bak
+
+# Editor & OS Metadata
+.DS_Store
+Thumbs.db
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Excluded Root Planning / Temporary Docs (Preserved locally, not for GitHub)
+ROADMAP.md
+
+# Package Manager Locks (per existing project convention)
+package-lock.json

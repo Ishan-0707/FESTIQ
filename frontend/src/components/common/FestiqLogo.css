@@ -1,0 +1,165 @@
+/* ==========================================================================
+   FESTIQ CAMPUS CREST (OPTION D) — BRAND LOGO STYLES
+   Supports automatic theme adaptation (Dark & Light)
+   ========================================================================== */
+
+:root,
+[data-theme="dark"] {
+  --logo-arch-1: #F3E5AB;
+  --logo-arch-2: #C6A96B;
+  --logo-arch-3: #9E7E38;
+  
+  --logo-star-core: #FFFFFF;
+  --logo-star-body: #FFF4D4;
+  --logo-star-glow: #C6A96B;
+  
+  --logo-cyan-1: #22D3EE;
+  --logo-cyan-2: #06B6D4;
+  --logo-cyan-3: #0D9488;
+  
+  --logo-teal-1: #06B6D4;
+  --logo-teal-2: #0F766E;
+  
+  --logo-gold-1: #FDE68A;
+  --logo-gold-2: #F59E0B;
+  --logo-gold-3: #C6A96B;
+  
+  --logo-gold-sub-1: #F59E0B;
+  --logo-gold-sub-2: #B45309;
+  
+  --logo-violet-1: #A855F7;
+  --logo-violet-2: #7C3AED;
+  --logo-violet-3: #4F46E5;
+  
+  --logo-tip-spark: #67E8F9;
+  
+  --logo-wordmark-text: #F0F0E8;
+  --logo-wordmark-accent: #D28B63;
+  --logo-tagline-text: rgba(240, 240, 232, 0.65);
+}
+
+[data-theme="light"] {
+  --logo-arch-1: #4169C8;
+  --logo-arch-2: #2D4FA3;
+  --logo-arch-3: #1E3778;
+  
+  --logo-star-core: #FEF3C7;
+  --logo-star-body: #D97706;
+  --logo-star-glow: #92400E;
+  
+  --logo-cyan-1: #0284C7;
+  --logo-cyan-2: #0369A1;
+  --logo-cyan-3: #0F766E;
+  
+  --logo-teal-1: #0D9488;
+  --logo-teal-2: #115E59;
+  
+  --logo-gold-1: #D97706;
+  --logo-gold-2: #B45309;
+  --logo-gold-3: #78350F;
+  
+  --logo-gold-sub-1: #B45309;
+  --logo-gold-sub-2: #78350F;
+  
+  --logo-violet-1: #6366F1;
+  --logo-violet-2: #4F46E5;
+  --logo-violet-3: #3730A3;
+  
+  --logo-tip-spark: #4169C8;
+  
+  --logo-wordmark-text: #242C43;
+  --logo-wordmark-accent: #4169C8;
+  --logo-tagline-text: rgba(36, 44, 67, 0.70);
+}
+
+/* Container */
+.festiq-logo-wrapper {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  user-select: none;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+
+.festiq-logo-wrapper:hover .festiq-campus-crest-svg {
+  transform: scale(1.05);
+}
+
+/* SVG Emblem - Zero-Whitespace, Exact Aspect Ratio */
+.festiq-campus-crest-svg {
+  display: block;
+  flex-shrink: 0;
+  height: var(--logo-emblem-height, 38px);
+  width: auto;
+  aspect-ratio: 80 / 51;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: visible;
+}
+
+/* Wordmark & Typography */
+.festiq-logo-text-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.1;
+}
+
+.festiq-logo-title {
+  font-family: inherit;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--logo-wordmark-text);
+  display: flex;
+  align-items: baseline;
+  transition: color 0.2s ease;
+}
+
+.festiq-logo-title .title-accent {
+  color: var(--logo-wordmark-accent);
+  transition: color 0.2s ease;
+}
+
+.festiq-logo-tagline {
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--logo-tagline-text);
+  margin-top: 3px;
+  transition: color 0.2s ease;
+}
+
+/* Size Presets - Balanced Proportions Between Emblem & Text */
+.festiq-logo-xs {
+  --logo-emblem-height: 20px;
+}
+.festiq-logo-xs .festiq-logo-text-group { margin-left: 8px; }
+.festiq-logo-xs .festiq-logo-title { font-size: 1.05rem; }
+.festiq-logo-xs .festiq-logo-tagline { font-size: 0.58rem; }
+
+.festiq-logo-sm {
+  --logo-emblem-height: 28px;
+}
+.festiq-logo-sm .festiq-logo-text-group { margin-left: 10px; }
+.festiq-logo-sm .festiq-logo-title { font-size: 1.25rem; }
+.festiq-logo-sm .festiq-logo-tagline { font-size: 0.62rem; }
+
+.festiq-logo-md {
+  --logo-emblem-height: 38px;
+}
+.festiq-logo-md .festiq-logo-text-group { margin-left: 12px; }
+.festiq-logo-md .festiq-logo-title { font-size: 1.45rem; }
+.festiq-logo-md .festiq-logo-tagline { font-size: 0.68rem; }
+
+.festiq-logo-lg {
+  --logo-emblem-height: 50px;
+}
+.festiq-logo-lg .festiq-logo-text-group { margin-left: 16px; }
+.festiq-logo-lg .festiq-logo-title { font-size: 1.85rem; }
+.festiq-logo-lg .festiq-logo-tagline { font-size: 0.75rem; }
+
+.festiq-logo-xl {
+  --logo-emblem-height: 64px;
+}
+.festiq-logo-xl .festiq-logo-text-group { margin-left: 20px; }
+.festiq-logo-xl .festiq-logo-title { font-size: 2.35rem; }
+.festiq-logo-xl .festiq-logo-tagline { font-size: 0.88rem; }

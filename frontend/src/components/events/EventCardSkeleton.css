@@ -1,0 +1,89 @@
+/* ============================================================
+   FESTIQ UI Component — Event Card Shimmer Skeleton Loader
+   ============================================================ */
+
+.festiq-card-skeleton {
+  background-color: var(--card-bg, #203B3E);
+  border: 1px solid var(--border-subtle, #294044);
+  border-radius: var(--radius-lg, 16px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.skeleton-media {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 0;
+}
+
+.skeleton-body {
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.skeleton-meta-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 2px;
+}
+
+.skeleton-pill {
+  width: 70px;
+  height: 14px;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-line {
+  height: 14px;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.title-line {
+  height: 20px;
+  width: 85%;
+  margin-bottom: 4px;
+}
+
+.text-line {
+  width: 95%;
+}
+
+.text-line-short {
+  width: 60%;
+  margin-bottom: 6px;
+}
+
+.skeleton-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: auto;
+  width: 100%;
+}
+
+.skeleton-pricing {
+  width: 100%;
+  height: 52px;
+  border-radius: var(--radius-sm, 8px);
+}
+
+.skeleton-actions-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  width: 100%;
+}
+
+.skeleton-btn {
+  width: 100%;
+  height: 34px;
+  border-radius: var(--radius-sm, 8px);
+}
+

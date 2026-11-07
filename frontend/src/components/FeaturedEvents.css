@@ -1,0 +1,273 @@
+/* ============================================================
+   FESTIQ Featured Events Styles — Design System Refinement
+   ============================================================ */
+
+.featured-section {
+  padding: var(--section-padding, 64px 0);
+  background-color: var(--bg-primary);
+  position: relative;
+  width: 100%;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-lg, 24px);
+  width: 100%;
+}
+
+/* Unified Event Card */
+.event-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.event-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Media Banner (16:9 Ratio) */
+.card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--bg-secondary);
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.event-card:hover .card-image {
+  transform: scale(1.05);
+}
+
+.card-media-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 20, 16, 0.05) 0%, rgba(11, 20, 16, 0.75) 100%);
+  pointer-events: none;
+}
+
+[data-theme="light"] .card-media-overlay {
+  background: linear-gradient(180deg, rgba(38, 50, 56, 0.05) 0%, rgba(38, 50, 56, 0.5) 100%);
+}
+
+/* Badges Container on Media */
+.card-badges-wrapper {
+  position: absolute;
+  top: var(--space-md, 14px);
+  left: var(--space-md, 14px);
+  right: var(--space-md, 14px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm, 8px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Content Area */
+.card-content {
+  padding: var(--space-lg, 20px);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm, 10px);
+  margin-bottom: var(--space-sm, 10px);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.card-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.venue-item {
+  min-width: 0;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.meta-icon {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.venue-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+
+.card-title {
+  font-family: var(--font-heading);
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.35;
+  margin-bottom: var(--space-sm, 8px);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-tagline {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: var(--space-lg, 20px);
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Card Footer with CTA */
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-md, 14px);
+  border-top: 1px solid var(--border-subtle);
+  margin-top: auto;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.card-pricing {
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.pricing-value {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.card-action-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Skeleton Loading State */
+.event-card-skeleton {
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+}
+
+.skeleton-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.skeleton-body {
+  padding: var(--space-lg, 20px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md, 14px);
+}
+
+.skeleton-badge {
+  width: 80px;
+  height: 22px;
+}
+
+.skeleton-title {
+  width: 90%;
+  height: 24px;
+}
+
+.skeleton-meta {
+  width: 60%;
+  height: 18px;
+}
+
+/* Error & Empty States */
+.event-error-container,
+.event-empty-container {
+  text-align: center;
+  padding: 56px var(--space-lg, 24px);
+  background: var(--card-bg);
+  border: 1px dashed var(--border-subtle);
+  border-radius: var(--radius-md);
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.error-icon {
+  color: #EF4444;
+  margin-bottom: var(--space-md, 16px);
+}
+
+.error-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  margin-bottom: var(--space-sm, 8px);
+}
+
+.error-message {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg, 20px);
+}
+
+/* Responsive Grid Breakpoints */
+@media (max-width: 1024px) {
+  .events-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .events-grid {
+    grid-template-columns: 1fr;
+  }
+  .card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .card-action-group {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

@@ -1,0 +1,180 @@
+[
+  {
+    "id": "gal-001",
+    "eventName": "HackNova 2025: Autonomous Systems Finale",
+    "category": "Technical",
+    "date": "2025-11-18",
+    "description": "Visual highlights from the 36-hour national hackathon where 120 collegiate teams assembled IoT hardware and deployed neural networks at the Campus Innovation Hub.",
+    "coverImage": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+    "photos": [
+      {
+        "id": "p-101",
+        "url": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Opening ceremony and hardware distribution in the central atrium"
+      },
+      {
+        "id": "p-102",
+        "url": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Mentors reviewing machine learning models during the 2 AM check-in"
+      },
+      {
+        "id": "p-103",
+        "url": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Final pitch presentations before the jury panel"
+      }
+    ],
+    "isFeatured": true
+  },
+  {
+    "id": "gal-002",
+    "eventName": "Rhythm & Echoes 2025: Amphitheatre Symphony",
+    "category": "Cultural",
+    "date": "2025-10-24",
+    "description": "A night of live fusion concerts, battle of the collegiate bands, and classical Odissi choreography beneath the starry sky at Campus Greens.",
+    "coverImage": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80",
+    "photos": [
+      {
+        "id": "p-201",
+        "url": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Lighting the inaugural lamp at the open-air amphitheatre"
+      },
+      {
+        "id": "p-202",
+        "url": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Rock band finals illuminated by stadium lights"
+      },
+      {
+        "id": "p-203",
+        "url": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Celebrity performance finale with a crowd of 3,000 students"
+      }
+    ],
+    "isFeatured": true
+  },
+  {
+    "id": "gal-003",
+    "eventName": "Apex Arena 2025: Gigabit LAN Showdown",
+    "category": "Gaming",
+    "date": "2025-12-05",
+    "description": "National tactical FPS and mobile battle royale finals broadcasted live on arena screens with 64 competitive esports athletes.",
+    "coverImage": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80",
+    "photos": [
+      {
+        "id": "p-301",
+        "url": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Esports main stage with live spectator commentary"
+      },
+      {
+        "id": "p-302",
+        "url": "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Championship match point intensity in the tactical FPS division"
+      }
+    ],
+    "isFeatured": true
+  },
+  {
+    "id": "gal-004",
+    "eventName": "Autonomous Drone Assembly Bootcamp 2025",
+    "category": "Workshops",
+    "date": "2025-09-14",
+    "description": "Hands-on engineering workshop where students designed quadcopter frames, soldered flight controllers, and achieved optical flow indoor hover.",
+    "coverImage": "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=800&q=80",
+    "photos": [
+      {
+        "id": "p-401",
+        "url": "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Participants soldering brushless electronic speed controllers"
+      },
+      {
+        "id": "p-402",
+        "url": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Outdoor test flight telemetry calibration in the sports ground"
+      }
+    ],
+    "isFeatured": false
+  },
+  {
+    "id": "gal-005",
+    "eventName": "Apex Venture 2025: Angel Pitch Summit",
+    "category": "Management",
+    "date": "2025-10-10",
+    "description": "Student entrepreneurs presenting seed-stage pitches before angel investors and venture jury partners, unlocking ₹15 Lakhs in non-dilutive campus grants.",
+    "coverImage": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=800&q=80",
+    "photos": [
+      {
+        "id": "p-501",
+        "url": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Founder pitching SaaS logistics platform to the investor panel"
+      },
+      {
+        "id": "p-502",
+        "url": "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Roundtable Q&A session with alumni venture capital partners"
+      }
+    ],
+    "isFeatured": false
+  },
+  {
+    "id": "gal-006",
+    "eventName": "Inter-Collegiate Floodlit Futsal Derby 2025",
+    "category": "Sports",
+    "date": "2025-11-30",
+    "description": "High-octane night tournament where 16 university teams competed across knockout rounds on the campus turf pitch.",
+    "coverImage": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80",
+    "photos": [
+      {
+        "id": "p-601",
+        "url": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Semifinal penalty shootout under floodlights"
+      },
+      {
+        "id": "p-602",
+        "url": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Champions trophy presentation with university sports directors"
+      }
+    ],
+    "isFeatured": true
+  },
+  {
+    "id": "gal-007",
+    "eventName": "CyberShield CTF: Security & Defense 2025",
+    "category": "Technical",
+    "date": "2025-08-20",
+    "description": "24-hour capture the flag competition testing reverse engineering, binary exploitation, cryptography, and defensive cloud hardening.",
+    "coverImage": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
+    "photos": [
+      {
+        "id": "p-701",
+        "url": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Leaderboard scoreboard tracking live penetration flags"
+      },
+      {
+        "id": "p-702",
+        "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Team collaborating on binary exploitation challenge"
+      }
+    ],
+    "isFeatured": false
+  },
+  {
+    "id": "gal-008",
+    "eventName": "Sanskriti 2025: Traditional Dance & Fusion Showcase",
+    "category": "Cultural",
+    "date": "2025-09-28",
+    "description": "Celebrating Indian cultural heritage through classical Bharatanatyam, Kathak, and contemporary folk ensemble presentations.",
+    "coverImage": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80",
+    "photos": [
+      {
+        "id": "p-801",
+        "url": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Traditional folk dance ensemble on the main auditorium stage"
+      },
+      {
+        "id": "p-802",
+        "url": "https://images.unsplash.com/photo-1469488865564-c2de10f69f96?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Cultural procession and stage lighting celebration"
+      }
+    ],
+    "isFeatured": false
+  }
+]
