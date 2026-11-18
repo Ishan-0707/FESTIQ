@@ -1,0 +1,374 @@
+/* ============================================================
+   FESTIQ — Proposal Review Modal Styles
+   Dual-Theme Compatible (Midnight Forest + Champagne & Light)
+   ============================================================ */
+
+.proposal-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.proposal-modal-content {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  width: 100%;
+  max-width: 860px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+  color: var(--text-primary);
+}
+
+/* Header */
+.proposal-modal-header {
+  padding: 24px 28px 18px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--bg-deep);
+}
+
+.header-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.proposal-id-badge {
+  font-family: monospace;
+  font-size: 0.82rem;
+  color: var(--accent-primary);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.proposal-modal-title {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.proposal-modal-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Nav Tabs */
+.proposal-modal-nav {
+  display: flex;
+  background: var(--bg-deep);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0 20px;
+  overflow-x: auto;
+  gap: 4px;
+}
+
+.nav-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.nav-tab-btn:hover {
+  color: var(--text-primary);
+}
+
+.nav-tab-btn.active {
+  color: var(--accent-primary);
+  border-bottom-color: var(--accent-primary);
+}
+
+/* Modal Body */
+.proposal-modal-body {
+  padding: 24px 28px;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Spec Card */
+.spec-card {
+  background: var(--bg-deep);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.spec-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.spec-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+}
+
+.spec-label {
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-right: 4px;
+}
+
+.spec-row-full {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.88rem;
+}
+
+.spec-text-block {
+  margin: 0;
+  padding: 10px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Forms in Tabs */
+.tab-pane-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.pane-intro h4 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.pane-intro p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.pane-alert {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+}
+
+.alert-success {
+  background: rgba(76, 175, 80, 0.12);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  color: #81C784;
+}
+
+.alert-error {
+  background: rgba(229, 115, 115, 0.12);
+  border: 1px solid rgba(229, 115, 115, 0.3);
+  color: #FF8A80;
+}
+
+.field-hint {
+  font-size: 0.78rem;
+  font-weight: normal;
+  color: var(--text-muted);
+}
+
+/* Checkbox Items */
+.feasibility-checks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  background: var(--bg-deep);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.checkbox-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent-primary);
+}
+
+.pane-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+}
+
+/* Workflow tab */
+.status-update-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.history-log-box {
+  margin-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 16px;
+}
+
+.history-log-box h5 {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.history-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+.history-entry {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  background: var(--bg-deep);
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+}
+
+.history-time {
+  color: var(--text-muted);
+}
+
+.history-actor {
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.history-status {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.history-note {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Modal Footer & Publication Gates */
+.proposal-modal-footer {
+  padding: 18px 28px;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-deep);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.publication-status-summary {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pub-gate-pill {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+}
+
+.pub-gate-pill strong.pass {
+  color: #81C784;
+}
+
+.pub-gate-pill strong.fail {
+  color: #FFB74D;
+}
+
+.footer-action-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.publish-modal-alert {
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  border-top: 1px solid var(--border-subtle);
+}
+

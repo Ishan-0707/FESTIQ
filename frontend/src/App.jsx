@@ -1,9 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import FeaturedEvents from './components/FeaturedEvents';
-import CategoryPreview from './components/CategoryPreview';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import TopBar from './components/layout/TopBar';
 import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import ExploreEventsPage from './pages/ExploreEventsPage';
+import CalendarPage from './pages/CalendarPage';
+import GalleryPage from './pages/GalleryPage';
+import ManagementPage from './pages/ManagementPage';
+import HostEventPage from './pages/HostEventPage';
+import StudentDashboardPage from './pages/StudentDashboardPage';
+import AboutPage from './pages/AboutPage';
+import ScrollToTop from './components/common/ScrollToTop';
+import AuthModal from './components/auth/AuthModal';
+import ProfileModal from './components/auth/ProfileModal';
+import RegistrationModal from './components/events/RegistrationModal';
+import EventDetailsModal from './components/events/EventDetailsModal';
+import { AuthProvider } from './context/AuthContext';
+import { ToastProvider } from './context/ToastContext';
+import ToastContainer from './components/ui/Toast';
 import Button from './components/ui/Button';
 import Badge from './components/ui/Badge';
 import { checkBackendHealth, fetchEvents } from './services/api';
@@ -13,7 +27,40 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [backendHealth, setBackendHealth] = useState(null);
-  const [selectedEvent, setSelectedEvent] = useState(null);
+
+  // Modals state
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [profileModalOpen, setProfileModalOpen] = useState(false);
+  const [registrationModalOpen, setRegistrationModalOpen] = useState(false);
+  const [selectedEventForReg, setSelectedEventForReg] = useState(null);
+  const [previewEvent, setPreviewEvent] = useState(null);
+
+  // Theme Management (Defaults to 'dark' Midnight Forest + Champagne, restores 'festiq-theme' from localStorage)
+  const [theme, setTheme] = useState(() => {
+    try {
+      const saved = localStorage.getItem('festiq-theme');
+      if (saved === 'light' || saved === 'dark') return saved;
+      const attr = document.documentElement.getAttribute('data-theme');
+      if (attr === 'light' || attr === 'dark') return attr;
+      return 'dark';
+    } catch (e) {
+      return 'dark';
+    }
+  });
+
+  // Synchronize theme to document element and localStorage
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    try {
+      localStorage.setItem('festiq-theme', theme);
+    } catch (e) {
+      console.warn('Unable to persist theme to localStorage', e);
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
 
   // Load events and check health on initial mount
   const loadInitialData = async () => {
@@ -21,11 +68,9 @@ export default function App() {
     setError(null);
 
     try {
-      // 1. Health check
       const health = await checkBackendHealth();
       setBackendHealth(health);
 
-      // 2. Fetch events from Express API
       const response = await fetchEvents();
       if (response.success) {
         setEvents(response.data);
@@ -43,194 +88,155 @@ export default function App() {
     loadInitialData();
   }, []);
 
-  const handleScrollToExplore = () => {
-    const featuredEl = document.getElementById('featured');
-    if (featuredEl) {
-      featuredEl.scrollIntoView({ behavior: 'smooth' });
-    }
+  const handleOpenRegistration = (event = null) => {
+    setSelectedEventForReg(event);
+    setRegistrationModalOpen(true);
   };
 
-  const handleCategorySelect = async (category) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await fetchEvents({ category });
-      if (response.success) {
-        setEvents(response.data);
-      } else {
-        setError(response.error);
-      }
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-      handleScrollToExplore();
-    }
+  const handleRegisterFromPreview = (event) => {
+    setPreviewEvent(null);
+    handleOpenRegistration(event);
   };
 
   return (
-    <div className="festiq-app">
-      {/* Navigation */}
-      <Navbar onExploreClick={handleScrollToExplore} />
+    <AuthProvider>
+      <ToastProvider>
+        <Router>
+          <ScrollToTop />
+          <div className="festiq-app">
+            <ToastContainer />
 
-      {/* Main Content Shell */}
-      <main>
-        {/* Hero Section */}
-        <Hero onExploreClick={handleScrollToExplore} />
+            {/* Main Content Shell (Full-width with Sticky Viewport TopBar) */}
+            <div className="festiq-main-layout">
+              {/* Sticky TopBar with Brand, Center Nav, Profile/Auth, & Mobile Drawer */}
+              <TopBar
+                currentTheme={theme}
+                onToggleTheme={toggleTheme}
+                onOpenAuthModal={() => setAuthModalOpen(true)}
+                onOpenProfileModal={() => setProfileModalOpen(true)}
+              />
 
-        {/* Featured Events (Fetched directly from Express API) */}
-        <FeaturedEvents
-          events={events}
-          loading={loading}
-          error={error}
-          onRetry={loadInitialData}
-          onEventSelect={(event) => setSelectedEvent(event)}
+          {/* Primary View Router */}
+          <main>
+            <Routes>
+              {/* Home Page: Hero, Featured Events, Browse by Category preview */}
+              <Route
+                path="/"
+                element={
+                  <HomePage
+                    events={events}
+                    loading={loading}
+                    error={error}
+                    onRetry={loadInitialData}
+                    onEventSelect={(event) => setPreviewEvent(event)}
+                    onOpenRegister={handleOpenRegistration}
+                    onRegisterEvent={handleOpenRegistration}
+                  />
+                }
+              />
+
+              {/* Explore Events Page: Full catalogue, search, category pills, registration */}
+              <Route
+                path="/events"
+                element={
+                  <ExploreEventsPage
+                    events={events}
+                    loading={loading}
+                    error={error}
+                    onRetry={loadInitialData}
+                    onEventSelect={(event) => setPreviewEvent(event)}
+                    onRegisterEvent={handleOpenRegistration}
+                  />
+                }
+              />
+
+              {/* Dedicated Event Calendar Page: Monthly Grid, Multiple Events per Date, My Schedule Filter */}
+              <Route
+                path="/calendar"
+                element={
+                  <CalendarPage
+                    events={events}
+                    loading={loading}
+                    error={error}
+                    onRetry={loadInitialData}
+                    onEventSelect={(event) => setPreviewEvent(event)}
+                    onOpenAuthModal={() => setAuthModalOpen(true)}
+                  />
+                }
+              />
+
+              {/* Gallery Page: Campus Event Photo Visual Archive & Lightbox */}
+              <Route path="/gallery" element={<GalleryPage />} />
+
+              {/* Public Host an Event & Proposal Submission/Tracking */}
+              <Route path="/host-event" element={<HostEventPage />} />
+
+              {/* Student Dashboard: Personal Event Passes & QR Check-in Tickets */}
+              <Route
+                path="/dashboard"
+                element={<StudentDashboardPage onOpenAuthModal={() => setAuthModalOpen(true)} />}
+              />
+
+              {/* Management Operations Hub: Dashboard KPIs, Participant Table, CSV Export, Event Creation */}
+              <Route
+                path="/manage"
+                element={
+                  <ManagementPage
+                    onOpenAuthModal={() => setAuthModalOpen(true)}
+                    onEventCreatedParent={() => loadInitialData()}
+                  />
+                }
+              />
+              <Route path="/management" element={<Navigate to="/manage" replace />} />
+
+              {/* Backward compatibility: Old Categories route redirects seamlessly to /events */}
+              <Route path="/categories" element={<Navigate to="/events" replace />} />
+
+              {/* About Page: Platform overview and coursework context */}
+              <Route path="/about" element={<AboutPage />} />
+
+              {/* Fallback to Home */}
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </main>
+
+          {/* Global Footer */}
+          <Footer />
+        </div>
+
+        {/* 3. Combined Authentication Modal (Login / Sign Up Switchable Tabs) */}
+        <AuthModal
+          isOpen={authModalOpen}
+          onClose={() => setAuthModalOpen(false)}
         />
 
-        {/* Category Preview */}
-        <CategoryPreview onSelectCategory={handleCategorySelect} />
-      </main>
+        {/* 3b. Student Profile Modal (View / Edit Student Profile) */}
+        <ProfileModal
+          isOpen={profileModalOpen}
+          onClose={() => setProfileModalOpen(false)}
+        />
 
-      {/* Footer */}
-      <Footer />
+        {/* 4. Event Registration Modal (Real POST /api/registrations) */}
+        <RegistrationModal
+          isOpen={registrationModalOpen}
+          onClose={() => setRegistrationModalOpen(false)}
+          events={events}
+          preselectedEvent={selectedEventForReg}
+          onSuccess={(reg) => {
+            console.log('Registration confirmed:', reg);
+          }}
+        />
 
-      {/* Quick Preview Modal for Selected Event */}
-      {selectedEvent && (
-        <div className="event-modal-backdrop" onClick={() => setSelectedEvent(null)}>
-          <div className="event-modal-card" onClick={(e) => e.stopPropagation()}>
-            <div className="event-modal-header">
-              <Badge variant={selectedEvent.category} size="md">
-                {selectedEvent.category}
-              </Badge>
-              <button 
-                className="event-modal-close" 
-                onClick={() => setSelectedEvent(null)}
-                aria-label="Close modal"
-              >
-                ✕
-              </button>
-            </div>
-            <h3 className="event-modal-title">{selectedEvent.title}</h3>
-            <p className="event-modal-desc">{selectedEvent.description}</p>
-            <div className="event-modal-meta">
-              <div><strong>Date:</strong> {selectedEvent.date}</div>
-              <div><strong>Time:</strong> {selectedEvent.time}</div>
-              <div><strong>Venue:</strong> {selectedEvent.venue}</div>
-              <div><strong>Entry Fee:</strong> {selectedEvent.entryFee || 'Free'}</div>
-            </div>
-            <div className="event-modal-actions">
-              <Button
-                variant="primary"
-                size="md"
-                onClick={() => {
-                  alert(`Registration for "${selectedEvent.title}" will be fully enabled in Phase 6!`);
-                  setSelectedEvent(null);
-                }}
-              >
-                Register For Event
-              </Button>
-              <Button
-                variant="secondary"
-                size="md"
-                onClick={() => setSelectedEvent(null)}
-              >
-                Close
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Modal Quick Styles */}
-      <style>{`
-        .event-modal-backdrop {
-          position: fixed;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.78);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 2000;
-          padding: 20px;
-        }
-        .event-modal-card {
-          background: var(--bg-card);
-          border: 1px solid var(--border-hover);
-          border-radius: var(--radius-lg);
-          padding: 28px;
-          max-width: 540px;
-          width: 100%;
-          box-shadow: var(--shadow-glow);
-          animation: modalFadeIn 0.22s ease;
-        }
-        @keyframes modalFadeIn {
-          from { opacity: 0; transform: scale(0.96); }
-          to { opacity: 1; transform: scale(1); }
-        }
-        .event-modal-header {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-bottom: 16px;
-        }
-        .event-modal-close {
-          color: var(--text-secondary);
-          font-size: 1.25rem;
-          padding: 4px 8px;
-          border-radius: var(--radius-sm);
-          cursor: pointer;
-          transition: all 0.15s ease;
-        }
-        .event-modal-close:hover {
-          color: var(--text-primary);
-          background: var(--bg-card-hover);
-        }
-        .event-modal-title {
-          font-family: var(--font-heading);
-          font-size: 1.35rem;
-          margin-bottom: 10px;
-          line-height: 1.3;
-        }
-        .event-modal-desc {
-          font-size: 0.92rem;
-          color: var(--text-secondary);
-          line-height: 1.6;
-          margin-bottom: 20px;
-        }
-        .event-modal-meta {
-          background: var(--bg-primary);
-          border: 1px solid var(--border-subtle);
-          border-radius: var(--radius-md);
-          padding: 16px;
-          margin-bottom: 24px;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 10px;
-          font-size: 0.85rem;
-          color: var(--text-secondary);
-        }
-        .event-modal-meta strong {
-          color: var(--text-primary);
-        }
-        .event-modal-actions {
-          display: flex;
-          gap: 12px;
-          justify-content: flex-end;
-        }
-        @media (max-width: 480px) {
-          .event-modal-meta {
-            grid-template-columns: 1fr;
-          }
-          .event-modal-actions {
-            flex-direction: column;
-          }
-          .event-modal-actions .festiq-btn {
-            width: 100%;
-          }
-        }
-      `}</style>
-    </div>
-  );
+        {/* 5. Comprehensive Event Details Modal */}
+        <EventDetailsModal
+          isOpen={Boolean(previewEvent)}
+          event={previewEvent}
+          onClose={() => setPreviewEvent(null)}
+          onRegister={handleRegisterFromPreview}
+        />
+      </div>
+    </Router>
+    </ToastProvider>
+  </AuthProvider>
+);
 }

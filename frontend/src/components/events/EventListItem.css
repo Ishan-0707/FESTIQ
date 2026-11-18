@@ -1,0 +1,267 @@
+/* ============================================================
+   FESTIQ Event List Item Styles — Dual-Theme Responsive
+   ============================================================ */
+
+.festiq-event-list-item {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg, 16px);
+  overflow: hidden;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+  position: relative;
+  gap: 20px;
+  padding: 16px;
+}
+
+.festiq-event-list-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--accent-primary);
+}
+
+/* Thumbnail */
+.list-item-thumbnail-wrap {
+  width: 220px;
+  min-width: 220px;
+  height: 140px;
+  border-radius: var(--radius-md, 12px);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  background-color: var(--bg-deep);
+}
+
+.list-item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.list-item-thumbnail-wrap:hover .list-item-img {
+  transform: scale(1.05);
+}
+
+.list-item-thumbnail-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(10, 21, 23, 0.7) 100%);
+  pointer-events: none;
+}
+
+[data-theme="light"] .list-item-thumbnail-overlay {
+  background: linear-gradient(180deg, transparent 50%, rgba(36, 44, 67, 0.35) 100%);
+}
+
+.list-item-category-floating {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: none; /* Shown on mobile */
+  z-index: 2;
+}
+
+/* Content Area */
+.list-item-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.list-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.list-item-badges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.list-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.list-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.meta-icon {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.venue-text {
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list-item-title {
+  font-family: var(--font-heading);
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+  cursor: pointer;
+  line-height: 1.3;
+  transition: color var(--transition-fast);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.list-item-title:hover {
+  color: var(--accent-primary);
+}
+
+.list-item-tagline {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* Side Column: Pricing & Actions */
+.list-item-side {
+  width: 230px;
+  min-width: 230px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-left: 1px solid var(--border-subtle);
+  padding-left: 20px;
+  flex-shrink: 0;
+}
+
+.list-item-pricing {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 12px;
+  background-color: var(--surface-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm, 8px);
+}
+
+.list-pricing-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+}
+
+.list-pricing-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.pricing-icon {
+  color: var(--accent-primary);
+}
+
+.list-pricing-val {
+  font-weight: 700;
+  font-family: var(--font-heading);
+}
+
+.prize-val {
+  color: var(--accent-primary);
+}
+
+.fee-val {
+  color: var(--text-primary);
+}
+
+.list-item-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.list-action-btn {
+  flex: 1;
+  justify-content: center;
+}
+
+/* ============================================================
+   Responsive Breakpoints
+   ============================================================ */
+
+@media (max-width: 991px) {
+  .festiq-event-list-item {
+    gap: 16px;
+    padding: 14px;
+  }
+
+  .list-item-thumbnail-wrap {
+    width: 180px;
+    min-width: 180px;
+    height: 130px;
+  }
+
+  .list-item-side {
+    width: 200px;
+    min-width: 200px;
+    padding-left: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .festiq-event-list-item {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .list-item-thumbnail-wrap {
+    width: 100%;
+    min-width: unset;
+    height: 180px;
+  }
+
+  .list-item-category-floating {
+    display: block;
+  }
+
+  .desktop-cat-badge {
+    display: none;
+  }
+
+  .list-item-side {
+    width: 100%;
+    min-width: unset;
+    border-left: none;
+    border-top: 1px solid var(--border-subtle);
+    padding-left: 0;
+    padding-top: 14px;
+  }
+}
+

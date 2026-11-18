@@ -1,31 +1,21 @@
 import React from 'react';
-import { Sparkles, Globe, Code2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import FestiqLogo from './common/FestiqLogo';
 import './Footer.css';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const handleNavClick = (e, targetId) => {
-    e.preventDefault();
-    const element = document.getElementById(targetId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <footer id="about" className="footer-wrapper">
+    <footer className="footer-wrapper">
       <div className="container footer-container">
         {/* Top Grid Section */}
         <div className="footer-top">
           {/* Brand Column */}
           <div className="footer-brand-col">
-            <div className="footer-brand">
-              <div className="brand-icon-box">
-                <Sparkles size={16} className="brand-sparkle" />
-              </div>
-              <span className="brand-title">FESTIQ</span>
-            </div>
+            <Link to="/" className="footer-brand" aria-label="FESTIQ Home">
+              <FestiqLogo variant="full" size="md" />
+            </Link>
             <p className="footer-tagline">Discover. Attend. Experience.</p>
             <p className="footer-description">
               A unified campus event discovery and registration platform engineered 
@@ -36,6 +26,7 @@ export default function Footer() {
               <span className="tech-badge">CSS3</span>
               <span className="tech-badge">ES6+ JS</span>
               <span className="tech-badge">React</span>
+              <span className="tech-badge">React Router</span>
               <span className="tech-badge">Express</span>
             </div>
           </div>
@@ -44,10 +35,11 @@ export default function Footer() {
           <div className="footer-links-col">
             <h4 className="footer-heading">Quick Navigation</h4>
             <ul className="footer-list">
-              <li><a href="#home" onClick={(e) => handleNavClick(e, 'home')}>Home Overview</a></li>
-              <li><a href="#featured" onClick={(e) => handleNavClick(e, 'featured')}>Featured Highlights</a></li>
-              <li><a href="#categories" onClick={(e) => handleNavClick(e, 'categories')}>Event Categories</a></li>
-              <li><a href="#about" onClick={(e) => handleNavClick(e, 'about')}>About Platform</a></li>
+              <li><Link to="/">Home Overview</Link></li>
+              <li><Link to="/events">Explore Events</Link></li>
+              <li><Link to="/host-event">Host an Event</Link></li>
+              <li><Link to="/gallery">Campus Gallery</Link></li>
+              <li><Link to="/about">About Platform</Link></li>
             </ul>
           </div>
 
@@ -55,11 +47,11 @@ export default function Footer() {
           <div className="footer-links-col">
             <h4 className="footer-heading">Event Domains</h4>
             <ul className="footer-list">
-              <li><a href="#categories" onClick={(e) => handleNavClick(e, 'categories')}>Technical & Hackathons</a></li>
-              <li><a href="#categories" onClick={(e) => handleNavClick(e, 'categories')}>Cultural & Arts</a></li>
-              <li><a href="#categories" onClick={(e) => handleNavClick(e, 'categories')}>E-Sports & Gaming</a></li>
-              <li><a href="#categories" onClick={(e) => handleNavClick(e, 'categories')}>Hands-on Workshops</a></li>
-              <li><a href="#categories" onClick={(e) => handleNavClick(e, 'categories')}>Business & Startups</a></li>
+              <li><Link to="/events?category=Technical">Technical & Hackathons</Link></li>
+              <li><Link to="/events?category=Cultural">Cultural & Arts</Link></li>
+              <li><Link to="/events?category=Gaming">E-Sports & Gaming</Link></li>
+              <li><Link to="/events?category=Workshops">Hands-on Workshops</Link></li>
+              <li><Link to="/events?category=Management">Business & Startups</Link></li>
             </ul>
           </div>
 
@@ -82,7 +74,7 @@ export default function Footer() {
             &copy; {currentYear} FESTIQ Platform. Designed & Developed for Web Designing Coursework.
           </p>
           <div className="footer-credits">
-            <span>Built with Semantic HTML5, Custom CSS3 & Node.js</span>
+            <span>Built with Semantic HTML5, Custom CSS3, React Router & Node.js</span>
           </div>
         </div>
       </div>

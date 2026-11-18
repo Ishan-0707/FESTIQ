@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Cpu, Music, Gamepad2, Wrench, Briefcase, Trophy, ChevronRight } from 'lucide-react';
 import './CategoryPreview.css';
 
@@ -9,7 +10,7 @@ const CATEGORIES = [
     desc: 'Hackathons, Web3, AI dev challenges',
     icon: Cpu,
     colorClass: 'cat-tech',
-    count: '3 Events'
+    count: '4 Events'
   },
   {
     id: 'Cultural',
@@ -17,7 +18,7 @@ const CATEGORIES = [
     desc: 'Battle of bands, fusion dance, theater',
     icon: Music,
     colorClass: 'cat-cultural',
-    count: '2 Events'
+    count: '4 Events'
   },
   {
     id: 'Gaming',
@@ -25,7 +26,7 @@ const CATEGORIES = [
     desc: 'LAN tournaments, tactical FPS, battle royale',
     icon: Gamepad2,
     colorClass: 'cat-gaming',
-    count: '2 Events'
+    count: '4 Events'
   },
   {
     id: 'Workshops',
@@ -33,7 +34,7 @@ const CATEGORIES = [
     desc: 'Drone assembly, robotics, design systems',
     icon: Wrench,
     colorClass: 'cat-workshops',
-    count: '1 Event'
+    count: '4 Events'
   },
   {
     id: 'Management',
@@ -41,7 +42,7 @@ const CATEGORIES = [
     desc: 'Pitch competitions, case studies, VC summits',
     icon: Briefcase,
     colorClass: 'cat-management',
-    count: '1 Event'
+    count: '4 Events'
   },
   {
     id: 'Sports',
@@ -49,13 +50,34 @@ const CATEGORIES = [
     desc: 'Futsal derby, basketball knockout',
     icon: Trophy,
     colorClass: 'cat-sports',
-    count: '1 Event'
+    count: '4 Events'
   }
 ];
 
-export default function CategoryPreview({ onSelectCategory }) {
+export default function CategoryPreview({ events = [], onSelectCategory }) {
+  const navigate = useNavigate();
+
+  // Dynamic event counts calculated from actual event API dataset
+  const categoryCounts = React.useMemo(() => {
+    const counts = {};
+    for (const ev of events) {
+      if (ev.category) {
+        counts[ev.category] = (counts[ev.category] || 0) + 1;
+      }
+    }
+    return counts;
+  }, [events]);
+
+  const handleCardClick = (catId) => {
+    if (onSelectCategory) {
+      onSelectCategory(catId);
+    } else {
+      navigate(`/events?category=${catId}`);
+    }
+  };
+
   return (
-    <section id="categories" className="categories-section">
+    <section className="categories-section">
       <div className="container">
         <div className="section-header">
           <span className="section-tag">Explore By Discipline</span>
@@ -70,34 +92,38 @@ export default function CategoryPreview({ onSelectCategory }) {
         <div className="categories-grid">
           {CATEGORIES.map((cat) => {
             const Icon = cat.icon;
+            const count = categoryCounts[cat.id] !== undefined 
+              ? `${categoryCounts[cat.id]} ${categoryCounts[cat.id] === 1 ? 'Event' : 'Events'}`
+              : (events.length > 0 ? '0 Events' : cat.count);
+
             return (
               <div
                 key={cat.id}
                 className={`category-card ${cat.colorClass}`}
-                onClick={() => onSelectCategory && onSelectCategory(cat.id)}
+                onClick={() => handleCardClick(cat.id)}
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    if (onSelectCategory) onSelectCategory(cat.id);
+                    handleCardClick(cat.id);
                   }
                 }}
-                aria-label={`Filter events by ${cat.title}`}
+                aria-label={`Explore ${cat.title} events`}
               >
-                <div className="cat-icon-wrapper">
+                <div className="cat-icon-wrapper" aria-hidden="true">
                   <Icon size={22} />
                 </div>
+
                 <div className="cat-content">
                   <div className="cat-header-row">
                     <h3 className="cat-title">{cat.title}</h3>
-                    <span className="cat-count">{cat.count}</span>
+                    <span className="cat-count">{count}</span>
                   </div>
                   <p className="cat-desc">{cat.desc}</p>
                 </div>
-                <div className="cat-arrow" aria-hidden="true">
-                  <ChevronRight size={18} />
-                </div>
+
+                <ChevronRight size={18} className="cat-arrow" aria-hidden="true" />
               </div>
             );
           })}

@@ -1,5 +1,5 @@
 /* ============================================================
-   FESTIQ UI Component — Reusable Button System
+   FESTIQ UI Component — Reusable Button System (Dual-Theme)
    ============================================================ */
 
 .festiq-btn {
@@ -21,8 +21,12 @@
 }
 
 .festiq-btn:focus-visible {
-  outline: 2px solid var(--accent-purple, #8B5CF6);
+  outline: 2px solid var(--border-focus, #D28B63);
   outline-offset: 2px;
+}
+
+.festiq-btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
 }
 
 /* Sizing Scale */
@@ -46,69 +50,86 @@
 
 /* Variant: Primary */
 .btn-primary {
-  background: var(--accent-gradient, linear-gradient(135deg, #8B5CF6 0%, #6366F1 50%, #EC4899 100%));
+  background: var(--accent-gradient);
+  color: #0A1517;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(210, 139, 99, 0.28);
+  border: 1px solid rgba(210, 139, 99, 0.4);
+}
+
+[data-theme="light"] .btn-primary {
   color: #FFFFFF;
-  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.35);
+  box-shadow: 0 4px 14px rgba(65, 105, 200, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .btn-primary:hover:not(:disabled) {
-  background: var(--accent-gradient-hover, linear-gradient(135deg, #9D74FF 0%, #7679F5 50%, #F45CA8 100%));
-  box-shadow: 0 6px 22px rgba(139, 92, 246, 0.55);
+  background: var(--accent-gradient-hover);
+  box-shadow: 0 6px 20px rgba(210, 139, 99, 0.42);
   transform: translateY(-2px);
 }
 
+[data-theme="light"] .btn-primary:hover:not(:disabled) {
+  box-shadow: 0 6px 20px rgba(65, 105, 200, 0.4);
+}
+
 .btn-primary:active:not(:disabled) {
-  transform: translateY(0);
-  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.4);
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px rgba(210, 139, 99, 0.3);
 }
 
 /* Variant: Secondary */
 .btn-secondary {
-  background: var(--bg-card, #151B2B);
-  color: var(--text-primary, #FFFFFF);
-  border-color: var(--border-subtle, rgba(255, 255, 255, 0.1));
+  background: var(--card-bg);
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background: var(--bg-card-hover, #1E263C);
-  border-color: var(--border-hover, rgba(139, 92, 246, 0.4));
-  color: #FFFFFF;
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  color: var(--text-primary);
   transform: translateY(-2px);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-secondary:active:not(:disabled) {
-  transform: translateY(0);
+  transform: translateY(0) scale(0.98);
 }
 
 /* Variant: Outline */
 .btn-outline {
   background: transparent;
-  color: var(--text-primary, #FFFFFF);
-  border-color: var(--accent-purple, #8B5CF6);
+  color: var(--text-primary);
+  border-color: var(--accent-primary);
 }
 
 .btn-outline:hover:not(:disabled) {
-  background: rgba(139, 92, 246, 0.12);
-  border-color: var(--accent-purple, #8B5CF6);
-  color: #FFFFFF;
+  background: rgba(210, 139, 99, 0.12);
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
   transform: translateY(-2px);
 }
 
+[data-theme="light"] .btn-outline:hover:not(:disabled) {
+  background: rgba(65, 105, 200, 0.12);
+  border-color: var(--accent-primary);
+}
+
 .btn-outline:active:not(:disabled) {
-  transform: translateY(0);
+  transform: translateY(0) scale(0.98);
 }
 
 /* Variant: Ghost */
 .btn-ghost {
   background: transparent;
-  color: var(--text-secondary, #A1A1AA);
+  color: var(--text-secondary);
   border-color: transparent;
 }
 
 .btn-ghost:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-primary, #FFFFFF);
+  background: var(--sidebar-hover);
+  color: var(--text-primary);
 }
 
 /* Disabled State */
@@ -119,6 +140,22 @@
   pointer-events: none;
   transform: none !important;
   box-shadow: none !important;
+}
+
+/* Loading State */
+.btn-loading {
+  cursor: wait;
+}
+
+.btn-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+  margin-right: 2px;
 }
 
 /* Icon Alignment */

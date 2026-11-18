@@ -3,11 +3,12 @@
    ============================================================ */
 
 .footer-wrapper {
-  background-color: #060912;
+  background-color: var(--bg-deep);
   border-top: 1px solid var(--border-subtle);
   padding: 64px 0 28px;
   position: relative;
   width: 100%;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .footer-container {
@@ -34,8 +35,12 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--accent-cyan);
+  color: var(--accent-sage);
   margin-bottom: var(--space-sm, 10px);
+}
+
+[data-theme="light"] .footer-tagline {
+  color: var(--accent-primary);
 }
 
 .footer-description {
@@ -84,7 +89,11 @@
 }
 
 .footer-list a:hover {
-  color: var(--accent-cyan);
+  color: var(--accent-sage);
+}
+
+[data-theme="light"] .footer-list a:hover {
+  color: var(--accent-primary);
 }
 
 .academic-meta {
@@ -102,29 +111,42 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.25);
+  background: rgba(134, 185, 154, 0.12);
+  border: 1px solid var(--border-subtle);
   padding: 6px 14px;
   border-radius: var(--radius-full);
+}
+
+[data-theme="light"] .system-status-indicator {
+  background: rgba(53, 107, 150, 0.12);
 }
 
 .status-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background-color: var(--accent-emerald);
-  box-shadow: 0 0 8px var(--accent-emerald);
+  background-color: var(--accent-sage);
+  box-shadow: 0 0 8px var(--accent-sage);
+}
+
+[data-theme="light"] .status-dot {
+  background-color: var(--accent-primary);
+  box-shadow: 0 0 8px var(--accent-primary);
 }
 
 .status-text {
   font-size: 0.76rem;
   font-weight: 600;
-  color: var(--accent-emerald);
+  color: var(--accent-sage);
+}
+
+[data-theme="light"] .status-text {
+  color: var(--accent-primary);
 }
 
 /* Bottom Copyright Bar */
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--border-subtle);
   padding-top: var(--space-md, 20px);
   display: flex;
   align-items: center;
