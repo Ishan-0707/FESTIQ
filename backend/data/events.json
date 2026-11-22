@@ -13,8 +13,8 @@
     "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
     "imageUrl": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
     "entryFee": "Free",
-    "prizePool": "₹50,000",
-    "prizeAmount": 50000,
+    "prizePool": "Trophies & Citations",
+    "prizeAmount": 0,
     "capacity": 250,
     "registeredCount": 184,
     "featured": true,
@@ -114,7 +114,9 @@
     "prizePoolType": "fixed",
     "prizeAllocationPct": 75,
     "sponsorship": "Industry problem statement sponsors & ACM Student Chapter",
-    "provisionalFee": false
+    "provisionalFee": false,
+    "minExpectedRegistrations": null,
+    "financialSnapshot": null
   },
   {
     "id": "fest-002",
@@ -130,8 +132,8 @@
     "image": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80",
     "imageUrl": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80",
     "entryFee": "Free",
-    "prizePool": "₹35,000",
-    "prizeAmount": 35000,
+    "prizePool": "Trophies & Citations",
+    "prizeAmount": 0,
     "capacity": 1200,
     "registeredCount": 890,
     "featured": true,
@@ -219,7 +221,9 @@
     "prizePoolType": "fixed",
     "prizeAllocationPct": 75,
     "sponsorship": "University Cultural Affairs Board Institutional Grant",
-    "provisionalFee": false
+    "provisionalFee": false,
+    "minExpectedRegistrations": null,
+    "financialSnapshot": null
   },
   {
     "id": "fest-003",
@@ -235,8 +239,8 @@
     "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80",
     "imageUrl": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80",
     "entryFee": "₹100 per team",
-    "prizePool": "₹4,800",
-    "prizeAmount": 4800,
+    "prizePool": "₹3,250",
+    "prizeAmount": 3250,
     "capacity": 64,
     "registeredCount": 52,
     "featured": true,
@@ -326,8 +330,24 @@
       ]
     },
     "prizePoolType": "dynamic",
-    "prizeAllocationPct": 75,
-    "provisionalFee": false
+    "prizeAllocationPct": 65,
+    "provisionalFee": false,
+    "minExpectedRegistrations": 50,
+    "financialSnapshot": {
+      "approved": false,
+      "minExpectedRegistrations": 50,
+      "feeAmount": 100,
+      "feeType": "per_team",
+      "prizeAllocationPct": 65,
+      "collegeProfitSharePct": 60,
+      "organizerProfitSharePct": 40,
+      "minExpectedRevenue": 5000,
+      "fixedPrizePool": 3250,
+      "baseProfit": 1750,
+      "approvedAt": "2026-11-20T00:00:00.000Z",
+      "requiresReview": true,
+      "reviewNote": "Provisional rectification configuration — requires explicit manager and faculty institutional approval before public prize pool activation"
+    }
   },
   {
     "id": "fest-004",
@@ -435,7 +455,9 @@
     },
     "prizePoolType": "fixed",
     "prizeAllocationPct": 75,
-    "provisionalFee": false
+    "provisionalFee": false,
+    "minExpectedRegistrations": null,
+    "financialSnapshot": null
   },
   {
     "id": "fest-005",
@@ -451,8 +473,8 @@
     "image": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80",
     "imageUrl": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80",
     "entryFee": "Free",
-    "prizePool": "₹1,00,000 Seed Grant",
-    "prizeAmount": 100000,
+    "prizePool": "Trophies & Citations",
+    "prizeAmount": 0,
     "capacity": 150,
     "registeredCount": 94,
     "featured": false,
@@ -544,7 +566,9 @@
     "prizePoolType": "fixed",
     "prizeAllocationPct": 75,
     "sponsorship": "E-Cell & Technology Business Incubator (TBI) Seed Fund",
-    "provisionalFee": false
+    "provisionalFee": false,
+    "minExpectedRegistrations": null,
+    "financialSnapshot": null
   },
   {
     "id": "fest-006",
@@ -560,8 +584,8 @@
     "image": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80",
     "imageUrl": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80",
     "entryFee": "₹200 per team",
-    "prizePool": "₹2,400",
-    "prizeAmount": 2400,
+    "prizePool": "₹1,560",
+    "prizeAmount": 1560,
     "capacity": 16,
     "registeredCount": 14,
     "featured": false,
@@ -651,8 +675,24 @@
       ]
     },
     "prizePoolType": "dynamic",
-    "prizeAllocationPct": 75,
-    "provisionalFee": false
+    "prizeAllocationPct": 65,
+    "provisionalFee": false,
+    "minExpectedRegistrations": 12,
+    "financialSnapshot": {
+      "approved": false,
+      "minExpectedRegistrations": 12,
+      "feeAmount": 200,
+      "feeType": "per_team",
+      "prizeAllocationPct": 65,
+      "collegeProfitSharePct": 60,
+      "organizerProfitSharePct": 40,
+      "minExpectedRevenue": 2400,
+      "fixedPrizePool": 1560,
+      "baseProfit": 840,
+      "approvedAt": "2026-11-20T00:00:00.000Z",
+      "requiresReview": true,
+      "reviewNote": "Provisional rectification configuration — requires explicit manager and faculty institutional approval before public prize pool activation"
+    }
   },
   {
     "id": "fest-007",
@@ -668,8 +708,8 @@
     "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
     "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
     "entryFee": "₹150 per participant",
-    "prizePool": "₹13,500",
-    "prizeAmount": 13500,
+    "prizePool": "₹9,750",
+    "prizeAmount": 9750,
     "capacity": 120,
     "registeredCount": 88,
     "featured": false,
@@ -760,8 +800,24 @@
       ]
     },
     "prizePoolType": "dynamic",
-    "prizeAllocationPct": 75,
-    "provisionalFee": true
+    "prizeAllocationPct": 65,
+    "provisionalFee": true,
+    "minExpectedRegistrations": 100,
+    "financialSnapshot": {
+      "approved": false,
+      "minExpectedRegistrations": 100,
+      "feeAmount": 150,
+      "feeType": "per_person",
+      "prizeAllocationPct": 65,
+      "collegeProfitSharePct": 60,
+      "organizerProfitSharePct": 40,
+      "minExpectedRevenue": 15000,
+      "fixedPrizePool": 9750,
+      "baseProfit": 5250,
+      "approvedAt": "2026-11-20T00:00:00.000Z",
+      "requiresReview": true,
+      "reviewNote": "Provisional rectification configuration — requires explicit manager and faculty institutional approval before public prize pool activation"
+    }
   },
   {
     "id": "fest-008",
@@ -777,8 +833,8 @@
     "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
     "imageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
     "entryFee": "₹200 per participant",
-    "prizePool": "₹15,000",
-    "prizeAmount": 15000,
+    "prizePool": "₹10,400",
+    "prizeAmount": 10400,
     "capacity": 100,
     "registeredCount": 78,
     "featured": false,
@@ -869,8 +925,24 @@
       ]
     },
     "prizePoolType": "dynamic",
-    "prizeAllocationPct": 75,
-    "provisionalFee": true
+    "prizeAllocationPct": 65,
+    "provisionalFee": true,
+    "minExpectedRegistrations": 80,
+    "financialSnapshot": {
+      "approved": false,
+      "minExpectedRegistrations": 80,
+      "feeAmount": 200,
+      "feeType": "per_person",
+      "prizeAllocationPct": 65,
+      "collegeProfitSharePct": 60,
+      "organizerProfitSharePct": 40,
+      "minExpectedRevenue": 16000,
+      "fixedPrizePool": 10400,
+      "baseProfit": 5600,
+      "approvedAt": "2026-11-20T00:00:00.000Z",
+      "requiresReview": true,
+      "reviewNote": "Provisional rectification configuration — requires explicit manager and faculty institutional approval before public prize pool activation"
+    }
   },
   {
     "id": "fest-009",
@@ -886,8 +958,8 @@
     "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
     "imageUrl": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
     "entryFee": "₹150 per participant",
-    "prizePool": "₹9,000",
-    "prizeAmount": 9000,
+    "prizePool": "₹5,850",
+    "prizeAmount": 5850,
     "capacity": 80,
     "registeredCount": 61,
     "featured": false,
@@ -978,8 +1050,24 @@
       ]
     },
     "prizePoolType": "dynamic",
-    "prizeAllocationPct": 75,
-    "provisionalFee": true
+    "prizeAllocationPct": 65,
+    "provisionalFee": true,
+    "minExpectedRegistrations": 60,
+    "financialSnapshot": {
+      "approved": false,
+      "minExpectedRegistrations": 60,
+      "feeAmount": 150,
+      "feeType": "per_person",
+      "prizeAllocationPct": 65,
+      "collegeProfitSharePct": 60,
+      "organizerProfitSharePct": 40,
+      "minExpectedRevenue": 9000,
+      "fixedPrizePool": 5850,
+      "baseProfit": 3150,
+      "approvedAt": "2026-11-20T00:00:00.000Z",
+      "requiresReview": true,
+      "reviewNote": "Provisional rectification configuration — requires explicit manager and faculty institutional approval before public prize pool activation"
+    }
   },
   {
     "id": "fest-010",
@@ -1088,7 +1176,9 @@
     },
     "prizePoolType": "fixed",
     "prizeAllocationPct": 75,
-    "provisionalFee": false
+    "provisionalFee": false,
+    "minExpectedRegistrations": null,
+    "financialSnapshot": null
   },
   {
     "id": "fest-011",
@@ -1197,7 +1287,9 @@
     },
     "prizePoolType": "fixed",
     "prizeAllocationPct": 75,
-    "provisionalFee": true
+    "provisionalFee": true,
+    "minExpectedRegistrations": null,
+    "financialSnapshot": null
   },
   {
     "id": "fest-012",
@@ -1213,8 +1305,8 @@
     "image": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80",
     "imageUrl": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80",
     "entryFee": "₹100 per participant",
-    "prizePool": "₹15,000",
-    "prizeAmount": 15000,
+    "prizePool": "₹9,750",
+    "prizeAmount": 9750,
     "capacity": 200,
     "registeredCount": 142,
     "featured": false,
@@ -1305,8 +1397,24 @@
       ]
     },
     "prizePoolType": "dynamic",
-    "prizeAllocationPct": 75,
-    "provisionalFee": true
+    "prizeAllocationPct": 65,
+    "provisionalFee": true,
+    "minExpectedRegistrations": 150,
+    "financialSnapshot": {
+      "approved": false,
+      "minExpectedRegistrations": 150,
+      "feeAmount": 100,
+      "feeType": "per_person",
+      "prizeAllocationPct": 65,
+      "collegeProfitSharePct": 60,
+      "organizerProfitSharePct": 40,
+      "minExpectedRevenue": 15000,
+      "fixedPrizePool": 9750,
+      "baseProfit": 5250,
+      "approvedAt": "2026-11-20T00:00:00.000Z",
+      "requiresReview": true,
+      "reviewNote": "Provisional rectification configuration — requires explicit manager and faculty institutional approval before public prize pool activation"
+    }
   },
   {
     "id": "fest-013",
@@ -1322,8 +1430,8 @@
     "image": "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80",
     "imageUrl": "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80",
     "entryFee": "₹200 per team",
-    "prizePool": "₹19,200",
-    "prizeAmount": 19200,
+    "prizePool": "₹13,000",
+    "prizeAmount": 13000,
     "capacity": 128,
     "registeredCount": 110,
     "featured": false,
@@ -1414,8 +1522,24 @@
       ]
     },
     "prizePoolType": "dynamic",
-    "prizeAllocationPct": 75,
-    "provisionalFee": true
+    "prizeAllocationPct": 65,
+    "provisionalFee": true,
+    "minExpectedRegistrations": 100,
+    "financialSnapshot": {
+      "approved": false,
+      "minExpectedRegistrations": 100,
+      "feeAmount": 200,
+      "feeType": "per_team",
+      "prizeAllocationPct": 65,
+      "collegeProfitSharePct": 60,
+      "organizerProfitSharePct": 40,
+      "minExpectedRevenue": 20000,
+      "fixedPrizePool": 13000,
+      "baseProfit": 7000,
+      "approvedAt": "2026-11-20T00:00:00.000Z",
+      "requiresReview": true,
+      "reviewNote": "Provisional rectification configuration — requires explicit manager and faculty institutional approval before public prize pool activation"
+    }
   },
   {
     "id": "fest-014",
@@ -1431,8 +1555,8 @@
     "image": "https://images.unsplash.com/photo-1542751110-97427bbecf20?auto=format&fit=crop&w=800&q=80",
     "imageUrl": "https://images.unsplash.com/photo-1542751110-97427bbecf20?auto=format&fit=crop&w=800&q=80",
     "entryFee": "₹250 per team",
-    "prizePool": "₹6,000",
-    "prizeAmount": 6000,
+    "prizePool": "₹3,900",
+    "prizeAmount": 3900,
     "capacity": 32,
     "registeredCount": 28,
     "featured": false,
@@ -1523,8 +1647,24 @@
       ]
     },
     "prizePoolType": "dynamic",
-    "prizeAllocationPct": 75,
-    "provisionalFee": true
+    "prizeAllocationPct": 65,
+    "provisionalFee": true,
+    "minExpectedRegistrations": 24,
+    "financialSnapshot": {
+      "approved": false,
+      "minExpectedRegistrations": 24,
+      "feeAmount": 250,
+      "feeType": "per_team",
+      "prizeAllocationPct": 65,
+      "collegeProfitSharePct": 60,
+      "organizerProfitSharePct": 40,
+      "minExpectedRevenue": 6000,
+      "fixedPrizePool": 3900,
+      "baseProfit": 2100,
+      "approvedAt": "2026-11-20T00:00:00.000Z",
+      "requiresReview": true,
+      "reviewNote": "Provisional rectification configuration — requires explicit manager and faculty institutional approval before public prize pool activation"
+    }
   },
   {
     "id": "fest-015",
@@ -1540,8 +1680,8 @@
     "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
     "imageUrl": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
     "entryFee": "₹100 per participant",
-    "prizePool": "₹4,800",
-    "prizeAmount": 4800,
+    "prizePool": "₹3,250",
+    "prizeAmount": 3250,
     "capacity": 64,
     "registeredCount": 60,
     "featured": false,
@@ -1632,8 +1772,24 @@
       ]
     },
     "prizePoolType": "dynamic",
-    "prizeAllocationPct": 75,
-    "provisionalFee": true
+    "prizeAllocationPct": 65,
+    "provisionalFee": true,
+    "minExpectedRegistrations": 50,
+    "financialSnapshot": {
+      "approved": false,
+      "minExpectedRegistrations": 50,
+      "feeAmount": 100,
+      "feeType": "per_person",
+      "prizeAllocationPct": 65,
+      "collegeProfitSharePct": 60,
+      "organizerProfitSharePct": 40,
+      "minExpectedRevenue": 5000,
+      "fixedPrizePool": 3250,
+      "baseProfit": 1750,
+      "approvedAt": "2026-11-20T00:00:00.000Z",
+      "requiresReview": true,
+      "reviewNote": "Provisional rectification configuration — requires explicit manager and faculty institutional approval before public prize pool activation"
+    }
   },
   {
     "id": "fest-016",
@@ -1744,7 +1900,9 @@
     "prizeAllocationPct": 75,
     "isMaterialsFee": true,
     "materialsFee": 250,
-    "provisionalFee": true
+    "provisionalFee": true,
+    "minExpectedRegistrations": null,
+    "financialSnapshot": null
   },
   {
     "id": "fest-017",
@@ -1853,7 +2011,9 @@
     },
     "prizePoolType": "fixed",
     "prizeAllocationPct": 75,
-    "provisionalFee": false
+    "provisionalFee": false,
+    "minExpectedRegistrations": null,
+    "financialSnapshot": null
   },
   {
     "id": "fest-018",
@@ -1962,7 +2122,9 @@
     },
     "prizePoolType": "fixed",
     "prizeAllocationPct": 75,
-    "provisionalFee": false
+    "provisionalFee": false,
+    "minExpectedRegistrations": null,
+    "financialSnapshot": null
   },
   {
     "id": "fest-019",
@@ -1978,8 +2140,8 @@
     "image": "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80",
     "imageUrl": "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80",
     "entryFee": "₹100 per participant",
-    "prizePool": "₹30,000 Case Fellowship",
-    "prizeAmount": 30000,
+    "prizePool": "₹19,500",
+    "prizeAmount": 19500,
     "capacity": 400,
     "registeredCount": 310,
     "featured": true,
@@ -2070,8 +2232,24 @@
       ]
     },
     "prizePoolType": "dynamic",
-    "prizeAllocationPct": 75,
-    "provisionalFee": true
+    "prizeAllocationPct": 65,
+    "provisionalFee": true,
+    "minExpectedRegistrations": 300,
+    "financialSnapshot": {
+      "approved": false,
+      "minExpectedRegistrations": 300,
+      "feeAmount": 100,
+      "feeType": "per_person",
+      "prizeAllocationPct": 65,
+      "collegeProfitSharePct": 60,
+      "organizerProfitSharePct": 40,
+      "minExpectedRevenue": 30000,
+      "fixedPrizePool": 19500,
+      "baseProfit": 10500,
+      "approvedAt": "2026-11-20T00:00:00.000Z",
+      "requiresReview": true,
+      "reviewNote": "Provisional rectification configuration — requires explicit manager and faculty institutional approval before public prize pool activation"
+    }
   },
   {
     "id": "fest-020",
@@ -2087,8 +2265,8 @@
     "image": "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80",
     "imageUrl": "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80",
     "entryFee": "₹150 per participant",
-    "prizePool": "₹9,000",
-    "prizeAmount": 9000,
+    "prizePool": "₹5,850",
+    "prizeAmount": 5850,
     "capacity": 80,
     "registeredCount": 65,
     "featured": false,
@@ -2179,8 +2357,24 @@
       ]
     },
     "prizePoolType": "dynamic",
-    "prizeAllocationPct": 75,
-    "provisionalFee": true
+    "prizeAllocationPct": 65,
+    "provisionalFee": true,
+    "minExpectedRegistrations": 60,
+    "financialSnapshot": {
+      "approved": false,
+      "minExpectedRegistrations": 60,
+      "feeAmount": 150,
+      "feeType": "per_person",
+      "prizeAllocationPct": 65,
+      "collegeProfitSharePct": 60,
+      "organizerProfitSharePct": 40,
+      "minExpectedRevenue": 9000,
+      "fixedPrizePool": 5850,
+      "baseProfit": 3150,
+      "approvedAt": "2026-11-20T00:00:00.000Z",
+      "requiresReview": true,
+      "reviewNote": "Provisional rectification configuration — requires explicit manager and faculty institutional approval before public prize pool activation"
+    }
   },
   {
     "id": "fest-021",
@@ -2196,8 +2390,8 @@
     "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
     "imageUrl": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
     "entryFee": "₹200 per participant",
-    "prizePool": "₹9,000",
-    "prizeAmount": 9000,
+    "prizePool": "₹6,500",
+    "prizeAmount": 6500,
     "capacity": 60,
     "registeredCount": 49,
     "featured": false,
@@ -2288,8 +2482,24 @@
       ]
     },
     "prizePoolType": "dynamic",
-    "prizeAllocationPct": 75,
-    "provisionalFee": true
+    "prizeAllocationPct": 65,
+    "provisionalFee": true,
+    "minExpectedRegistrations": 50,
+    "financialSnapshot": {
+      "approved": false,
+      "minExpectedRegistrations": 50,
+      "feeAmount": 200,
+      "feeType": "per_person",
+      "prizeAllocationPct": 65,
+      "collegeProfitSharePct": 60,
+      "organizerProfitSharePct": 40,
+      "minExpectedRevenue": 10000,
+      "fixedPrizePool": 6500,
+      "baseProfit": 3500,
+      "approvedAt": "2026-11-20T00:00:00.000Z",
+      "requiresReview": true,
+      "reviewNote": "Provisional rectification configuration — requires explicit manager and faculty institutional approval before public prize pool activation"
+    }
   },
   {
     "id": "fest-022",
@@ -2305,8 +2515,8 @@
     "image": "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80",
     "imageUrl": "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80",
     "entryFee": "₹250 per team",
-    "prizePool": "₹6,000",
-    "prizeAmount": 6000,
+    "prizePool": "₹3,900",
+    "prizeAmount": 3900,
     "capacity": 32,
     "registeredCount": 26,
     "featured": false,
@@ -2397,8 +2607,24 @@
       ]
     },
     "prizePoolType": "dynamic",
-    "prizeAllocationPct": 75,
-    "provisionalFee": true
+    "prizeAllocationPct": 65,
+    "provisionalFee": true,
+    "minExpectedRegistrations": 24,
+    "financialSnapshot": {
+      "approved": false,
+      "minExpectedRegistrations": 24,
+      "feeAmount": 250,
+      "feeType": "per_team",
+      "prizeAllocationPct": 65,
+      "collegeProfitSharePct": 60,
+      "organizerProfitSharePct": 40,
+      "minExpectedRevenue": 6000,
+      "fixedPrizePool": 3900,
+      "baseProfit": 2100,
+      "approvedAt": "2026-11-20T00:00:00.000Z",
+      "requiresReview": true,
+      "reviewNote": "Provisional rectification configuration — requires explicit manager and faculty institutional approval before public prize pool activation"
+    }
   },
   {
     "id": "fest-023",
@@ -2414,8 +2640,8 @@
     "image": "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=800&q=80",
     "imageUrl": "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=800&q=80",
     "entryFee": "₹150 per participant",
-    "prizePool": "₹7,200",
-    "prizeAmount": 7200,
+    "prizePool": "₹4,875",
+    "prizeAmount": 4875,
     "capacity": 64,
     "registeredCount": 56,
     "featured": false,
@@ -2506,8 +2732,24 @@
       ]
     },
     "prizePoolType": "dynamic",
-    "prizeAllocationPct": 75,
-    "provisionalFee": true
+    "prizeAllocationPct": 65,
+    "provisionalFee": true,
+    "minExpectedRegistrations": 50,
+    "financialSnapshot": {
+      "approved": false,
+      "minExpectedRegistrations": 50,
+      "feeAmount": 150,
+      "feeType": "per_person",
+      "prizeAllocationPct": 65,
+      "collegeProfitSharePct": 60,
+      "organizerProfitSharePct": 40,
+      "minExpectedRevenue": 7500,
+      "fixedPrizePool": 4875,
+      "baseProfit": 2625,
+      "approvedAt": "2026-11-20T00:00:00.000Z",
+      "requiresReview": true,
+      "reviewNote": "Provisional rectification configuration — requires explicit manager and faculty institutional approval before public prize pool activation"
+    }
   },
   {
     "id": "fest-024",
@@ -2523,8 +2765,8 @@
     "image": "https://images.unsplash.com/photo-1531415074868-036b107e775a?auto=format&fit=crop&w=800&q=80",
     "imageUrl": "https://images.unsplash.com/photo-1531415074868-036b107e775a?auto=format&fit=crop&w=800&q=80",
     "entryFee": "₹500 per team",
-    "prizePool": "₹9,000",
-    "prizeAmount": 9000,
+    "prizePool": "₹6,500",
+    "prizeAmount": 6500,
     "capacity": 24,
     "registeredCount": 20,
     "featured": false,
@@ -2615,8 +2857,24 @@
       ]
     },
     "prizePoolType": "dynamic",
-    "prizeAllocationPct": 75,
-    "provisionalFee": true
+    "prizeAllocationPct": 65,
+    "provisionalFee": true,
+    "minExpectedRegistrations": 20,
+    "financialSnapshot": {
+      "approved": false,
+      "minExpectedRegistrations": 20,
+      "feeAmount": 500,
+      "feeType": "per_team",
+      "prizeAllocationPct": 65,
+      "collegeProfitSharePct": 60,
+      "organizerProfitSharePct": 40,
+      "minExpectedRevenue": 10000,
+      "fixedPrizePool": 6500,
+      "baseProfit": 3500,
+      "approvedAt": "2026-11-20T00:00:00.000Z",
+      "requiresReview": true,
+      "reviewNote": "Provisional rectification configuration — requires explicit manager and faculty institutional approval before public prize pool activation"
+    }
   },
   {
     "id": "fest-025",
@@ -2633,8 +2891,8 @@
     "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
     "imageUrl": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
     "entryFee": "₹100 per participant",
-    "prizePool": "₹11,200",
-    "prizeAmount": 11200,
+    "prizePool": "₹6,500",
+    "prizeAmount": 6500,
     "capacity": 150,
     "registeredCount": 0,
     "featured": false,
@@ -2725,7 +2983,26 @@
       ]
     },
     "prizePoolType": "dynamic",
-    "prizeAllocationPct": 75,
-    "provisionalFee": true
+    "prizeAllocationPct": 65,
+    "provisionalFee": true,
+    "minExpectedRegistrations": 100,
+    "financialSnapshot": {
+      "approved": false,
+      "minExpectedRegistrations": 100,
+      "feeAmount": 100,
+      "feeType": "per_person",
+      "prizeAllocationPct": 65,
+      "collegeProfitSharePct": 60,
+      "organizerProfitSharePct": 40,
+      "minExpectedRevenue": 10000,
+      "fixedPrizePool": 6500,
+      "baseProfit": 3500,
+      "approvedAt": null,
+      "proposalId": "PROP-2026-285E28",
+      "facultyCoordinatorSanctionLetter": "SCE/2026/CTF-01",
+      "status": "PENDING_INTERNAL_APPROVAL",
+      "requiresReview": true,
+      "reviewNote": "Pending internal manager financial approval — proposal approved for catalogue publication on 2026-11-04 by Aarav Sharma, but financial model snapshot (N=100, F=100, r=65%, P=6500) created 2026-11-20 lacks explicit manager financial sign-off record"
+    }
   }
 ]

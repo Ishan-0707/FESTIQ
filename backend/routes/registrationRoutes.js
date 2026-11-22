@@ -9,6 +9,7 @@ import {
   getRegistrationById,
   getRegistrationsByUserId,
   claimRegistration,
+  cancelRegistration,
   getEventDetails
 } from '../utils/registrationStorage.js';
 import { findUserById } from '../utils/userStorage.js';
@@ -250,6 +251,34 @@ router.post('/claim', requireAuth, async (req, res) => {
     return res.status(status).json({
       success: false,
       message: error.message || 'Failed to claim registration'
+    });
+  }
+});
+
+/**
+ * POST /api/registrations/:id/cancel
+ * Protected endpoint: Student cancellation of a confirmed registration.
+ * Releases the seat immediately and triggers automatic waitlist seat allocation.
+ */
+router.post('/:id/cancel', requireAuth, async (req, res) => {
+  try {
+    const { reason } = req.body;
+    const cancelled = await cancelRegistration({
+      registrationId: req.params.id,
+      userId: req.user.id,
+      reason: reason || 'Student self-cancelled'
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: 'Registration cancelled successfully. Cancellation releases your seat for FIFO waitlist allocation and expires your digital pass. Existing payment records remain preserved. This cancellation does not issue an automatic refund.',
+      data: cancelled
+    });
+  } catch (error) {
+    const status = error.statusCode || 500;
+    return res.status(status).json({
+      success: false,
+      message: error.message || 'Failed to cancel registration'
     });
   }
 });

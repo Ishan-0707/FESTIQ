@@ -2,19 +2,25 @@ import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { getAllRegistrations } from '../utils/registrationStorage.js';
-import { sanitizeEventForPublic, calculateEventPrizeMetrics, roundToNearest500 } from '../utils/prizePoolCalculator.js';
+import {
+  sanitizeEventForPublic,
+  calculateEventPrizeMetrics,
+  validateEventFinancialConfig,
+  createFinancialSnapshot,
+  DEFAULT_PRIZE_ALLOCATION_PCT,
+  MIN_PRIZE_ALLOCATION_PCT,
+  MAX_PRIZE_ALLOCATION_PCT
+} from '../utils/prizePoolCalculator.js';
 import { getOrGenerateEventPdf, invalidatePdfCache } from '../services/eventPdfGenerator.js';
+import { withCapacityLock } from '../utils/capacityLock.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const eventsFilePath = path.join(__dirname, '..', 'data', 'events.json');
 
-// Serialized queue for event writes
-let eventWriteQueue = Promise.resolve();
+// Global capacity-coordinated asynchronous execution queue for event mutations
 function enqueueEventWrite(operation) {
-  const next = eventWriteQueue.then(operation, operation);
-  eventWriteQueue = next.catch(() => {});
-  return next;
+  return withCapacityLock(operation);
 }
 
 // Safe file reader helper with validation
@@ -151,6 +157,7 @@ export async function createEvent(req, res) {
       feeType,
       registrationType,
       capacity,
+      minExpectedRegistrations,
       prizeAmount,
       prizePoolType,
       prizeAllocationPct,
@@ -247,14 +254,63 @@ export async function createEvent(req, res) {
         entryFeeStr = `₹${numFee} ${modelFeeType === 'per_team' ? 'per team' : 'per participant'}`;
       }
 
-      const allocationPct = Math.min(80, Math.max(70, Number(prizeAllocationPct) || 75));
-      const poolType = (prizePoolType === 'dynamic' || numFee > 0) ? 'dynamic' : 'fixed';
+      // Financial Validation:
+      // A prize-pool event must have:
+      // 1. Registration fee > 0.
+      // 2. Minimum expected registration count > 0.
+      // 3. Prize-pool percentage between 60% and 70%.
+      // Free events cannot have a prize pool.
+      const hasPrizePoolDeclared = Boolean(
+        prizePoolType === 'dynamic' ||
+        prizePoolType === 'registration_funded' ||
+        Number(prizeAmount) > 0 ||
+        (numFee > 0 && minExpectedRegistrations !== undefined && minExpectedRegistrations !== null)
+      );
 
-      let calculatedPrize = validPrize;
-      if (poolType === 'dynamic' && numFee > 0) {
-        const expectedRev = numFee * numCapacity;
-        const rawPool = Math.round(expectedRev * (allocationPct / 100));
-        calculatedPrize = roundToNearest500(rawPool);
+      const financialValidation = validateEventFinancialConfig({
+        feeAmount: numFee,
+        registrationType: numFee > 0 ? 'paid' : 'free',
+        isPaid: numFee > 0,
+        prizeAmount: validPrize,
+        prizePoolType,
+        prizeAllocationPct,
+        minExpectedRegistrations,
+        hasPrizePool: hasPrizePoolDeclared
+      });
+
+      if (!financialValidation.isValid) {
+        const err = new Error(financialValidation.errors.join('. '));
+        err.statusCode = 400;
+        throw err;
+      }
+
+      const numMinExpected = parseInt(minExpectedRegistrations, 10);
+      let calculatedPrize = 0;
+      let poolType = 'none';
+      let financialSnapshot = null;
+      let allocationPct = DEFAULT_PRIZE_ALLOCATION_PCT;
+
+      if (numFee > 0 && !isNaN(numMinExpected) && numMinExpected > 0) {
+        poolType = 'dynamic';
+        allocationPct = Math.min(MAX_PRIZE_ALLOCATION_PCT, Math.max(MIN_PRIZE_ALLOCATION_PCT, Number(prizeAllocationPct) || DEFAULT_PRIZE_ALLOCATION_PCT));
+        const minExpectedRev = Math.round(numMinExpected * numFee);
+        calculatedPrize = Math.round(minExpectedRev * (allocationPct / 100));
+        const baseProfit = minExpectedRev - calculatedPrize;
+
+        financialSnapshot = {
+          approved: true,
+          status: 'APPROVED',
+          minExpectedRegistrations: numMinExpected,
+          feeAmount: numFee,
+          feeType: modelFeeType,
+          prizeAllocationPct: allocationPct,
+          collegeProfitSharePct: 60,
+          organizerProfitSharePct: 40,
+          minExpectedRevenue: minExpectedRev,
+          fixedPrizePool: calculatedPrize,
+          baseProfit,
+          approvedAt: new Date().toISOString()
+        };
       }
 
       const createdItem = {
@@ -277,6 +333,8 @@ export async function createEvent(req, res) {
         isPaid: numFee > 0,
         prizePoolType: poolType,
         prizeAllocationPct: allocationPct,
+        minExpectedRegistrations: !isNaN(numMinExpected) && numMinExpected > 0 ? numMinExpected : null,
+        financialSnapshot,
         prizePool: calculatedPrize > 0 ? `₹${calculatedPrize.toLocaleString('en-IN')}` : (numFee > 0 ? 'Dynamic Prize Pool' : 'Free'),
         prizeAmount: calculatedPrize,
         capacity: numCapacity,
@@ -353,6 +411,14 @@ export async function updateEvent(req, res) {
           err.statusCode = 400;
           throw err;
         }
+
+        // If reducing capacity, coordinate with waitlist storage to verify confirmed registrations
+        // and safely rescind any excess active offers so confirmed + offers never exceeds new capacity
+        if (numCap < existing.capacity) {
+          const { handleCapacityReduction } = await import('../utils/waitlistStorage.js');
+          await handleCapacityReduction(id, numCap);
+        }
+
         capacity = numCap;
       }
 
@@ -389,23 +455,107 @@ export async function updateEvent(req, res) {
         }
       }
 
-      // Prize Pool configuration
-      let prizeAmount = existing.prizeAmount || 0;
-      if (updateData.prizeAmount !== undefined) {
-        const numPrize = parseInt(updateData.prizeAmount, 10);
-        prizeAmount = isNaN(numPrize) || numPrize < 0 ? 0 : numPrize;
-      }
+      // Prize Pool and Financial Configuration
+      let minExpectedRegistrations = updateData.minExpectedRegistrations !== undefined
+        ? updateData.minExpectedRegistrations
+        : existing.minExpectedRegistrations;
 
-      let prizeAllocationPct = existing.prizeAllocationPct || 75;
-      if (updateData.prizeAllocationPct !== undefined) {
-        prizeAllocationPct = Math.min(80, Math.max(70, Number(updateData.prizeAllocationPct) || 75));
-      }
+      let prizeAllocationPct = updateData.prizeAllocationPct !== undefined
+        ? Number(updateData.prizeAllocationPct)
+        : (existing.prizeAllocationPct || DEFAULT_PRIZE_ALLOCATION_PCT);
 
       let prizePoolType = updateData.prizePoolType || existing.prizePoolType || (feeAmount > 0 ? 'dynamic' : 'fixed');
-      if (prizePoolType === 'dynamic' && feeAmount > 0) {
-        const expectedRev = feeAmount * capacity;
-        const rawPool = Math.round(expectedRev * (prizeAllocationPct / 100));
-        prizeAmount = roundToNearest500(rawPool);
+      let prizeAmount = updateData.prizeAmount !== undefined ? Number(updateData.prizeAmount) : (existing.prizeAmount || 0);
+
+      const hasPrizePoolDeclared = Boolean(
+        prizePoolType === 'dynamic' ||
+        prizePoolType === 'registration_funded' ||
+        prizeAmount > 0 ||
+        (feeAmount > 0 && minExpectedRegistrations !== undefined && minExpectedRegistrations !== null)
+      );
+
+      const financialValidation = validateEventFinancialConfig({
+        feeAmount,
+        registrationType: feeAmount > 0 ? 'paid' : 'free',
+        isPaid: feeAmount > 0,
+        prizeAmount,
+        prizePoolType,
+        prizeAllocationPct,
+        minExpectedRegistrations,
+        hasPrizePool: hasPrizePoolDeclared
+      });
+
+      if (!financialValidation.isValid) {
+        const err = new Error(financialValidation.errors.join('. '));
+        err.statusCode = 400;
+        throw err;
+      }
+
+      const numMinExpected = parseInt(minExpectedRegistrations, 10);
+      const hasApprovedSnapshot = Boolean(existing.financialSnapshot && existing.financialSnapshot.approved);
+      const isExplicitReapproval = Boolean(updateData.reapproveFinancials || updateData.explicitFinancialReapproval);
+
+      // Check if financial parameters are being modified on an approved event
+      const financialParametersChanged = hasApprovedSnapshot && (
+        (feeAmount !== existing.financialSnapshot.feeAmount) ||
+        (feeType !== existing.financialSnapshot.feeType) ||
+        (!isNaN(numMinExpected) && numMinExpected !== existing.financialSnapshot.minExpectedRegistrations) ||
+        (prizeAllocationPct !== existing.financialSnapshot.prizeAllocationPct)
+      );
+
+      // Immutability Guard: Reject silent recalculation of approved snapshots
+      if (financialParametersChanged && !isExplicitReapproval) {
+        const err = new Error(
+          'Approved event financial snapshot is locked and immutable. ' +
+          'Modifying minimum registrations, fee, fee type, or allocation percentage requires explicit manager re-approval (reapproveFinancials: true).'
+        );
+        err.statusCode = 400;
+        throw err;
+      }
+
+      let financialSnapshot = existing.financialSnapshot || null;
+      let calculatedPrize = 0;
+
+      if (hasApprovedSnapshot && !isExplicitReapproval) {
+        // PRESERVE IMMUTABLE SNAPSHOT EXACTLY
+        financialSnapshot = existing.financialSnapshot;
+        calculatedPrize = existing.financialSnapshot.fixedPrizePool;
+        prizeAmount = calculatedPrize;
+        // Keep locked financial parameters consistent with approved snapshot
+        minExpectedRegistrations = existing.financialSnapshot.minExpectedRegistrations;
+        feeAmount = existing.financialSnapshot.feeAmount;
+        feeType = existing.financialSnapshot.feeType;
+        prizeAllocationPct = existing.financialSnapshot.prizeAllocationPct;
+      } else if (feeAmount > 0 && !isNaN(numMinExpected) && numMinExpected > 0) {
+        // Initial snapshot creation or explicit manager re-approval
+        prizePoolType = 'dynamic';
+        prizeAllocationPct = Math.min(MAX_PRIZE_ALLOCATION_PCT, Math.max(MIN_PRIZE_ALLOCATION_PCT, prizeAllocationPct));
+        const minExpectedRev = Math.round(numMinExpected * feeAmount);
+        calculatedPrize = Math.round(minExpectedRev * (prizeAllocationPct / 100));
+        const baseProfit = minExpectedRev - calculatedPrize;
+
+        financialSnapshot = {
+          approved: true,
+          status: 'APPROVED',
+          minExpectedRegistrations: numMinExpected,
+          feeAmount,
+          feeType,
+          prizeAllocationPct,
+          collegeProfitSharePct: 60,
+          organizerProfitSharePct: 40,
+          minExpectedRevenue: minExpectedRev,
+          fixedPrizePool: calculatedPrize,
+          baseProfit,
+          approvedAt: new Date().toISOString(),
+          approvedBy: req.user?.email || req.user?.fullName || 'Authorized Manager',
+          reapproved: isExplicitReapproval
+        };
+        prizeAmount = calculatedPrize;
+      } else if (feeAmount === 0) {
+        prizePoolType = 'fixed';
+        prizeAmount = 0;
+        financialSnapshot = null;
+        minExpectedRegistrations = null;
       }
 
       let prizePool = existing.prizePool || 'Free';
@@ -413,6 +563,8 @@ export async function updateEvent(req, res) {
         prizePool = `₹${prizeAmount.toLocaleString('en-IN')}`;
       } else if (updateData.prizePool) {
         prizePool = updateData.prizePool.trim();
+      } else if (feeAmount === 0) {
+        prizePool = existing.prizePool || 'Trophies & Citations';
       }
 
       const merged = {
@@ -430,6 +582,8 @@ export async function updateEvent(req, res) {
         prizeAmount,
         prizePool,
         prizeAllocationPct,
+        minExpectedRegistrations: !isNaN(numMinExpected) && numMinExpected > 0 ? numMinExpected : null,
+        financialSnapshot,
         updatedAt: new Date().toISOString()
       };
 
@@ -445,6 +599,19 @@ export async function updateEvent(req, res) {
 
       return merged;
     });
+
+    // Check if capacity increase or cancellation occurred to trigger waitlist processing
+    try {
+      if (updated.status === 'Cancelled') {
+        const { handleEventCancelled } = await import('../utils/waitlistStorage.js');
+        await handleEventCancelled(id);
+      } else {
+        const { allocateAvailableSeats } = await import('../utils/waitlistStorage.js');
+        await allocateAvailableSeats(id);
+      }
+    } catch (waitlistErr) {
+      console.warn('[Event Controller] Waitlist hook notice:', waitlistErr.message);
+    }
 
     const allRegistrations = await getAllRegistrations().catch(() => []);
     const publicEvent = sanitizeEventForPublic(updated, allRegistrations);

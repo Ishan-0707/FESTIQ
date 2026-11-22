@@ -24,6 +24,7 @@ export default function EventCard({
   const statusInfo = getEventStatus(event);
   const isCompleted = statusInfo.status === 'Completed';
   const isClosed = isCompleted || statusInfo.status === 'Registration Closed';
+  const isFull = Boolean(event.capacity && (event.registeredCount >= event.capacity));
   const isFeatured = Boolean(event.isFeatured || event.featured);
 
   return (
@@ -138,7 +139,7 @@ export default function EventCard({
               }
               className="card-action-btn btn-register"
             >
-              {isCompleted ? 'Ended' : isClosed ? 'Closed' : 'Register'}
+              {isCompleted ? 'Ended' : isClosed ? 'Closed' : isFull ? 'Join Waitlist' : 'Register'}
             </Button>
           </div>
         </div>

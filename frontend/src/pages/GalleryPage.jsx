@@ -8,12 +8,11 @@ import './GalleryPage.css';
 
 const CATEGORIES = [
   'All',
-  'Technical',
   'Cultural',
-  'Gaming',
-  'Workshops',
-  'Management',
-  'Sports'
+  'Celebrations',
+  'Technical',
+  'Sports',
+  'Workshops'
 ];
 
 export default function GalleryPage() {
@@ -79,7 +78,7 @@ export default function GalleryPage() {
 
           <div className="demo-disclaimer-banner">
             <Sparkles size={14} className="disclaimer-sparkle" />
-            <span>Demonstration Gallery Records — Archived media showcasing previous campus celebrations. Genuine university photography will be archived here as events conclude.</span>
+            <span>Illustrative Stock Photography (Unsplash License) — Visual showcase demonstrating campus celebrations, cultural galas, and technical hackathons. Genuine FESTIQ event coverage will be archived here as university fests conclude.</span>
           </div>
         </header>
 

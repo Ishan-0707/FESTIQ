@@ -9,6 +9,7 @@ import {
   confirmPaidRegistration,
   failRegistrationPayment
 } from '../utils/registrationStorage.js';
+import { markWaitlistConvertedByRegistrationId } from '../utils/waitlistStorage.js';
 import {
   createPaymentOrder,
   verifyPaymentSignature,
@@ -212,6 +213,9 @@ router.post('/verify', requireAuth, async (req, res) => {
       verifiedBy: req.user.email
     });
 
+    // If registration was converted from a waitlist offer, mark waitlist entry CONVERTED
+    await markWaitlistConvertedByRegistrationId(registrationId);
+
     res.status(200).json({
       success: true,
       message: 'Payment successfully verified! Registration confirmed and digital event pass issued.',
@@ -269,6 +273,8 @@ router.post('/simulate-success', requireAuth, async (req, res) => {
       method: 'simulation_test_card',
       verifiedBy: req.user.email
     });
+
+    await markWaitlistConvertedByRegistrationId(registrationId);
 
     res.status(200).json({
       success: true,

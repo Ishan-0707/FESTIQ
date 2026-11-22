@@ -15,7 +15,12 @@ import {
   CalendarPlus,
   Download,
   ExternalLink,
-  FileText
+  FileText,
+  CheckCircle2,
+  AlertCircle,
+  AlertTriangle,
+  XCircle,
+  QrCode
 } from 'lucide-react';
 import Button from '../ui/Button';
 import Badge from '../ui/Badge';
@@ -31,7 +36,11 @@ export default function EventDetailsModal({
   isOpen,
   event,
   onClose,
-  onRegister
+  onRegister,
+  isRegistered = false,
+  registration = null,
+  onViewPass = null,
+  onCancelRegistration = null
 }) {
   // Prevent background scrolling while modal is open, restoring exact position on close
   useScrollLock(isOpen);
@@ -59,6 +68,17 @@ export default function EventDetailsModal({
   const statusInfo = getEventStatus(event);
   const isCompleted = statusInfo.status === 'Completed';
   const isClosed = isCompleted || statusInfo.status === 'Registration Closed';
+  const isFull = Boolean(event.capacity && (event.registeredCount >= event.capacity));
+
+  // Determine if the user is already registered for this event
+  const activeReg = registration || event.registration || null;
+  const isCancelledReg = activeReg?.status === 'cancelled' || activeReg?.pass?.status === 'Cancelled — Pass Expired';
+  const userIsRegistered = Boolean(isRegistered || event.isRegistered || activeReg);
+
+  const pass = activeReg?.pass || {};
+  const isCheckedIn = Boolean(pass.checkedIn || activeReg?.checkedIn);
+  const isPendingPayment = activeReg?.paymentStatus === 'pending' || activeReg?.status === 'pending_payment';
+  const passId = pass.passId || activeReg?.passId || activeReg?.id;
 
   const googleCalUrl = generateGoogleCalendarUrl(event);
 
@@ -96,9 +116,21 @@ export default function EventDetailsModal({
                 Featured Flagship
               </Badge>
             )}
-            <Badge variant={statusInfo.variant} size="sm">
-              {statusInfo.label}
-            </Badge>
+            {isCancelledReg ? (
+              <Badge variant="destructive" size="sm">
+                <XCircle size={12} className="badge-icon" />
+                Registration Cancelled
+              </Badge>
+            ) : userIsRegistered ? (
+              <Badge variant="success" size="sm">
+                <CheckCircle2 size={12} className="badge-icon" />
+                {isCheckedIn ? 'Checked In' : isPendingPayment ? 'Payment Pending' : 'Registered Attendee'}
+              </Badge>
+            ) : (
+              <Badge variant={statusInfo.variant} size="sm">
+                {statusInfo.label}
+              </Badge>
+            )}
           </div>
         </div>
 
@@ -110,6 +142,49 @@ export default function EventDetailsModal({
               <p className="event-details-tagline">{event.tagline}</p>
             )}
           </div>
+
+          {/* Cancelled Registration Warning Banner */}
+          {isCancelledReg ? (
+            <div className="event-registered-banner event-cancelled-banner">
+              <div className="registered-banner-header">
+                <div className="registered-badge-pill cancelled-badge-pill">
+                  <AlertTriangle size={16} />
+                  <span>Registration Cancelled</span>
+                </div>
+                {passId && (
+                  <div className="pass-id-chip pass-id-cancelled">
+                    <span>EXPIRED PASS:</span>
+                    <code>{passId}</code>
+                  </div>
+                )}
+              </div>
+              <p className="registered-banner-desc">
+                Cancellation releases your seat for FIFO waitlist allocation and expires your digital pass. Existing payment records remain preserved. This cancellation does not issue an automatic refund.
+              </p>
+            </div>
+          ) : userIsRegistered ? (
+            <div className="event-registered-banner">
+              <div className="registered-banner-header">
+                <div className="registered-badge-pill">
+                  <CheckCircle2 size={16} />
+                  <span>You are Registered for this Event</span>
+                </div>
+                {passId && (
+                  <div className="pass-id-chip">
+                    <span>PASS:</span>
+                    <code>{passId}</code>
+                  </div>
+                )}
+              </div>
+              <p className="registered-banner-desc">
+                {isCheckedIn
+                  ? 'Your entry ticket was scanned and verified at the venue check-in desk.'
+                  : isPendingPayment
+                  ? 'Your registration seat is reserved pending payment completion.'
+                  : 'Your digital pass and entry QR code are confirmed and ready for venue gate verification.'}
+              </p>
+            </div>
+          ) : null}
 
           {/* Key Facts Grid */}
           <div className="event-facts-grid">
@@ -279,19 +354,59 @@ export default function EventDetailsModal({
             >
               Close
             </Button>
-            <Button
-              variant="primary"
-              size="md"
-              icon={<Ticket size={16} />}
-              iconPosition="left"
-              disabled={isClosed}
-              onClick={() => {
-                onClose();
-                onRegister(event);
-              }}
-            >
-              {isCompleted ? 'Event Concluded' : isClosed ? 'Registration Closed' : 'Register for Event'}
-            </Button>
+
+            {isCancelledReg ? (
+              <div className="event-cancelled-footer-status">
+                <AlertCircle size={15} />
+                <span>Registration Cancelled · Seat released to waitlist · Pass expired</span>
+              </div>
+            ) : userIsRegistered ? (
+              // Already registered: strictly show registered pass actions; NO duplicate registration CTA
+              <>
+                {onCancelRegistration && !isCheckedIn && activeReg?.status !== 'cancelled' && (
+                  <Button
+                    variant="ghost"
+                    size="md"
+                    onClick={() => {
+                      onClose();
+                      onCancelRegistration(activeReg);
+                    }}
+                    className="cancel-reg-footer-btn"
+                  >
+                    Cancel Registration
+                  </Button>
+                )}
+                {onViewPass && (
+                  <Button
+                    variant="primary"
+                    size="md"
+                    icon={<QrCode size={16} />}
+                    iconPosition="left"
+                    onClick={() => {
+                      onClose();
+                      onViewPass(activeReg);
+                    }}
+                  >
+                    View Digital Pass & QR
+                  </Button>
+                )}
+              </>
+            ) : (
+              // Public unregistered visitor: show standard registration CTA
+              <Button
+                variant="primary"
+                size="md"
+                icon={<Ticket size={16} />}
+                iconPosition="left"
+                disabled={isClosed}
+                onClick={() => {
+                  onClose();
+                  onRegister?.(event);
+                }}
+              >
+                {isCompleted ? 'Event Concluded' : isClosed ? 'Registration Closed' : isFull ? 'Join Waitlist' : 'Register for Event'}
+              </Button>
+            )}
           </div>
         </div>
       </div>

@@ -1,31 +1,32 @@
 /**
- * FESTIQ Prize-Pool & Registration Fee Presentation Helper
+ * FESTIQ Frontend Prize-Pool & Registration Fee Presentation Helper
  * Strictly enforces business rules:
- * - Clear separation: Prize Pool and Registration Fee represent two distinct concepts
- * - Prize Pool: Amount allocated as event awards/prizes (never exposes college allocation)
- * - Registration Fee: Amount a participant pays to register ('Free', '₹200 per participant', '₹100 per team')
- * - Advertised Prize Pool (registration-funded):
- *     Expected Revenue = Fee × Total Billable Event Capacity
- *     Raw Prize Pool = Expected Revenue × Prize Allocation Percentage (70–80%, default 75%)
- *     Displayed Prize Pool = Raw Prize Pool rounded to nearest ₹500
- * - Fixed Prize Pool: Preserved as configured (e.g. ₹50,000 for HackNova)
- * - Actual Collected Revenue: Kept strictly separate; requires verified payments
+ * - Prize pool is determined by event's MINIMUM EXPECTED REGISTRATIONS (N)
+ * - Prize pool is NOT recalculated using actual registrations (A)
+ * - Once approved, prize pool remains fixed even when registrations exceed N
+ * - Additional registration revenue beyond N becomes additional profit (E)
+ * - Profit split: 60% College, 40% Organizing Team
+ * - Prize-pool allocation percentage: 60% to 70%, default 65%
+ * - Public displays show approved fixed prize pool (never recalculate or inflate dynamically)
  */
 
-export const DEFAULT_PRIZE_ALLOCATION_PCT = 75; // 75% to prize pool, 25% to college
+export const DEFAULT_PRIZE_ALLOCATION_PCT = 65; // Default 65% (configurable 60% - 70%)
+export const MIN_PRIZE_ALLOCATION_PCT = 60;
+export const MAX_PRIZE_ALLOCATION_PCT = 70;
+export const COLLEGE_PROFIT_SHARE_PCT = 60;     // Fixed 60% of total profit
+export const ORGANIZER_PROFIT_SHARE_PCT = 40;   // Fixed 40% of total profit
 
 /**
- * Rounds an amount to the nearest ₹500.
- * Examples:
- * - ₹7,500 → ₹7,500
- * - ₹7,650 → ₹7,500
- * - ₹7,800 → ₹8,000
- * - ₹24,000 → ₹24,000
- * - ₹26,250 → ₹26,500
+ * Determines the billing fee type for an event ('per_team' or 'per_person').
  */
-export function roundToNearest500(rawAmount) {
-  if (!rawAmount || rawAmount <= 0) return 0;
-  return Math.round(rawAmount / 500) * 500;
+export function getEventFeeType(event) {
+  if (!event) return 'per_person';
+  if (event.feeType === 'per_team' || event.feeType === 'team') return 'per_team';
+  if (event.feeType === 'per_person' || event.feeType === 'person') return 'per_person';
+
+  const entryFeeStr = String(event.entryFee || event.registrationFee || '').toLowerCase();
+  if (entryFeeStr.includes('/ team') || entryFeeStr.includes('per team')) return 'per_team';
+  return 'per_person';
 }
 
 /**
@@ -65,115 +66,93 @@ export function formatRegistrationFee(event) {
 }
 
 /**
- * Calculates prize pool and college revenue for an event.
- * Advertised prize pool uses capacity; collected revenue uses verified payments.
- * Internal calculations may return collegeAllocation; public formatters MUST NOT.
- */
-export function calculatePrizePool({
-  prizePoolType = 'fixed',
-  fixedPrizeAmount = 0,
-  feeAmount = 0,
-  feeUnit = 'participant',
-  capacity = 0,
-  prizeAllocationPct = DEFAULT_PRIZE_ALLOCATION_PCT,
-  registrations = []
-}) {
-  // Clamp allocation percentage to 70% - 80% range per specification
-  const validPct = Math.min(80, Math.max(70, Number(prizeAllocationPct) || DEFAULT_PRIZE_ALLOCATION_PCT));
-  const collegePct = 100 - validPct;
-
-  if (prizePoolType === 'fixed' || (!feeAmount && fixedPrizeAmount > 0)) {
-    return {
-      type: 'fixed',
-      rawPrizePoolAmount: Number(fixedPrizeAmount) || 0,
-      prizePoolAmount: Number(fixedPrizeAmount) || 0,
-      advertisedPrizePool: Number(fixedPrizeAmount) || 0,
-      collectedAmount: 0,
-      collegeAllocation: 0,
-      prizeAllocationPct: validPct,
-      collegeAllocationPct: collegePct,
-      paidCount: 0
-    };
-  }
-
-  const numFee = Math.max(0, Number(feeAmount) || 0);
-  const numCap = Math.max(0, Number(capacity) || 0);
-
-  // Advertised capacity-based estimate
-  const expectedRevenue = numFee * numCap;
-  const rawPrizePoolAmount = Math.round(expectedRevenue * (validPct / 100));
-  const advertisedPrizePool = roundToNearest500(rawPrizePoolAmount);
-
-  // Actual verified payments
-  const paidRegistrations = registrations.filter(
-    (r) => r.status === 'confirmed' && (r.paymentStatus === 'paid' || (r.payment && r.payment.status === 'paid'))
-  );
-  const paidCount = paidRegistrations.length;
-  const collectedAmount = numFee * paidCount;
-  const actualPrizeFund = Math.round(collectedAmount * (validPct / 100));
-  const collegeAllocation = collectedAmount - actualPrizeFund;
-
-  return {
-    type: 'dynamic',
-    rawPrizePoolAmount,
-    prizePoolAmount: advertisedPrizePool,
-    advertisedPrizePool,
-    expectedRevenue,
-    collectedAmount,
-    actualPrizeFund,
-    collegeAllocation, // Internal only — do NOT render publicly
-    prizeAllocationPct: validPct,
-    collegeAllocationPct: collegePct,
-    paidCount
-  };
-}
-
-/**
  * Formats prize-pool for public presentation across cards, modals, and listings.
  * Strictly conceals internal college allocation and revenue formulas.
+ * Uses approved fixed prize pool snapshot or server-sanitized prize amount.
  * Never outputs registration fee or "Free Entry".
  */
 export function formatPublicPrizePool(event) {
   if (!event) return 'Trophies & Citations';
 
-  // 1. Dynamic Fee-Funded Events
-  if (event.prizePoolType === 'dynamic') {
-    // If backend provided sanitized prizeAmount / prizePool
-    if (event.prizeAmount > 0) {
-      return `₹${Number(event.prizeAmount).toLocaleString('en-IN')}`;
-    }
-
-    const fee = Number(event.feeAmount) || 0;
-    const capacity = Number(event.capacity) || 0;
-    const pct = Number(event.prizeAllocationPct) || DEFAULT_PRIZE_ALLOCATION_PCT;
-
-    if (capacity > 0 && fee > 0) {
-      const expectedRevenue = fee * capacity;
-      const rawPool = Math.round(expectedRevenue * (pct / 100));
-      const pool = roundToNearest500(rawPool);
-      return `₹${pool.toLocaleString('en-IN')}`;
-    }
-
-    if (event.prizePool && typeof event.prizePool === 'string' && event.prizePool.includes('₹')) {
-      return event.prizePool;
-    }
-
-    return 'Dynamic Prize Pool';
+  // 1. Materials-fee experience events (e.g. RoboCraft)
+  if (event.prizePoolType === 'materials_fee') {
+    return event.prizePool || 'Hardware Kit & Certificate';
   }
 
-  // 2. Explicit prize string exists (e.g. "₹50,000", "Kit Included", "₹1,00,000 Seed Grant")
+  // 2. Event with approved fixed prize pool snapshot
+  if (event.financialSnapshot && event.financialSnapshot.fixedPrizePool > 0) {
+    return `₹${Number(event.financialSnapshot.fixedPrizePool).toLocaleString('en-IN')}`;
+  }
+
+  // 3. Explicit numeric prize amount provided by sanitized backend
+  const numPrize = Number(event.prizeAmount);
+  if (!isNaN(numPrize) && numPrize > 0) {
+    return `₹${numPrize.toLocaleString('en-IN')}`;
+  }
+
+  // 4. Formatted string if contains currency
   if (event.prizePool && typeof event.prizePool === 'string') {
     const trimmed = event.prizePool.trim();
-    // Exclude accidental fee fallbacks
-    if (!trimmed.toLowerCase().includes('free entry') && trimmed !== 'Free') {
+    if (trimmed.includes('₹')) {
+      return trimmed;
+    }
+    if (!trimmed.toLowerCase().includes('free entry') && trimmed !== 'Free' && trimmed !== 'Pending Approval') {
       return trimmed;
     }
   }
 
-  // 3. Explicit numeric prize amount
-  if (event.prizeAmount > 0) {
-    return `₹${Number(event.prizeAmount).toLocaleString('en-IN')}`;
+  // 5. Free events fallback
+  return 'Trophies & Citations';
+}
+
+/**
+ * Shared approval predicate for financial snapshots across FESTIQ.
+ * Guarantees parity between public frontend aggregates and backend management metrics.
+ * Requirements:
+ * 1. Event and event.financialSnapshot must exist.
+ * 2. snapshot.approved === true (strict boolean).
+ * 3. snapshot.status === 'APPROVED'.
+ * 4. Number(snapshot.fixedPrizePool) > 0 and not NaN.
+ * 5. Effective fee > 0 and not NaN.
+ * 6. event.prizePoolType !== 'materials_fee'.
+ */
+export function isApprovedFinancialSnapshot(event) {
+  if (!event || !event.financialSnapshot) return false;
+  const snapshot = event.financialSnapshot;
+  const fixedPrize = Number(snapshot.fixedPrizePool);
+  const fee = Number(snapshot.feeAmount !== undefined ? snapshot.feeAmount : event.feeAmount);
+  return (
+    snapshot.approved === true &&
+    snapshot.status === 'APPROVED' &&
+    !isNaN(fixedPrize) &&
+    fixedPrize > 0 &&
+    !isNaN(fee) &&
+    fee > 0 &&
+    event.prizePoolType !== 'materials_fee'
+  );
+}
+
+/**
+ * Calculates total combined prize pool for public aggregates (e.g. Homepage Hero).
+ * Equals the sum of approved fixed prize pools across eligible events.
+ * Excludes events without an approved prize pool, free events, and draft configurations.
+ * Does not sum registration revenue or college/organizer profit.
+ */
+export function calculateCombinedPrizePool(events = []) {
+  if (!Array.isArray(events) || events.length === 0) return 0;
+
+  const seenEventIds = new Set();
+  let total = 0;
+
+  for (const ev of events) {
+    if (!ev || !ev.id || seenEventIds.has(ev.id)) continue;
+    seenEventIds.add(ev.id);
+
+    // Strictly count approved fixed prize pool from verified snapshots only
+    if (isApprovedFinancialSnapshot(ev)) {
+      total += Number(ev.financialSnapshot.fixedPrizePool);
+    }
   }
 
-  return 'Trophies & Citations';
+  return total;
 }

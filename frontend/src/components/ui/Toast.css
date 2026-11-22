@@ -1,5 +1,6 @@
 /* ============================================================
    FESTIQ UI Component — Toast Notifications (Dual-Theme)
+   Obsidian Gold (Dark) & Sage & Porcelain (Light)
    ============================================================ */
 
 .festiq-toast-container {
@@ -23,9 +24,9 @@
   gap: 12px;
   padding: 14px 16px;
   border-radius: var(--radius-md, 12px);
-  background: var(--surface-secondary, #18251F);
-  border: 1px solid var(--border-subtle, #35443A);
-  color: var(--text-primary, #F2F0E8);
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -46,26 +47,26 @@
 
 /* Toast Variants */
 .toast-success {
-  border-left: 4px solid #81C784;
+  border-left: 4px solid var(--success);
 }
 
 .toast-error {
-  border-left: 4px solid #EF5350;
+  border-left: 4px solid var(--error);
 }
 
 .toast-warning {
-  border-left: 4px solid #FFB74D;
+  border-left: 4px solid var(--warning);
 }
 
 .toast-info {
-  border-left: 4px solid var(--accent-primary, #D28B63);
+  border-left: 4px solid var(--accent-primary);
 }
 
 [data-theme="light"] .festiq-toast {
-  background: var(--card-bg, #F3EACB);
-  border-color: var(--border-subtle, #E7DFC9);
-  color: var(--text-primary, #242C43);
-  box-shadow: 0 8px 24px rgba(36, 44, 67, 0.16);
+  background: var(--card-bg);
+  border-color: var(--border-primary);
+  color: var(--text-primary);
+  box-shadow: 0 8px 24px rgba(36, 76, 61, 0.12);
 }
 
 /* Icon Wrap */
@@ -75,19 +76,19 @@
 }
 
 .toast-icon.success {
-  color: #81C784;
+  color: var(--success);
 }
 
 .toast-icon.error {
-  color: #EF5350;
+  color: var(--error);
 }
 
 .toast-icon.warning {
-  color: #FFB74D;
+  color: var(--warning);
 }
 
 .toast-icon.info {
-  color: var(--accent-primary, #D28B63);
+  color: var(--accent-primary);
 }
 
 /* Content */
@@ -119,16 +120,23 @@
   color: var(--text-muted);
   cursor: pointer;
   padding: 4px;
-  border-radius: 4px;
+  border-radius: var(--radius-xs, 4px);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: color var(--transition-fast), background var(--transition-fast);
+  background: transparent;
+  border: none;
 }
 
 .toast-close-btn:hover {
   color: var(--text-primary);
-  background: var(--sidebar-hover);
+  background: var(--bg-card-hover);
+}
+
+.toast-close-btn:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
 }
 
 /* Countdown Progress Bar */
@@ -152,21 +160,21 @@
 }
 
 .toast-success .toast-progress-bar {
-  background: #81C784;
+  background: var(--success);
 }
 
 .toast-error .toast-progress-bar {
-  background: #EF5350;
+  background: var(--error);
 }
 
 .toast-warning .toast-progress-bar {
-  background: #FFB74D;
+  background: var(--warning);
 }
 
-/* Responsive */
+/* Responsive: Position below 68px Sticky TopBar on mobile */
 @media (max-width: 600px) {
   .festiq-toast-container {
-    top: 16px;
+    top: 76px;
     left: 16px;
     right: 16px;
     width: auto;
@@ -195,4 +203,3 @@
     display: none;
   }
 }
-

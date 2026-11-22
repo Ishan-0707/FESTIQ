@@ -6,12 +6,12 @@
 :root,
 [data-theme="dark"] {
   --logo-arch-1: #F3E5AB;
-  --logo-arch-2: #C6A96B;
-  --logo-arch-3: #9E7E38;
+  --logo-arch-2: #D4AF62;
+  --logo-arch-3: #806B43;
   
   --logo-star-core: #FFFFFF;
   --logo-star-body: #FFF4D4;
-  --logo-star-glow: #C6A96B;
+  --logo-star-glow: #D4AF62;
   
   --logo-cyan-1: #22D3EE;
   --logo-cyan-2: #06B6D4;
@@ -21,11 +21,11 @@
   --logo-teal-2: #0F766E;
   
   --logo-gold-1: #FDE68A;
-  --logo-gold-2: #F59E0B;
-  --logo-gold-3: #C6A96B;
+  --logo-gold-2: #E5C47D;
+  --logo-gold-3: #D4AF62;
   
-  --logo-gold-sub-1: #F59E0B;
-  --logo-gold-sub-2: #B45309;
+  --logo-gold-sub-1: #D4AF62;
+  --logo-gold-sub-2: #806B43;
   
   --logo-violet-1: #A855F7;
   --logo-violet-2: #7C3AED;
@@ -33,26 +33,26 @@
   
   --logo-tip-spark: #67E8F9;
   
-  --logo-wordmark-text: #F0F0E8;
-  --logo-wordmark-accent: #D28B63;
-  --logo-tagline-text: rgba(240, 240, 232, 0.65);
+  --logo-wordmark-text: #F5F1E8;
+  --logo-wordmark-accent: #D4AF62;
+  --logo-tagline-text: rgba(245, 241, 232, 0.65);
 }
 
 [data-theme="light"] {
-  --logo-arch-1: #4169C8;
-  --logo-arch-2: #2D4FA3;
-  --logo-arch-3: #1E3778;
+  --logo-arch-1: #4E9573;
+  --logo-arch-2: #397A5B;
+  --logo-arch-3: #2C6348;
   
   --logo-star-core: #FEF3C7;
   --logo-star-body: #D97706;
   --logo-star-glow: #92400E;
   
-  --logo-cyan-1: #0284C7;
-  --logo-cyan-2: #0369A1;
-  --logo-cyan-3: #0F766E;
+  --logo-cyan-1: #2C6348;
+  --logo-cyan-2: #397A5B;
+  --logo-cyan-3: #4E9573;
   
-  --logo-teal-1: #0D9488;
-  --logo-teal-2: #115E59;
+  --logo-teal-1: #397A5B;
+  --logo-teal-2: #2C6348;
   
   --logo-gold-1: #D97706;
   --logo-gold-2: #B45309;
@@ -61,15 +61,15 @@
   --logo-gold-sub-1: #B45309;
   --logo-gold-sub-2: #78350F;
   
-  --logo-violet-1: #6366F1;
-  --logo-violet-2: #4F46E5;
-  --logo-violet-3: #3730A3;
+  --logo-violet-1: #4E9573;
+  --logo-violet-2: #397A5B;
+  --logo-violet-3: #2C6348;
   
-  --logo-tip-spark: #4169C8;
+  --logo-tip-spark: #397A5B;
   
-  --logo-wordmark-text: #242C43;
-  --logo-wordmark-accent: #4169C8;
-  --logo-tagline-text: rgba(36, 44, 67, 0.70);
+  --logo-wordmark-text: #244C3D;
+  --logo-wordmark-accent: #397A5B;
+  --logo-tagline-text: rgba(36, 76, 61, 0.70);
 }
 
 /* Container */

@@ -28,13 +28,14 @@ export default function CreateEventModal({ isOpen, onClose, onEventCreated }) {
     organizer: '',
     image: '',
     capacity: 200,
+    minExpectedRegistrations: 50,
     registrationType: 'free',
     feeAmount: 0,
     feeType: 'per_person',
     currency: 'INR',
-    prizeAmount: 25000,
+    prizeAmount: 0,
     prizePoolType: 'fixed',
-    prizeAllocationPct: 75,
+    prizeAllocationPct: 65,
     managerName: '',
     managerPhone: '+91 00000 00099',
     status: 'Open',
@@ -59,7 +60,7 @@ export default function CreateEventModal({ isOpen, onClose, onEventCreated }) {
     e.preventDefault();
     setError(null);
 
-    // Strict validation for registration fees
+    // Strict validation for registration fees & financial allocation
     if (formData.registrationType === 'paid') {
       const numFee = Number(formData.feeAmount);
       if (isNaN(numFee) || numFee <= 0) {
@@ -70,17 +71,38 @@ export default function CreateEventModal({ isOpen, onClose, onEventCreated }) {
         setError("Please select a valid fee billing model ('Per Person' or 'Per Team')");
         return;
       }
+      const numMinExpected = Number(formData.minExpectedRegistrations);
+      if (isNaN(numMinExpected) || numMinExpected <= 0 || !Number.isInteger(numMinExpected)) {
+        setError('Minimum expected registrations must be a valid positive integer');
+        return;
+      }
+      const numPct = Number(formData.prizeAllocationPct);
+      if (isNaN(numPct) || numPct < 60 || numPct > 70) {
+        setError('Prize-pool allocation percentage must be between 60% and 70%');
+        return;
+      }
     }
 
     setLoading(true);
 
     try {
+      const isPaid = formData.registrationType === 'paid';
+      const numFee = isPaid ? Number(formData.feeAmount) : 0;
+      const numMinExpected = isPaid ? Number(formData.minExpectedRegistrations) : null;
+      const pct = isPaid ? (Number(formData.prizeAllocationPct) || 65) : 0;
+      const minExpectedRev = isPaid ? Math.round(numMinExpected * numFee) : 0;
+      const fixedPrize = isPaid ? Math.round(minExpectedRev * (pct / 100)) : 0;
+
       const payload = {
         ...formData,
         capacity: Number(formData.capacity) || 100,
-        feeAmount: formData.registrationType === 'paid' ? Number(formData.feeAmount) : 0,
-        feeType: formData.registrationType === 'paid' ? formData.feeType : 'per_person',
-        prizeAmount: Number(formData.prizeAmount) || 0
+        feeAmount: numFee,
+        feeType: isPaid ? formData.feeType : 'per_person',
+        minExpectedRegistrations: numMinExpected,
+        prizeAllocationPct: isPaid ? pct : 0,
+        prizeAmount: fixedPrize,
+        prizePool: fixedPrize > 0 ? `₹${fixedPrize.toLocaleString('en-IN')}` : (isPaid ? 'Dynamic Prize Pool' : 'Trophies & Citations'),
+        prizePoolType: isPaid ? 'dynamic' : 'fixed'
       };
 
       const res = await createEvent(payload);
@@ -231,7 +253,7 @@ export default function CreateEventModal({ isOpen, onClose, onEventCreated }) {
             </div>
 
             {/* Capacity */}
-            <div className="form-group">
+            <div className="form-group span-2">
               <label htmlFor="capacity">Total Capacity (Spots) *</label>
               <input
                 id="capacity"
@@ -244,23 +266,9 @@ export default function CreateEventModal({ isOpen, onClose, onEventCreated }) {
               />
             </div>
 
-            {/* Prize Amount */}
-            <div className="form-group">
-              <label htmlFor="prizeAmount">Prize Pool (₹) *</label>
-              <input
-                id="prizeAmount"
-                name="prizeAmount"
-                type="number"
-                min="0"
-                required
-                value={formData.prizeAmount}
-                onChange={handleChange}
-              />
-            </div>
-
-            {/* Registration Fee Configuration Section */}
+            {/* Registration Fee & Financial Configuration Section */}
             <div className="form-group span-2 fee-config-box">
-              <label className="fee-section-heading">Registration Fee Configuration *</label>
+              <label className="fee-section-heading">Financial Allocation & Registration Model *</label>
               
               <div className="reg-type-toggle-row">
                 <label className={`reg-type-pill ${formData.registrationType === 'free' ? 'active' : ''}`}>
@@ -271,7 +279,7 @@ export default function CreateEventModal({ isOpen, onClose, onEventCreated }) {
                     checked={formData.registrationType === 'free'}
                     onChange={handleChange}
                   />
-                  <span>Free Registration (₹0)</span>
+                  <span>Free Event (No Registration Fee)</span>
                 </label>
 
                 <label className={`reg-type-pill ${formData.registrationType === 'paid' ? 'active' : ''}`}>
@@ -282,14 +290,14 @@ export default function CreateEventModal({ isOpen, onClose, onEventCreated }) {
                     checked={formData.registrationType === 'paid'}
                     onChange={handleChange}
                   />
-                  <span>Paid Registration (INR Gateway)</span>
+                  <span>Paid Event (Registration-Funded Prize Pool)</span>
                 </label>
               </div>
 
               {formData.registrationType === 'paid' && (
                 <div className="paid-fee-inputs-grid">
                   <div className="form-subgroup">
-                    <label htmlFor="feeAmount">Registration Fee Amount (₹) *</label>
+                    <label htmlFor="feeAmount">Registration Fee (₹) *</label>
                     <input
                       id="feeAmount"
                       name="feeAmount"
@@ -316,28 +324,89 @@ export default function CreateEventModal({ isOpen, onClose, onEventCreated }) {
                   </div>
 
                   <div className="form-subgroup">
-                    <label>Currency</label>
-                    <input type="text" value="INR (₹)" disabled className="disabled-currency-input" />
+                    <label htmlFor="minExpectedRegistrations">Min. Expected Registrations (N) *</label>
+                    <input
+                      id="minExpectedRegistrations"
+                      name="minExpectedRegistrations"
+                      type="number"
+                      min="1"
+                      required={formData.registrationType === 'paid'}
+                      value={formData.minExpectedRegistrations}
+                      onChange={handleChange}
+                      placeholder="e.g. 50"
+                    />
+                  </div>
+
+                  <div className="form-subgroup">
+                    <label htmlFor="prizeAllocationPct">Prize Pool Allocation (60%–70%) *</label>
+                    <input
+                      id="prizeAllocationPct"
+                      name="prizeAllocationPct"
+                      type="number"
+                      min="60"
+                      max="70"
+                      step="1"
+                      required={formData.registrationType === 'paid'}
+                      value={formData.prizeAllocationPct}
+                      onChange={handleChange}
+                      placeholder="Default 65%"
+                    />
                   </div>
                 </div>
               )}
 
-              {/* Live Preview Indicator */}
-              <div className="fee-prize-preview-strip">
-                <div className="preview-item">
-                  <span className="prev-label">Prize Pool:</span>
-                  <span className="prev-val text-gold">₹{Number(formData.prizeAmount || 0).toLocaleString('en-IN')}</span>
+              {/* Live Financial Allocation Preview */}
+              {formData.registrationType === 'paid' ? (() => {
+                const N = Number(formData.minExpectedRegistrations) || 0;
+                const F = Number(formData.feeAmount) || 0;
+                const r = Math.min(70, Math.max(60, Number(formData.prizeAllocationPct) || 65));
+                const B = Math.round(N * F);
+                const P = Math.round(B * (r / 100));
+                const Q = B - P;
+                const collegeProfit = Math.round(Q * 0.60);
+                const organizerProfit = Q - collegeProfit;
+
+                return (
+                  <div className="fee-prize-preview-strip financial-strip-detailed">
+                    <div className="preview-item">
+                      <span className="prev-label">Min. Expected Revenue (B):</span>
+                      <span className="prev-val text-green">₹{B.toLocaleString('en-IN')}</span>
+                    </div>
+                    <div className="preview-divider" />
+                    <div className="preview-item">
+                      <span className="prev-label">Fixed Approved Prize Pool (P):</span>
+                      <span className="prev-val text-gold">₹{P.toLocaleString('en-IN')} ({r}%)</span>
+                    </div>
+                    <div className="preview-divider" />
+                    <div className="preview-item">
+                      <span className="prev-label">Base Profit (Q):</span>
+                      <span className="prev-val">₹{Q.toLocaleString('en-IN')}</span>
+                    </div>
+                    <div className="preview-divider" />
+                    <div className="preview-item">
+                      <span className="prev-label">College Share (60%):</span>
+                      <span className="prev-val text-cyan">₹{collegeProfit.toLocaleString('en-IN')}</span>
+                    </div>
+                    <div className="preview-divider" />
+                    <div className="preview-item">
+                      <span className="prev-label">Team Share (40%):</span>
+                      <span className="prev-val text-cyan">₹{organizerProfit.toLocaleString('en-IN')}</span>
+                    </div>
+                  </div>
+                );
+              })() : (
+                <div className="fee-prize-preview-strip">
+                  <div className="preview-item">
+                    <span className="prev-label">Registration Fee:</span>
+                    <span className="prev-val text-green">Free (₹0)</span>
+                  </div>
+                  <div className="preview-divider" />
+                  <div className="preview-item">
+                    <span className="prev-label">Award Model:</span>
+                    <span className="prev-val text-gold">Trophies, Certificates & Citations</span>
+                  </div>
                 </div>
-                <div className="preview-divider" />
-                <div className="preview-item">
-                  <span className="prev-label">Registration Fee:</span>
-                  <span className="prev-val text-green">
-                    {formData.registrationType === 'free'
-                      ? 'Free'
-                      : `₹${Number(formData.feeAmount || 0).toLocaleString('en-IN')} ${formData.feeType === 'per_team' ? 'per team' : 'per participant'}`}
-                  </span>
-                </div>
-              </div>
+              )}
             </div>
 
             {/* Coordinator Name */}

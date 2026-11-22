@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { X, CheckCircle2, AlertCircle, Calendar, MapPin, User, Mail, Phone, Ticket, ShieldCheck, UserCheck, Trophy, CreditCard } from 'lucide-react';
+import { X, CheckCircle2, AlertCircle, Calendar, MapPin, User, Mail, Phone, Ticket, ShieldCheck, UserCheck, Trophy, CreditCard, Clock, Sparkles } from 'lucide-react';
 import Button from '../ui/Button';
 import Badge from '../ui/Badge';
-import { createRegistration } from '../../services/api';
+import { createRegistration, joinEventWaitlist } from '../../services/api';
 import { formatPublicPrizePool, formatRegistrationFee } from '../../utils/prizePool';
 import PaymentCheckoutModal from './PaymentCheckoutModal';
 import { useAuth } from '../../context/AuthContext';
@@ -30,6 +30,7 @@ export default function RegistrationModal({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [successData, setSuccessData] = useState(null);
+  const [waitlistSuccessData, setWaitlistSuccessData] = useState(null);
 
   // Payment checkout state for paid events
   const [checkoutOpen, setCheckoutOpen] = useState(false);
@@ -40,6 +41,7 @@ export default function RegistrationModal({
     if (isOpen) {
       setError(null);
       setSuccessData(null);
+      setWaitlistSuccessData(null);
       setCheckoutOpen(false);
       setCheckoutReg(null);
       setFormData({
@@ -65,6 +67,7 @@ export default function RegistrationModal({
   if (!isOpen) return null;
 
   const currentEvent = events.find((ev) => ev.id === formData.eventId) || preselectedEvent;
+  const isFull = Boolean(currentEvent && currentEvent.capacity && currentEvent.registeredCount >= currentEvent.capacity);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -77,10 +80,7 @@ export default function RegistrationModal({
       return;
     }
 
-    if (currentEvent && currentEvent.capacity && currentEvent.registeredCount >= currentEvent.capacity) {
-      setError(`Event capacity of ${currentEvent.capacity} has been reached.`);
-      return;
-    }
+    const isFull = Boolean(currentEvent && currentEvent.capacity && currentEvent.registeredCount >= currentEvent.capacity);
 
     // Validation
     if (!formData.participantName.trim()) {
@@ -100,11 +100,41 @@ export default function RegistrationModal({
     }
 
     if (!formData.eventId) {
-      setError('Please select an event to register for');
+      setError('Please select an event');
       return;
     }
 
     setLoading(true);
+
+    // If event is full, submit to waitlist instead of direct registration
+    if (isFull) {
+      try {
+        const response = await joinEventWaitlist({
+          participantName: formData.participantName.trim(),
+          email: formData.email.trim(),
+          phone: cleanPhone,
+          eventId: formData.eventId,
+          rollNumber: user?.rollNumber || null
+        });
+
+        if (response.success) {
+          setWaitlistSuccessData(response.data);
+          toast.success(`Joined waitlist: Queue rank #${response.data?.queuePosition}`);
+          if (onSuccess) onSuccess(response.data);
+        } else {
+          const msg = response.message || response.error || 'Failed to join waitlist';
+          setError(msg);
+          toast.error(msg);
+        }
+      } catch (err) {
+        const msg = err.message || 'Failed to join waitlist';
+        setError(msg);
+        toast.error(msg);
+      } finally {
+        setLoading(false);
+      }
+      return;
+    }
 
     try {
       const response = await createRegistration({
@@ -148,8 +178,8 @@ export default function RegistrationModal({
         {/* Header */}
         <div className="reg-modal-header">
           <div className="reg-modal-brand">
-            <span className="reg-modal-tag">Official Registration</span>
-            <h3 className="reg-modal-title">Event Registration</h3>
+            <span className="reg-modal-tag">{isFull ? 'Priority Waitlist' : 'Official Registration'}</span>
+            <h3 className="reg-modal-title">{isFull ? 'Join Event Waitlist' : 'Event Registration'}</h3>
           </div>
           <button
             type="button"
@@ -161,8 +191,48 @@ export default function RegistrationModal({
           </button>
         </div>
 
-        {/* Success Confirmation State */}
-        {successData ? (
+        {/* Waitlist Success Confirmation State */}
+        {waitlistSuccessData ? (
+          <div className="reg-success-state waitlist-success-state">
+            <div className="reg-success-icon-box" style={{ background: 'rgba(212, 175, 55, 0.15)', borderColor: 'var(--accent-gold)' }}>
+              <Clock size={44} style={{ color: 'var(--accent-gold)' }} />
+            </div>
+            <h4 className="success-title">You're on the Waitlist!</h4>
+            <p className="success-subtitle">
+              Your FIFO queue reservation is secured. When a seat opens up, you'll receive an exclusive seat offer on your dashboard.
+            </p>
+
+            <div className="reg-receipt-card">
+              <div className="receipt-row">
+                <span className="receipt-label">Queue Position</span>
+                <span className="receipt-value receipt-id" style={{ color: 'var(--accent-gold)' }}>
+                  #{waitlistSuccessData.queuePosition} in Queue
+                </span>
+              </div>
+              <div className="receipt-row">
+                <span className="receipt-label">Waitlist ID</span>
+                <span className="receipt-value">{waitlistSuccessData.id}</span>
+              </div>
+              <div className="receipt-row">
+                <span className="receipt-label">Event</span>
+                <span className="receipt-value">{currentEvent?.title || waitlistSuccessData.eventId}</span>
+              </div>
+              <div className="receipt-row">
+                <span className="receipt-label">Participant</span>
+                <span className="receipt-value">{waitlistSuccessData.participantName}</span>
+              </div>
+            </div>
+
+            <Button
+              variant="primary"
+              size="md"
+              onClick={onClose}
+              className="reg-success-done-btn"
+            >
+              Done & Return to Events
+            </Button>
+          </div>
+        ) : successData ? (
           <div className="reg-success-state">
             <div className="reg-success-icon-box">
               <CheckCircle2 size={44} className="success-icon" />
@@ -224,6 +294,16 @@ export default function RegistrationModal({
                   <span><Calendar size={13} /> {currentEvent.date}</span>
                   <span><MapPin size={13} /> {currentEvent.venue}</span>
                 </div>
+              </div>
+            )}
+
+            {/* Waitlist Notice Banner when Event is Full */}
+            {isFull && (
+              <div className="reg-waitlist-notice-banner" style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '12px 16px', background: 'rgba(212, 175, 55, 0.1)', border: '1px solid rgba(212, 175, 55, 0.3)', borderRadius: '10px', marginBottom: '16px', color: 'var(--accent-gold)' }}>
+                <Clock size={18} style={{ flexShrink: 0 }} />
+                <span style={{ fontSize: '0.86rem', lineHeight: '1.4' }}>
+                  This event is currently at maximum capacity ({currentEvent?.capacity} spots). Joining the FIFO waitlist reserves your priority queue position for automatic seat allocation.
+                </span>
               </div>
             )}
 
@@ -330,10 +410,12 @@ export default function RegistrationModal({
                 className="reg-submit-btn"
               >
                 {loading
-                  ? 'Submitting Registration...'
-                  : (currentEvent?.feeAmount > 0
-                    ? `Proceed to Payment (₹${currentEvent.feeAmount})`
-                    : 'Confirm Free Registration')}
+                  ? (isFull ? 'Joining Waitlist...' : 'Submitting Registration...')
+                  : (isFull
+                    ? 'Join FIFO Waitlist'
+                    : (currentEvent?.feeAmount > 0
+                      ? `Proceed to Payment (₹${currentEvent.feeAmount})`
+                      : 'Confirm Free Registration'))}
               </Button>
               <Button
                 variant="secondary"

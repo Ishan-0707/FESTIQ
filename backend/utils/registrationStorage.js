@@ -2,19 +2,40 @@ import fs from 'fs/promises';
 import path from 'path';
 import crypto from 'crypto';
 import { fileURLToPath } from 'url';
+import { withCapacityLock } from './capacityLock.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const registrationsFilePath = path.join(__dirname, '..', 'data', 'registrations.json');
 const eventsFilePath = path.join(__dirname, '..', 'data', 'events.json');
+const waitlistFilePath = path.join(__dirname, '..', 'data', 'waitlist.json');
 
-// Serialized asynchronous queue for concurrent registration writes
-let regWriteQueue = Promise.resolve();
-
+// Global capacity-coordinated asynchronous execution queue
 function enqueueWrite(operation) {
-  const next = regWriteQueue.then(operation, operation);
-  regWriteQueue = next.catch(() => {});
-  return next;
+  return withCapacityLock(operation);
+}
+
+/**
+ * Retrieve unexpired active waitlist seat offers for an event.
+ * Excludes an offer currently being converted (convertingWaitlistId).
+ */
+async function getActiveOffersForEvent(eventId, convertingWaitlistId = null) {
+  try {
+    const raw = await fs.readFile(waitlistFilePath, 'utf-8');
+    const waitlist = JSON.parse(raw);
+    if (!Array.isArray(waitlist)) return [];
+    const now = Date.now();
+    return waitlist.filter(
+      (w) =>
+        w.eventId === eventId &&
+        w.status === 'OFFERED' &&
+        w.offerExpiresAt &&
+        new Date(w.offerExpiresAt).getTime() > now &&
+        w.id !== convertingWaitlistId
+    );
+  } catch {
+    return [];
+  }
 }
 
 /**
@@ -80,7 +101,8 @@ export async function createRegistration({
   phone,
   eventId,
   userId = null,
-  rollNumber = null
+  rollNumber = null,
+  convertingWaitlistId = null
 }) {
   return enqueueWrite(async () => {
     // 1. Verify that event exists
@@ -100,18 +122,24 @@ export async function createRegistration({
 
     // 3. Check registrations
     const registrations = await getAllRegistrations();
-    const eventRegistrations = registrations.filter((r) => r.eventId === eventId);
+    const activeEventRegistrations = registrations.filter(
+      (r) => r.eventId === eventId && r.status !== 'cancelled'
+    );
 
-    // 4. Check capacity if defined
-    if (event.capacity && eventRegistrations.length >= event.capacity) {
-      const err = new Error(`Event capacity of ${event.capacity} has been reached for '${event.title}'`);
+    // 4. Check capacity if defined, taking into account unexpired active waitlist offers
+    const activeOffers = await getActiveOffersForEvent(eventId, convertingWaitlistId);
+    const totalOccupiedSeats = activeEventRegistrations.length + activeOffers.length;
+
+    if (event.capacity && totalOccupiedSeats >= event.capacity) {
+      const err = new Error(`Event capacity of ${event.capacity} has been reached for '${event.title}'. Remaining seats are reserved or occupied.`);
       err.statusCode = 400;
+      err.isFull = true;
       throw err;
     }
 
     // 5. Prevent duplicate submission (same email + same event)
     const normalizedEmail = email.trim().toLowerCase();
-    const isDuplicate = eventRegistrations.some(
+    const isDuplicate = activeEventRegistrations.some(
       (r) => r.email.toLowerCase() === normalizedEmail
     );
     if (isDuplicate) {
@@ -255,6 +283,14 @@ export async function checkInPass({ eventId, passId, token, managerName = 'Manag
       throw err;
     }
 
+    // Check cancellation or invalid status (Section 4.5)
+    if (reg.status === 'cancelled' || reg.pass?.status === 'Cancelled — Pass Expired' || reg.pass?.status === 'cancelled') {
+      const err = new Error('Invalid Pass — Registration Cancelled. Entry credential has expired.');
+      err.statusCode = 400;
+      err.isCancelled = true;
+      throw err;
+    }
+
     // Verify token hash
     if (token) {
       const isValid = verifyPassToken(token, reg.passTokenHash);
@@ -265,9 +301,8 @@ export async function checkInPass({ eventId, passId, token, managerName = 'Manag
       }
     }
 
-    // Check cancellation or invalid status
     if (reg.status !== 'confirmed') {
-      const err = new Error(`This registration is ${reg.status || 'invalid'}. Check-in rejected.`);
+      const err = new Error(`Invalid Pass — Registration is ${reg.status || 'invalid'}. Check-in rejected.`);
       err.statusCode = 400;
       throw err;
     }
@@ -462,6 +497,14 @@ export async function confirmPaidRegistration({
 
     const reg = registrations[regIndex];
 
+    // Reject payment confirmation if the registration has been cancelled
+    if (reg.status === 'cancelled') {
+      const err = new Error(`Registration with ID '${registrationId}' has been cancelled. Payment confirmation rejected.`);
+      err.statusCode = 400;
+      err.cancelled = true;
+      throw err;
+    }
+
     // Idempotency: If already verified and pass exists, return existing pass
     if (reg.paymentStatus === 'paid' && reg.status === 'confirmed' && reg.pass?.status === 'valid') {
       return {
@@ -545,4 +588,82 @@ export async function failRegistrationPayment({ registrationId, orderId, errorRe
     return reg;
   });
 }
+
+/**
+ * Cancels a confirmed registration and releases the seat.
+ * Concurrency-safe within the serialized write queue.
+ * Automatically notifies the Smart Waitlist allocator to offer the newly vacant seat.
+ */
+export async function cancelRegistration(arg1, arg2 = null, arg3 = 'Student requested cancellation') {
+  const options = (typeof arg1 === 'object' && arg1 !== null)
+    ? arg1
+    : { registrationId: arg1, userId: arg2, reason: arg3 };
+  const { registrationId, userId = null, reason = 'Student requested cancellation' } = options;
+  return enqueueWrite(async () => {
+    const registrations = await getAllRegistrations();
+    const regIndex = registrations.findIndex((r) => r.id === registrationId);
+    if (regIndex === -1) {
+      const err = new Error(`Registration with ID '${registrationId}' was not found`);
+      err.statusCode = 404;
+      throw err;
+    }
+
+    const reg = registrations[regIndex];
+
+    // Ownership check
+    if (userId && reg.userId && reg.userId !== userId) {
+      const err = new Error('Access denied: Unauthorized to cancel this registration');
+      err.statusCode = 403;
+      throw err;
+    }
+
+    // Prevent cancellation after venue check-in (Section 4.5)
+    if (reg.checkedIn === true || (reg.pass && reg.pass.checkedIn === true)) {
+      const err = new Error('Cannot cancel registration: Attendee has already checked in to the venue');
+      err.statusCode = 400;
+      throw err;
+    }
+
+    if (reg.status === 'cancelled') {
+      const err = new Error('Registration is already cancelled');
+      err.statusCode = 400;
+      throw err;
+    }
+
+    const now = new Date().toISOString();
+    reg.status = 'cancelled';
+    reg.cancelledAt = now;
+    reg.cancellationReason = reason;
+
+    // Digital pass expiration (Section 4.4)
+    if (reg.pass) {
+      reg.pass.status = 'Cancelled — Pass Expired';
+      reg.pass.expiredAt = now;
+    }
+
+    // Invalidate security token hash so previously downloaded/screenshotted QR cannot validate (Section 4.5)
+    reg.passTokenHash = null;
+
+    // Critical: No refund (Section 4.1)
+    // Original payment record remains intact; paymentStatus is preserved; no refund transaction initiated.
+
+    registrations[regIndex] = reg;
+
+    const jsonString = JSON.stringify(registrations, null, 2);
+    const tmpPath = `${registrationsFilePath}.tmp.${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+    await fs.writeFile(tmpPath, jsonString, 'utf-8');
+    await fs.rename(tmpPath, registrationsFilePath);
+
+    // Trigger waitlist seat allocation for the freed slot
+    try {
+      const { allocateAvailableSeats } = await import('./waitlistStorage.js');
+      await allocateAvailableSeats(reg.eventId);
+    } catch (allocErr) {
+      console.warn('[Registration Storage] Waitlist allocation trigger notice:', allocErr.message);
+    }
+
+    return reg;
+  });
+}
+
 

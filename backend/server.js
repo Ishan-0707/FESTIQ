@@ -10,6 +10,9 @@ import galleryRoutes from './routes/galleryRoutes.js';
 import manageRoutes from './routes/manageRoutes.js';
 import proposalRoutes from './routes/proposalRoutes.js';
 import paymentRoutes from './routes/paymentRoutes.js';
+import waitlistRoutes from './routes/waitlistRoutes.js';
+import certificateRoutes from './routes/certificateRoutes.js';
+import reviewRoutes from './routes/reviewRoutes.js';
 import { verifyOriginCsrf } from './middleware/csrfProtection.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -93,6 +96,9 @@ app.use('/api/gallery', galleryRoutes);
 app.use('/api/manage', manageRoutes);
 app.use('/api/proposals', proposalRoutes);
 app.use('/api/payments', paymentRoutes);
+app.use('/api/waitlist', waitlistRoutes);
+app.use('/api/certificates', certificateRoutes);
+app.use('/api/reviews', reviewRoutes);
 
 // 404 Handler for undefined API routes
 app.use('/api/*', (req, res) => {

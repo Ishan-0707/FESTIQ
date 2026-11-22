@@ -3,7 +3,6 @@ import { NavLink, Link, useLocation } from 'react-router-dom';
 import { 
   Home, 
   Compass, 
-  Calendar as CalendarIcon, 
   Image as GalleryIcon, 
   LayoutDashboard, 
   Info, 
@@ -23,7 +22,6 @@ export default function Sidebar({
   const navItems = [
     { path: '/', label: 'Home', icon: Home },
     { path: '/events', label: 'Explore Events', icon: Compass },
-    { path: '/calendar', label: 'Calendar', icon: CalendarIcon },
     { path: '/gallery', label: 'Gallery', icon: GalleryIcon },
     ...(isAuthenticated ? [{ path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard }] : []),
     { path: '/about', label: 'About', icon: Info },

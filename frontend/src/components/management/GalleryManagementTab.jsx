@@ -294,9 +294,11 @@ export default function GalleryManagementTab() {
             }}
           >
             <option value="ALL">All Categories</option>
-            <option value="Technical">Technical</option>
             <option value="Cultural">Cultural</option>
+            <option value="Celebrations">Celebrations</option>
+            <option value="Technical">Technical</option>
             <option value="Sports">Sports</option>
+            <option value="Workshops">Workshops</option>
             <option value="Management">Management</option>
             <option value="Gaming">Gaming</option>
             <option value="Flagship">Flagship</option>
@@ -440,9 +442,11 @@ export default function GalleryManagementTab() {
                       value={formData.category}
                       onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value }))}
                     >
-                      <option value="Technical">Technical</option>
                       <option value="Cultural">Cultural</option>
+                      <option value="Celebrations">Celebrations</option>
+                      <option value="Technical">Technical</option>
                       <option value="Sports">Sports</option>
+                      <option value="Workshops">Workshops</option>
                       <option value="Management">Management</option>
                       <option value="Gaming">Gaming</option>
                       <option value="Flagship">Flagship</option>

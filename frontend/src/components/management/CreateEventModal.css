@@ -1,44 +1,53 @@
-/* Create Event Modal Styles */
+/* ============================================================
+   FESTIQ Management — Create Event Modal Styles
+   Dual-Theme Compatible (Obsidian Gold & Sage Porcelain)
+   Phase 2J: Visual Refinement, Sizing & Theme Modernization
+   ============================================================ */
+
 .create-event-backdrop {
   position: fixed;
   inset: 0;
   z-index: 1200;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 16px;
 }
 
 .create-event-modal {
   width: 100%;
   max-width: 780px;
   max-height: 92vh;
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-modal, 20px);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  color: var(--text-primary);
+  transition: background-color var(--transition-theme), border-color var(--transition-theme);
 }
 
 .create-modal-header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 1.25rem 1.75rem;
-  border-bottom: 1px solid var(--border-color);
-  background: var(--bg-surface);
+  padding: 20px 28px;
+  border-bottom: 1px solid var(--border-primary);
+  background: var(--surface-secondary);
+  transition: background-color var(--transition-theme), border-color var(--transition-theme);
 }
 
 .create-modal-title {
+  font-family: var(--font-heading);
   font-size: 1.35rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 0.2rem;
+  margin-bottom: 4px;
 }
 
 .create-modal-subtitle {
@@ -50,61 +59,67 @@
 .create-modal-close {
   background: transparent;
   border: none;
-  color: var(--text-secondary);
+  color: var(--text-muted);
   cursor: pointer;
-  padding: 0.4rem;
-  border-radius: var(--radius-full);
+  padding: 6px;
+  border-radius: var(--radius-xs, 6px);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
 }
 
 .create-modal-close:hover {
-  background: var(--bg-hover);
+  background: var(--bg-card-hover);
   color: var(--text-primary);
 }
 
 .create-event-form {
-  padding: 1.5rem 1.75rem;
+  padding: 24px 28px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 18px;
 }
 
 .create-form-alert {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.75rem 1rem;
-  border-radius: var(--radius-md);
-  font-size: 0.875rem;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm, 8px);
+  font-size: 0.88rem;
   line-height: 1.4;
 }
 
 .create-form-alert.error {
-  background: rgba(239, 68, 68, 0.15);
-  border: 1px solid rgba(239, 68, 68, 0.35);
-  color: #F87171;
+  background: rgba(228, 119, 119, 0.14);
+  border: 1px solid rgba(228, 119, 119, 0.30);
+  color: var(--error);
 }
 
 .create-form-alert.success {
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.35);
-  color: #34D399;
+  background: rgba(100, 184, 138, 0.14);
+  border: 1px solid rgba(100, 184, 138, 0.30);
+  color: var(--success);
+}
+
+[data-theme='light'] .create-form-alert.success {
+  color: #2C6348;
+  background: rgba(57, 122, 91, 0.12);
+  border-color: rgba(57, 122, 91, 0.25);
 }
 
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 16px;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 6px;
 }
 
 .form-group.span-2 {
@@ -112,7 +127,7 @@
 }
 
 .form-group label {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -125,29 +140,33 @@
 .form-group input[type="number"],
 .form-group select,
 .form-group textarea {
-  padding: 0.65rem 0.85rem;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-input, 9px);
   color: var(--text-primary);
-  font-family: inherit;
+  font-family: var(--font-body);
   font-size: 0.9rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-theme);
+}
+
+.form-group select option {
+  background: var(--card-bg);
+  color: var(--text-primary);
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  outline: none;
-  border-color: var(--accent-champagne);
-  box-shadow: 0 0 0 3px rgba(198, 169, 107, 0.15);
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(212, 175, 98, 0.15);
 }
 
 [data-theme='light'] .form-group input:focus,
 [data-theme='light'] .form-group select:focus,
 [data-theme='light'] .form-group textarea:focus {
-  border-color: var(--accent-light-blue);
-  box-shadow: 0 0 0 3px rgba(53, 107, 150, 0.15);
+  box-shadow: 0 0 0 3px rgba(57, 122, 91, 0.15);
 }
 
 .form-group.checkbox-group {
@@ -157,19 +176,19 @@
 .checkbox-label {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 8px;
   cursor: pointer;
-  margin-top: 1.25rem;
+  margin-top: 18px;
 }
 
 .checkbox-label input[type="checkbox"] {
   width: 18px;
   height: 18px;
-  accent-color: var(--accent-champagne);
+  accent-color: var(--accent-primary);
 }
 
 .checkbox-text {
-  font-size: 0.85rem;
+  font-size: 0.86rem;
   font-weight: 600;
   color: var(--text-primary);
 }
@@ -178,80 +197,79 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 0.85rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border-color);
+  gap: 12px;
+  padding: 16px 28px;
+  border-top: 1px solid var(--border-primary);
+  background: var(--surface-secondary);
+  transition: background-color var(--transition-theme), border-color var(--transition-theme);
 }
 
-@media (max-width: 640px) {
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-  .form-group.span-2 {
-    grid-column: span 1;
-  }
-  .paid-fee-inputs-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Registration Fee Configuration Section */
+/* ============================================================
+   Registration Fee Configuration Section
+   ============================================================ */
 .fee-config-box {
-  background: var(--bg-surface, rgba(255, 255, 255, 0.02));
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 1.25rem;
-  margin: 0.5rem 0;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  padding: 18px 20px;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 14px;
+  transition: background-color var(--transition-theme), border-color var(--transition-theme);
 }
 
 .fee-section-heading {
+  font-family: var(--font-heading);
   font-size: 0.88rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--accent-champagne, #D28B63);
+  color: var(--accent-primary);
 }
 
 .reg-type-toggle-row {
   display: flex;
-  gap: 1rem;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
 .reg-type-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-sm, 8px);
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--text-secondary);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
 }
 
 .reg-type-pill.active {
-  border-color: var(--accent-champagne, #D28B63);
-  color: var(--text-primary);
-  background: rgba(210, 139, 99, 0.08);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  background: rgba(212, 175, 98, 0.10);
+  font-weight: 700;
+}
+
+[data-theme='light'] .reg-type-pill.active {
+  background: rgba(57, 122, 91, 0.10);
+  border-color: var(--accent-primary);
 }
 
 .paid-fee-inputs-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 14px;
 }
 
 .form-subgroup {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 5px;
 }
 
 .form-subgroup label {
@@ -268,18 +286,18 @@
 .fee-prize-preview-strip {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
-  padding: 0.75rem 1rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm);
+  gap: 16px;
+  padding: 10px 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-sm, 8px);
   font-size: 0.82rem;
 }
 
 .preview-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 6px;
 }
 
 .prev-label {
@@ -294,14 +312,29 @@
 .preview-divider {
   width: 1px;
   height: 16px;
-  background: var(--border-color);
+  background: var(--border-primary);
 }
 
 .text-gold {
-  color: var(--accent-champagne, #D28B63);
+  color: var(--accent-primary);
 }
 
 .text-green {
-  color: #10B981;
+  color: var(--success);
 }
 
+[data-theme='light'] .text-green {
+  color: #2C6348;
+}
+
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-group.span-2 {
+    grid-column: span 1;
+  }
+  .paid-fee-inputs-grid {
+    grid-template-columns: 1fr;
+  }
+}

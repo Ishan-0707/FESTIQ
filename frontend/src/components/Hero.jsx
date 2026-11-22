@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Compass, Ticket } from 'lucide-react';
 import Button from './ui/Button';
-import FestiqLogo from './common/FestiqLogo';
+import { calculateCombinedPrizePool } from '../utils/prizePool';
 import './Hero.css';
 
 export default function Hero({ events = [], onOpenRegister }) {
@@ -12,10 +12,10 @@ export default function Hero({ events = [], onOpenRegister }) {
   const stats = React.useMemo(() => {
     if (!events || events.length === 0) {
       return {
-        totalEvents: 25,
-        individualCapacity: '5,023',
-        teamCapacity: '296',
-        prizePool: '₹3,56,100'
+        totalEvents: '0',
+        individualCapacity: '0',
+        teamCapacity: '0',
+        prizePool: '₹0'
       };
     }
 
@@ -25,7 +25,7 @@ export default function Hero({ events = [], onOpenRegister }) {
 
     const indCap = individualEvents.reduce((sum, e) => sum + (Number(e.capacity) || 0), 0);
     const teamCap = teamEvents.reduce((sum, e) => sum + (Number(e.capacity) || 0), 0);
-    const totalPrize = events.reduce((sum, e) => sum + (Number(e.prizeAmount) || 0), 0);
+    const totalPrize = calculateCombinedPrizePool(events);
 
     return {
       totalEvents: totalEvents.toLocaleString('en-IN'),
@@ -42,12 +42,6 @@ export default function Hero({ events = [], onOpenRegister }) {
       <div className="hero-glow hero-glow-accent" aria-hidden="true"></div>
 
       <div className="container hero-container">
-        {/* Category Pill Tag */}
-        <div className="hero-badge">
-          <FestiqLogo variant="symbol" size={18} />
-          <span>University Campus Event Platform</span>
-        </div>
-
         {/* Main Headline */}
         <h1 className="hero-title">
           Where Campus Culture Meets <span className="text-gradient">Tomorrow</span>.

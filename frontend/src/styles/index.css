@@ -2,68 +2,75 @@
    FESTIQ Design System — Semantic Design Tokens & Theme Engine
    ============================================================ */
 
-/* 1. Dark Theme — Deep Teal & Copper */
+/* 1. Dark Theme — Obsidian Gold (Approved Design System) */
 :root,
 [data-theme="dark"] {
   --theme-name: 'dark';
 
-  /* Deep Teal Surfaces & Obsidian Backgrounds */
-  --bg-primary: #0A1517;
-  --bg-deep: #060E10;
-  --surface-secondary: #14272A;
-  --bg-secondary: #14272A;
-  --card-bg: #203B3E;
-  --bg-card: #203B3E;
-  --bg-card-hover: #29494A;
-  --surface-elevated: #203B3E;
-  --topbar-bg: rgba(10, 21, 23, 0.94);
-  --bg-glass: rgba(20, 39, 42, 0.88);
+  /* Obsidian Pure Black Surfaces */
+  --bg-primary: #090909;
+  --bg-secondary: #101010;
+  --bg-deep: #050505;
+  --surface-secondary: #101010;
+  --card-bg: #171717;
+  --bg-card: #171717;
+  --bg-card-hover: #212121;
+  --surface-elevated: #252525;
+  --topbar-bg: rgba(9, 9, 9, 0.92);
+  --bg-glass: rgba(23, 23, 23, 0.85);
 
-  /* Sidebar Tokens (Visually Distinct) */
-  --sidebar-bg: #0A1517;
-  --sidebar-active: #203B3E;
-  --sidebar-hover: rgba(41, 73, 74, 0.65);
-  --sidebar-text: #F0F0E8;
-  --sidebar-text-muted: #A9B9B7;
-  --sidebar-border: #294044;
+  /* Sidebar Tokens */
+  --sidebar-bg: #101010;
+  --sidebar-active: #171717;
+  --sidebar-hover: rgba(37, 37, 37, 0.70);
+  --sidebar-text: #F5F1E8;
+  --sidebar-text-muted: #AAA49A;
+  --sidebar-border: #33302A;
 
-  /* Copper Primary Accent & Sage/Teal Secondary Accents */
-  --accent-primary: #D28B63;
-  --accent-copper: #D28B63;
-  --accent-champagne: #D28B63;
-  --accent-light-blue: #B7D0C9;
-  --accent-secondary: #B7D0C9;
-  --accent-soft: #B87650;
-  --accent-sage: #B7D0C9;
-  --accent-gradient: linear-gradient(135deg, #D28B63 0%, #E09E78 50%, #B87650 100%);
-  --accent-gradient-hover: linear-gradient(135deg, #DC976F 0%, #EBB08D 50%, #C7825A 100%);
-  --cyan-gradient: linear-gradient(135deg, #D28B63 0%, #B7D0C9 100%);
+  /* Metallic Gold Primary Accent */
+  --accent-primary: #D4AF62;
+  --accent-hover: #E5C47D;
+  --accent-muted: #806B43;
+  --accent-copper: #D4AF62;
+  --accent-champagne: #D4AF62;
+  --accent-secondary: #AAA49A;
+  --accent-soft: #806B43;
+  --accent-sage: #806B43;
+  --accent-gradient: linear-gradient(135deg, #D4AF62 0%, #E5C47D 50%, #B89345 100%);
+  --accent-gradient-hover: linear-gradient(135deg, #E5C47D 0%, #F0D597 50%, #C9A454 100%);
+  --cyan-gradient: linear-gradient(135deg, #D4AF62 0%, #F5F1E8 100%);
 
   /* Warm Readable Typography */
-  --text-primary: #F0F0E8;
-  --text-secondary: #A9B9B7;
-  --text-muted: #7E9290;
+  --text-primary: #F5F1E8;
+  --text-secondary: #AAA49A;
+  --text-muted: #77736C;
 
   /* Borders & Shadows */
-  --border-subtle: #294044;
-  --border-color: #294044;
-  --border-hover: #3A5B60;
-  --border-focus: #D28B63;
+  --border-primary: #33302A;
+  --border-subtle: #24221E;
+  --border-color: #33302A;
+  --border-hover: #48433A;
+  --border-focus: #D4AF62;
 
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.40);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.50);
-  --shadow-card-hover: 0 10px 28px rgba(0, 0, 0, 0.50);
-  --shadow-glow: 0 0 25px rgba(210, 139, 99, 0.22);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.60);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.70);
+  --shadow-card-hover: 0 12px 30px rgba(0, 0, 0, 0.75);
+  --shadow-glow: 0 0 25px rgba(212, 175, 98, 0.20);
+
+  /* Functional Status Colors */
+  --success: #64B88A;
+  --error: #E47777;
+  --warning: #E6B65C;
 
   /* Layout Constants */
-  --sidebar-width: 250px;
-  --topbar-height: 72px;
-  --container-max: 1200px;
-  --section-padding: 64px 0;
+  --sidebar-width: 260px;
+  --topbar-height: 68px;
+  --container-max: 1440px;
+  --section-padding: 72px 0;
 
   /* Typography Fonts */
-  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   /* Spacing Scale */
   --space-xs: 4px;
@@ -74,70 +81,87 @@
   --space-2xl: 48px;
   --space-3xl: 64px;
 
-  /* Radii */
+  /* Radii Geometry (Approved Standard) */
+  --radius-xs: 6px;
   --radius-sm: 8px;
+  --radius-input: 9px;
+  --radius-btn: 10px;
   --radius-md: 12px;
+  --radius-card: 16px;
   --radius-lg: 16px;
+  --radius-modal: 20px;
   --radius-xl: 20px;
   --radius-full: 9999px;
 
   /* Transitions */
-  --transition-fast: 0.15s ease;
+  --transition-micro: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-hover: 220ms ease;
+  --transition-modal: 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-page: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-stagger: 60ms;
+  --transition-fast: 0.18s ease;
   --transition-normal: 0.25s ease;
-  --transition-theme: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  --transition-theme: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* 2. Light Theme — Buttercream & Cobalt */
+/* 2. Light Theme — Sage & Porcelain (Approved Design System) */
 [data-theme="light"] {
   --theme-name: 'light';
 
-  /* Buttercream Surfaces & Crisp Backgrounds */
-  --bg-primary: #FFF9E9;
-  --bg-deep: #F7EED2;
-  --surface-secondary: #FFFFFF;
-  --bg-secondary: #FFFFFF;
-  --card-bg: #F3EACB;
-  --bg-card: #F3EACB;
-  --bg-card-hover: #EDE3CB;
-  --surface-elevated: #FFFFFF;
-  --topbar-bg: rgba(255, 249, 233, 0.94);
-  --bg-glass: rgba(255, 255, 255, 0.90);
+  /* Sage & Porcelain Surfaces */
+  --bg-primary: #EFF4EF;
+  --bg-secondary: #E6EEE7;
+  --bg-deep: #E0EAE1;
+  --surface-secondary: #E6EEE7;
+  --card-bg: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F8FAF8;
+  --surface-elevated: #DDE9DF;
+  --topbar-bg: rgba(239, 244, 239, 0.92);
+  --bg-glass: rgba(255, 255, 255, 0.88);
 
   /* Light Sidebar Tokens */
-  --sidebar-bg: #F3EACB;
-  --sidebar-active: #EDE3CB;
-  --sidebar-hover: rgba(237, 227, 203, 0.65);
-  --sidebar-text: #242C43;
-  --sidebar-text-muted: #69748A;
-  --sidebar-border: #E7DFC9;
+  --sidebar-bg: #E6EEE7;
+  --sidebar-active: #DDE9DF;
+  --sidebar-hover: rgba(221, 233, 223, 0.75);
+  --sidebar-text: #244C3D;
+  --sidebar-text-muted: #52675B;
+  --sidebar-border: #D0DDD2;
 
-  /* Cobalt Primary Accent & Terracotta Secondary Accent */
-  --accent-primary: #4169C8;
-  --accent-cobalt: #4169C8;
-  --accent-champagne: #B66F45;
-  --accent-light-blue: #4169C8;
-  --accent-secondary: #B66F45;
-  --deep-blue-accent: #2D4FA3;
-  --accent-sage: #4169C8;
-  --accent-gradient: linear-gradient(135deg, #4169C8 0%, #5B81DB 100%);
-  --accent-gradient-hover: linear-gradient(135deg, #3359B8 0%, #4169C8 100%);
-  --cyan-gradient: linear-gradient(135deg, #4169C8 0%, #B66F45 100%);
+  /* Rich Sage Primary Accent */
+  --accent-primary: #397A5B;
+  --accent-hover: #2C6348;
+  --accent-muted: #9BB6A2;
+  --accent-copper: #397A5B;
+  --accent-champagne: #397A5B;
+  --accent-secondary: #52675B;
+  --accent-soft: #2C6348;
+  --accent-sage: #397A5B;
+  --accent-gradient: linear-gradient(135deg, #397A5B 0%, #4E9573 50%, #2C6348 100%);
+  --accent-gradient-hover: linear-gradient(135deg, #2C6348 0%, #397A5B 50%, #204C36 100%);
+  --cyan-gradient: linear-gradient(135deg, #397A5B 0%, #244C3D 100%);
 
   /* High Contrast Typography */
-  --text-primary: #242C43;
-  --text-secondary: #69748A;
-  --text-muted: #8894A8;
+  --text-primary: #244C3D;
+  --text-secondary: #52675B;
+  --text-muted: #78877C;
 
   /* Borders & Shadows */
-  --border-subtle: #E7DFC9;
-  --border-color: #E7DFC9;
-  --border-hover: #D6CCA8;
-  --border-focus: #4169C8;
+  --border-primary: #D0DDD2;
+  --border-subtle: #D8E4DA;
+  --border-color: #D0DDD2;
+  --border-hover: #B7CAB9;
+  --border-focus: #397A5B;
 
-  --shadow-sm: 0 2px 8px rgba(36, 44, 67, 0.06);
-  --shadow-md: 0 8px 24px rgba(36, 44, 67, 0.10);
-  --shadow-card-hover: 0 10px 24px rgba(36, 44, 67, 0.12);
-  --shadow-glow: 0 0 22px rgba(65, 105, 200, 0.20);
+  --shadow-sm: 0 2px 8px rgba(36, 76, 61, 0.05);
+  --shadow-md: 0 8px 24px rgba(36, 76, 61, 0.08);
+  --shadow-card-hover: 0 12px 28px rgba(36, 76, 61, 0.12);
+  --shadow-glow: 0 0 22px rgba(57, 122, 91, 0.18);
+
+  /* Functional Status Colors */
+  --success: #32845A;
+  --error: #C34F4F;
+  --warning: #A87527;
 }
 
 /* Base Reset */
@@ -166,6 +190,7 @@ body {
   overflow-x: hidden;
   max-width: 100vw;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   transition: var(--transition-theme);
 }
 
@@ -207,6 +232,20 @@ button {
   outline: none;
 }
 
+/* Accessibility: Visible Focus Indicators for Keyboard Navigation */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible,
+[tabindex="0"]:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -222,18 +261,47 @@ img {
   padding-right: var(--space-lg);
 }
 
-/* Typography Hierarchy */
+/* Typography Hierarchy (Manrope + Inter) */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   color: var(--text-primary);
   font-weight: 700;
   line-height: 1.25;
+  letter-spacing: -0.015em;
   transition: color 0.2s ease;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 4.5vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+h3 {
+  font-size: clamp(1.2rem, 2.5vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.4;
 }
 
 p {
   color: var(--text-secondary);
-  line-height: 1.65;
+  line-height: 1.6;
+  font-size: 0.98rem;
   transition: color 0.2s ease;
 }
 
@@ -255,33 +323,42 @@ p {
 /* Section Headers */
 .section-header {
   text-align: center;
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-2xl, 44px);
 }
 
 .section-tag {
   display: inline-block;
   font-size: 0.78rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   color: var(--accent-primary);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-sm, 8px);
 }
 
 .section-title {
   font-family: var(--font-heading);
-  font-size: clamp(1.85rem, 4vw, 2.5rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin-bottom: var(--space-sm);
+  font-size: clamp(1.85rem, 3.2vw, 2.35rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.22;
+  margin-bottom: var(--space-sm, 8px);
   color: var(--text-primary);
 }
 
 .section-subtitle {
-  font-size: 1rem;
+  font-size: clamp(0.94rem, 1.4vw, 1.02rem);
+  font-weight: 400;
   color: var(--text-secondary);
+  line-height: 1.6;
   max-width: 580px;
   margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .section-header {
+    margin-bottom: var(--space-xl, 28px);
+  }
 }
 
 /* Skeleton Loader */
@@ -310,7 +387,7 @@ p {
 }
 
 .page-entrance {
-  animation: pageFadeSlideIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: pageFadeSlideIn var(--transition-page) cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes modalBackdropFadeIn {
@@ -344,28 +421,30 @@ p {
 
 /* Card Hover Micro-Interaction */
 .card-hover-fx {
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+  border-radius: var(--radius-card);
+  transition: transform var(--transition-hover), box-shadow var(--transition-hover), border-color var(--transition-hover);
 }
 
 .card-hover-fx:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-card-hover);
-  border-color: var(--accent-primary);
+  border-color: var(--border-hover);
 }
 
-/* Standardized Form Inputs */
+/* Standardized Form Inputs (9px radius, 44px min-height) */
 .festiq-input,
 .festiq-select,
 .festiq-textarea {
   width: 100%;
-  padding: 11px 15px;
-  background-color: var(--bg-deep);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
+  min-height: 44px;
+  padding: 11px 16px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-input);
   color: var(--text-primary);
   font-family: var(--font-body);
   font-size: 0.92rem;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
   outline: none;
 }
 
@@ -373,18 +452,58 @@ p {
 .festiq-select:focus,
 .festiq-textarea:focus {
   border-color: var(--border-focus);
-  box-shadow: 0 0 0 3px rgba(210, 139, 99, 0.22);
+  box-shadow: 0 0 0 3px rgba(212, 175, 98, 0.22);
 }
 
 [data-theme="light"] .festiq-input:focus,
 [data-theme="light"] .festiq-select:focus,
 [data-theme="light"] .festiq-textarea:focus {
-  box-shadow: 0 0 0 3px rgba(65, 105, 200, 0.22);
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(57, 122, 91, 0.20);
 }
 
 .festiq-input::placeholder,
 .festiq-textarea::placeholder {
   color: var(--text-muted);
+}
+
+/* Global Empty State & Error Containers */
+.festiq-empty-state,
+.festiq-error-state {
+  text-align: center;
+  padding: 48px 24px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-card);
+  max-width: 540px;
+  margin: 32px auto;
+}
+
+.festiq-empty-state-icon,
+.festiq-error-state-icon {
+  margin-bottom: 16px;
+  color: var(--accent-primary);
+}
+
+.festiq-error-state-icon {
+  color: var(--error);
+}
+
+.festiq-empty-state-title,
+.festiq-error-state-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.festiq-empty-state-desc,
+.festiq-error-state-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
 /* Accessibility: Reduced Motion */

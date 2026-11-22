@@ -1052,3 +1052,464 @@ export async function updateEventAdmin(eventId, eventData) {
     throw error;
   }
 }
+
+// -------------------------------------------------------------
+// Phase F2: Smart Waitlist & Seat Allocation Endpoints
+// -------------------------------------------------------------
+
+/**
+ * Join event waitlist when maximum capacity is reached.
+ */
+export async function joinEventWaitlist(waitlistData) {
+  try {
+    const response = await fetch(`${API_BASE}/waitlist/join`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify(waitlistData)
+    });
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.message || 'Failed to join waitlist');
+    }
+    return result;
+  } catch (error) {
+    console.error('[FESTIQ API] Error joining waitlist:', error);
+    throw error;
+  }
+}
+
+/**
+ * Fetch authenticated student's active and historical waitlist entries.
+ */
+export async function fetchStudentWaitlist() {
+  try {
+    const response = await fetch(`${API_BASE}/waitlist/my-waitlist`, {
+      credentials: 'include'
+    });
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.message || 'Failed to fetch waitlist entries');
+    }
+    return result;
+  } catch (error) {
+    console.error('[FESTIQ API] Error fetching waitlist:', error);
+    throw error;
+  }
+}
+
+/**
+ * Accept a time-limited seat offer from the waitlist.
+ */
+export async function acceptWaitlistOffer(waitlistId) {
+  try {
+    const response = await fetch(`${API_BASE}/waitlist/${waitlistId}/accept`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include'
+    });
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.message || 'Failed to accept seat offer');
+    }
+    return result;
+  } catch (error) {
+    console.error('[FESTIQ API] Error accepting seat offer:', error);
+    throw error;
+  }
+}
+
+/**
+ * Decline a time-limited seat offer.
+ */
+export async function declineWaitlistOffer(waitlistId) {
+  try {
+    const response = await fetch(`${API_BASE}/waitlist/${waitlistId}/decline`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include'
+    });
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.message || 'Failed to decline seat offer');
+    }
+    return result;
+  } catch (error) {
+    console.error('[FESTIQ API] Error declining seat offer:', error);
+    throw error;
+  }
+}
+
+/**
+ * Withdraw an entry from the waitlist.
+ */
+export async function withdrawFromWaitlist(waitlistId) {
+  try {
+    const response = await fetch(`${API_BASE}/waitlist/${waitlistId}/withdraw`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include'
+    });
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.message || 'Failed to withdraw from waitlist');
+    }
+    return result;
+  } catch (error) {
+    console.error('[FESTIQ API] Error withdrawing from waitlist:', error);
+    throw error;
+  }
+}
+
+/**
+ * Cancel a student registration and release the seat.
+ */
+export async function cancelStudentRegistration(registrationId, reason = 'Student self-cancelled') {
+  try {
+    const response = await fetch(`${API_BASE}/registrations/${registrationId}/cancel`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ reason })
+    });
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.message || 'Failed to cancel registration');
+    }
+    return result;
+  } catch (error) {
+    console.error('[FESTIQ API] Error cancelling registration:', error);
+    throw error;
+  }
+}
+
+/**
+ * =============================================================================
+ * Phase F3: Verified Digital Certificates API Services
+ * =============================================================================
+ */
+
+/**
+ * Fetch all certificates for authenticated student.
+ */
+export async function fetchMyCertificates() {
+  try {
+    const response = await fetch(`${API_BASE}/certificates/my-certificates`, {
+      credentials: 'include'
+    });
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.message || 'Failed to fetch student certificates');
+    }
+    return result;
+  } catch (error) {
+    console.error('[FESTIQ API] Error fetching student certificates:', error);
+    throw error;
+  }
+}
+
+/**
+ * Public Verification Endpoint.
+ * Verifies certificate by ID and returns sanitized validation status.
+ */
+export async function verifyCertificate(certificateId) {
+  try {
+    const cleanId = encodeURIComponent(String(certificateId).trim().toUpperCase());
+    const response = await fetch(`${API_BASE}/certificates/verify/${cleanId}`);
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.message || 'Failed to verify certificate');
+    }
+    return result;
+  } catch (error) {
+    console.error('[FESTIQ API] Error verifying certificate:', error);
+    throw error;
+  }
+}
+
+/**
+ * Trigger download of official PDF certificate.
+ */
+export async function downloadCertificatePdf(certificateId) {
+  const cleanId = encodeURIComponent(String(certificateId).trim().toUpperCase());
+  const downloadUrl = `${API_BASE}/certificates/${cleanId}/download`;
+  
+  // Create a temporary anchor to initiate native browser download
+  const link = document.createElement('a');
+  link.href = downloadUrl;
+  link.setAttribute('download', `FESTIQ-Certificate-${cleanId}.pdf`);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+/**
+ * Manager: Fetch event attendee eligibility roster and metrics.
+ */
+export async function fetchEventCertificateData(eventId) {
+  try {
+    const response = await fetch(`${API_BASE}/certificates/manage/event/${eventId}`, {
+      credentials: 'include'
+    });
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.message || 'Failed to fetch event certificate data');
+    }
+    return result;
+  } catch (error) {
+    console.error('[FESTIQ API] Error fetching event certificate roster:', error);
+    throw error;
+  }
+}
+
+/**
+ * Manager: Grant eligibility override for an attendee.
+ */
+export async function grantEligibilityOverrideAdmin({ eventId, userId, registrationId, reason }) {
+  try {
+    const response = await fetch(`${API_BASE}/certificates/manage/override`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ eventId, userId, registrationId, reason })
+    });
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.message || 'Failed to grant eligibility override');
+    }
+    return result;
+  } catch (error) {
+    console.error('[FESTIQ API] Error granting override:', error);
+    throw error;
+  }
+}
+
+/**
+ * Manager: Issue certificate for an attendee (strictly in DRAFT status).
+ */
+export async function issueCertificateAdmin({ eventId, userId, registrationId }) {
+  try {
+    const response = await fetch(`${API_BASE}/certificates/manage/issue`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ eventId, userId, registrationId })
+    });
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.message || 'Failed to issue certificate');
+    }
+    return result;
+  } catch (error) {
+    console.error('[FESTIQ API] Error issuing certificate:', error);
+    throw error;
+  }
+}
+
+/**
+ * Manager: Publish a draft certificate.
+ */
+export async function publishCertificateAdmin(certificateId) {
+  try {
+    const response = await fetch(`${API_BASE}/certificates/manage/publish`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ certificateId })
+    });
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.message || 'Failed to publish certificate');
+    }
+    return result;
+  } catch (error) {
+    console.error('[FESTIQ API] Error publishing certificate:', error);
+    throw error;
+  }
+}
+
+/**
+ * Manager: Revoke an issued certificate.
+ */
+export async function revokeCertificateAdmin(certificateId, reason) {
+  try {
+    const response = await fetch(`${API_BASE}/certificates/manage/revoke`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ certificateId, reason })
+    });
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.message || 'Failed to revoke certificate');
+    }
+    return result;
+  } catch (error) {
+    console.error('[FESTIQ API] Error revoking certificate:', error);
+    throw error;
+  }
+}
+
+/**
+ * Manager: Batch issue certificates for eligible attendees in DRAFT status.
+ */
+export async function batchIssueCertificatesAdmin({ eventId, registrationIds }) {
+  try {
+    const response = await fetch(`${API_BASE}/certificates/manage/batch-issue`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ eventId, registrationIds })
+    });
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.message || 'Failed to batch issue certificates');
+    }
+    return result;
+  } catch (error) {
+    console.error('[FESTIQ API] Error batch issuing certificates:', error);
+    throw error;
+  }
+}
+
+/**
+ * Manager: Batch publish certificates.
+ */
+export async function batchPublishCertificatesAdmin(certificateIds) {
+  try {
+    const response = await fetch(`${API_BASE}/certificates/manage/batch-publish`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ certificateIds })
+    });
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.message || 'Failed to batch publish certificates');
+    }
+    return result;
+  } catch (error) {
+    console.error('[FESTIQ API] Error batch publishing certificates:', error);
+    throw error;
+  }
+}
+
+/* ============================================================
+   Verified Reviews & Feedback API
+   ============================================================ */
+
+/**
+ * Public: Fetch published approved reviews and summary stats.
+ */
+export async function fetchPublicReviews() {
+  try {
+    const response = await fetch(`${API_BASE}/reviews`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch reviews (Status: ${response.status})`);
+    }
+    const result = await response.json();
+    return {
+      success: true,
+      data: result.data || [],
+      summary: result.summary || { averageRating: 0, totalReviews: 0, ratingCounts: {} }
+    };
+  } catch (error) {
+    console.error('[FESTIQ API] Error fetching public reviews:', error);
+    return {
+      success: false,
+      error: error.message,
+      data: [],
+      summary: { averageRating: 0, totalReviews: 0, ratingCounts: {} }
+    };
+  }
+}
+
+/**
+ * Authenticated Student: Fetch current user's review status and verified attendance eligibility.
+ */
+export async function fetchMyReviewStatus() {
+  try {
+    const response = await fetch(`${API_BASE}/reviews/my`, {
+      credentials: 'include'
+    });
+    if (!response.ok) {
+      throw new Error(`Failed to fetch review status (Status: ${response.status})`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('[FESTIQ API] Error fetching my review status:', error);
+    return {
+      success: false,
+      error: error.message,
+      data: { isEligible: false, attendedCount: 0, hasSubmitted: false, review: null }
+    };
+  }
+}
+
+/**
+ * Authenticated Student: Submit feedback (rating 1-5, reviewText).
+ */
+export async function submitReviewApi({ rating, reviewText }) {
+  try {
+    const response = await fetch(`${API_BASE}/reviews`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ rating, reviewText })
+    });
+    const result = await response.json();
+    if (!response.ok) {
+      const err = new Error(result.message || 'Failed to submit review');
+      err.status = response.status;
+      err.ineligible = result.ineligible;
+      throw err;
+    }
+    return result;
+  } catch (error) {
+    console.error('[FESTIQ API] Error submitting review:', error);
+    throw error;
+  }
+}
+
+/**
+ * Manager: Fetch all reviews for moderation.
+ */
+export async function fetchAdminReviews() {
+  try {
+    const response = await fetch(`${API_BASE}/reviews/manage`, {
+      credentials: 'include'
+    });
+    if (!response.ok) {
+      throw new Error(`Failed to fetch admin reviews (Status: ${response.status})`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('[FESTIQ API] Error fetching admin reviews:', error);
+    throw error;
+  }
+}
+
+/**
+ * Manager: Moderate a review (approve, reject, or hide).
+ */
+export async function moderateReviewAdmin(reviewId, { status, rejectionReason }) {
+  try {
+    const response = await fetch(`${API_BASE}/reviews/manage/${reviewId}/status`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ status, rejectionReason })
+    });
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.message || 'Failed to moderate review');
+    }
+    return result;
+  } catch (error) {
+    console.error('[FESTIQ API] Error moderating review:', error);
+    throw error;
+  }
+}
+
+
+

@@ -10,6 +10,8 @@ import {
   getEventDetails,
   confirmPaidRegistration
 } from '../utils/registrationStorage.js';
+import { getAllWaitlistEntries } from '../utils/waitlistStorage.js';
+import { calculateEventPrizeMetrics, isApprovedFinancialSnapshot } from '../utils/prizePoolCalculator.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -27,6 +29,7 @@ router.get('/overview', requireAuth, requireManager, async (req, res) => {
     const rawEvents = await fs.readFile(eventsFilePath, 'utf-8');
     const events = JSON.parse(rawEvents);
     const registrations = await getAllRegistrations();
+    const waitlistEntries = await getAllWaitlistEntries().catch(() => []);
 
     // Group actual registrations by eventId
     const regCountByEvent = {};
@@ -37,6 +40,13 @@ router.get('/overview', requireAuth, requireManager, async (req, res) => {
         if (reg.pass?.checkedIn || reg.checkedIn) {
           checkedInCountByEvent[reg.eventId] = (checkedInCountByEvent[reg.eventId] || 0) + 1;
         }
+      }
+    }
+
+    const waitlistCountByEvent = {};
+    for (const w of waitlistEntries) {
+      if (w.eventId && (w.status === 'WAITING' || w.status === 'OFFERED')) {
+        waitlistCountByEvent[w.eventId] = (waitlistCountByEvent[w.eventId] || 0) + 1;
       }
     }
 
@@ -60,12 +70,16 @@ router.get('/overview', requireAuth, requireManager, async (req, res) => {
       }
     }
 
+    const seenPrizeEventIds = new Set();
     const eventBreakdown = events.map((ev) => {
       const cap = Number(ev.capacity) || 0;
       totalCapacity += cap;
 
-      const prize = Number(ev.prizeAmount) || 0;
-      totalPrizePoolAmount += prize;
+      const metrics = calculateEventPrizeMetrics(ev, registrations);
+      if (metrics && metrics.hasPrizePool && isApprovedFinancialSnapshot(ev) && !seenPrizeEventIds.has(ev.id)) {
+        seenPrizeEventIds.add(ev.id);
+        totalPrizePoolAmount += metrics.fixedPrizePool;
+      }
 
       const actualRegs = regCountByEvent[ev.id] || 0;
       const checkedIn = checkedInCountByEvent[ev.id] || 0;
@@ -82,9 +96,14 @@ router.get('/overview', requireAuth, requireManager, async (req, res) => {
         actualRegistrations: actualRegs,
         checkedInAttendees: checkedIn,
         availableSeats: available,
+        waitlistCount: waitlistCountByEvent[ev.id] || 0,
         status: ev.status || 'Open',
         managerName: ev.managerName || 'Coordinator Desk (Demo)',
-        managerPhone: ev.managerPhone || '+91 00000 00000'
+        managerPhone: ev.managerPhone || '+91 00000 00000',
+        feeAmount: ev.feeAmount || 0,
+        feeType: ev.feeType || 'per_person',
+        prizePool: metrics?.prizePool || ev.prizePool || '—',
+        financial: metrics
       };
     });
 

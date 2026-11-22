@@ -24,7 +24,9 @@ import {
   ExternalLink,
   QrCode,
   CreditCard,
-  Image as ImageIcon
+  Image as ImageIcon,
+  Award,
+  Star
 } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
@@ -34,6 +36,8 @@ import ProposalReviewModal from '../components/management/ProposalReviewModal';
 import QRCheckInScanner from '../components/management/QRCheckInScanner';
 import EditEventDetailsModal from '../components/management/EditEventDetailsModal';
 import GalleryManagementTab from '../components/management/GalleryManagementTab';
+import CertificateManagementTab from '../components/management/CertificateManagementTab';
+import ReviewManagementTab from '../components/management/ReviewManagementTab';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import {
@@ -239,22 +243,34 @@ export default function ManagementPage({ onOpenAuthModal, onEventCreatedParent }
     }
   };
 
-  // Filtered Events for Specifications Tab
+  // Filtered Events for Specifications Tab (Enriched with exact financial metrics)
   const filteredEventsList = useMemo(() => {
     const q = eventSearchQuery.trim().toLowerCase();
-    return eventsList.filter((ev) => {
-      const matchesCat =
-        eventCategoryFilter === 'ALL' ||
-        (ev.category || '').toLowerCase() === eventCategoryFilter.toLowerCase();
-      const matchesQ =
-        !q ||
-        (ev.title || '').toLowerCase().includes(q) ||
-        (ev.id || '').toLowerCase().includes(q) ||
-        (ev.venue || '').toLowerCase().includes(q) ||
-        (ev.category || '').toLowerCase().includes(q);
-      return matchesCat && matchesQ;
-    });
-  }, [eventsList, eventSearchQuery, eventCategoryFilter]);
+    const finMap = new Map((overview?.eventBreakdown || []).map((b) => [b.id, b]));
+
+    return eventsList
+      .map((ev) => {
+        const breakdown = finMap.get(ev.id);
+        return {
+          ...ev,
+          financial: breakdown?.financial || null,
+          actualRegistrations: breakdown?.actualRegistrations ?? ev.registeredCount ?? 0,
+          availableSeats: breakdown?.availableSeats ?? (ev.capacity - (ev.registeredCount || 0))
+        };
+      })
+      .filter((ev) => {
+        const matchesCat =
+          eventCategoryFilter === 'ALL' ||
+          (ev.category || '').toLowerCase() === eventCategoryFilter.toLowerCase();
+        const matchesQ =
+          !q ||
+          (ev.title || '').toLowerCase().includes(q) ||
+          (ev.id || '').toLowerCase().includes(q) ||
+          (ev.venue || '').toLowerCase().includes(q) ||
+          (ev.category || '').toLowerCase().includes(q);
+        return matchesCat && matchesQ;
+      });
+  }, [eventsList, overview, eventSearchQuery, eventCategoryFilter]);
 
   const handleEventUpdated = (updatedEvent) => {
     setEventsList((prev) =>
@@ -518,11 +534,11 @@ export default function ManagementPage({ onOpenAuthModal, onEventCreatedParent }
                 <Trophy size={22} />
               </div>
               <div className="metric-content">
-                <span className="metric-label">Active Prize Pool</span>
+                <span className="metric-label">Approved Prize Pool</span>
                 <span className="metric-value">
                   {overview ? overview.totalPrizePoolFormatted : '—'}
                 </span>
-                <span className="metric-subtext">Awarded across tournaments</span>
+                <span className="metric-subtext">Approved tournament prize commitments</span>
               </div>
             </div>
 
@@ -593,6 +609,22 @@ export default function ManagementPage({ onOpenAuthModal, onEventCreatedParent }
           >
             <ImageIcon size={17} />
             <span>Gallery Management</span>
+          </button>
+          <button
+            type="button"
+            className={`hub-tab-btn ${activeHubSection === 'certificates' ? 'active' : ''}`}
+            onClick={() => setActiveHubSection('certificates')}
+          >
+            <Award size={17} />
+            <span>Digital Certificates</span>
+          </button>
+          <button
+            type="button"
+            className={`hub-tab-btn ${activeHubSection === 'reviews' ? 'active' : ''}`}
+            onClick={() => setActiveHubSection('reviews')}
+          >
+            <Star size={17} />
+            <span>Reviews & Feedback</span>
           </button>
         </div>
 
@@ -1049,6 +1081,7 @@ export default function ManagementPage({ onOpenAuthModal, onEventCreatedParent }
                     <th>Date & Venue</th>
                     <th>Registration Fee</th>
                     <th>Prize Pool</th>
+                    <th>Financial Status & Allocation (60:40)</th>
                     <th>Podium / Results</th>
                     <th>Actions</th>
                   </tr>
@@ -1081,6 +1114,50 @@ export default function ManagementPage({ onOpenAuthModal, onEventCreatedParent }
                       </td>
                       <td>
                         <strong className="prize-pool-text">{ev.prizePool || '—'}</strong>
+                      </td>
+                      <td>
+                        {ev.financial && ev.financial.hasPrizePool ? (
+                          <div className="fin-allocation-cell" style={{ fontSize: '0.8rem', lineHeight: '1.4' }}>
+                            <div style={{ marginBottom: '4px' }}>
+                              <Badge
+                                variant={
+                                  ev.financial.fundingStatus === 'EXCEEDED_BASELINE' || ev.financial.fundingStatus === 'FUNDED'
+                                    ? 'success'
+                                    : 'warning'
+                                }
+                                size="xs"
+                              >
+                                {ev.financial.fundingStatus === 'EXCEEDED_BASELINE'
+                                  ? 'Exceeded Baseline'
+                                  : ev.financial.fundingStatus === 'FUNDED'
+                                  ? 'Fully Funded'
+                                  : `Review Req. (Shortfall ₹${ev.financial.shortfall.toLocaleString('en-IN')})`}
+                              </Badge>
+                            </div>
+                            <div style={{ color: 'var(--text-secondary)' }}>
+                              Min (N): <strong>{ev.financial.minExpectedRegistrations}</strong> | Paid: <strong>{ev.financial.actualPaidUnits}</strong>
+                            </div>
+                            <div style={{ color: 'var(--text-secondary)', fontSize: '0.74rem' }}>
+                              Collected: ₹{ev.financial.actualCollectedRevenue.toLocaleString('en-IN')} | Realized Profit: ₹{ev.financial.totalDistributableProfit.toLocaleString('en-IN')}
+                            </div>
+                            <div style={{ color: 'var(--text-muted)', fontSize: '0.74rem' }}>
+                              {ev.financial.fundingStatus === 'BELOW_EXPECTED_BASELINE' ? (
+                                <div>
+                                  {ev.financial.unfundedPrizeCommitment > 0 && (
+                                    <div style={{ color: '#d97706', fontWeight: 500 }}>
+                                      Unfunded Prize Commitment: ₹{ev.financial.unfundedPrizeCommitment.toLocaleString('en-IN')} (Underwriting Required)
+                                    </div>
+                                  )}
+                                  <span>Forecast Base (Q): ₹{ev.financial.projectedBaseProfit.toLocaleString('en-IN')} (Unrealized)</span>
+                                </div>
+                              ) : (
+                                <span>College: ₹{ev.financial.collegeProfitShare.toLocaleString('en-IN')} | Team: ₹{ev.financial.organizerProfitShare.toLocaleString('en-IN')}</span>
+                              )}
+                            </div>
+                          </div>
+                        ) : (
+                          <span className="text-muted text-xs" style={{ color: 'var(--text-muted)' }}>Non-monetary award</span>
+                        )}
                       </td>
                       <td>
                         <div className="results-status-summary">
@@ -1126,6 +1203,20 @@ export default function ManagementPage({ onOpenAuthModal, onEventCreatedParent }
         {activeHubSection === 'gallery' && (
           <section className="management-gallery-section">
             <GalleryManagementTab />
+          </section>
+        )}
+
+        {/* Section 5.9: Digital Certificate Management & Verification Roster */}
+        {activeHubSection === 'certificates' && (
+          <section className="management-certificates-section">
+            <CertificateManagementTab events={eventsList} />
+          </section>
+        )}
+
+        {/* Section 5.10: Feedback & Review Moderation */}
+        {activeHubSection === 'reviews' && (
+          <section className="management-reviews-section">
+            <ReviewManagementTab />
           </section>
         )}
 

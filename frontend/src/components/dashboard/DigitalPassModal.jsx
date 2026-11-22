@@ -10,7 +10,9 @@ import {
   Copy,
   Check,
   ShieldCheck,
-  Sparkles
+  Sparkles,
+  XCircle,
+  AlertOctagon
 } from 'lucide-react';
 import Button from '../ui/Button';
 import { useToast } from '../../context/ToastContext';
@@ -66,6 +68,7 @@ export default function DigitalPassModal({
   const checkedInAt = pass.checkedInAt || registration.checkedInAt;
   const passId = pass.passId || registration.passId || registration.id;
   const regId = registration.id;
+  const isCancelled = registration.status === 'cancelled' || pass.status === 'cancelled' || pass.status === 'Cancelled — Pass Expired';
 
   const copyText = (text, type) => {
     if (!text) return;
@@ -178,7 +181,12 @@ export default function DigitalPassModal({
 
               {/* Status Ribbon */}
               <div className="ticket-status-ribbon">
-                {isCheckedIn ? (
+                {isCancelled ? (
+                  <div className="status-badge status-cancelled" style={{ background: 'rgba(239, 68, 68, 0.16)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.4)' }}>
+                    <XCircle size={16} />
+                    <span>PASS EXPIRED • REGISTRATION CANCELLED</span>
+                  </div>
+                ) : isCheckedIn ? (
                   <div className="status-badge status-checked-in">
                     <CheckCircle2 size={16} />
                     <span>CHECKED IN • {checkedInAt ? new Date(checkedInAt).toLocaleTimeString() : 'Verified'}</span>
@@ -194,26 +202,36 @@ export default function DigitalPassModal({
 
             {/* QR Code Container */}
             <div className="ticket-qr-col">
-              <div className="qr-box">
-                {qrDataUrl ? (
-                  <img
-                    src={qrDataUrl}
-                    alt={`Digital check-in QR code for ${registration.participantName}`}
-                    className="qr-image"
-                  />
-                ) : (
-                  <div className="qr-loading-box">
-                    <div className="qr-spinner" />
-                    <span>Generating Pass...</span>
-                  </div>
-                )}
-                <div className="qr-reticle top-left" />
-                <div className="qr-reticle top-right" />
-                <div className="qr-reticle bottom-left" />
-                <div className="qr-reticle bottom-right" />
-              </div>
+              {isCancelled ? (
+                <div className="qr-expired-placeholder" style={{ padding: '24px 16px', background: 'rgba(239, 68, 68, 0.05)', borderRadius: '12px', border: '2px dashed rgba(239, 68, 68, 0.35)', textAlign: 'center', minWidth: '180px' }}>
+                  <AlertOctagon size={44} style={{ color: '#ef4444', margin: '0 auto 8px', display: 'block' }} />
+                  <div style={{ fontWeight: 700, color: '#ef4444', fontSize: '0.86rem', letterSpacing: '0.04em' }}>QR REVOKED</div>
+                  <p style={{ margin: '6px 0 0', fontSize: '0.74rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>
+                    Cancellation releases your seat and expires your digital pass. Entry QR code is permanently invalidated. This cancellation does not issue an automatic refund.
+                  </p>
+                </div>
+              ) : (
+                <div className="qr-box">
+                  {qrDataUrl ? (
+                    <img
+                      src={qrDataUrl}
+                      alt={`Digital check-in QR code for ${registration.participantName}`}
+                      className="qr-image"
+                    />
+                  ) : (
+                    <div className="qr-loading-box">
+                      <div className="qr-spinner" />
+                      <span>Generating Pass...</span>
+                    </div>
+                  )}
+                  <div className="qr-reticle top-left" />
+                  <div className="qr-reticle top-right" />
+                  <div className="qr-reticle bottom-left" />
+                  <div className="qr-reticle bottom-right" />
+                </div>
+              )}
               <span className="qr-scan-hint">
-                Scan with Manager App at Venue Desk
+                {isCancelled ? 'Pass Expired · Venue Admission Blocked' : 'Scan with Manager App at Venue Desk'}
               </span>
             </div>
           </div>
@@ -225,21 +243,23 @@ export default function DigitalPassModal({
               <span>Cryptographically Verified Pass • KIIT Institutional Desk</span>
             </div>
             <span className="ticket-timestamp">
-              Issued: {pass.issuedAt ? new Date(pass.issuedAt).toLocaleDateString() : 'Active'}
+              {isCancelled ? 'Status: Cancelled — Pass Expired (No Automatic Refund)' : `Issued: ${pass.issuedAt ? new Date(pass.issuedAt).toLocaleDateString() : 'Active'}`}
             </span>
           </div>
         </div>
 
         {/* Modal Action Bar (Hidden when printing) */}
         <div className="pass-modal-actions no-print">
-          <Button
-            variant="outline"
-            size="md"
-            icon={<Printer size={16} />}
-            onClick={handlePrint}
-          >
-            Print / Save Ticket
-          </Button>
+          {!isCancelled && (
+            <Button
+              variant="outline"
+              size="md"
+              icon={<Printer size={16} />}
+              onClick={handlePrint}
+            >
+              Print / Save Ticket
+            </Button>
+          )}
           <Button
             variant="ghost"
             size="md"

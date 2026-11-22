@@ -1,17 +1,19 @@
 /* ============================================================
    FESTIQ UI Component — Unified Event Card (Dual-Theme)
+   Obsidian Gold (Dark) & Sage & Porcelain (Light)
    ============================================================ */
 
 .festiq-event-card {
-  background-color: var(--card-bg, #203B3E);
-  border: 1px solid var(--border-subtle, #294044);
-  border-radius: var(--radius-lg, 16px);
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-card, 16px);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   transition: transform var(--transition-normal, 0.25s ease),
               box-shadow var(--transition-normal, 0.25s ease),
-              border-color var(--transition-normal, 0.25s ease);
+              border-color var(--transition-normal, 0.25s ease),
+              background-color var(--transition-theme);
   position: relative;
   height: 100%;
 }
@@ -22,13 +24,17 @@
   box-shadow: var(--shadow-card-hover);
 }
 
+.festiq-event-card:focus-within {
+  border-color: var(--border-focus);
+}
+
 /* Media Banner */
 .event-card-media {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background-color: var(--bg-deep, #060E10);
+  background-color: var(--surface-secondary);
   cursor: pointer;
 }
 
@@ -49,8 +55,8 @@
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(11, 20, 16, 0.85) 0%,
-    rgba(11, 20, 16, 0.2) 50%,
+    rgba(9, 9, 9, 0.85) 0%,
+    rgba(9, 9, 9, 0.2) 50%,
     rgba(0, 0, 0, 0.4) 100%
   );
   transition: opacity 0.25s ease;
@@ -59,8 +65,8 @@
 [data-theme="light"] .event-card-overlay {
   background: linear-gradient(
     to top,
-    rgba(38, 50, 56, 0.85) 0%,
-    rgba(38, 50, 56, 0.2) 50%,
+    rgba(36, 76, 61, 0.85) 0%,
+    rgba(36, 76, 61, 0.2) 50%,
     rgba(0, 0, 0, 0.35) 100%
   );
 }
@@ -85,7 +91,7 @@
 
 [data-theme="light"] .event-card-badges .festiq-badge {
   background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
 }
 
 [data-theme="light"] .event-card-badges .badge-featured {
@@ -147,6 +153,7 @@
   overflow: hidden;
   min-height: 2.7em;
   transition: color var(--transition-fast);
+  letter-spacing: -0.01em;
 }
 
 .event-card-title:hover {
@@ -183,17 +190,12 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  background: var(--surface-secondary, rgba(24, 37, 31, 0.6));
+  background: var(--surface-secondary);
   padding: 8px 12px;
   border-radius: var(--radius-sm, 8px);
   border: 1px solid var(--border-subtle);
   width: 100%;
   box-sizing: border-box;
-}
-
-[data-theme="light"] .event-card-pricing {
-  background: rgba(201, 206, 199, 0.45);
-  border-color: var(--border-subtle);
 }
 
 .pricing-meta-row {
@@ -209,7 +211,7 @@
   font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   color: var(--text-muted);
   white-space: nowrap;
   flex-shrink: 0;
@@ -259,6 +261,14 @@
 
 .event-card-actions .festiq-btn .btn-icon {
   flex-shrink: 0;
+}
+
+/* Responsive Adaptations for Small Mobile */
+@media (max-width: 360px) {
+  .event-card-actions {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
 }
 
 /* Reduced Motion Override */

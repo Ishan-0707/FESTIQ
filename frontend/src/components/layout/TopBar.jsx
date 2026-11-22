@@ -13,7 +13,6 @@ import {
   LayoutDashboard,
   Home,
   Compass,
-  Calendar as CalendarIcon,
   Image as GalleryIcon,
   Info
 } from 'lucide-react';
@@ -100,7 +99,6 @@ export default function TopBar({
   const navItems = [
     { path: '/', label: 'Home', icon: Home, end: true },
     { path: '/events', label: 'Explore Events', icon: Compass },
-    { path: '/calendar', label: 'Calendar', icon: CalendarIcon },
     { path: '/gallery', label: 'Gallery', icon: GalleryIcon },
     { path: '/about', label: 'About', icon: Info },
     ...(isAuthenticated ? [{ path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard }] : []),
@@ -158,8 +156,8 @@ export default function TopBar({
               type="button"
               className="topbar-theme-toggle"
               onClick={onToggleTheme}
-              aria-label={isLight ? 'Switch to Dark Theme (Midnight Forest)' : 'Switch to Light Theme (Academic Blue)'}
-              title={isLight ? 'Switch to Dark Theme (Midnight Forest)' : 'Switch to Light Theme (Academic Blue)'}
+              aria-label={isLight ? 'Switch to Dark Theme (Obsidian Gold)' : 'Switch to Light Theme (Sage & Porcelain)'}
+              title={isLight ? 'Switch to Dark Theme (Obsidian Gold)' : 'Switch to Light Theme (Sage & Porcelain)'}
             >
               <span className="theme-toggle-icon-wrap">
                 {isLight ? (
@@ -175,7 +173,7 @@ export default function TopBar({
             {!isAuthenticated ? (
               <Button
                 variant="primary"
-                size="sm"
+                size="md"
                 icon={<UserCheck size={15} />}
                 iconPosition="left"
                 onClick={onOpenAuthModal}
@@ -371,7 +369,7 @@ export default function TopBar({
             <span className="mobile-theme-icon">
               {isLight ? <Moon size={16} /> : <Sun size={16} />}
             </span>
-            <span>Theme: {isLight ? 'Academic Blue' : 'Midnight Forest'}</span>
+            <span>Theme: {isLight ? 'Sage & Porcelain' : 'Obsidian Gold'}</span>
           </button>
 
           {!isAuthenticated ? (

@@ -1,178 +1,199 @@
 [
   {
     "id": "gal-001",
-    "eventName": "HackNova 2025: Autonomous Systems Finale",
-    "category": "Technical",
-    "date": "2025-11-18",
-    "description": "Visual highlights from the 36-hour national hackathon where 120 collegiate teams assembled IoT hardware and deployed neural networks at the Campus Innovation Hub.",
-    "coverImage": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+    "eventName": "Sanskriti: Classical Indian Dance Showcase",
+    "category": "Cultural",
+    "date": "2025-11-20",
+    "description": "Visual highlights from the university annual cultural fest showcase, featuring traditional Bharatanatyam, Odissi, and Kathak performances on the central auditorium stage.",
+    "coverImage": "https://images.unsplash.com/photo-1793540935879-425ff4df6d3c?auto=format&fit=crop&w=800&q=80",
     "photos": [
       {
         "id": "p-101",
-        "url": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Opening ceremony and hardware distribution in the central atrium"
+        "url": "https://images.unsplash.com/photo-1793540935879-425ff4df6d3c?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Classical Bharatanatyam performance showcasing intricate mudras and traditional silk attire on the main auditorium stage"
       },
       {
         "id": "p-102",
-        "url": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Mentors reviewing machine learning models during the 2 AM check-in"
+        "url": "https://images.unsplash.com/photo-1784982365372-594f4980bc71?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Student classical dancer in expressive abhinaya pose during the university cultural symposium"
       },
       {
         "id": "p-103",
-        "url": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Final pitch presentations before the jury panel"
+        "url": "https://images.unsplash.com/photo-1770888834901-9574cc91349c?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Solo classical dance recital presented before an appreciative campus audience"
       }
     ],
     "isFeatured": true
   },
   {
     "id": "gal-002",
-    "eventName": "Rhythm & Echoes 2025: Amphitheatre Symphony",
-    "category": "Cultural",
-    "date": "2025-10-24",
-    "description": "A night of live fusion concerts, battle of the collegiate bands, and classical Odissi choreography beneath the starry sky at Campus Greens.",
-    "coverImage": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80",
+    "eventName": "Deepotsav: Campus Diwali & Rangoli Gala",
+    "category": "Celebrations",
+    "date": "2025-10-31",
+    "description": "Campus evening festival celebration where students gathered to arrange illuminated earthen clay diyas and intricate floral powder rangoli art across the central quadrangle.",
+    "coverImage": "https://images.unsplash.com/photo-1601446052518-f793d82a4a97?auto=format&fit=crop&w=800&q=80",
     "photos": [
       {
         "id": "p-201",
-        "url": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Lighting the inaugural lamp at the open-air amphitheatre"
+        "url": "https://images.unsplash.com/photo-1601446052518-f793d82a4a97?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Handcrafted earthen oil lamps arranged over traditional colorful rangoli patterns in the campus courtyard"
       },
       {
         "id": "p-202",
-        "url": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Rock band finals illuminated by stadium lights"
-      },
-      {
-        "id": "p-203",
-        "url": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Celebrity performance finale with a crowd of 3,000 students"
+        "url": "https://images.unsplash.com/photo-1792664024711-5d3707527e0d?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Glowing diyas and festive decorative lights illuminating the hostel entrance walkways"
       }
     ],
     "isFeatured": true
   },
   {
     "id": "gal-003",
-    "eventName": "Apex Arena 2025: Gigabit LAN Showdown",
-    "category": "Gaming",
-    "date": "2025-12-05",
-    "description": "National tactical FPS and mobile battle royale finals broadcasted live on arena screens with 64 competitive esports athletes.",
-    "coverImage": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80",
+    "eventName": "Rangotsav: Campus Holi Colors Celebration",
+    "category": "Celebrations",
+    "date": "2025-03-25",
+    "description": "Joyous spring festival of colors bringing university students together on the campus recreation grounds with vibrant gulal, music, and festive cheer.",
+    "coverImage": "https://images.unsplash.com/photo-1520312373131-a85680888414?auto=format&fit=crop&w=800&q=80",
     "photos": [
       {
         "id": "p-301",
-        "url": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Esports main stage with live spectator commentary"
+        "url": "https://images.unsplash.com/photo-1520312373131-a85680888414?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Collegiate students celebrating the spirited energy of Holi with organic gulal colors"
       },
       {
         "id": "p-302",
-        "url": "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Championship match point intensity in the tactical FPS division"
+        "url": "https://images.unsplash.com/photo-1647950196364-d939e6fb947d?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Festive student gathering on the university grounds celebrating unity and friendship"
       }
     ],
     "isFeatured": true
   },
   {
     "id": "gal-004",
-    "eventName": "Autonomous Drone Assembly Bootcamp 2025",
-    "category": "Workshops",
-    "date": "2025-09-14",
-    "description": "Hands-on engineering workshop where students designed quadcopter frames, soldered flight controllers, and achieved optical flow indoor hover.",
-    "coverImage": "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=800&q=80",
+    "eventName": "Taal Tarang: Raas Garba & Dandiya Night",
+    "category": "Cultural",
+    "date": "2025-10-18",
+    "description": "University Navratri festival evening featuring students in vibrant traditional attire, rhythmic Dandiya raas choreography, and live festive percussion.",
+    "coverImage": "https://images.unsplash.com/photo-1605029271330-95970e826af3?auto=format&fit=crop&w=800&q=80",
     "photos": [
       {
         "id": "p-401",
-        "url": "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Participants soldering brushless electronic speed controllers"
+        "url": "https://images.unsplash.com/photo-1605029271330-95970e826af3?auto=format&fit=crop&w=1200&q=80",
+        "caption": "College students in colorful festive attire celebrating Dandiya Night on campus grounds"
       },
       {
         "id": "p-402",
-        "url": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Outdoor test flight telemetry calibration in the sports ground"
+        "url": "https://images.unsplash.com/photo-1756382616831-998e8baf9675?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Group folk dance ensemble performing coordinated cultural rhythms on the open-air stage"
       }
     ],
-    "isFeatured": false
+    "isFeatured": true
   },
   {
     "id": "gal-005",
-    "eventName": "Apex Venture 2025: Angel Pitch Summit",
-    "category": "Management",
-    "date": "2025-10-10",
-    "description": "Student entrepreneurs presenting seed-stage pitches before angel investors and venture jury partners, unlocking ₹15 Lakhs in non-dilutive campus grants.",
-    "coverImage": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=800&q=80",
+    "eventName": "Parampara: Campus Ethnic Day & Traditional Attire",
+    "category": "Celebrations",
+    "date": "2025-09-12",
+    "description": "Celebration of Indian heritage and cultural diversity with undergraduate students dressed in regional sarees, kurtas, and traditional handlooms.",
+    "coverImage": "https://images.unsplash.com/photo-1794599094083-db2a19668f81?auto=format&fit=crop&w=800&q=80",
     "photos": [
       {
         "id": "p-501",
-        "url": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Founder pitching SaaS logistics platform to the investor panel"
+        "url": "https://images.unsplash.com/photo-1794599094083-db2a19668f81?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Students celebrating college ethnic day in handcrafted traditional Indian attire"
       },
       {
         "id": "p-502",
-        "url": "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Roundtable Q&A session with alumni venture capital partners"
+        "url": "https://images.unsplash.com/photo-1786687054820-d2ad6b7a47ab?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Student cohort gathered in traditional dress near the university library garden"
+      },
+      {
+        "id": "p-503",
+        "url": "https://images.unsplash.com/photo-1774814324523-70073c02e6ad?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Traditional campus inaugurations and floral blessing ceremonies"
       }
     ],
     "isFeatured": false
   },
   {
     "id": "gal-006",
-    "eventName": "Inter-Collegiate Floodlit Futsal Derby 2025",
-    "category": "Sports",
-    "date": "2025-11-30",
-    "description": "High-octane night tournament where 16 university teams competed across knockout rounds on the campus turf pitch.",
-    "coverImage": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80",
+    "eventName": "HackNova: 36-Hour National Collegiate Hackathon",
+    "category": "Technical",
+    "date": "2025-11-15",
+    "description": "Overnight national hackathon where collegiate developer teams collaborated on software solutions, algorithm optimization, and prototype deployment in the Innovation Hub.",
+    "coverImage": "https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?auto=format&fit=crop&w=800&q=80",
     "photos": [
       {
         "id": "p-601",
-        "url": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Semifinal penalty shootout under floodlights"
+        "url": "https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Student programmers collaborating on code optimization and backend APIs during the 24th sprint hour"
       },
       {
         "id": "p-602",
-        "url": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Champions trophy presentation with university sports directors"
+        "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Developer team troubleshooting database queries and testing responsive frontends"
       }
     ],
     "isFeatured": true
   },
   {
     "id": "gal-007",
-    "eventName": "CyberShield CTF: Security & Defense 2025",
-    "category": "Technical",
-    "date": "2025-08-20",
-    "description": "24-hour capture the flag competition testing reverse engineering, binary exploitation, cryptography, and defensive cloud hardening.",
-    "coverImage": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
+    "eventName": "Khel Utsav: Inter-University Cricket Championship",
+    "category": "Sports",
+    "date": "2025-11-28",
+    "description": "Annual inter-college floodlit cricket tournament where university teams competed across knockout fixtures under evening floodlights.",
+    "coverImage": "https://images.unsplash.com/photo-1730739463889-34c7279277a9?auto=format&fit=crop&w=800&q=80",
     "photos": [
       {
         "id": "p-701",
-        "url": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Leaderboard scoreboard tracking live penetration flags"
+        "url": "https://images.unsplash.com/photo-1730739463889-34c7279277a9?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Championship grand finale underway with packed spectator stands and floodlit outfield"
       },
       {
         "id": "p-702",
-        "url": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Team collaborating on binary exploitation challenge"
+        "url": "https://images.unsplash.com/photo-1675693303492-9a5bc898bf94?auto=format&fit=crop&w=1200&q=80",
+        "caption": "The green pitch and stadium atmosphere under a vibrant twilight sky during the change of innings"
+      },
+      {
+        "id": "p-703",
+        "url": "https://images.unsplash.com/photo-1770681674108-db6428ea7ab5?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Daytime group stage match in action with teams competing for semifinal qualification"
+      }
+    ],
+    "isFeatured": true
+  },
+  {
+    "id": "gal-008",
+    "eventName": "AeroVigyan: Quadcopter Assembly & Robotics Workshop",
+    "category": "Workshops",
+    "date": "2025-09-20",
+    "description": "Hands-on engineering workshop where students assembled multirotor quadcopter frames, calibrated electronic speed controllers, and debugged flight firmware.",
+    "coverImage": "https://images.unsplash.com/photo-1777153184385-cff867582a1c?auto=format&fit=crop&w=800&q=80",
+    "photos": [
+      {
+        "id": "p-801",
+        "url": "https://images.unsplash.com/photo-1777153184385-cff867582a1c?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Student participants soldering circuit modules and assembling drone hardware at the engineering workbench"
       }
     ],
     "isFeatured": false
   },
   {
-    "id": "gal-008",
-    "eventName": "Sanskriti 2025: Traditional Dance & Fusion Showcase",
+    "id": "gal-009",
+    "eventName": "Dhwani: Amphitheatre Musical Fusion Night",
     "category": "Cultural",
-    "date": "2025-09-28",
-    "description": "Celebrating Indian cultural heritage through classical Bharatanatyam, Kathak, and contemporary folk ensemble presentations.",
-    "coverImage": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80",
+    "date": "2025-10-25",
+    "description": "Open-air collegiate concert featuring student rock and classical-fusion bands performing under stadium lights before an enthusiastic campus audience.",
+    "coverImage": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80",
     "photos": [
       {
-        "id": "p-801",
-        "url": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Traditional folk dance ensemble on the main auditorium stage"
+        "id": "p-901",
+        "url": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Live concert stage illuminated with vibrant spotlights as collegiate bands open the evening"
       },
       {
-        "id": "p-802",
-        "url": "https://images.unsplash.com/photo-1469488865564-c2de10f69f96?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Cultural procession and stage lighting celebration"
+        "id": "p-902",
+        "url": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Audience of over 2,500 students celebrating the musical finale at the university amphitheatre"
       }
     ],
     "isFeatured": false

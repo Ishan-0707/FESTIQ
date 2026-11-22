@@ -1,5 +1,6 @@
 /* ============================================================
    FESTIQ Categories Page Styles — Responsive & Overflow Protected
+   Obsidian Gold (Dark) & Sage & Porcelain (Light)
    ============================================================ */
 
 .categories-page-wrapper {
@@ -40,8 +41,8 @@
 
 .category-feature-card {
   background-color: var(--card-bg);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md, 14px);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-card, 16px);
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -78,7 +79,7 @@
   font-size: 0.74rem;
   font-weight: 700;
   color: var(--accent-primary);
-  background: rgba(198, 169, 107, 0.12);
+  background: rgba(212, 175, 98, 0.12);
   border: 1px solid var(--border-subtle);
   padding: 3px 10px;
   border-radius: var(--radius-full);
@@ -86,7 +87,7 @@
 
 [data-theme="light"] .cat-count-badge {
   color: var(--accent-primary);
-  background: rgba(53, 107, 150, 0.12);
+  background: rgba(57, 122, 91, 0.10);
 }
 
 /* Main Content */
@@ -147,8 +148,8 @@
 /* Bottom CTA Strip */
 .categories-cta-strip {
   background: var(--surface-secondary);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg, 16px);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-modal, 20px);
   padding: 32px 36px;
   display: flex;
   align-items: center;
@@ -190,4 +191,3 @@
     width: 100%;
   }
 }
-

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Compass,
   Ticket,
   LayoutDashboard,
   QrCode,
-  Calendar as CalendarIcon,
+  ListChecks,
+  BadgeCheck,
   ShieldCheck,
   Image as GalleryIcon,
   Palette,
@@ -19,81 +20,86 @@ import {
   CheckCircle2,
   Award,
   Terminal,
-  Database
+  Database,
+  Star,
+  MessageSquareQuote,
+  Send,
+  X,
+  AlertCircle,
+  RefreshCw
 } from 'lucide-react';
 import FestiqLogo from '../components/common/FestiqLogo';
 import Badge from '../components/ui/Badge';
+import Button from '../components/ui/Button';
+import { useAuth } from '../context/AuthContext';
+import { useToast } from '../context/ToastContext';
+import { fetchPublicReviews, fetchMyReviewStatus, submitReviewApi } from '../services/api';
 import './AboutPage.css';
+
+function formatDisplayName(fullName) {
+  if (!fullName || typeof fullName !== 'string') return 'Verified Student';
+  const parts = fullName.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return 'Verified Student';
+  if (parts.length === 1) return parts[0];
+  const firstName = parts[0];
+  const lastInitial = parts[parts.length - 1].charAt(0).toUpperCase();
+  return `${firstName} ${lastInitial}.`;
+}
 
 const CAPABILITIES = [
   {
     icon: Compass,
     title: 'Event Discovery',
     tag: 'Catalogue',
-    description: 'Filterable campus directory across 6 academic disciplines with live capacity tracking, status indicators, and transparent pricing.'
+    description: 'Explore campus events across multiple categories with search, filtering, event details, availability information and transparent registration fees.'
   },
   {
     icon: Ticket,
     title: 'Streamlined Registration',
     tag: 'Workflows',
-    description: 'Unified one-click modal supporting individual and team submissions, dynamic fee calculation, and real-time backend seat validation.'
+    description: 'Register for individual or team events through a unified workflow with server-side validation, capacity checks and payment-status tracking.'
   },
   {
     icon: LayoutDashboard,
     title: 'Student Dashboard',
     tag: 'Personal Hub',
-    description: 'Centralized ticket repository tracking confirmed passes, payment statuses, and personalized event schedules with instant cancellation.'
+    description: 'Manage registered events, view digital passes, track registration and payment statuses, and follow your upcoming events through My Schedule.'
   },
   {
     icon: QrCode,
-    title: 'Digital Pass & Barcode',
+    title: 'Digital Pass & QR Check-in',
     tag: 'Access Control',
-    description: 'Scannable digital entry passes featuring cryptographic check-in codes and simulated camera barcode scanning for rapid venue admittance.'
-  },
-  {
-    icon: CalendarIcon,
-    title: 'Interactive Calendar',
-    tag: 'Scheduling',
-    description: 'Monthly schedule matrix mapping university-wide activities, color-coded disciplines, and direct modal preview from any calendar date.'
+    description: 'Access digital event passes with QR-based entry verification, duplicate check-in protection and secure attendance validation.'
   },
   {
     icon: ShieldCheck,
     title: 'Management Operations',
     tag: 'Role-Gated',
-    description: 'Organizer command center providing real-time KPI metrics, participant rosters, CSV export, and event creation with spec PDF generation.'
+    description: 'Manage events, review event proposals, monitor participants, oversee registrations and verify attendee entry through the organizer portal.'
   },
   {
     icon: GalleryIcon,
     title: 'Campus Visual Archive',
     tag: 'Memories',
-    description: 'Curated photo gallery documenting milestone campus moments, cultural nights, and tech symposium highlights with lightbox inspection.'
+    description: 'Explore campus memories through curated event photographs, category-based browsing and an interactive gallery viewer.'
   },
   {
     icon: Palette,
     title: 'Dual-Theme Engine',
     tag: 'UI System',
-    description: 'Instantaneous switching between Midnight Forest & Champagne Gold (dark) and Academic Blue & Slate (light) with zero layout shifting.'
-  }
-];
-
-const COMMUNITY_QUOTES = [
-  {
-    quote: "FESTIQ turned our multi-department tech symposium from a fragmented Google Form nightmare into a cohesive, verified registration pipeline. Every participant knew their venue and seat within seconds.",
-    author: "Aarav Sharma",
-    role: "Convenor, University Technical Society",
-    discipline: "School of Computer Applications"
+    description: 'Switch between FESTIQ\'s Obsidian Gold dark theme and Sage & Porcelain light theme with consistent styling across the interface.'
   },
   {
-    quote: "Having an integrated digital pass with live check-in made our annual cultural fest entry smooth and organized. Line congestion at the auditorium was reduced by over seventy percent.",
-    author: "Meera Sen",
-    role: "President, Cultural Affairs Council",
-    discipline: "School of Humanities & Design"
+    icon: ListChecks,
+    title: 'Smart Waitlist',
+    tag: 'Smart Allocation',
+    description: 'Automatic FIFO waitlist management with time-limited seat offers, expiry handling and automatic allocation when event capacity becomes available.'
   },
   {
-    quote: "The transparent fee and prize pool breakdown brings real financial clarity to student participants. It sets a new benchmark for student-led software on campus.",
-    author: "Rohan Mukherjee",
-    role: "Lead Coordinator, Inter-Collegiate Esports",
-    discipline: "Department of Electronics Engineering"
+    icon: BadgeCheck,
+    title: 'Verified Digital Certificates',
+    tag: 'Verified Credentials',
+    description: 'Generate and publish attendance-based certificates with unique verification IDs, downloadable PDFs and a public authenticity verification page.'
   }
 ];
 
@@ -106,7 +112,107 @@ const TECH_STACK = [
   { label: 'Security & Auth', value: 'JWT + BCrypt + Cookie Guard' }
 ];
 
-export default function AboutPage() {
+export default function AboutPage({ onOpenAuthModal }) {
+  const { user, isAuthenticated } = useAuth();
+  const toast = useToast();
+
+  const [reviews, setReviews] = useState([]);
+  const [reviewSummary, setReviewSummary] = useState({ averageRating: 0, totalReviews: 0, ratingCounts: {} });
+  const [reviewsLoading, setReviewsLoading] = useState(true);
+
+  // Review submission & status state
+  const [myReviewStatus, setMyReviewStatus] = useState(null);
+  const [reviewModalOpen, setReviewModalOpen] = useState(false);
+  const [reviewRating, setReviewRating] = useState(5);
+  const [hoverRating, setHoverRating] = useState(0);
+  const [reviewText, setReviewText] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
+
+  const loadReviewsData = useCallback(async () => {
+    setReviewsLoading(true);
+    try {
+      const res = await fetchPublicReviews();
+      if (res.success) {
+        setReviews(res.data || []);
+        if (res.summary) setReviewSummary(res.summary);
+      }
+    } catch (err) {
+      console.error('Failed to load reviews:', err);
+    } finally {
+      setReviewsLoading(false);
+    }
+  }, []);
+
+  const loadMyStatus = useCallback(async () => {
+    if (!isAuthenticated) {
+      setMyReviewStatus(null);
+      return;
+    }
+    try {
+      const res = await fetchMyReviewStatus();
+      if (res.success) {
+        setMyReviewStatus(res.data);
+      }
+    } catch (err) {
+      console.error('Failed to load user review status:', err);
+    }
+  }, [isAuthenticated]);
+
+  useEffect(() => {
+    loadReviewsData();
+  }, [loadReviewsData]);
+
+  useEffect(() => {
+    loadMyStatus();
+  }, [loadMyStatus]);
+
+  const handleOpenReviewModal = () => {
+    setSubmitError(null);
+    setReviewModalOpen(true);
+    if (isAuthenticated) {
+      loadMyStatus();
+    }
+  };
+
+  const handleSubmitReview = async (e) => {
+    e.preventDefault();
+    if (!isAuthenticated) {
+      onOpenAuthModal?.();
+      return;
+    }
+
+    if (reviewRating < 1 || reviewRating > 5) {
+      setSubmitError('Please select a rating between 1 and 5 stars');
+      return;
+    }
+
+    if (reviewText.trim().length < 10) {
+      setSubmitError('Review text must be at least 10 characters long');
+      return;
+    }
+
+    setSubmitting(true);
+    setSubmitError(null);
+    try {
+      const res = await submitReviewApi({
+        rating: reviewRating,
+        reviewText: reviewText.trim()
+      });
+      if (res.success) {
+        toast.showSuccess('Review submitted! It will appear publicly once approved by event organizers.');
+        setReviewText('');
+        setReviewRating(5);
+        await loadMyStatus();
+        await loadReviewsData();
+      }
+    } catch (err) {
+      setSubmitError(err.message || 'Failed to submit review');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <div className="about-page-wrapper page-entrance">
       <div className="container">
@@ -161,9 +267,9 @@ export default function AboutPage() {
         <section className="about-capabilities-section" aria-label="Platform Real Capabilities">
           <div className="section-header">
             <span className="section-tag">Comprehensive Architecture</span>
-            <h2 className="section-title">Built with Production-Grade Features</h2>
+            <h2 className="section-title">Everything Your Campus Needs to Connect</h2>
             <p className="section-subtitle">
-              Every interface in FESTIQ is connected to live services, offering genuine utility to both student attendees and student event administrators.
+              Discover events, manage registrations, stay connected and make every campus experience count.
             </p>
           </div>
 
@@ -186,90 +292,379 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Developer Profile Section */}
-        <section className="about-developer-section" aria-label="Developer Profile">
-          <div className="developer-card">
-            <div className="developer-header-zone">
-              <div className="developer-avatar-box">
-                <GraduationCap size={40} className="dev-cap-icon" />
-              </div>
-              <div className="developer-title-meta">
-                <div className="dev-role-badge">
-                  <Terminal size={13} />
-                  <span>Student Developer & Architect</span>
-                </div>
-                <h2 className="developer-name">B.Tech Computer Science & Engineering</h2>
-                <p className="developer-subtext">
-                  3rd Year Undergraduate • Semester VI Academic Coursework
-                </p>
-              </div>
-            </div>
-
-            <div className="developer-body-grid">
-              <div className="developer-narrative">
-                <h3 className="dev-heading">Project Genesis & Academic Mission</h3>
-                <p className="dev-text">
-                  FESTIQ was conceptualized, architected, and engineered as a comprehensive university semester-end Web Designing submission. The primary objective is to prove that modern web standards—semantic markup, pure CSS variable theming, modular component design, and RESTful architectures—can deliver an enterprise-grade experience without bloated dependencies.
-                </p>
-                <div className="dev-highlights">
-                  <div className="dev-highlight-item">
-                    <CheckCircle2 size={16} className="highlight-icon" />
-                    <span>Dual Theme System with Zero Style Glitch</span>
-                  </div>
-                  <div className="dev-highlight-item">
-                    <CheckCircle2 size={16} className="highlight-icon" />
-                    <span>Real RESTful Backend with Financial Reconciliation</span>
-                  </div>
-                  <div className="dev-highlight-item">
-                    <CheckCircle2 size={16} className="highlight-icon" />
-                    <span>Strict Viewport Responsiveness across Mobile & Desktop</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="developer-specs-panel">
-                <h4 className="specs-title">
-                  <Cpu size={16} /> Technical Specifications
-                </h4>
-                <div className="specs-list">
-                  {TECH_STACK.map((item) => (
-                    <div key={item.label} className="spec-row">
-                      <span className="spec-label">{item.label}</span>
-                      <span className="spec-value">{item.value}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Original Community Quotes Section */}
-        <section className="about-community-section" aria-label="Campus Community Perspectives">
-          <div className="section-header">
-            <span className="section-tag">Campus Voices</span>
-            <h2 className="section-title">What Organizers & Students Say</h2>
+        {/* Creator Profile Section */}
+        <section className="about-creator-section" aria-label="Meet the Creator">
+          <div className="section-header creator-section-header">
+            <span className="section-tag">Architect & Engineer</span>
+            <h2 className="section-title">Meet the Creator</h2>
             <p className="section-subtitle">
-              Authentic perspectives from student council coordinators and club leads on building a vibrant university fest experience.
+              The architectural vision, academic mission, and engineering philosophy behind the FESTIQ platform.
             </p>
           </div>
 
-          <div className="community-quotes-grid">
-            {COMMUNITY_QUOTES.map((item) => (
-              <div key={item.author} className="quote-card card-hover-fx">
-                <div className="quote-icon-wrap">
-                  <Quote size={20} className="quote-mark" />
-                </div>
-                <p className="quote-text">"{item.quote}"</p>
-                <div className="quote-author-info">
-                  <h4 className="author-name">{item.author}</h4>
-                  <p className="author-role">{item.role}</p>
-                  <p className="author-discipline">{item.discipline}</p>
-                </div>
+          {/* 1. Main Two-Column Creator Profile Card */}
+          <div className="creator-profile-card">
+            {/* Left Column: Creator Portrait */}
+            <div className="creator-portrait-col">
+              <div className="creator-portrait-frame">
+                <img
+                  src="/assets/creator-photo.jpeg"
+                  alt="Ishan Kumar Yadav - Student Developer & Architect"
+                  className="creator-portrait-photo"
+                />
               </div>
-            ))}
+            </div>
+
+            {/* Right Column: Creator Identity */}
+            <div className="creator-identity-col">
+              <div className="creator-role-badge">
+                <Terminal size={12} className="role-badge-icon" />
+                <span>STUDENT DEVELOPER & ARCHITECT</span>
+              </div>
+              <h3 className="creator-name">Ishan Kumar Yadav</h3>
+              <p className="creator-degree">B.Tech Computer Science & Engineering</p>
+              <p className="creator-academic-meta">
+                3rd Year Undergraduate • Semester VI Academic Coursework
+              </p>
+              <p className="creator-intro-narrative">
+                Undergraduate student architect and lead engineer responsible for FESTIQ's platform architecture, pure CSS variable theming, concurrency-safe ticket allocations, and cryptographic verification workflows.
+              </p>
+              <div className="creator-institution-meta">
+                <GraduationCap size={15} className="institution-icon" />
+                <span>School of Computer Engineering • KIIT Deemed to be University</span>
+              </div>
+            </div>
+          </div>
+
+          {/* 2. Project Genesis & Academic Mission Section */}
+          <div className="creator-mission-card">
+            <div className="mission-content-zone">
+              <div className="mission-header-zone">
+                <Sparkles size={18} className="mission-icon" />
+                <h4 className="mission-title">Project Genesis & Academic Mission</h4>
+              </div>
+              <p className="mission-text">
+                FESTIQ was conceptualized, architected, and engineered as a comprehensive university semester-end Web Designing submission. The primary objective is to prove that modern web standards—semantic markup, pure CSS variable theming, modular component design, and RESTful architectures—can deliver an enterprise-grade experience without bloated dependencies.
+              </p>
+            </div>
+
+            {/* 3. Three Achievement Statements / Highlights */}
+            <div className="mission-highlights-grid">
+              <div className="mission-highlight-item">
+                <CheckCircle2 size={16} className="highlight-icon" />
+                <span className="highlight-text">Dual Theme System with Zero Style Glitch</span>
+              </div>
+              <div className="mission-highlight-item">
+                <CheckCircle2 size={16} className="highlight-icon" />
+                <span className="highlight-text">Real RESTful Backend with Financial Reconciliation</span>
+              </div>
+              <div className="mission-highlight-item">
+                <CheckCircle2 size={16} className="highlight-icon" />
+                <span className="highlight-text">Strict Viewport Responsiveness across Mobile & Desktop</span>
+              </div>
+            </div>
+          </div>
+
+          {/* 4. Technical Specifications Panel */}
+          <div className="creator-tech-panel">
+            <div className="tech-panel-header">
+              <Cpu size={16} className="tech-panel-icon" />
+              <h4 className="tech-panel-title">Technical Specifications</h4>
+            </div>
+            <div className="tech-specs-grid">
+              {TECH_STACK.map((item) => (
+                <div key={item.label} className="tech-spec-row">
+                  <span className="tech-spec-label">{item.label}</span>
+                  <span className="tech-spec-value">{item.value}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
+
+        {/* Verified Community Reviews Section */}
+        <section className="about-reviews-section" aria-label="Campus Community Reviews">
+          <div className="section-header">
+            <span className="section-tag">Verified Perspectives</span>
+            <h2 className="section-title">What People Say About FESTIQ</h2>
+            <p className="section-subtitle">
+              Authentic feedback and ratings submitted by verified event attendees through our QR check-in ecosystem.
+            </p>
+          </div>
+
+          {/* Action / Rating Summary Banner */}
+          <div className="reviews-summary-bar">
+            <div className="summary-left-group">
+              <div className="summary-rating-display">
+                <span className="rating-score">
+                  {reviewSummary.totalReviews > 0 ? reviewSummary.averageRating.toFixed(1) : '—'}
+                </span>
+                <div className="summary-stars">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star
+                      key={star}
+                      size={18}
+                      className={
+                        reviewSummary.totalReviews > 0 && star <= Math.round(reviewSummary.averageRating)
+                          ? 'star-filled'
+                          : 'star-empty'
+                      }
+                    />
+                  ))}
+                </div>
+              </div>
+              <div className="summary-counts">
+                <span className="counts-title">
+                  {reviewSummary.totalReviews === 1
+                    ? '1 Verified Review'
+                    : `${reviewSummary.totalReviews} Verified Reviews`}
+                </span>
+                <span className="counts-sub">From QR check-in confirmed attendees</span>
+              </div>
+            </div>
+
+            <Button
+              variant="primary"
+              size="sm"
+              icon={<MessageSquareQuote size={16} />}
+              onClick={handleOpenReviewModal}
+            >
+              Share Your Experience
+            </Button>
+          </div>
+
+          {/* Reviews Grid or Empty State */}
+          {reviewsLoading ? (
+            <div className="reviews-loading-state">
+              <RefreshCw size={24} className="spinning-icon" />
+              <span>Loading verified reviews...</span>
+            </div>
+          ) : reviews.length === 0 ? (
+            <div className="reviews-empty-state">
+              <div className="empty-state-icon-wrap">
+                <MessageSquareQuote size={40} className="empty-state-icon" />
+              </div>
+              <h3 className="empty-state-title">No Published Reviews Yet</h3>
+              <p className="empty-state-desc">
+                Attended a FESTIQ event? Be the first verified attendee to share your campus festival experience.
+              </p>
+              <Button
+                variant="secondary"
+                size="md"
+                icon={<Sparkles size={16} />}
+                onClick={handleOpenReviewModal}
+              >
+                Share Your Experience
+              </Button>
+            </div>
+          ) : (
+            <div className="reviews-cards-grid">
+              {reviews.map((r) => (
+                <div key={r.id} className="review-display-card card-hover-fx">
+                  <div className="review-card-header">
+                    <div className="review-stars-display">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star
+                          key={star}
+                          size={15}
+                          className={star <= r.rating ? 'star-filled' : 'star-empty'}
+                        />
+                      ))}
+                    </div>
+                    <span className="review-date">
+                      {new Date(r.createdAt).toLocaleDateString(undefined, {
+                        year: 'numeric',
+                        month: 'short'
+                      })}
+                    </span>
+                  </div>
+
+                  <p className="review-card-text">"{r.reviewText}"</p>
+
+                  <div className="review-author-row">
+                    <div className="author-avatar-chip">
+                      {r.displayName.charAt(0).toUpperCase()}
+                    </div>
+                    <div className="author-meta">
+                      <div className="author-name">{r.displayName}</div>
+                      {r.verifiedAttendee && (
+                        <div className="verified-badge">
+                          <ShieldCheck size={12} className="shield-icon" />
+                          <span>Verified Attendee</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+
+        {/* Review Submission Modal */}
+        {reviewModalOpen && (
+          <div className="review-modal-backdrop" onClick={() => setReviewModalOpen(false)}>
+            <div className="review-modal-dialog" onClick={(e) => e.stopPropagation()}>
+              <div className="modal-header-row">
+                <div className="modal-title-group">
+                  <Sparkles size={20} className="modal-title-icon" />
+                  <h3 className="modal-title">Share Your FESTIQ Experience</h3>
+                </div>
+                <button
+                  type="button"
+                  className="modal-close-btn"
+                  onClick={() => setReviewModalOpen(false)}
+                  aria-label="Close modal"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              {!isAuthenticated ? (
+                <div className="modal-body-auth-prompt">
+                  <AlertCircle size={32} className="prompt-icon" />
+                  <h4>Student Sign In Required</h4>
+                  <p>
+                    To ensure feedback authenticity, reviews are exclusively accepted from registered student accounts with verified attendance.
+                  </p>
+                  <div className="modal-prompt-actions">
+                    <Button
+                      variant="primary"
+                      onClick={() => {
+                        setReviewModalOpen(false);
+                        onOpenAuthModal?.();
+                      }}
+                    >
+                      Sign In or Create Account
+                    </Button>
+                  </div>
+                </div>
+              ) : myReviewStatus && !myReviewStatus.isEligible ? (
+                <div className="modal-body-ineligible">
+                  <AlertCircle size={32} className="prompt-icon" />
+                  <h4>Verified Event Attendance Required</h4>
+                  <p>
+                    Our review system exclusively publishes feedback from attendees who have checked in to at least one FESTIQ event via our QR entry scanner.
+                  </p>
+                  <div className="ineligible-tip">
+                    <strong>How to qualify:</strong> Attend any upcoming campus event and present your digital pass QR code at the venue gate for check-in.
+                  </div>
+                  <div className="modal-prompt-actions">
+                    <Button variant="secondary" onClick={() => setReviewModalOpen(false)}>
+                      Understood
+                    </Button>
+                  </div>
+                </div>
+              ) : myReviewStatus && myReviewStatus.hasSubmitted ? (
+                <div className="modal-body-submitted">
+                  <CheckCircle2 size={36} className="submitted-icon" />
+                  <h4>Review Submitted</h4>
+                  <p>
+                    {myReviewStatus.review?.status === 'APPROVED'
+                      ? 'Your verified review has been approved and published to the About page. Thank you for your feedback!'
+                      : myReviewStatus.review?.status === 'REJECTED'
+                      ? `Your review could not be published (${myReviewStatus.review?.rejectionReason || 'Does not meet review guidelines'}).`
+                      : 'Your feedback is currently under review by our campus event organizers. It will appear publicly once approved.'}
+                  </p>
+                  {myReviewStatus.review && (
+                    <div className="submitted-preview-box">
+                      <div className="preview-stars">
+                        {[1, 2, 3, 4, 5].map((s) => (
+                          <Star
+                            key={s}
+                            size={14}
+                            className={s <= myReviewStatus.review.rating ? 'star-filled' : 'star-empty'}
+                          />
+                        ))}
+                      </div>
+                      <p className="preview-text">"{myReviewStatus.review.reviewText}"</p>
+                    </div>
+                  )}
+                  <div className="modal-prompt-actions">
+                    <Button variant="secondary" onClick={() => setReviewModalOpen(false)}>
+                      Close
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <form className="review-form" onSubmit={handleSubmitReview}>
+                  <div className="form-group">
+                    <label className="form-label">Overall Rating *</label>
+                    <div className="interactive-star-picker">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <button
+                          type="button"
+                          key={star}
+                          className={`star-pick-btn ${star <= (hoverRating || reviewRating) ? 'active' : ''}`}
+                          onMouseEnter={() => setHoverRating(star)}
+                          onMouseLeave={() => setHoverRating(0)}
+                          onClick={() => setReviewRating(star)}
+                          aria-label={`Rate ${star} out of 5 stars`}
+                        >
+                          <Star size={26} />
+                        </button>
+                      ))}
+                      <span className="selected-rating-label">
+                        {(hoverRating || reviewRating) > 0 ? `${hoverRating || reviewRating} / 5 Stars` : 'Select rating'}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">
+                      Your Feedback *
+                      <span className="char-counter">
+                        {reviewText.length}/1000 (minimum 10 characters)
+                      </span>
+                    </label>
+                    <textarea
+                      className="review-textarea"
+                      rows={4}
+                      placeholder="Share your thoughts on venue organization, event discovery, QR digital pass entry, or festival culture..."
+                      value={reviewText}
+                      onChange={(e) => setReviewText(e.target.value)}
+                      maxLength={1000}
+                      required
+                    />
+                  </div>
+
+                  <div className="privacy-reassurance-note">
+                    <ShieldCheck size={14} className="privacy-icon" />
+                    <span>
+                      Privacy Protected: Your review will display as <strong>{user?.fullName ? formatDisplayName(user.fullName) : 'Verified Student'}</strong>. Your student roll number, email, and phone are never published.
+                    </span>
+                  </div>
+
+                  {submitError && (
+                    <div className="form-error-banner">
+                      <AlertCircle size={15} />
+                      <span>{submitError}</span>
+                    </div>
+                  )}
+
+                  <div className="modal-form-actions">
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      onClick={() => setReviewModalOpen(false)}
+                      disabled={submitting}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      type="submit"
+                      variant="primary"
+                      icon={<Send size={15} />}
+                      disabled={submitting || reviewRating < 1 || reviewText.trim().length < 10}
+                    >
+                      {submitting ? 'Submitting...' : 'Submit for Moderation'}
+                    </Button>
+                  </div>
+                </form>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* Academic Notice Banner */}
         <div className="about-notice-banner">

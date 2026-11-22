@@ -9,6 +9,7 @@ import GalleryPage from './pages/GalleryPage';
 import ManagementPage from './pages/ManagementPage';
 import HostEventPage from './pages/HostEventPage';
 import StudentDashboardPage from './pages/StudentDashboardPage';
+import VerifyCertificatePage from './pages/VerifyCertificatePage';
 import AboutPage from './pages/AboutPage';
 import ScrollToTop from './components/common/ScrollToTop';
 import AuthModal from './components/auth/AuthModal';
@@ -174,7 +175,13 @@ export default function App() {
               {/* Student Dashboard: Personal Event Passes & QR Check-in Tickets */}
               <Route
                 path="/dashboard"
-                element={<StudentDashboardPage onOpenAuthModal={() => setAuthModalOpen(true)} />}
+                element={
+                  <StudentDashboardPage
+                    onOpenAuthModal={() => setAuthModalOpen(true)}
+                    onEventSelect={(event) => setPreviewEvent(event)}
+                    events={events}
+                  />
+                }
               />
 
               {/* Management Operations Hub: Dashboard KPIs, Participant Table, CSV Export, Event Creation */}
@@ -189,11 +196,17 @@ export default function App() {
               />
               <Route path="/management" element={<Navigate to="/manage" replace />} />
 
+              {/* Public Verified Digital Certificate Verification */}
+              <Route path="/verify-certificate/:certificateId" element={<VerifyCertificatePage />} />
+              <Route path="/verify-certificate" element={<VerifyCertificatePage />} />
+              <Route path="/certificates/verify/:certificateId" element={<VerifyCertificatePage />} />
+              <Route path="/certificates/verify" element={<VerifyCertificatePage />} />
+
               {/* Backward compatibility: Old Categories route redirects seamlessly to /events */}
               <Route path="/categories" element={<Navigate to="/events" replace />} />
 
               {/* About Page: Platform overview and coursework context */}
-              <Route path="/about" element={<AboutPage />} />
+              <Route path="/about" element={<AboutPage onOpenAuthModal={() => setAuthModalOpen(true)} />} />
 
               {/* Fallback to Home */}
               <Route path="*" element={<Navigate to="/" replace />} />
@@ -231,6 +244,8 @@ export default function App() {
         <EventDetailsModal
           isOpen={Boolean(previewEvent)}
           event={previewEvent}
+          isRegistered={Boolean(previewEvent?.isRegistered || previewEvent?.registration)}
+          registration={previewEvent?.registration || null}
           onClose={() => setPreviewEvent(null)}
           onRegister={handleRegisterFromPreview}
         />

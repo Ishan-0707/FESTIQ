@@ -1,6 +1,7 @@
 /* ============================================================
    FESTIQ — Digital Event Pass & Modal Styles
-   Dual-Theme Compatible (Midnight Forest + Champagne & Light)
+   Dual-Theme Compatible (Obsidian Gold & Sage Porcelain)
+   Phase 2I: Visual Refinement, Sizing & Theme Modernization
    ============================================================ */
 
 .pass-modal-backdrop {
@@ -24,18 +25,21 @@
   align-items: center;
 }
 
-/* Digital Ticket Card */
+/* ============================================================
+   Digital Ticket Card Container
+   ============================================================ */
 .digital-ticket-card {
   width: 100%;
-  background: var(--bg-card);
-  border: 1px solid var(--accent-primary);
-  border-radius: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-modal, 20px);
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
   color: var(--text-primary);
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: background-color var(--transition-theme), border-color var(--transition-theme);
 }
 
 /* Header */
@@ -44,8 +48,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px 24px;
-  background: var(--bg-deep);
-  border-bottom: 1px solid var(--border-subtle);
+  background: var(--surface-secondary);
+  border-bottom: 1px solid var(--border-primary);
+  transition: background-color var(--transition-theme), border-color var(--transition-theme);
 }
 
 .ticket-brand {
@@ -68,20 +73,22 @@
   border: none;
   color: var(--text-muted);
   cursor: pointer;
-  padding: 4px;
+  padding: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  border-radius: var(--radius-xs, 6px);
+  transition: all var(--transition-fast);
 }
 
 .ticket-close-btn:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-card-hover);
 }
 
-/* Event Details Section */
+/* ============================================================
+   Event Details Section
+   ============================================================ */
 .ticket-event-section {
   padding: 24px 28px 20px;
   display: flex;
@@ -93,23 +100,30 @@
   display: inline-block;
   align-self: flex-start;
   padding: 4px 12px;
-  border-radius: 9999px;
-  background: rgba(198, 169, 107, 0.15);
-  border: 1px solid rgba(198, 169, 107, 0.3);
+  border-radius: var(--radius-full);
+  background: rgba(212, 175, 98, 0.12);
+  border: 1px solid rgba(212, 175, 98, 0.25);
   color: var(--accent-primary);
   font-size: 0.76rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
+  transition: background-color var(--transition-theme), border-color var(--transition-theme);
+}
+
+[data-theme="light"] .ticket-category-pill {
+  background: rgba(57, 122, 91, 0.10);
+  border-color: rgba(57, 122, 91, 0.22);
 }
 
 .ticket-event-title {
   font-family: var(--font-heading);
-  font-size: 1.55rem;
+  font-size: clamp(1.35rem, 2.5vw, 1.65rem);
   font-weight: 800;
   color: var(--text-primary);
   margin: 0;
   line-height: 1.25;
+  letter-spacing: -0.015em;
 }
 
 .ticket-meta-grid {
@@ -122,8 +136,8 @@
 .ticket-meta-item {
   display: flex;
   align-items: center;
-  gap: 7px;
-  font-size: 0.85rem;
+  gap: 8px;
+  font-size: 0.86rem;
   color: var(--text-secondary);
 }
 
@@ -136,7 +150,9 @@
   flex-shrink: 0;
 }
 
-/* Ticket Perforation Notch & Line */
+/* ============================================================
+   Ticket Perforation Notch & Line
+   ============================================================ */
 .ticket-perforation {
   position: relative;
   height: 24px;
@@ -148,7 +164,7 @@
 .perforation-line {
   flex: 1;
   height: 0;
-  border-top: 2px dashed var(--border-subtle);
+  border-top: 2px dashed var(--border-primary);
   margin: 0 16px;
 }
 
@@ -163,17 +179,19 @@
 
 .notch-left {
   left: -11px;
-  border-right: 1px solid var(--accent-primary);
+  border-right: 1px solid var(--border-primary);
 }
 
 .notch-right {
   right: -11px;
-  border-left: 1px solid var(--accent-primary);
+  border-left: 1px solid var(--border-primary);
 }
 
-/* Ticket Body: Attendee Details & QR */
+/* ============================================================
+   Ticket Body: Attendee Details & QR
+   ============================================================ */
 .ticket-body {
-  padding: 16px 28px 24px;
+  padding: 18px 28px 24px;
   display: grid;
   grid-template-columns: 1fr 180px;
   gap: 24px;
@@ -195,20 +213,22 @@
 .field-label {
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: var(--text-muted);
   text-transform: uppercase;
 }
 
 .field-value {
-  font-size: 0.92rem;
+  font-size: 0.94rem;
   color: var(--text-primary);
 }
 
 .field-value.highlight {
-  font-size: 1.15rem;
+  font-family: var(--font-heading);
+  font-size: 1.18rem;
   font-weight: 700;
   color: var(--text-primary);
+  letter-spacing: -0.01em;
 }
 
 .field-value.muted {
@@ -227,10 +247,16 @@
   font-size: 0.92rem;
   font-weight: 700;
   color: var(--accent-primary);
-  background: rgba(198, 169, 107, 0.12);
-  padding: 2px 8px;
-  border-radius: 4px;
+  background: rgba(212, 175, 98, 0.10);
+  border: 1px solid rgba(212, 175, 98, 0.22);
+  padding: 3px 8px;
+  border-radius: 6px;
   letter-spacing: 0.05em;
+}
+
+[data-theme="light"] .code-copy-row code {
+  background: rgba(57, 122, 91, 0.10);
+  border-color: rgba(57, 122, 91, 0.22);
 }
 
 .pass-copy-btn {
@@ -238,22 +264,22 @@
   border: none;
   color: var(--text-muted);
   cursor: pointer;
-  padding: 3px;
+  padding: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 4px;
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
 }
 
 .pass-copy-btn:hover {
   color: var(--accent-primary);
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--bg-card-hover);
 }
 
 /* Status Ribbon */
 .ticket-status-ribbon {
-  margin-top: 6px;
+  margin-top: 4px;
 }
 
 .status-badge {
@@ -261,7 +287,7 @@
   align-items: center;
   gap: 8px;
   padding: 6px 14px;
-  border-radius: 9999px;
+  border-radius: var(--radius-full);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.04em;
@@ -269,26 +295,44 @@
 }
 
 .status-valid {
-  background: rgba(76, 175, 80, 0.15);
-  border: 1px solid rgba(76, 175, 80, 0.35);
-  color: #81C784;
+  background: rgba(100, 184, 138, 0.14);
+  border: 1px solid rgba(100, 184, 138, 0.30);
+  color: var(--success);
+}
+
+[data-theme="light"] .status-valid {
+  color: #2C6348;
+  background: rgba(57, 122, 91, 0.12);
+  border-color: rgba(57, 122, 91, 0.25);
 }
 
 .valid-pulse-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #81C784;
-  box-shadow: 0 0 8px #81C784;
+  background: var(--success);
+  box-shadow: 0 0 8px var(--success);
+}
+
+[data-theme="light"] .valid-pulse-dot {
+  background: #397A5B;
+  box-shadow: 0 0 8px #397A5B;
 }
 
 .status-checked-in {
-  background: rgba(198, 169, 107, 0.2);
-  border: 1px solid var(--accent-primary);
+  background: rgba(212, 175, 98, 0.15);
+  border: 1px solid rgba(212, 175, 98, 0.30);
   color: var(--accent-primary);
 }
 
-/* QR Code Box */
+[data-theme="light"] .status-checked-in {
+  background: rgba(57, 122, 91, 0.12);
+  border-color: rgba(57, 122, 91, 0.25);
+}
+
+/* ============================================================
+   QR Code Box
+   ============================================================ */
 .ticket-qr-col {
   display: flex;
   flex-direction: column;
@@ -306,7 +350,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
 
 .qr-image {
@@ -320,7 +364,7 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  color: var(--text-primary);
+  color: #0B1410;
   font-size: 0.75rem;
 }
 
@@ -334,11 +378,11 @@
 }
 
 .qr-scan-hint {
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   color: var(--text-muted);
   text-align: center;
   max-width: 160px;
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
 /* Corner Reticles */
@@ -374,16 +418,19 @@
   border-width: 0 2px 2px 0;
 }
 
-/* Ticket Footer */
+/* ============================================================
+   Ticket Footer / Security Watermark
+   ============================================================ */
 .ticket-footer {
   padding: 12px 28px;
-  background: var(--bg-deep);
-  border-top: 1px solid var(--border-subtle);
+  background: var(--surface-secondary);
+  border-top: 1px solid var(--border-primary);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.75rem;
+  font-size: 0.76rem;
   color: var(--text-muted);
+  transition: background-color var(--transition-theme), border-color var(--transition-theme);
 }
 
 .security-note {
@@ -391,21 +438,27 @@
   align-items: center;
   gap: 6px;
   color: var(--accent-primary);
+  font-weight: 600;
 }
 
-/* Modal Actions */
+/* ============================================================
+   Modal Actions
+   ============================================================ */
 .pass-modal-actions {
   display: flex;
   gap: 12px;
   justify-content: center;
 }
 
-/* Responsive */
+/* ============================================================
+   Responsive Breakpoints
+   ============================================================ */
 @media (max-width: 600px) {
   .ticket-body {
     grid-template-columns: 1fr;
     text-align: center;
     gap: 20px;
+    padding: 16px 20px 20px;
   }
 
   .ticket-attendee-col {
@@ -424,10 +477,13 @@
     flex-direction: column;
     gap: 6px;
     text-align: center;
+    padding: 12px 20px;
   }
 }
 
-/* Print Stylesheet */
+/* ============================================================
+   Print Stylesheet
+   ============================================================ */
 @media print {
   body * {
     visibility: hidden;
@@ -449,27 +505,27 @@
     width: 100%;
     max-width: 100%;
     box-shadow: none !important;
-    border: 2px solid #111B17 !important;
+    border: 2px solid #090909 !important;
     background: #FFFFFF !important;
-    color: #111B17 !important;
+    color: #090909 !important;
   }
 
   .ticket-header,
   .ticket-footer {
     background: #F4F6F4 !important;
-    color: #111B17 !important;
+    color: #090909 !important;
+    border-color: #E2E8E2 !important;
   }
 
   .ticket-event-title {
-    color: #111B17 !important;
+    color: #090909 !important;
   }
 
   .field-value {
-    color: #111B17 !important;
+    color: #090909 !important;
   }
 
   .notch {
     display: none;
   }
 }
-

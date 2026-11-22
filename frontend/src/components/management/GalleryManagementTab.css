@@ -1,5 +1,7 @@
 /* ==========================================================================
-   GALLERY MANAGEMENT TAB (MANAGEMENT PORTAL)
+   FESTIQ Management — Gallery Management Tab
+   Dual-Theme Compatible (Obsidian Gold & Sage Porcelain)
+   Phase 2J: Visual Refinement, Sizing & Theme Modernization
    ========================================================================== */
 
 .gallery-mgmt-container {
@@ -18,10 +20,11 @@
 
 .gallery-mgmt-header-left h2 {
   font-family: var(--font-heading);
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: var(--text-primary);
   margin: 0 0 4px 0;
+  letter-spacing: -0.015em;
 }
 
 .gallery-mgmt-header-left p {
@@ -52,18 +55,25 @@
 
 .gallery-search-input {
   width: 100%;
-  padding: 8px 12px 8px 36px;
-  background: var(--bg-primary);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm, 8px);
+  height: 40px;
+  padding: 0 14px 0 36px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-input, 9px);
   color: var(--text-primary);
   font-size: 0.88rem;
+  font-family: var(--font-body);
   outline: none;
-  transition: all 0.2s ease;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .gallery-search-input:focus {
   border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(212, 175, 98, 0.15);
+}
+
+[data-theme='light'] .gallery-search-input:focus {
+  box-shadow: 0 0 0 3px rgba(57, 122, 91, 0.15);
 }
 
 /* Albums Grid */
@@ -74,25 +84,26 @@
 }
 
 .gallery-mgmt-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md, 12px);
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-card, 16px);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-theme);
 }
 
 .gallery-mgmt-card:hover {
   transform: translateY(-2px);
-  border-color: var(--border-focus);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
 }
 
 .gallery-card-cover {
   position: relative;
   height: 180px;
-  background: var(--bg-deep, #060E10);
+  background: var(--surface-secondary);
   overflow: hidden;
 }
 
@@ -101,6 +112,11 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.35s ease;
+}
+
+.gallery-mgmt-card:hover .gallery-card-cover img {
+  transform: scale(1.03);
 }
 
 .gallery-cover-placeholder {
@@ -119,20 +135,19 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  background: rgba(210, 139, 99, 0.95);
-  color: #0A1517;
+  background: var(--accent-gradient);
+  color: #090909;
   padding: 3px 8px;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 0.72rem;
   font-weight: 700;
   display: flex;
   align-items: center;
   gap: 4px;
-  backdrop-filter: blur(4px);
+  box-shadow: var(--shadow-sm);
 }
 
 [data-theme="light"] .gallery-featured-badge {
-  background: rgba(65, 105, 200, 0.95);
   color: #FFFFFF;
 }
 
@@ -143,7 +158,7 @@
   background: rgba(0, 0, 0, 0.75);
   color: #FFFFFF;
   padding: 3px 8px;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 0.75rem;
   font-weight: 600;
   display: flex;
@@ -153,7 +168,7 @@
 }
 
 .gallery-card-body {
-  padding: 16px;
+  padding: 18px 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -169,7 +184,8 @@
 
 .gallery-card-title {
   margin: 0;
-  font-size: 1.05rem;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1.3;
@@ -189,7 +205,7 @@
 .gallery-card-footer {
   margin-top: auto;
   padding-top: 12px;
-  border-top: 1px solid var(--border-subtle);
+  border-top: 1px solid var(--border-primary);
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -200,31 +216,33 @@
 .gallery-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 1200;
   padding: 20px;
 }
 
 .gallery-modal-dialog {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg, 16px);
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-modal, 20px);
   width: 100%;
   max-width: 680px;
   max-height: 90vh;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
   overflow: hidden;
+  transition: background-color var(--transition-theme), border-color var(--transition-theme);
 }
 
 .gallery-modal-header {
   padding: 20px 24px;
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-primary);
+  background: var(--surface-secondary);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -232,6 +250,7 @@
 
 .gallery-modal-header h3 {
   margin: 0;
+  font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-primary);
@@ -264,20 +283,27 @@
 .form-group-gallery textarea {
   width: 100%;
   padding: 10px 14px;
-  background: var(--bg-primary);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm, 8px);
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-input, 9px);
   color: var(--text-primary);
   font-family: inherit;
   font-size: 0.9rem;
   outline: none;
-  transition: border-color 0.2s ease;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .form-group-gallery input:focus,
 .form-group-gallery select:focus,
 .form-group-gallery textarea:focus {
   border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(212, 175, 98, 0.15);
+}
+
+[data-theme='light'] .form-group-gallery input:focus,
+[data-theme='light'] .form-group-gallery select:focus,
+[data-theme='light'] .form-group-gallery textarea:focus {
+  box-shadow: 0 0 0 3px rgba(57, 122, 91, 0.15);
 }
 
 .form-row-gallery {
@@ -298,14 +324,14 @@
   align-items: center;
   gap: 6px;
   padding: 8px 14px;
-  background: var(--bg-elevated);
-  border: 1px dashed var(--border-subtle);
+  background: var(--surface-secondary);
+  border: 1px dashed var(--border-primary);
   border-radius: var(--radius-sm, 8px);
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--text-primary);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
 }
 
 .gallery-file-label:hover {
@@ -322,7 +348,7 @@
   height: 44px;
   border-radius: 4px;
   object-fit: cover;
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--border-primary);
 }
 
 /* Photos sub-list */
@@ -332,7 +358,7 @@
   gap: 12px;
   margin-top: 8px;
   padding-top: 16px;
-  border-top: 1px solid var(--border-subtle);
+  border-top: 1px solid var(--border-primary);
 }
 
 .photos-section-header {
@@ -343,6 +369,7 @@
 
 .photos-section-header h4 {
   margin: 0;
+  font-family: var(--font-heading);
   font-size: 0.92rem;
   font-weight: 700;
   color: var(--text-primary);
@@ -353,10 +380,10 @@
   grid-template-columns: 50px 1fr 1fr auto;
   gap: 10px;
   align-items: center;
-  background: var(--bg-primary);
+  background: var(--surface-secondary);
   padding: 8px 12px;
   border-radius: 6px;
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--border-primary);
 }
 
 .photo-row-thumb {
@@ -369,10 +396,35 @@
 
 .gallery-modal-footer {
   padding: 16px 24px;
-  border-top: 1px solid var(--border-subtle);
+  border-top: 1px solid var(--border-primary);
+  background: var(--surface-secondary);
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 12px;
 }
 
+/* Responsive Adaptations */
+@media (max-width: 640px) {
+  .gallery-mgmt-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .gallery-mgmt-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .gallery-search-box {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .gallery-mgmt-actions .festiq-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

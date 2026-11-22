@@ -1,0 +1,408 @@
+/* ============================================================
+   Review Management Tab Styles — Dual-Theme Consistent
+   ============================================================ */
+
+.review-mgmt-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.review-mgmt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.review-mgmt-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.title-icon {
+  color: var(--accent-primary);
+}
+
+.review-mgmt-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* KPI Stats Grid */
+.review-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.review-stat-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-card, 16px);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: var(--shadow-sm);
+  transition: background-color var(--transition-theme), border-color var(--transition-theme);
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.stat-value {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.stat-pending .stat-value {
+  color: var(--warning, #D4AF62);
+}
+
+.stat-approved .stat-value {
+  color: var(--success, #64B88A);
+}
+
+.stat-rejected .stat-value {
+  color: var(--text-muted);
+}
+
+/* Search & Filters */
+.review-controls-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.review-search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 260px;
+}
+
+.review-search-wrap .search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.review-search-input {
+  width: 100%;
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-input, 9px);
+  padding: 10px 14px 10px 38px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color var(--transition-fast), background-color var(--transition-theme);
+}
+
+.review-search-input:focus {
+  border-color: var(--accent-primary);
+}
+
+.review-filter-tabs {
+  display: flex;
+  gap: 6px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-primary);
+  padding: 4px;
+  border-radius: var(--radius-input, 9px);
+}
+
+.filter-btn {
+  background: transparent;
+  border: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 6px 14px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.filter-btn:hover {
+  color: var(--text-primary);
+}
+
+.filter-btn.active {
+  background: var(--card-bg);
+  color: var(--accent-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Review Cards List */
+.review-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.review-mgmt-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-card, 16px);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: var(--shadow-sm);
+  transition: background-color var(--transition-theme), border-color var(--transition-theme);
+}
+
+.review-mgmt-card.status-pending {
+  border-left: 4px solid var(--warning, #D4AF62);
+}
+
+.review-mgmt-card.status-approved {
+  border-left: 4px solid var(--success, #64B88A);
+}
+
+.review-mgmt-card.status-rejected {
+  border-left: 4px solid var(--error, #E47777);
+  opacity: 0.85;
+}
+
+.card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.reviewer-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.reviewer-name {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.verified-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--success, #64B88A);
+  background: rgba(100, 184, 138, 0.12);
+  border: 1px solid rgba(100, 184, 138, 0.25);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+
+.review-id-tag {
+  font-family: monospace;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+.rating-stars-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.star-filled {
+  color: var(--accent-primary);
+  fill: var(--accent-primary);
+}
+
+.star-empty {
+  color: var(--border-hover, #48433A);
+}
+
+.rating-numeric {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-left: 6px;
+}
+
+.review-date-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-left: 12px;
+}
+
+.review-text-bubble {
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 0.94rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.moderation-audit-note {
+  font-size: 0.80rem;
+  color: var(--text-muted);
+  border-top: 1px dashed var(--border-primary);
+  padding-top: 10px;
+}
+
+.moderation-audit-note strong {
+  color: var(--text-secondary);
+}
+
+.moderation-audit-note span {
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.rejection-reason-text {
+  margin-top: 4px;
+  color: var(--error, #E47777);
+  font-weight: 500;
+}
+
+.card-actions-bar {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+/* Empty / Loading States */
+.review-mgmt-loading,
+.review-mgmt-empty,
+.review-mgmt-error {
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-card, 16px);
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.empty-icon {
+  color: var(--accent-primary);
+  opacity: 0.6;
+}
+
+.spinning-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+/* Rejection Modal Dialog */
+.reject-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.70);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.reject-modal-dialog {
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-card, 16px);
+  padding: 28px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.reject-modal-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.reject-modal-desc {
+  font-size: 0.90rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.reject-reason-input {
+  width: 100%;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-input, 9px);
+  padding: 10px 14px;
+  font-size: 0.90rem;
+  color: var(--text-primary);
+  outline: none;
+  resize: vertical;
+}
+
+.reject-reason-input:focus {
+  border-color: var(--accent-primary);
+}
+
+.reject-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .review-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .review-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .card-top-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

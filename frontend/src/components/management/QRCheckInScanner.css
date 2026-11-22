@@ -1,6 +1,7 @@
 /* ============================================================
-   FESTIQ — QR Check-in & Attendance Scanner Styles
-   Dual-Theme Compatible (Midnight Forest + Champagne & Light)
+   FESTIQ Management — QR Check-in & Attendance Scanner Styles
+   Dual-Theme Compatible (Obsidian Gold & Sage Porcelain)
+   Phase 2J: Visual Refinement, Sizing & Theme Modernization
    ============================================================ */
 
 .qr-checkin-wrapper {
@@ -9,17 +10,21 @@
   gap: 24px;
 }
 
-/* Event Selector Bar */
+/* ============================================================
+   Event Selector Bar
+   ============================================================ */
 .checkin-event-selector-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: 14px;
   padding: 16px 20px;
   gap: 16px;
   flex-wrap: wrap;
+  box-shadow: var(--shadow-sm);
+  transition: background-color var(--transition-theme), border-color var(--transition-theme);
 }
 
 .event-selector-group {
@@ -39,20 +44,31 @@
 
 .event-selector-group select {
   flex: 1;
-  padding: 10px 14px;
-  border-radius: 8px;
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-deep);
+  height: 42px;
+  padding: 0 14px;
+  border-radius: var(--radius-input, 9px);
+  border: 1px solid var(--border-primary);
+  background: var(--surface-secondary);
   color: var(--text-primary);
   font-family: var(--font-body);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   outline: none;
   cursor: pointer;
-  transition: border-color 0.2s ease;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.event-selector-group select option {
+  background: var(--card-bg);
+  color: var(--text-primary);
 }
 
 .event-selector-group select:focus {
-  border-color: var(--accent-primary);
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(212, 175, 98, 0.15);
+}
+
+[data-theme='light'] .event-selector-group select:focus {
+  box-shadow: 0 0 0 3px rgba(57, 122, 91, 0.15);
 }
 
 .checkin-top-actions {
@@ -60,7 +76,9 @@
   gap: 10px;
 }
 
-/* Attendance Metric Cards */
+/* ============================================================
+   Attendance Metric Cards
+   ============================================================ */
 .checkin-metrics-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -68,20 +86,26 @@
 }
 
 .checkin-metric-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  padding: 18px 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-card, 16px);
+  padding: 20px;
   display: flex;
   align-items: center;
   gap: 16px;
   box-shadow: var(--shadow-sm);
+  transition: background-color var(--transition-theme), border-color var(--transition-theme), transform var(--transition-fast);
+}
+
+.checkin-metric-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-hover);
 }
 
 .checkin-metric-icon {
   width: 44px;
   height: 44px;
-  border-radius: 10px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,23 +113,49 @@
 }
 
 .icon-blue {
-  background: rgba(53, 107, 150, 0.15);
-  color: #547F9F;
+  background: rgba(212, 175, 98, 0.12);
+  color: var(--accent-primary);
+  border: 1px solid rgba(212, 175, 98, 0.25);
+}
+
+[data-theme='light'] .icon-blue {
+  background: rgba(57, 122, 91, 0.10);
+  border-color: rgba(57, 122, 91, 0.22);
 }
 
 .icon-green {
-  background: rgba(76, 175, 80, 0.15);
-  color: #81C784;
+  background: rgba(100, 184, 138, 0.14);
+  color: var(--success);
+  border: 1px solid rgba(100, 184, 138, 0.28);
+}
+
+[data-theme='light'] .icon-green {
+  color: #2C6348;
+  background: rgba(57, 122, 91, 0.12);
+  border-color: rgba(57, 122, 91, 0.25);
 }
 
 .icon-amber {
-  background: rgba(255, 183, 77, 0.15);
-  color: #FFB74D;
+  background: rgba(230, 182, 92, 0.14);
+  color: var(--warning);
+  border: 1px solid rgba(230, 182, 92, 0.28);
+}
+
+[data-theme='light'] .icon-amber {
+  color: #B3740A;
+  background: rgba(200, 140, 40, 0.12);
+  border-color: rgba(200, 140, 40, 0.25);
 }
 
 .icon-champagne {
-  background: rgba(198, 169, 107, 0.15);
+  background: rgba(212, 175, 98, 0.14);
   color: var(--accent-primary);
+  border: 1px solid rgba(212, 175, 98, 0.25);
+}
+
+[data-theme='light'] .icon-champagne {
+  background: rgba(57, 122, 91, 0.10);
+  border-color: rgba(57, 122, 91, 0.22);
 }
 
 .checkin-metric-info {
@@ -115,20 +165,23 @@
 
 .checkin-metric-info .metric-num {
   font-family: var(--font-heading);
-  font-size: 1.6rem;
+  font-size: 1.75rem;
   font-weight: 800;
   color: var(--text-primary);
   line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 .checkin-metric-info .metric-name {
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--text-secondary);
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
-/* Feedback Banners */
+/* ============================================================
+   Feedback Banners
+   ============================================================ */
 .scan-feedback-banner {
   border-radius: 12px;
   padding: 18px 22px;
@@ -141,13 +194,18 @@
 }
 
 .feedback-success {
-  background: linear-gradient(135deg, rgba(76, 175, 80, 0.18) 0%, rgba(198, 169, 107, 0.14) 100%);
-  border: 1px solid rgba(76, 175, 80, 0.4);
+  background: rgba(100, 184, 138, 0.14);
+  border: 1px solid rgba(100, 184, 138, 0.35);
+}
+
+[data-theme='light'] .feedback-success {
+  background: rgba(57, 122, 91, 0.12);
+  border-color: rgba(57, 122, 91, 0.30);
 }
 
 .feedback-error {
-  background: rgba(229, 115, 115, 0.15);
-  border: 1px solid rgba(229, 115, 115, 0.4);
+  background: rgba(228, 119, 119, 0.14);
+  border: 1px solid rgba(228, 119, 119, 0.35);
 }
 
 .feedback-content {
@@ -157,13 +215,17 @@
 }
 
 .feedback-icon-box.success {
-  color: #81C784;
+  color: var(--success);
   flex-shrink: 0;
   margin-top: 2px;
 }
 
+[data-theme='light'] .feedback-icon-box.success {
+  color: #2C6348;
+}
+
 .feedback-icon-box.error {
-  color: #FF8A80;
+  color: var(--error);
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -171,6 +233,7 @@
 .feedback-text h4 {
   font-family: var(--font-heading);
   font-size: 1.25rem;
+  font-weight: 700;
   color: var(--text-primary);
   margin: 0 0 4px;
 }
@@ -191,11 +254,12 @@
 .feedback-meta code {
   color: var(--accent-primary);
   font-weight: 700;
+  font-family: monospace;
 }
 
 .already-meta {
   font-size: 0.82rem;
-  color: #FFB74D;
+  color: var(--warning);
   display: block;
   margin-top: 4px;
   font-weight: 600;
@@ -210,7 +274,9 @@
   line-height: 1;
 }
 
-/* Scanner Grid (Camera on left, Manual on right) */
+/* ============================================================
+   Scanner Grid (Camera on left, Manual on right)
+   ============================================================ */
 .checkin-scanner-grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -218,14 +284,15 @@
 }
 
 .scanner-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-card, 16px);
   padding: 22px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   box-shadow: var(--shadow-sm);
+  transition: background-color var(--transition-theme), border-color var(--transition-theme);
 }
 
 .card-top-row {
@@ -244,6 +311,7 @@
 .card-title-group h3 {
   font-family: var(--font-heading);
   font-size: 1.15rem;
+  font-weight: 700;
   color: var(--text-primary);
   margin: 0;
 }
@@ -256,9 +324,9 @@
 .camera-viewfinder-box {
   width: 100%;
   height: 280px;
-  background: var(--bg-deep);
-  border: 1px solid var(--border-subtle);
-  border-radius: 10px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -301,7 +369,7 @@
 
 .cam-error-text {
   font-size: 0.78rem;
-  color: #FF8A80;
+  color: var(--error);
   max-width: 280px;
 }
 
@@ -362,8 +430,8 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #81C784, transparent);
-  box-shadow: 0 0 8px #81C784;
+  background: linear-gradient(90deg, transparent, var(--success), transparent);
+  box-shadow: 0 0 8px var(--success);
   animation: scanLaser 2s linear infinite alternate;
 }
 
@@ -376,9 +444,9 @@
   font-size: 0.75rem;
   font-weight: 600;
   color: #FFFFFF;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.65);
   padding: 4px 10px;
-  border-radius: 4px;
+  border-radius: 6px;
   margin-top: 14px;
 }
 
@@ -397,21 +465,25 @@
   margin-top: auto;
 }
 
-/* Admitted Attendees Table */
+/* ============================================================
+   Admitted Attendees Table Card
+   ============================================================ */
 .event-checkins-audit-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-card, 16px);
   padding: 24px;
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
   gap: 16px;
+  transition: background-color var(--transition-theme), border-color var(--transition-theme);
 }
 
 .audit-header-row h3 {
   font-family: var(--font-heading);
   font-size: 1.25rem;
+  font-weight: 700;
   color: var(--text-primary);
   margin: 0 0 4px;
 }
@@ -439,6 +511,8 @@
 
 .checkins-table-wrapper {
   overflow-x: auto;
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
 }
 
 .checkins-table {
@@ -449,18 +523,18 @@
 
 .checkins-table th {
   text-align: left;
-  padding: 10px 14px;
-  font-size: 0.78rem;
+  padding: 12px 16px;
+  font-size: 0.76rem;
   font-weight: 700;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   text-transform: uppercase;
-  border-bottom: 1px solid var(--border-subtle);
-  background: var(--bg-deep);
+  border-bottom: 1px solid var(--border-primary);
+  background: var(--surface-secondary);
 }
 
 .checkins-table td {
-  padding: 12px 14px;
-  border-bottom: 1px solid var(--border-subtle);
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-primary);
   color: var(--text-primary);
 }
 
@@ -482,7 +556,11 @@
 .time-col {
   font-family: monospace;
   font-size: 0.82rem;
-  color: #81C784;
+  color: var(--success);
+}
+
+[data-theme='light'] .time-col {
+  color: #2C6348;
 }
 
 .manager-col {
@@ -509,6 +587,11 @@
   .checkin-event-selector-bar {
     flex-direction: column;
     align-items: stretch;
+    padding: 14px 16px;
+  }
+
+  .event-selector-group {
+    min-width: 0;
+    width: 100%;
   }
 }
-

@@ -1,20 +1,21 @@
 /* ============================================================
    FESTIQ Footer Styles — Design System Refinement
+   Obsidian Gold & Sage & Porcelain Integration (Phase 2D)
    ============================================================ */
 
 .footer-wrapper {
-  background-color: var(--bg-deep);
-  border-top: 1px solid var(--border-subtle);
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-primary);
   padding: 64px 0 28px;
   position: relative;
   width: 100%;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition: background-color var(--transition-theme), border-color var(--transition-theme);
 }
 
 .footer-container {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xl, 48px);
+  gap: var(--space-2xl, 44px);
 }
 
 .footer-top {
@@ -31,16 +32,12 @@
 }
 
 .footer-tagline {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--accent-sage);
-  margin-bottom: var(--space-sm, 10px);
-}
-
-[data-theme="light"] .footer-tagline {
+  letter-spacing: 0.12em;
   color: var(--accent-primary);
+  margin-bottom: var(--space-sm, 10px);
 }
 
 .footer-description {
@@ -58,19 +55,21 @@
 }
 
 .tech-badge {
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-size: 0.70rem;
+  font-weight: 600;
   color: var(--text-secondary);
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  padding: 3px 9px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  padding: 4px 10px;
   border-radius: var(--radius-full);
+  transition: background-color var(--transition-theme), border-color var(--transition-theme);
 }
 
 .footer-heading {
   font-family: var(--font-heading);
-  font-size: 0.98rem;
+  font-size: 0.95rem;
   font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--text-primary);
   margin-bottom: var(--space-md, 16px);
 }
@@ -85,15 +84,13 @@
 .footer-list a {
   font-size: 0.86rem;
   color: var(--text-secondary);
-  transition: color var(--transition-fast);
+  transition: color var(--transition-micro), transform var(--transition-micro);
+  display: inline-block;
 }
 
 .footer-list a:hover {
-  color: var(--accent-sage);
-}
-
-[data-theme="light"] .footer-list a:hover {
   color: var(--accent-primary);
+  transform: translateX(3px);
 }
 
 .academic-meta {
@@ -105,48 +102,42 @@
 
 .academic-meta strong {
   color: var(--text-primary);
+  font-weight: 600;
 }
 
 .system-status-indicator {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(134, 185, 154, 0.12);
-  border: 1px solid var(--border-subtle);
+  background: rgba(100, 184, 138, 0.10);
+  border: 1px solid rgba(100, 184, 138, 0.25);
   padding: 6px 14px;
   border-radius: var(--radius-full);
+  transition: background-color var(--transition-theme), border-color var(--transition-theme);
 }
 
 [data-theme="light"] .system-status-indicator {
-  background: rgba(53, 107, 150, 0.12);
+  background: rgba(50, 132, 90, 0.08);
+  border-color: rgba(50, 132, 90, 0.22);
 }
 
 .status-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background-color: var(--accent-sage);
-  box-shadow: 0 0 8px var(--accent-sage);
-}
-
-[data-theme="light"] .status-dot {
-  background-color: var(--accent-primary);
-  box-shadow: 0 0 8px var(--accent-primary);
+  background-color: var(--success);
+  box-shadow: 0 0 8px var(--success);
 }
 
 .status-text {
   font-size: 0.76rem;
   font-weight: 600;
-  color: var(--accent-sage);
-}
-
-[data-theme="light"] .status-text {
-  color: var(--accent-primary);
+  color: var(--success);
 }
 
 /* Bottom Copyright Bar */
 .footer-bottom {
-  border-top: 1px solid var(--border-subtle);
+  border-top: 1px solid var(--border-primary);
   padding-top: var(--space-md, 20px);
   display: flex;
   align-items: center;
@@ -169,20 +160,24 @@
 @media (max-width: 960px) {
   .footer-top {
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-lg, 24px);
+    gap: var(--space-lg, 28px);
   }
 }
 
 @media (max-width: 580px) {
   .footer-wrapper {
-    padding: 48px 0 24px;
+    padding: 44px 0 24px;
+  }
+  .footer-container {
+    gap: 32px;
   }
   .footer-top {
     grid-template-columns: 1fr;
-    gap: var(--space-xl, 28px);
+    gap: 24px;
   }
   .footer-bottom {
     flex-direction: column;
     text-align: center;
+    gap: 8px;
   }
 }
